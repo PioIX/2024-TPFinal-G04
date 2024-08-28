@@ -1,7 +1,8 @@
 import Image from "next/image";
 import styles from "./page.module.css";
-
+import clsx from "clsx"
 export default function Home() {
+  var val=false
   return (
     <main className={styles.main}>
       <div className={styles.description}>
@@ -27,8 +28,11 @@ export default function Home() {
           </a>
         </div>
       </div>
-
-      <div className={styles.center}>
+      
+      <div className={clsx({
+        [styles.center]:true,
+        [styles.display]:val,
+      })} >
         <Image
           className={styles.logo}
           src="/next.svg"
@@ -39,7 +43,10 @@ export default function Home() {
         />
       </div>
 
-      <div className={styles.grid}>
+      <div className={clsx({
+        [styles.grid]:true,
+        [styles.display]:true,
+      })}>
         <a
           href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
           className={styles.card}
