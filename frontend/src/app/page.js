@@ -2,13 +2,16 @@ import Image from "next/image";
 import styles from "./page.module.css";
 import clsx from "clsx"
 export default function Home() {
-  var val=false
 
-  
+  var val=true
+
+
 
   return (
     <main className={styles.main}>
       <div className={styles.description}>
+      <input onkeypress="return (event.charCode != 32)" placeholder="Nombre" type="text" id="username" maxlength="10"></input>
+      
         <p>
           Get started by editing&nbsp;
           <code className={styles.code}>src/app/page.js</code>
@@ -32,23 +35,11 @@ export default function Home() {
         </div>
       </div>
       
-      <div className={clsx({
-        [styles.center]:true,
-        [styles.display]:val,
-      })} >
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
+      
 
       <div className={clsx({
         [styles.grid]:true,
-        [styles.display]:true,
+        [styles.display]:false
       })}>
         <a
           href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
