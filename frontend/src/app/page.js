@@ -2,7 +2,11 @@ import Image from "next/image";
 import styles from "./page.module.css";
 import clsx from "clsx"
 export default function Home() {
+
   var val=true
+
+
+
   return (
     <main className={styles.main}>
       <div className={styles.description}>
