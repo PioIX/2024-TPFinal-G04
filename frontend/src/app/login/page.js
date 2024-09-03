@@ -10,15 +10,16 @@ export default function Home() {
   
   function spacepress(event) {
     for(var i=0; i<event.target.value.length;i++ ){
-      if (i==" "){
-        console.log(event.target.value.split(i,1,""))
-        event.target.value.split(i,1,"")
+      var hola= String(event.target.value)
+      if (hola[i]==" "){
+        hola = hola.substring(0, hola.length - 1);
+        event.target.value=hola
       }
+      
     }
     return
   }
     
-  /*return (event.charCode != 32)*/ 
   
   return (
     
