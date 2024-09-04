@@ -1,5 +1,6 @@
 "use client"
 
+import Button from "@/components/button";
 import { useSocket } from "@/hooks/useSocket"
 import { useState, useEffect } from "react";
 
@@ -51,9 +52,23 @@ useEffect(() => {
   export default function UserRanking(){
     const {socket,isConnected}=useSocket();
     useEffect(()=>{
+      //para evitar errores si no existe el socket
+        if (!socket) return;
+      socket.on(`pingAll`, (data)=>{
+        console.log("llego el evento pingaAll", data)
+      })
+
     },[socket,isConnected]);
 
+    function handleClick(){
+      socket.emit("pingAll",{message:"Hola soy Jara"})
+    }
+
     return(
+      <>        
         <h1>Soy la ruta /login/menu</h1>
+          <Button onClick={handleClick} text="enviar piongAll"></Button>
+      </>
+
     )
   }

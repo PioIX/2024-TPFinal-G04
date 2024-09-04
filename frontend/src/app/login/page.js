@@ -3,7 +3,10 @@ import Image from "next/image";
 import styles from "./page.module.css";
 import clsx from "clsx"
 import Input from "@/components/input";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+
+
+
 export default function Home() {
   var val=true
   
