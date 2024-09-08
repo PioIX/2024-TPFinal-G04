@@ -4,7 +4,7 @@ import styles from "./page.module.css";
 import clsx from "clsx"
 import Input from "@/components/input";
 import { useEffect, useState } from "react";
-
+import Button from "@/components/button";
 
 
 export default function Home() {
@@ -39,8 +39,8 @@ export default function Home() {
             
         </div>
         <div id="loginbuttons">
-            <button id="ingresar" type="button" onclick="login()">Ingresar</button>
-            <button id="registrarse" type="button" onclick="register()">Registrarse</button>
+            <Button id="ingresar" type="button" onclick={login}>Ingresar</Button>
+            <Button id="registrarse" type="button" onclick={register}>Registrarse</Button>
             
         </div>
     </main>

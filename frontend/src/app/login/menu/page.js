@@ -61,7 +61,7 @@ useEffect(() => {
     },[socket,isConnected]);
 
     function handleClick(){
-      socket.emit("pingAll",{message:"Hola soy Jara"})
+      socket.emit("pingAll",{message:"Hola"})
     }
 
     return(
