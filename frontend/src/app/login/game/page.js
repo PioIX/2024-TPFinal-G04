@@ -5,11 +5,14 @@ import clsx from "clsx"
 import Button from "@/components/button";
 import { useSocket } from "@/hooks/useSocket"
 import { useState, useEffect } from "react";
+import Numbers from "@/components/fgame";
 
 export default function Game(){
-    let page=false
+
+    let[page,setPage]= useState(false);
+    
     function changeScreen() {
-        page=!page
+        setPage(!page)
       }
 
     return(
@@ -19,7 +22,8 @@ export default function Game(){
                 [styles.grid]:true,
                 [styles.display]:!page 
                 })}>
-                
+
+                <Button onClick={changeScreen} text=">" />
                 <h1>Hola</h1>
 
             </div>
@@ -28,9 +32,10 @@ export default function Game(){
                 [styles.grid]:true,
                 [styles.display]:page
                 })}>
-            
-                <h1>Chau</h1>
 
+                <Button onClick={changeScreen} text="<" />
+                <h1>Chau</h1>
+                <Numbers></Numbers>
             </div>
         </main>
       </>
