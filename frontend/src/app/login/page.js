@@ -1,39 +1,84 @@
 "use client"
-import Image from "next/image";
-import styles from "./page.module.css";
-import clsx from "clsx"
-import Input from "@/components/input";
-import { useEffect, useState } from "react";
 import Button from "@/components/button";
+import styles from "./page.module.css"
+import { useState } from "react";
 
+export default function inicio() {
+    const [inputNombre, setInputNombre] = useState("")
+    const [inputPassword, setInputPassword] = useState("")
+    const [userID, setUserId] = useState(0)
 
-export default function Home() {
-  var val=true
-  
-  
-  function spacepress(event) {
-    for(var i=0; i<event.target.value.length;i++ ){
-      var hola= String(event.target.value)
-      if (hola[i]==" "){
-        hola = hola.substring(0, hola.length - 1);
-        event.target.value=hola
-      }
-      
+    async function ingresarUsuario() {
+        if (await existeUsuario() == true) {
+            alert("Haz ingresado")
+        } else {
+            alert("el usuario no existe o la contraseña no es correcta");
+        }
     }
-    return
-  }
-    
-  
-  return (
-    
-    <main className={styles.main}>
-        <div id="logindiv">
-            <h1>Preguntados</h1>
-            <br></br>
-            <label id="usernamecss" for="username">Nombre de usuario (No mas de 10 caracteres):</label>
-            <Input onkeypress={spacepress} placeholder="Nombre" type="text" id="username" maxlength="10" ></Input>
-            <br></br>
-            <label id="passwordcss" for="password">Contraseña (No mas de 10 caracteres):</label>
+
+    async function existeUsuario() {
+        const data = {
+            nombre_usuario: inputNombre,
+            contraseña: inputPassword
+        }
+
+        const response = await fetch('http://localhost:3000/usuarios', {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data),
+        })
+
+        //Tengo que usar el await porque la respuesta del servidor es lenta
+        const result = await response.json()
+        if (result.length == 0) {
+            console.log("El usuario no existe")
+            return false
+        } else {
+            console.log("El usuario si existe")
+            setUserId(result[0].id_usuario)
+            return true
+        }
+    }
+
+    return (
+        <div className={styles.main}>
+            <div className={styles.main}>
+                <br></br>
+                <p>Nombre de usuario</p>
+                <Form handleChange={(e) => setInputNombre(e.target.value)}/> 
+                <br></br>
+                <p className={styles.main}>Contraseña</p>
+                <Form handleChange={(e) => setInputPassword(e.target.value)}/>
+                <br></br>
+                <Button text="JUGAR" variant="jugar" className={styles.buttonJugar} onClick={ingresarUsuario}></Button>
+                <a href="./registro" className={styles.a}>¿Todavia no te haz registrado?</a>
+            </div>
+        </div>
+    )
+}
+      
+      
+      /*<main className={styles.main}>
+      function spacepress(event) {
+        for(var i=0; i<event.target.value.length;i++ ){
+          var hola= String(event.target.value)
+          if (hola[i]==" "){
+            hola = hola.substring(0, hola.length - 1);
+            event.target.value=hola
+          }
+          
+        }
+        return
+      }
+      <div id="logindiv">
+      <h1>Preguntados</h1>
+      <br></br>
+      <label id="usernamecss" for="username">Nombre de usuario (No mas de 10 caracteres):</label>
+      <Input onkeypress={spacepress} placeholder="Nombre" type="text" id="username" maxlength="10" ></Input>
+      <br></br>
+      <label id="passwordcss" for="password">Contraseña (No mas de 10 caracteres):</label>
             <Input onkeypress={spacepress} placeholder="Contraseña" type="text" id="password" maxlength="10" ></Input>
             <br></br>
             
@@ -47,3 +92,4 @@ export default function Home() {
     
   );
 }
+*/

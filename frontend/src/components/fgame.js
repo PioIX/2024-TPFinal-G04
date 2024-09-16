@@ -58,10 +58,12 @@ export default function Numbers(props) {
     }    
 
     function check(){
-        setTotal(String(num1)+String(num2))
-        setTotal2((number2*number3)+number1)
-        console.log(total,total2)
-        if (total==total2) {
+        let auxtotal = String(num1)+String(num2)
+        let auxtotal2 = (number2*number3)+number1
+        setTotal(auxtotal)  
+        setTotal2(auxtotal2)
+        console.log(auxtotal,auxtotal2)
+        if (auxtotal==auxtotal2) {
             setText("bien")
         }else{
             setText("mal")
@@ -76,7 +78,7 @@ export default function Numbers(props) {
     
     return(
         <div>
-            <h1>{number1}+{number2}*{number3}</h1>
+            {number1 !=0 && <h1>{number1}+{number2}*{number3}</h1>}
             <Button onClick={suma1} text="+" />
             <Button onClick={resta1} text="-" />
             <h1>{num1}</h1>
