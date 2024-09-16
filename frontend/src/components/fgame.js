@@ -21,7 +21,7 @@ export default function Numbers(props) {
 
     function resta1(){
         if(num1!=0){
-            setNum1(num1-1)
+            setNum1(num1-=1)
         }else{
             setNum1(num1=9)
         }
@@ -30,7 +30,7 @@ export default function Numbers(props) {
 
     function resta2(){
         if(num2!=0){
-            setNum2(num2-1)
+            setNum2(num2-=1)
         }else{
             setNum2(num2=9)
         }
@@ -39,7 +39,7 @@ export default function Numbers(props) {
 
     function suma1(){
         if(num1!=9){
-            setNum1(num1+1)
+            setNum1(num1+=1)
         }else{
             setNum1(num1=0)
         }
@@ -50,16 +50,17 @@ export default function Numbers(props) {
     
     function suma2(){
         if(num2!=9){
-            setNum2(num2+1)
+            setNum2(num2+=1)
         }else{
             setNum2(num2=0) 
         }
-        //console.log(num1,num2)
+        console.log(num1,num2)
     }    
 
     function check(){
         setTotal(String(num1)+String(num2))
         setTotal2((number2*number3)+number1)
+        console.log(total,total2)
         if (total==total2) {
             setText("bien")
         }else{
