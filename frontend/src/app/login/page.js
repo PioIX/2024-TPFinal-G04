@@ -1,6 +1,7 @@
 "use client"
-import Button from "@/components/button";
+import Form from "@/components/form"
 import styles from "./page.module.css"
+import Button from "@/components/button"
 import { useState } from "react";
 
 export default function inicio() {
@@ -43,13 +44,13 @@ export default function inicio() {
     }
 
     return (
-        <div className={styles.main}>
-            <div className={styles.main}>
+        <div className={styles.todo}>
+            <div className={styles.inicio}>
                 <br></br>
-                <p>Nombre de usuario</p>
+                <p className={styles.texto}>Nombre de usuario</p>
                 <Form handleChange={(e) => setInputNombre(e.target.value)}/> 
                 <br></br>
-                <p className={styles.main}>Contraseña</p>
+                <p className={styles.texto}>Contraseña</p>
                 <Form handleChange={(e) => setInputPassword(e.target.value)}/>
                 <br></br>
                 <Button text="JUGAR" variant="jugar" className={styles.buttonJugar} onClick={ingresarUsuario}></Button>
@@ -58,8 +59,7 @@ export default function inicio() {
         </div>
     )
 }
-      
-      
+
       /*<main className={styles.main}>
       function spacepress(event) {
         for(var i=0; i<event.target.value.length;i++ ){

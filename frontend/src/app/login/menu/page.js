@@ -1,73 +1,46 @@
 "use client"
 
 import Button from "@/components/button";
+import Form from "@/components/form";
 import { useSocket } from "@/hooks/useSocket"
 import { useState, useEffect } from "react";
 
-/*
-useEffect(() => {
-    fetch('/api/profile-data', 
-         {
-        method: "GET",
-        headers: {
-            "Content-Type": "application/json",
-        },
-    }
-    )
-      .then((res) => res.json())
-      .then((data) => {
-        setData(data)
-        setLoading(false)
-      })
-  }, [])
-  */ 
-
-  /*
-    const data = {
-        user: document.getElementById("username").value,
-        password: document.getElementById("password").value,     
-    }
-
-    useEffect(() => {
-    fetch('/api/profile-data', {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        setData(data)
-        setLoading(false)
-      })
-  }, [])
-
-
-   */
-
-
-  //use web socket
-
   export default function UserRanking(){
+    const [inputNombre, setInputNombre] = useState("")
     const {socket,isConnected}=useSocket();
+
+
     useEffect(()=>{
       //para evitar errores si no existe el socket
         if (!socket) return;
       socket.on(`pingAll`, (data)=>{
         console.log("llego el evento pingaAll", data)
-      })
+        
+      });
+
+      socket.on('newMessage', (data)=>{
+        console.log("Message: ", data)
+      });
 
     },[socket,isConnected]);
+
+
 
     function handleClick(){
       socket.emit("pingAll",{message:"Hola"})
     }
 
+    function sendMessage(){
+      socket.emit("sendMessage",{message:inputNombre})
+    }
+
     return(
       <>        
         <h1>Soy la ruta /login/menu</h1>
-          <Button onClick={handleClick} text="enviar piongAll"></Button>
+        <Button onClick={handleClick} text="enviar piongAll"></Button>
+        <Form handleChange={(e) => setInputNombre(e.target.value)}/>        
+        <Button onClick={sendMessage} text="enviar mensaje"></Button>
+        <Button onClick={()=>socket.emit("joinRoom",{room: "Nombre de la sala"})} text="nombre de la sala"></Button>
       </>
 
     )
