@@ -25,7 +25,6 @@ export default function Numbers(props) {
         }else{
             setNum1(num1=9)
         }
-        console.log(num1,num2)
     }
 
     function resta2(){
@@ -34,7 +33,6 @@ export default function Numbers(props) {
         }else{
             setNum2(num2=9)
         }
-        console.log(num1,num2)
     }
 
     function suma1(){
@@ -43,7 +41,6 @@ export default function Numbers(props) {
         }else{
             setNum1(num1=0)
         }
-        console.log(num1,num2)
     }
 
 
@@ -54,7 +51,6 @@ export default function Numbers(props) {
         }else{
             setNum2(num2=0) 
         }
-        console.log(num1,num2)
     }    
 
     function check(){
@@ -62,7 +58,6 @@ export default function Numbers(props) {
         let auxtotal2 = (number2*number3)+number1
         setTotal(auxtotal)  
         setTotal2(auxtotal2)
-        console.log(auxtotal,auxtotal2)
         if (auxtotal==auxtotal2) {
             setText("bien")
         }else{

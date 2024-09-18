@@ -6,6 +6,7 @@ import Button from "@/components/button";
 import { useSocket } from "@/hooks/useSocket"
 import { useState, useEffect } from "react";
 import Numbers from "@/components/fgame";
+import Naval from "@/components/sgame";
 
 export default function Game(){
 
@@ -25,7 +26,7 @@ export default function Game(){
 
                 <Button onClick={changeScreen} text=">" />
                 <h1>Hola</h1>
-
+                <Naval></Naval>
             </div>
 
             <div className={clsx({
