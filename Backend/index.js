@@ -4,7 +4,7 @@ const cors = require('cors');
 
 
 var app = express(); //Inicializo express
-var port = process.env.PORT || 3000; //Ejecuto el servidor en el puerto 3000
+var port = process.env.PORT || 3001; //Ejecuto el servidor en el puerto 3001
 
 // Convierte una petición recibida (POST-GET...) a objeto JSON
 app.use(bodyParser.urlencoded({extended:false}));
@@ -55,8 +55,8 @@ app.post('/usuarios', async function(req,res){
     console.log(req.body)
     let respuesta = ""
     if (req.body.nombre_usuario) {
-         respuesta = await MySql.realizarQuery(`SELECT * FROM Usuarios WHERE 
-        nombre_usuario = "${req.body.nombre_usuario}" and contraseña = "${req.body.contraseña}";`)
+         respuesta = await MySql.realizarQuery(`SELECT * FROM Users WHERE 
+        user = "${req.body.nombre_usuario}" and password = "${req.body.contraseña}";`)
     }
     else{
         respuesta = ""
@@ -69,11 +69,11 @@ app.post('/usuarioexiste', async function(req,res){
     console.log(req.body)
     let respuesta = ""
     if (req.body.nombre_usuario) {
-         respuesta = await MySql.realizarQuery(`SELECT * FROM Usuarios WHERE 
-        nombre_usuario = "${req.body.nombre_usuario}"`)
+         respuesta = await MySql.realizarQuery(`SELECT * FROM Users WHERE 
+        user = "${req.body.nombre_usuario}"`)
     }
     else{
-         respuesta = await MySql.realizarQuery(`SELECT * FROM Usarios;`)
+         respuesta = await MySql.realizarQuery(`SELECT * FROM user;`)
     }
     res.send(respuesta) 
    
@@ -81,10 +81,10 @@ app.post('/usuarioexiste', async function(req,res){
 
 app.post('/insertarUsuario', async function(req,res) {
     console.log(req.body)
-    var usuarioNuevo = await MySql.realizarQuery(`SELECT * FROM Usuarios WHERE nombre_usuario = '${req.body.nombre_usuario}'`);
+    var usuarioNuevo = await MySql.realizarQuery(`SELECT * FROM Users WHERE user = '${req.body.nombre_usuario}'`);
     if (usuarioNuevo.length==0) {
-        await MySql.realizarQuery(`INSERT INTO Usuarios (puntaje_usuario, partidas_ganadas, partidas_perdidas, nombre_usuario, contraseña) 
-        VALUES (0, 0, 0, '${req.body.nombre_usuario}', '${req.body.contraseña}')`);
+        await MySql.realizarQuery(`INSERT INTO Users (user, password) 
+        VALUES ('${req.body.nombre_usuario}', '${req.body.contraseña}')`);
         res.send({status: "Ok"})
     } else {
         res.send({status: "Ya existe"});

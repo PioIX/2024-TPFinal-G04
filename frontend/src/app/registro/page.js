@@ -16,7 +16,7 @@ export default function inicio() {
             contraseña: inputPassword
         }
 
-        const response = await fetch('http://localhost:3000/insertarUsuario', {
+        const response = await fetch('http://localhost:3001/insertarUsuario', {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
