@@ -25,11 +25,11 @@
 	height: 40px;
 	border: 2px solid #152C59;
 	border-radius: 15px;
-	background-color: #fb0c0c;
+	background-color: #0a9127;
 }
 
 .selected:hover {
-	background: #fb0c0c;
+	background: #0a9127;
 }
 
 .selected div {
