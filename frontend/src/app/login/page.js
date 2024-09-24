@@ -48,13 +48,13 @@ export default function inicio() {
             <div className={styles.inicio}>
                 <br></br>
                 <p className={styles.texto}>Nombre de usuario</p>
-                <Form handleChange={(e) => setInputNombre(e.target.value)}/> 
+                <Form className={styles.usuario} handleChange={(e) => setInputNombre(e.target.value)}/> 
                 <br></br>
                 <p className={styles.texto}>Contraseña</p>
-                <Form handleChange={(e) => setInputPassword(e.target.value)}/>
+                <Form className={styles.usuario}handleChange={(e) => setInputPassword(e.target.value)}/>
                 <br></br>
                 <Button text="JUGAR" variant="jugar" className={styles.buttonJugar} onClick={ingresarUsuario}></Button>
-                <a href="./registro" className={styles.a}>¿Todavia no te haz registrado?</a>
+                <br></br><a href="./registro" className={styles.a}>¿Todavia no te haz registrado?</a>
             </div>
         </div>
     )
