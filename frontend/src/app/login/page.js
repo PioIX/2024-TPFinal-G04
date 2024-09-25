@@ -46,8 +46,8 @@ export default function inicio() {
     }
 
     return (
-        <html>
-        <body className={styles.html}>
+        <html className={styles.all}>
+        <body >
         <div className={styles.todo}>
             <div className={styles.inicio}>
                 <br></br>
