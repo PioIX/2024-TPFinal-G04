@@ -2,28 +2,31 @@
   display: none;
   text-align: center;
 }
-.html{
+
+
+
+
+.todo{
+  /*background-image: url(../../../public/login_registro.png);*/
+  width: 100%;
+  height:100%;
+  font-family: 'Courier New', Courier, monospace;
+  background-size:auto
+}
+.all{
   margin: 0 0 0 0;
   padding: 0;
-  box-sizing: border-box;
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-  overflow:visible;
-  font-size: 1rem;
-  height: 100%;
   width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 150px;
-  height: 150px;
-}
-.todo{
-  background-color: black;
-
+  height: 100%;
   background-image: url(../../../public/login_registro.png);
   background-size: cover;
   background-repeat: no-repeat;
-  display: inline-block;
+}
+
+
+.todo{
+
+
   vertical-align: middle;
   display: flex;
   align-items: center;
@@ -36,32 +39,59 @@
   font-family: "Lucida Consol", "Monaco";
   font-size: 16px;
   vertical-align: middle;
-  
 
+
+ 
 }
+
 
 .texto{
-  font-family: "Lucida Consol", "Monaco";
+  color: black;
+
+
+  font-family: cursive;
   vertical-align: middle;
   text-align: center;
-  text-shadow: 1px 1px 5px rgb(129, 100, 100);
-  padding: 3%;
-  color: rgb(80, 36, 36);
-  background-color: rgb(187, 187, 187);
-  border: 2px solid rgb(31, 31, 31);
-  border-radius: 12px;
-  
-  
+  text-shadow: 1px 1px 5px rgb(110, 47, 47);
+  color: rgb(255, 255, 255);
+
+
 }
+
 
 .a{
-  color:black;
+  color:rgb(255, 255, 255);
 }
-
 .usuario{
-  color: rgb(91, 0, 0);
+/*  color: rgb(91, 0, 0);
+  background-color: rgb(187, 187, 187);
+  border: 2px solid rgb(31, 31, 31);
+  border-radius: 12px;*/
+  font-family: "cursive";
+  vertical-align: middle;
+  text-align: center;
+  color: rgb(0, 0, 0);
 
+
+
+
+  display:inline-block;
+  text-align: center;
+  font-size: 18px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-weight: bold;
+  border-radius: 25px;
+  background: rgb(255, 255, 255);
+  color: rgb(63, 63, 63);
+  width: 200px;
+  padding: 5px;
+  border-color: white;
 }
+
+
+
+
 .buttonJugar{
   color: rgb(255, 30, 0);
+  cursor: pointer;
 }
