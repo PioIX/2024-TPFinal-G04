@@ -2,7 +2,9 @@
 import Form from "@/components/form"
 import styles from "./page.module.css"
 import Button from "@/components/button"
+import background from "../../../public/login_registro.png"
 import { useState } from "react";
+
 
 export default function inicio() {
     const [inputNombre, setInputNombre] = useState("")
@@ -44,6 +46,8 @@ export default function inicio() {
     }
 
     return (
+        <html>
+        <body className={styles.html}>
         <div className={styles.todo}>
             <div className={styles.inicio}>
                 <br></br>
@@ -57,6 +61,8 @@ export default function inicio() {
                 <br></br><a href="./registro" className={styles.a}>¿Todavia no te haz registrado?</a>
             </div>
         </div>
+        </body>
+        </html>
     )
 }
 
