@@ -7,6 +7,7 @@ import { useSocket } from "@/hooks/useSocket"
 import { useState, useEffect } from "react";
 import Numbers from "@/components/fgame";
 import Naval from "@/components/sgame";
+import Simon from "@/components/tgame";
 
 export default function Game(){
 
@@ -27,6 +28,7 @@ export default function Game(){
                 <Button onClick={changeScreen} text=">" />
                 <h1>Hola</h1>
                 <Naval></Naval>
+                <Numbers></Numbers>
             </div>
 
             <div className={clsx({
@@ -36,7 +38,7 @@ export default function Game(){
 
                 <Button onClick={changeScreen} text="<" />
                 <h1>Chau</h1>
-                <Numbers></Numbers>
+                <Simon></Simon>
             </div>
         </main>
       </>
