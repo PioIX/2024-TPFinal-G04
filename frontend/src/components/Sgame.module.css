@@ -12,10 +12,7 @@
 	background: #538daa;
 }
 
-.td div {
- 	width: 40px;
-	height: 40px;
- }
+
 
 
  
@@ -31,8 +28,35 @@
 	background: #c90e0e;
 }
 
-.selected div {
- 	width: 40px;
+
+
+
+ .point {
+	position: relative;
+	width: 40px;
 	height: 40px;
- }
+	border: 2px solid #152C59;
+	border-radius: 15px;
+	background-color: #1c9225;
+	
+}
+
+.point:hover {
+	background: #1c9225;
+}
+
+ .pointselected {
+	position: relative;
+	width: 40px;
+	height: 40px;
+	border: 2px solid #152C59;
+	border-radius: 15px;
+	background-color: #1c9225;
+	
+}
+
+.pointselected:hover {
+	background: #c90e0e;
+}
+
 

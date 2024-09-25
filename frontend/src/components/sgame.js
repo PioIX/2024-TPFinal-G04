@@ -25,10 +25,12 @@ function getRandoms(){
 	return positions
 }
 
+
 export default function Naval(props) {
 
 
 	let [position,setPosition]= useState([]);
+	let [bombs,setBombs]= useState([]);
 
 	useEffect(()=>{
 		setPosition(getRandoms());
@@ -37,11 +39,25 @@ export default function Naval(props) {
 	const manejarClick = (e) => {
 		// `e.target` es el elemento que fue clicado
 		//e.target.setAttribute('class', 'Sgame_selected__hF5Ep')//Sgame_td__fzQJ2
+		if (position.includes(Number(e.target.id)) && bombs.includes(e.target.id)==false) {
+			e.target.setAttribute('class', 'Sgame_pointselected__U2gv6')//Sgame_td__fzQJ2
+			var a = bombs
+			a.push(e.target.id)
+			setBombs(a)
+			if(bombs.length==5){
+				console.log("ganaste")
+			}
+		}else if(position.includes(Number(e.target.id)) && bombs.includes(e.target.id)){
+
+		}else{
+			e.target.setAttribute('class', 'Sgame_point__8L8s3')//Sgame_td__fzQJ2
+		}
 	  };
 
 	function manejarHover(e) {
 		for (let index = 0; index < 5; index++) {
-			document.getElementById(position[index]).setAttribute('class', 'Sgame_selected__hF5Ep')
+			if(document.getElementById(position[index]).getAttribute('class')!="Sgame_pointselected__U2gv6")
+				document.getElementById(position[index]).setAttribute('class', 'Sgame_selected__hF5Ep')
 		}
 	}
     
