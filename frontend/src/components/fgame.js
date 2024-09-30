@@ -17,13 +17,12 @@ export default function Numbers(props) {
     let[total,setTotal]= useState(0);
     let[total2,setTotal2]= useState(0);
     let[text,setText]= useState("");
-    
 
     function resta1(){
         if(num1!=0){
             setNum1(num1-=1)
         }else{
-            setNum1(num1=9)
+            setNum1(9)
         }
     }
 
@@ -31,7 +30,7 @@ export default function Numbers(props) {
         if(num2!=0){
             setNum2(num2-=1)
         }else{
-            setNum2(num2=9)
+            setNum2(9)
         }
     }
 
@@ -39,7 +38,7 @@ export default function Numbers(props) {
         if(num1!=9){
             setNum1(num1+=1)
         }else{
-            setNum1(num1=0)
+            setNum1(0)
         }
     }
 
@@ -49,7 +48,7 @@ export default function Numbers(props) {
         if(num2!=9){
             setNum2(num2+=1)
         }else{
-            setNum2(num2=0) 
+            setNum2(0) 
         }
     }    
 
@@ -64,6 +63,9 @@ export default function Numbers(props) {
             setText("mal")
         }
     }
+
+    
+
     useEffect(()=>{
         setNumber1(getRandomInt(1,10))
         setNumber2(getRandomInt(1,10))
