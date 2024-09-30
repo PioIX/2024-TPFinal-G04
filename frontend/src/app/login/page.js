@@ -2,7 +2,9 @@
 import Form from "@/components/form"
 import styles from "./page.module.css"
 import Button from "@/components/button"
+import background from "../../../public/login_registro.png"
 import { useState } from "react";
+
 
 export default function inicio() {
     const [inputNombre, setInputNombre] = useState("")
@@ -44,19 +46,23 @@ export default function inicio() {
     }
 
     return (
+        <html className={styles.all}>
+        <body >
         <div className={styles.todo}>
             <div className={styles.inicio}>
                 <br></br>
                 <p className={styles.texto}>Nombre de usuario</p>
-                <Form handleChange={(e) => setInputNombre(e.target.value)}/> 
+                <Form className={styles.usuario} handleChange={(e) => setInputNombre(e.target.value)}/> 
                 <br></br>
                 <p className={styles.texto}>Contraseña</p>
-                <Form handleChange={(e) => setInputPassword(e.target.value)}/>
+                <Form className={styles.usuario}handleChange={(e) => setInputPassword(e.target.value)}/>
                 <br></br>
                 <Button text="JUGAR" variant="jugar" className={styles.buttonJugar} onClick={ingresarUsuario}></Button>
-                <a href="./registro" className={styles.a}>¿Todavia no te haz registrado?</a>
+                <br></br><a href="./registro" className={styles.a}>¿Todavia no te haz registrado?</a>
             </div>
         </div>
+        </body>
+        </html>
     )
 }
 

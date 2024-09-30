@@ -12,7 +12,7 @@ function Form(props) {
 
   return (
     <form onSubmit={handleSubmit}>
-      <Input handleChange={props.handleChange}/>
+      <Input className={props.className} handleChange={props.handleChange}/>
     </form>
   );
 }
