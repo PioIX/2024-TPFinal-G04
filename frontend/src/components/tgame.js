@@ -11,9 +11,14 @@ function getRandomInt(min, max) {
 }
 
 export default function Simon(props) {
-    
+    let [secuencia,setSecuencia]= useState([])
+    useEffect(()=>{
+        sequence=[getRandomInt(1,5),getRandomInt(1,5),getRandomInt(1,5),getRandomInt(1,5),getRandomInt(1,5),getRandomInt(1,5)]
+		setSecuencia(sequence);
+	},[])
     return(
         <>
+        
         </>
     )
 }
