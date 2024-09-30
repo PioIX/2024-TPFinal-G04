@@ -47,6 +47,7 @@ export default function inicio() {
 
     return (
         <html className={styles.all}>
+        < link rel="page.module.css" href="https://fonts.google.com/specimen/Space+Grotesk?preview.text=papyrus"></link>
         <body >
         <div className={styles.todo}>
             <div className={styles.inicio}>
