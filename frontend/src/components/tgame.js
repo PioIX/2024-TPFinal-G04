@@ -29,7 +29,7 @@ export default function Simon(props) {
                     setLuz("/photo/off.png")
                     resolve('luz')
                 }, 1000);
-            }, 1000);
+            }, 200);
         })
     }
     function yellow() {
@@ -41,7 +41,7 @@ export default function Simon(props) {
                     setLuz("/photo/off.png")
                     resolve('luz')
                 }, 1000);
-            }, 1000);
+            }, 200);
         })
     }
     function green() {
@@ -53,7 +53,7 @@ export default function Simon(props) {
                     setLuz("/photo/off.png")
                     resolve('luz')
                 }, 1000);
-            }, 1000);
+            }, 200);
         })
     }
     function red() {
@@ -65,7 +65,7 @@ export default function Simon(props) {
                     setLuz("/photo/off.png")
                     resolve('luz')
                 }, 1000);
-            }, 1000);
+            }, 200);
         })
     }
     async function game() {
@@ -85,9 +85,7 @@ export default function Simon(props) {
             }
         }
 
-        if (state == 6) {
-            console.log("ganaste")
-        }
+        
     }
 
     useEffect(() => {
@@ -101,13 +99,17 @@ export default function Simon(props) {
             seguida.push(secuencia[state])
             setStateActual(stateActual + 1)
             console.log("correcto")
-        }else{
+        } else {
             console.log("incorrecto")
         }
-        if (stateActual==state) {
-            setSeguida([])
-            setState(state+1)
-            setStateActual(0)
+        if (stateActual == state) {
+            if (state == 6) {
+                console.log("ganaste")
+            }else{
+                setSeguida([])
+                setState(state + 1)
+                setStateActual(0)
+            }
         }
     }
 
