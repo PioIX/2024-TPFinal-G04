@@ -9,39 +9,39 @@ import Numbers from "@/components/fgame";
 import Naval from "@/components/sgame";
 import Simon from "@/components/tgame";
 
-export default function Game(){
+export default function Game() {
 
-    let[page,setPage]= useState(false);
-    
-    function changeScreen() {
-        setPage(!page)
-      }
+  let [page, setPage] = useState(false);
 
-    return(
-      < >        
-        <main className={styles.main}>
-            <div className={clsx({
-                [styles.grid]:true,
-                [styles.display]:!page 
-                })}>
+  function changeScreen() {
+    setPage(!page)
+  }
 
-                <Button onClick={changeScreen} text=">" />
-                <h1>Hola</h1>
-                <Naval></Naval>
-                <Numbers></Numbers>
-            </div>
+  return (
+    < >
+      <main className={styles.main}>
+        <div className={clsx({
+          [styles.grid]: true,
+          [styles.display]: !page
+        })}>
 
-            <div className={clsx({
-                [styles.grid]:true,
-                [styles.display]:page
-                })}>
+          <Button onClick={changeScreen} text=">" />
+          <h1>Hola</h1>
+          <Naval></Naval>
+          <Numbers></Numbers>
+          <Simon></Simon>
+        </div>
 
-                <Button onClick={changeScreen} text="<" />
-                <h1>Chau</h1>
-                <Simon></Simon>
-            </div>
-        </main>
-      </>
+        <div className={clsx({
+          [styles.grid]: true,
+          [styles.display]: page
+        })}>
 
-    )
+          <Button onClick={changeScreen} text="<" />
+          <h1>Chau</h1>
+        </div>
+      </main>
+    </>
+
+  )
 }
