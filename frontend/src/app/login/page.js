@@ -2,7 +2,7 @@
 import Form from "@/components/form"
 import styles from "./page.module.css"
 import Button from "@/components/button"
-import background from "../../../public/login_registro.png"
+import background from "../../../public/background_login.png"
 import { useState } from "react";
 
 
@@ -47,7 +47,7 @@ export default function inicio() {
 
     return (
         <html className={styles.all}>
-        < link rel="page.module.css" href="https://fonts.google.com/specimen/Space+Grotesk?preview.text=papyrus"></link>
+        < link rel="page.module.css" href="https://fonts.google.com/specimen/Chakra+Petch?lang=en_Latn"></link>
         <body >
         <div className={styles.todo}>
             <div className={styles.inicio}>
@@ -56,7 +56,7 @@ export default function inicio() {
                 <Form className={styles.usuario} handleChange={(e) => setInputNombre(e.target.value)}/> 
                 <br></br>
                 <p className={styles.texto}>Contraseña</p>
-                <Form className={styles.usuario}handleChange={(e) => setInputPassword(e.target.value)}/>
+                <Form className={styles.usuario} handleChange={(e) => setInputPassword(e.target.value)}/>
                 <br></br>
                 <Button text="JUGAR" variant="jugar" className={styles.buttonJugar} onClick={ingresarUsuario}></Button>
                 <br></br><a href="./registro" className={styles.a}>¿Todavia no te haz registrado?</a>
