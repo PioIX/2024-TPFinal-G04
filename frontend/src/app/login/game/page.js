@@ -18,7 +18,7 @@ export default function Game(){
       }
 
     return(
-      <>        
+      < >        
         <main className={styles.main}>
             <div className={clsx({
                 [styles.grid]:true,
