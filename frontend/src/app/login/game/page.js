@@ -8,6 +8,7 @@ import { useState, useEffect } from "react";
 import Numbers from "@/components/fgame";
 import Naval from "@/components/sgame";
 import Simon from "@/components/tgame";
+import Morse from "@/components/cuartogame";
 
 export default function Game() {
 
@@ -36,7 +37,7 @@ export default function Game() {
           [styles.grid]: true,
           [styles.display]: page
         })}>
-
+          <Morse></Morse>
           <Button onClick={changeScreen} text="<" />
           <h1>Chau</h1>
         </div>
