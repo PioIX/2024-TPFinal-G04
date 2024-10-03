@@ -10,6 +10,7 @@ import Naval from "@/components/sgame";
 import Simon from "@/components/tgame";
 import Morse from "@/components/cuartogame";
 
+
 export default function Game() {
 
   let [page, setPage] = useState(false);
@@ -19,7 +20,9 @@ export default function Game() {
   }
 
   return (
-    < >
+      <html className={styles.all}>
+      
+      <body>
       <main className={styles.main}>
         <div className={clsx({
           [styles.grid]: true,
@@ -28,9 +31,11 @@ export default function Game() {
 
           <Button onClick={changeScreen} text=">" />
           <h1>Hola</h1>
+          <div classname="juegos1">
           <Naval></Naval>
           <Numbers></Numbers>
           <Simon></Simon>
+          </div>
         </div>
 
         <div className={clsx({
@@ -42,7 +47,8 @@ export default function Game() {
           <h1>Chau</h1>
         </div>
       </main>
-    </>
+      </body>
+      </html>
 
   )
 }

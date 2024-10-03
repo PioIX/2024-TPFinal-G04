@@ -10,7 +10,7 @@
   background-image: url(../../../public/background_login.png);
   background-size: cover;
   background-repeat: no-repeat;
-  
+
 }
 
 .todo{
@@ -61,7 +61,7 @@
 .usuario{
   font-weight: bold;
   border-bottom: 0;
-  font-family: "Space Grotesk","papyrus";
+  font-family: "lucida console","papyrus";
   vertical-align: middle;
   text-align: center;
   color: rgb(0, 0, 0);
