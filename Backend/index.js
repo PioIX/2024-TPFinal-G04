@@ -22,35 +22,7 @@ app.get('/', function(req, res){
  */
 
 const MySql = require('./modulos/mysql.js')
-/*
-app.get('/obtenerPartidas', async function(req,res){
-    console.log(req.query) 
-    const respuesta = await MySql.realizarQuery('SELECT * FROM Partidas;')
-    console.log({respuesta})
-    res.send(respuesta)
-})
 
-app.get('/obtenerUsuarios', async function(req,res){
-    console.log(req.query) 
-    const respuesta = await MySql.realizarQuery('SELECT * FROM Usuarios;')
-    console.log({respuesta})
-    res.send(respuesta)
-})
-
-app.post('/partidas', async function(req,res){
-    console.log(req.body)
-    let respuesta = ""
-    if (req.body.id_usuario) {
-         respuesta = await MySql.realizarQuery(`SELECT * FROM Partidas WHERE 
-        id_usuario = "${req.query.id_usuario}";`)
-    } 
-    else{
-         respuesta = await MySql.realizarQuery(`SELECT * FROM Partidas;`)
-    }
-    res.send(respuesta) 
-   
-})
-*/
 app.post('/usuarios', async function(req,res){
     console.log(req.body)
     let respuesta = ""
@@ -65,19 +37,6 @@ app.post('/usuarios', async function(req,res){
    
 })
 
-app.post('/usuarioexiste', async function(req,res){
-    console.log(req.body)
-    let respuesta = ""
-    if (req.body.nombre_usuario) {
-         respuesta = await MySql.realizarQuery(`SELECT * FROM Users WHERE 
-        user = "${req.body.nombre_usuario}"`)
-    }
-    else{
-         respuesta = await MySql.realizarQuery(`SELECT * FROM user;`)
-    }
-    res.send(respuesta) 
-   
-})
 
 app.post('/insertarUsuario', async function(req,res) {
     console.log(req.body)
@@ -90,38 +49,21 @@ app.post('/insertarUsuario', async function(req,res) {
         res.send({status: "Ya existe"});
     }
 })
+//Pongo el servidor a escuchar
+app.listen(port, function(){
+    console.log(`Server running in http://localhost:${port}`);
+    console.log('Defined routes:');
+    console.log('   [GET] http://localhost:3001/');
+    console.log('   [GET] http://localhost:3001/usuarios');
+    console.log('   [GET] http://localhost:3001/insertarUsuario');
+    
+});
 /*
-app.put('/modificarPartida', async function(req,res){
-    console.log(req.body)
-    await MySql.realizarQuery(`UPDATE Partidas SET puntaje_partida = '${req.body.puntaje_partida}' WHERE id_partida= ${req.body.id_partida}`);
-    res.send("ok")
-})
-
-app.put('/modificarUsuarioPuntaje', async function(req,res){
-    console.log(req.body)
-    response = await MySql.realizarQuery(`SELECT puntaje_usuario FROM Usuarios WHERE id_usuario= ${req.body.id_usuario}`);
-    await MySql.realizarQuery(`UPDATE Usuarios SET puntaje_usuario = '${req.body.puntaje_usuario + response[0].puntaje_usuario}' WHERE id_usuario= ${req.body.id_usuario}`);
-    res.send({puntaje: req.body.puntaje_usuario + response[0].puntaje_usuario})
-})
-
-app.put('/modificarUsuarioPartidasganadas', async function(req,res){
-    console.log(req.body)
-    response = await MySql.realizarQuery(`SELECT partidas_ganadas FROM Usuarios WHERE id_usuario= ${req.body.id_usuario}`);
-    await MySql.realizarQuery(`UPDATE Usuarios SET partidas_ganadas = '${req.body.partidas_ganadas + response[0].partidas_ganadas}' WHERE id_usuario= ${req.body.id_usuario}`);
-    res.send({ganadas: req.body.partidas_ganadas + response[0].partidas_ganadas})
-})
-
 app.put('/modificarUsuarioPartidasperdidas', async function(req,res){
     console.log(req.body)
     response = await MySql.realizarQuery(`SELECT partidas_perdidas FROM Usuarios WHERE id_usuario= ${req.body.id_usuario}`);
     await MySql.realizarQuery(`UPDATE Usuarios SET partidas_perdidas = '${req.body.partidas_perdidas + response[0].partidas_perdidas}' WHERE id_usuario= ${req.body.id_usuario}`);
     res.send({perdidas: req.body.partidas_perdidas + response[0].partidas_perdidas})
-})
-
-app.delete('/eliminarPartida', async function(req,res){
-    console.log(req.body)
-    await MySql.realizarQuery(`DELETE FROM Partidas WHERE id_partida = ${req.body.id_partida}`);
-    res.send("ok")
 })
 
 app.delete('/eliminarUsuario', async function(req,res){
