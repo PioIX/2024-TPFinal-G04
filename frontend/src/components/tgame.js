@@ -131,15 +131,6 @@ export default function Simon(props) {
                 <Button id="3" onClick={verifySequence} text="Verde"></Button>
                 <Button id="4" onClick={verifySequence} text="Rojo"></Button>
             </div>
-            <div>
-                <h1>{secuencia}</h1>
-                <Image src={luz} alt="simon" width={300} height={240}></Image>
-                <Button text="Azul"></Button>
-                <Button text="Amarillo"></Button>
-                <Button text="Verde"></Button>
-                <Button text="Rojo"></Button>
-
-            </div>
         </>
     )
 }
