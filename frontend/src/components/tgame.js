@@ -122,7 +122,7 @@ export default function Simon(props) {
     return (
         <>
             <div>
-                <h1>{secuencia}</h1>
+                
                 <Image src={luz} alt="simon" width={300} height={240}></Image>
                 <br></br>
                 <Button onClick={game} text="Start"></Button>
@@ -134,3 +134,4 @@ export default function Simon(props) {
         </>
     )
 }
+//<h1>{secuencia}</h1>

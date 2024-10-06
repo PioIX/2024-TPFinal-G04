@@ -146,9 +146,10 @@ export default function Morse(props) {
             <div>
                 <h1>{secuenciaUsuario}</h1>
                 <h1>{renglon}</h1>
-                <h1>{secuencia}</h1>
+                
                 <Image src={luz} alt="morse" width={250} height={200}></Image>
             </div>
         </>
     )
 }
+//<h1>{secuencia}</h1>

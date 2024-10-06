@@ -9,6 +9,8 @@ import Numbers from "@/components/fgame";
 import Naval from "@/components/sgame";
 import Simon from "@/components/tgame";
 import Morse from "@/components/cuartogame";
+import Laberinto from "@/components/laberinto";
+import Laberinto2 from "@/components/laberintopj2";
 
 
 export default function Game() {
@@ -35,14 +37,15 @@ export default function Game() {
           <Naval></Naval>
           <Numbers></Numbers>
           <Simon></Simon>
-          </div>
+          <Morse></Morse>
         </div>
 
         <div className={clsx({
           [styles.grid]: true,
           [styles.display]: page
         })}>
-          <Morse></Morse>
+          <Laberinto></Laberinto>
+          <Laberinto2></Laberinto2>
           <Button onClick={changeScreen} text="<" />
           <h1>Chau</h1>
         </div>
