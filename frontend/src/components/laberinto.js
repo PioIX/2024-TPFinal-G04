@@ -10,76 +10,90 @@ function getRandomInt(min, max) {
 }
 
 export default function Laberinto(props) {
-    let [position, setPosition] = useState([]);
+    var [position, setPosition] = useState([[0,1,2,9,16,17,18,25,32,33,40,41]]);
+	
+	function paintWall() {
+		for (let index = 0; index < position[0].length; index++) {
+			document.getElementById("l"+position[0][index]).setAttribute('class', 'Laberinto_wall__c2U4E')
+		}
+		
+	}
+//if (document.getElementById(position[0][index]).getAttribute('class') != "Laberinto_wall__c2U4E")
+
+	useEffect(() => {
+        paintWall()
+    }, [])
+
     return(
         <div id="board">
+			<Button onClick={paintWall} text="hola"></Button>
 			<div id="messageArea">
 				<table >
 					<tbody>
 						<tr>
 
-							<td className={styles.td} id="0"></td>
-							<td className={styles.td} id="1"></td>
-							<td className={styles.td} id="2"></td>
-							<td className={styles.td} id="3"></td>
-							<td className={styles.td} id="4"></td>
-							<td className={styles.td} id="5"></td>
-							<td className={styles.td} id="6"></td>
+							<td className={styles.td} id="l0"></td>
+							<td className={styles.td} id="l1"></td>
+							<td className={styles.td} id="l2"></td>
+							<td className={styles.td} id="l3"></td>
+							<td className={styles.td} id="l4"></td>
+							<td className={styles.td} id="l5"></td>
+							<td className={styles.td} id="l6"></td>
 						</tr>
 						<tr>
-							<td className={styles.td} id="7"></td>
-							<td className={styles.td} id="8"></td>
-							<td className={styles.td} id="9"></td>
-							<td className={styles.td} id="10"></td>
-							<td className={styles.td} id="11"></td>
-							<td className={styles.td} id="12"></td>
-							<td className={styles.td} id="13"></td>
+							<td className={styles.td} id="l7"></td>
+							<td className={styles.td} id="l8"></td>
+							<td className={styles.td} id="l9"></td>
+							<td className={styles.td} id="l10"></td>
+							<td className={styles.td} id="l11"></td>
+							<td className={styles.td} id="l12"></td>
+							<td className={styles.td} id="l13"></td>
 						</tr>
 						<tr>
-							<td className={styles.td} id="14"></td>
-							<td className={styles.td} id="15"></td>
-							<td className={styles.td} id="16"></td>
-							<td className={styles.td} id="17"></td>
-							<td className={styles.td} id="18"></td>
-							<td className={styles.td} id="19"></td>
-							<td className={styles.td} id="20"></td>
+							<td className={styles.td} id="l14"></td>
+							<td className={styles.td} id="l15"></td>
+							<td className={styles.td} id="l16"></td>
+							<td className={styles.td} id="l17"></td>
+							<td className={styles.td} id="l18"></td>
+							<td className={styles.td} id="l19"></td>
+							<td className={styles.td} id="l20"></td>
 						</tr>
 
 						<tr>
-							<td className={styles.td} id="21"></td>
-							<td className={styles.td} id="22"></td>
-							<td className={styles.td} id="23"></td>
-							<td className={styles.td} id="24"></td>
-							<td className={styles.td} id="25"></td>
-							<td className={styles.td} id="26"></td>
-							<td className={styles.td} id="27"></td>
+							<td className={styles.td} id="l21"></td>
+							<td className={styles.td} id="l22"></td>
+							<td className={styles.td} id="l23"></td>
+							<td className={styles.td} id="l24"></td>
+							<td className={styles.td} id="l25"></td>
+							<td className={styles.td} id="l26"></td>
+							<td className={styles.td} id="l27"></td>
 						</tr>
 						<tr>
-							<td className={styles.td} id="28"></td>
-							<td className={styles.td} id="29"></td>
-							<td className={styles.td} id="30"></td>
-							<td className={styles.td} id="31"></td>
-							<td className={styles.td} id="32"></td>
-							<td className={styles.td} id="33"></td>
-							<td className={styles.td} id="34"></td>
+							<td className={styles.td} id="l28"></td>
+							<td className={styles.td} id="l29"></td>
+							<td className={styles.td} id="l30"></td>
+							<td className={styles.td} id="l31"></td>
+							<td className={styles.td} id="l32"></td>
+							<td className={styles.td} id="l33"></td>
+							<td className={styles.td} id="l34"></td>
 						</tr>
 						<tr>
-							<td className={styles.td} id="35"></td>
-							<td className={styles.td} id="36"></td>
-							<td className={styles.td} id="37"></td>
-							<td className={styles.td} id="38"></td>
-							<td className={styles.td} id="39"></td>
-							<td className={styles.td} id="40"></td>
-							<td className={styles.td} id="41"></td>
+							<td className={styles.td} id="l35"></td>
+							<td className={styles.td} id="l36"></td>
+							<td className={styles.td} id="l37"></td>
+							<td className={styles.td} id="l38"></td>
+							<td className={styles.td} id="l39"></td>
+							<td className={styles.td} id="l40"></td>
+							<td className={styles.td} id="l41"></td>
 						</tr>
 						<tr>
-							<td className={styles.td} id="42"></td>
-							<td className={styles.td} id="43"></td>
-							<td className={styles.td} id="44"></td>
-							<td className={styles.td} id="45"></td>
-							<td className={styles.td} id="46"></td>
-							<td className={styles.td} id="47"></td>
-							<td className={styles.td} id="48"></td>
+							<td className={styles.td} id="l42"></td>
+							<td className={styles.td} id="l43"></td>
+							<td className={styles.td} id="l44"></td>
+							<td className={styles.td} id="l45"></td>
+							<td className={styles.td} id="l46"></td>
+							<td className={styles.td} id="l47"></td>
+							<td className={styles.td} id="l48"></td>
 						</tr>
 					</tbody>
 				</table>
