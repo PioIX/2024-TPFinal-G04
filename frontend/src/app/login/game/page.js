@@ -38,6 +38,7 @@ export default function Game() {
           <Numbers></Numbers>
           <Simon></Simon>
           <Morse></Morse>
+          </div>
         </div>
 
         <div className={clsx({

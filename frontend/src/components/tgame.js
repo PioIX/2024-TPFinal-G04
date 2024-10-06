@@ -11,7 +11,6 @@ function getRandomInt(min, max) {
 }
 
 
-
 export default function Simon(props) {
 
     let [secuencia, setSecuencia] = useState([])
@@ -89,7 +88,7 @@ export default function Simon(props) {
     }
 
     useEffect(() => {
-        var sequence = [getRandomInt(1, 5), getRandomInt(1, 5), getRandomInt(1, 5), getRandomInt(1, 5), getRandomInt(1, 5), getRandomInt(1, 5)]
+        var sequence = [getRandomInt(1, 5), getRandomInt(1, 5), getRandomInt(1, 5), getRandomInt(1, 5), getRandomInt(1, 5)]
         setSecuencia(sequence);
     }, [])
 
@@ -103,7 +102,7 @@ export default function Simon(props) {
             console.log("incorrecto")
         }
         if (stateActual == state) {
-            if (state == 6) {
+            if (state == 5) {
                 console.log("ganaste")
             }else{
                 setSeguida([])

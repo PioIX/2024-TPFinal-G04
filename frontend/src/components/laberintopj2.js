@@ -2,7 +2,6 @@
 import Button from "@/components/button";
 import { useState, useEffect } from "react";
 import styles from "./Laberintopj2.module.css"
-
 function getRandomInt(min, max) {
 	const minCeiled = Math.ceil(min);
 	const maxFloored = Math.floor(max);
