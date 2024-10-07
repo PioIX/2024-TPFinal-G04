@@ -2,6 +2,7 @@
 import Button from "@/components/button";
 import { useState, useEffect } from "react";
 import styles from "./Fgame.module.css"
+import { useSocket } from "@/hooks/useSocket";
 
 function getRandomInt(min, max) {
     const minCeiled = Math.ceil(min);
@@ -18,6 +19,25 @@ export default function Numbers(props) {
     let [total, setTotal] = useState(0);
     let [total2, setTotal2] = useState(0);
     let [text, setText] = useState("");
+    const {socket,isConnected}=useSocket();
+
+    //envia
+    function handleClick(){
+        socket.emit("pingAll",{message:"Hola"})
+      }
+
+      //recibe
+      useEffect(() => {
+        if (!socket) return;
+        socket.on('newMessage', (data)=>{
+            console.log("Message: ", data)
+          });
+        
+
+
+          
+    }, [socket, isConnected])
+
 
     function resta1() {
         if (num1 != 0) {
