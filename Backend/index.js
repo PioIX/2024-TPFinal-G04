@@ -127,7 +127,13 @@ io.on("connection", (socket) => {
 	socket.on('sendMessage', data => {
 		io.to(req.session.room).emit('newMessage', { room: req.session.room, message: data });
 	});
-
+	socket.on('numeros', data => {
+		io.to(req.session.room).emit('newNumero', { room: req.session.room, message: data });
+	});
+    /**
+     socket.on('newMessage', (data)=>{
+     console.log("Message: ", data)
+      }); */
 	socket.on('disconnect', () => {
 		console.log("Disconnect");
 	})

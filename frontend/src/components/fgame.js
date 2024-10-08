@@ -19,23 +19,29 @@ export default function Numbers(props) {
     let [total, setTotal] = useState(0);
     let [total2, setTotal2] = useState(0);
     let [text, setText] = useState("");
+    let [respuesta,setRespuesta]= useState()
     const {socket,isConnected}=useSocket();
 
+    let started = false;
+
     //envia
-    function handleClick(){
-        socket.emit("pingAll",{message:"Hola"})
-      }
+    /*function handleClick(){
+        socket.emit("numeros",{numero: 8})
+      }*/
 
       //recibe
       useEffect(() => {
         if (!socket) return;
-        socket.on('newMessage', (data)=>{
-            console.log("Message: ", data)
+        socket.on('newNumero', (data)=>{
+            setRespuesta(data.numero)
           });
-        
 
-
-          
+        if (!started) {
+            let auxtotal2 = (number2 * number3) + number1
+            socket.emit("joinRoom",{room: "Kaboom"})
+            socket.emit("numeros",{numero: auxtotal2})
+            started=true
+        }
     }, [socket, isConnected])
 
 
@@ -75,10 +81,8 @@ export default function Numbers(props) {
 
     function check() {
         let auxtotal = String(num1) + String(num2)
-        let auxtotal2 = (number2 * number3) + number1
         setTotal(auxtotal)
-        setTotal2(auxtotal2)
-        if (auxtotal == auxtotal2) {
+        if (auxtotal == respuesta) {
             setText("bien")
         } else {
             setText("mal")
@@ -86,12 +90,10 @@ export default function Numbers(props) {
     }
 
 
-
     useEffect(() => {
         setNumber1(getRandomInt(1, 10))
         setNumber2(getRandomInt(1, 10))
         setNumber3(getRandomInt(1, 10))
-
     }, [])
 
     return (
@@ -106,7 +108,7 @@ export default function Numbers(props) {
             <Button onClick={check} text="Check" />
             <h1 className="numero">{text}</h1>
             <h1 className="numero">{total}</h1>
-            <h1 className="numero">{total2}</h1>
+            <h1 className="numero">{respuesta}</h1>
         </div>
     )
 }
