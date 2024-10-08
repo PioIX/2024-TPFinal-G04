@@ -19,8 +19,14 @@ export default function Game() {
 
   function changeScreen() {
     setPage(!page)
+    console.log(localStorage.getItem("userId"))
   }
-
+  function user1() {
+    localStorage.setItem("userId", 1);
+  }
+  function user2() {
+    localStorage.setItem("userId", 2);
+  }
   return (
       <html className={styles.all}>
       
@@ -50,6 +56,10 @@ export default function Game() {
           <Button onClick={changeScreen} text="<" />
           <h1>Chau</h1>
         </div>
+
+        
+        <Button onClick={user1} text="1" />
+        <Button onClick={user2} text="2" />
       </main>
       </body>
       </html>
