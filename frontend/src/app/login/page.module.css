@@ -77,7 +77,7 @@
 }
 
 .buttonJugar{
-  font-weight: bold;
+  font-weight:900;
   align-items: center;
   display: flex;
   box-sizing: border-box;
@@ -97,4 +97,11 @@
 .buttonJugar:hover {
   background-color: #2e0a0a; 
   color: rgb(209, 209, 209);
+}
+
+.a:active {
+  background-color: #2e0a0a; 
+  color: rgb(209, 209, 209);
+  box-shadow: 0 5px #6e5a5a;
+  transform: translateY(2px);
 }

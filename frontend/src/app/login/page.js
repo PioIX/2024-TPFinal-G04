@@ -2,7 +2,7 @@
 import Form from "@/components/form"
 import styles from "./page.module.css"
 import Button from "@/components/button"
-import background from "../../../public/background_login.png"
+
 import { useState } from "react";
 
 
@@ -13,7 +13,8 @@ export default function inicio() {
 
     async function ingresarUsuario() {
         if (await existeUsuario() == true) {
-            alert("Haz ingresado")
+            console.log("Haz ingresado")
+            location.href ="login/menu"
         } else {
             alert("el usuario no existe o la contraseña no es correcta");
         }
