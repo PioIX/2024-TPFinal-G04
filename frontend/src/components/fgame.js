@@ -19,7 +19,6 @@ export default function Numbers(props) {
     let [total, setTotal] = useState(0);
     let [total2, setTotal2] = useState(0);
     let [text, setText] = useState("");
-    let [respuesta,setRespuesta]= useState()
     const {socket,isConnected}=useSocket();
 
     let started = false;
@@ -31,13 +30,16 @@ export default function Numbers(props) {
 
       //recibe
       useEffect(() => {
+        let auxtotal2 = (number2 * number3) + number1
+        localStorage.setItem("respuestaMia", auxtotal2);
         if (!socket) return;
         socket.on('newNumero', (data)=>{
-            setRespuesta(data.numero)
+            if (data.message.numero != localStorage.getItem("respuestaMia")) { 
+                localStorage.setItem("respuestaSuya", data.message.numero);
+            }
           });
 
         if (!started) {
-            let auxtotal2 = (number2 * number3) + number1
             socket.emit("joinRoom",{room: "Kaboom"})
             socket.emit("numeros",{numero: auxtotal2})
             started=true
@@ -82,8 +84,9 @@ export default function Numbers(props) {
     function check() {
         let auxtotal = String(num1) + String(num2)
         setTotal(auxtotal)
-        if (auxtotal == respuesta) {
+        if (String(auxtotal) == String(localStorage.getItem("respuestaSuya"))) {
             setText("bien")
+            document.getElementById("sumayresta").disabled=true
         } else {
             setText("mal")
         }
@@ -105,10 +108,9 @@ export default function Numbers(props) {
             <Button className="sumaresta" onClick={suma2} text="+" />
             <Button className="sumaresta" onClick={resta2} text="-" />
             <h1 className="numero">{num2}</h1>
-            <Button onClick={check} text="Check" />
+            <Button disabled={false} onClick={check} text="Check"  id="sumayresta" disable/>
             <h1 className="numero">{text}</h1>
             <h1 className="numero">{total}</h1>
-            <h1 className="numero">{respuesta}</h1>
         </div>
     )
 }
