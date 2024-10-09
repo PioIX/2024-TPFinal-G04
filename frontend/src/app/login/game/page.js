@@ -9,6 +9,8 @@ import Numbers from "@/components/fgame";
 import Naval from "@/components/sgame";
 import Simon from "@/components/tgame";
 import Morse from "@/components/cuartogame";
+import Laberinto from "@/components/laberinto";
+import Laberinto2 from "@/components/laberintopj2";
 
 
 export default function Game() {
@@ -17,8 +19,14 @@ export default function Game() {
 
   function changeScreen() {
     setPage(!page)
+    console.log(localStorage.getItem("userId"))
   }
-
+  function user1() {
+    localStorage.setItem("userId", 1);
+  }
+  function user2() {
+    localStorage.setItem("userId", 2);
+  }
   return (
       <html className={styles.all}>
       
@@ -35,6 +43,7 @@ export default function Game() {
           <Naval></Naval>
           <Numbers></Numbers>
           <Simon></Simon>
+          <Morse></Morse>
           </div>
         </div>
 
@@ -42,10 +51,15 @@ export default function Game() {
           [styles.grid]: true,
           [styles.display]: page
         })}>
-          <Morse></Morse>
+          <Laberinto></Laberinto>
+          <Laberinto2></Laberinto2>
           <Button onClick={changeScreen} text="<" />
           <h1>Chau</h1>
         </div>
+
+        
+        <Button onClick={user1} text="1" />
+        <Button onClick={user2} text="2" />
       </main>
       </body>
       </html>

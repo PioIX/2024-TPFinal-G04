@@ -11,7 +11,6 @@ function getRandomInt(min, max) {
 }
 
 
-
 export default function Simon(props) {
 
     let [secuencia, setSecuencia] = useState([])
@@ -89,7 +88,7 @@ export default function Simon(props) {
     }
 
     useEffect(() => {
-        var sequence = [getRandomInt(1, 5), getRandomInt(1, 5), getRandomInt(1, 5), getRandomInt(1, 5), getRandomInt(1, 5), getRandomInt(1, 5)]
+        var sequence = [getRandomInt(1, 5), getRandomInt(1, 5), getRandomInt(1, 5), getRandomInt(1, 5), getRandomInt(1, 5)]
         setSecuencia(sequence);
     }, [])
 
@@ -103,7 +102,7 @@ export default function Simon(props) {
             console.log("incorrecto")
         }
         if (stateActual == state) {
-            if (state == 6) {
+            if (state == 5) {
                 console.log("ganaste")
             }else{
                 setSeguida([])
@@ -122,7 +121,7 @@ export default function Simon(props) {
     return (
         <>
             <div>
-                <h1>{secuencia}</h1>
+                
                 <Image src={luz} alt="simon" width={300} height={240}></Image>
                 <br></br>
                 <Button onClick={game} text="Start"></Button>
@@ -131,15 +130,7 @@ export default function Simon(props) {
                 <Button id="3" onClick={verifySequence} text="Verde"></Button>
                 <Button id="4" onClick={verifySequence} text="Rojo"></Button>
             </div>
-            <div>
-                <h1>{secuencia}</h1>
-                <Image src={luz} alt="simon" width={300} height={240}></Image>
-                <Button text="Azul"></Button>
-                <Button text="Amarillo"></Button>
-                <Button text="Verde"></Button>
-                <Button text="Rojo"></Button>
-
-            </div>
         </>
     )
 }
+//<h1>{secuencia}</h1>

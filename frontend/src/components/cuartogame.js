@@ -1,9 +1,8 @@
 "use client"
-import Button from "@/components/button";
+import Button from "./button";
 import { useState, useEffect } from "react";
 import styles from "./Cuartogame.module.css"
 import Image from "./image";
-
 function getRandomInt(min, max) {
     const minCeiled = Math.ceil(min);
     const maxFloored = Math.floor(max);
@@ -16,6 +15,8 @@ export default function Morse(props) {
     let [secuencia, setSecuencia] = useState([])
     let [luz, setLuz] = useState("/turned_off_light.png")//"/turned_off_light.png"
     let [repit,setRepit]= useState(true)
+    let [renglon,setRenglon]= useState("")
+    let [secuenciaUsuario,setSecuenciaUsuario]= useState([])
 
     useEffect(() => {
         var codigo = [getRandomInt(1,3),getRandomInt(1,3),getRandomInt(1,3),getRandomInt(1,3),getRandomInt(1,3),getRandomInt(1,3)]
@@ -99,16 +100,56 @@ export default function Morse(props) {
             await codigo()
         }
     }
+
+
+    function printPunto(){
+        if (secuenciaUsuario.length<6) {
+            var copy=secuenciaUsuario
+            copy.push(1)
+            setRenglon(renglon+"·")
+            setSecuenciaUsuario(copy)
+        }
+        if (secuenciaUsuario.length==6) {
+            if(String(secuenciaUsuario)==String(secuencia)){
+                console.log("ganaste")
+            }else{
+                console.log("Perdiste")
+                setSecuenciaUsuario([])
+                setRenglon("")
+            }
+        }
+    }
+    function printRaya(){
+        if (secuenciaUsuario.length<6) {
+            var copy=secuenciaUsuario
+            copy.push(2)
+            setRenglon(renglon+"-")
+            setSecuenciaUsuario(copy)
+        }
+        
+        if (secuenciaUsuario.length==6) {
+            if(String(secuenciaUsuario)==String(secuencia)){
+                console.log("ganaste")
+            }else{
+                console.log("Perdiste")
+                setSecuenciaUsuario([])
+                setRenglon("")
+            }
+        }
+    }
     
     return(
         <>
-            <Button text="prender" onClick={plud}></Button>
-            <Button text="raya" onClick={onOff}></Button>
+            <Button text="punto" onClick={printPunto}></Button>
+            <Button text="raya" onClick={printRaya}></Button>
             <Button text="codigo" onClick={codigo}></Button>
             <div>
-                <h1>{String(repit)}</h1>
+                <h1>{secuenciaUsuario}</h1>
+                <h1>{renglon}</h1>
+                
                 <Image src={luz} alt="morse" width={250} height={200}></Image>
             </div>
         </>
     )
 }
+//<h1>{secuencia}</h1>
