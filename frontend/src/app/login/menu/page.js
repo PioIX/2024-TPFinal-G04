@@ -2,7 +2,6 @@
 import Form from "@/components/form"
 import styles from "./page.module.css"
 import Button from "@/components/button"
-import background from "../../../public/background_login.png"
 import { useState } from "react";
 export default function inicio() {
 
@@ -46,8 +45,9 @@ export default function inicio() {
   <body>
   <div className={styles.todo}>
       <div className={styles.inicio}>
-        <a href="./game" className={styles.a}>Play</a>
-        <a href="./ranking" className={styles.a}>Ranking</a>
+        <a href="./game" className={styles.a}>Play</a><br></br>
+        <a href="./ranking" className={styles.b}>Ranking</a><br></br>
+        <a href="../login" className={styles.c}>Cerra sesion</a>
       </div>
   </div>
   </body>
