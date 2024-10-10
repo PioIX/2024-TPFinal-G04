@@ -6,8 +6,7 @@
 .all{
   width: 100%;
   height: 100%;
-
-  background-image: url(../../../../public/background_login.png);
+  background-image: url(../../../../public/background_registro.png);
   background-size: cover;
   background-repeat: no-repeat;
 
@@ -19,7 +18,6 @@
   justify-content: center;
   align-items: center;
 
-
   margin: 0 0 0 0;
   padding-top: 15%;
   padding-bottom: 13%;
@@ -28,55 +26,9 @@
 
 }
 
-.texto{
-  font-weight: bold;
-  color: black;
-  font-family: "Space Grotesk", "papyrus";
-  line-height: .6;
-  margin-bottom: 12px;
-  font-size: 30px;
-  text-shadow: 1px 1px 5px rgb(110, 47, 47);
-  color: rgb(201, 201, 201);
-  padding-bottom: -9px;
-}
 
 
 .a{
-  font-weight: bold;
-  color:rgb(184, 172, 172);
-  font-family: "Space Grotesk","papyrus";
-  font-size: 18px;
-  margin-top: 12px;
-  font-weight: bold;
-  display: flex;
-  justify-content: center;
-  text-align: center;
-}
-.a:hover{
-  color:rgb(141, 93, 93);
-  font-size: 18px;
-
-}
-
-.usuario{
-  font-weight: bold;
-  border-bottom: 0;
-  font-family: "lucida console","papyrus";
-  vertical-align: middle;
-  text-align: center;
-  color: rgb(0, 0, 0);
-  text-align: center;
-  font-size: 18px;
-  font-weight: bold;
-  border-radius: 7px;
-  background: rgb(255, 255, 255);
-  color: rgb(82, 8, 8);
-  width: 280px;
-  padding: 11px;
-  border-color: white;
-}
-
-.buttonJugar{
   font-weight: bold;
   align-items: center;
   display: flex;
@@ -85,16 +37,80 @@
   margin: auto;
   justify-content: center;
   text-align: center;
-  font-family: "papyrus";
-  padding: 12px;
+  font-family: "lucida console";
+  font-size: 30px;
+  padding: 25px;
+  width: 290px;
+  border: 2px solid #2e0a0a;
   background-color: #d3d3d3;
   color: rgb(88, 23, 23);
   border-radius: 7px;
   cursor: pointer;
+  transition-duration: 0.4s;
+  box-shadow: 0 0 5px -1px rgba(0,0,0,0.);
+  text-decoration: none;
+}
+
+.a:hover {
+  background-color: #2e0a0a; 
+  color: rgb(209, 209, 209);
+  box-shadow: 0 0 5px -1px rgba(0,0,0,0.);
+  border: 2px solid #584242;
+}
+.a:active {
+  background-color: 2e0a0a;
+  box-shadow: 0 5px #6e5a5a;
+  transform: translateY(2px);
+}
+
+
+.b{
+  font-weight: bold;
+  align-items: center;
+  display: flex;
+  box-sizing: border-box;
+  display: block;
+  margin: auto;
+  justify-content: center;
+  text-align: center;
+  font-family: "lucida console";
+  font-size: 30px;
+  padding: 25px;
+  width: 290px;
+  border: 2px solid #2e0a0a;
+  background-color: #d3d3d3;
+  color: rgb(88, 23, 23);
+  border-radius: 7px;
+  cursor: pointer;
+  transition-duration: 0.4s;
+  box-shadow: 0 0 5px -1px rgba(0,0,0,0.);
+  text-decoration: none;
+}
+
+.b:hover {
+  background-color: #2e0a0a; 
+  color: rgb(209, 209, 209);
+  box-shadow: 0 0 5px -1px rgba(0,0,0,0.);
+  border: 2px solid #584242;
+}
+.b:active {
+  background-color: 2e0a0a;
+  box-shadow: 0 5px #6e5a5a;
+  transform: translateY(2px);
+}
+
+.c:hover {
+  background-color: #2e0a0a; 
+  color: rgb(209, 209, 209);
+  box-shadow: 0 0 5px -1px rgba(0,0,0,0.);
+  border: 2px solid #584242;
+}
+.c:active {
+  background-color: 2e0a0a;
+  box-shadow: 0 5px #6e5a5a;
+  transform: translateY(2px);
   transition-duration: 0.4s
 }
 
-.buttonJugar:hover {
-  background-color: #2e0a0a; 
-  color: rgb(209, 209, 209);
-}
+
+

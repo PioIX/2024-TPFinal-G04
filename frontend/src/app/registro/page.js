@@ -2,7 +2,7 @@
 import Form from "@/components/form"
 import styles from "./page.module.css"
 import Button from "@/components/button"
-import background from "../../../public/background_registro.png"
+
 import { useState } from "react";
 
 export default function inicio() {
