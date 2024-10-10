@@ -1,0 +1,137 @@
+.display{
+  display: none;
+
+}
+
+.all{
+  width: 100%;
+  height: 100%;
+  background-image: url(../../../../public/x.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+
+}
+
+.todo{
+  display: flex;
+  box-sizing: border-box;
+  justify-content: center;
+  align-items: center;
+
+  margin: 0 0 0 0;
+  padding-top: 15%;
+  padding-bottom: 13%;
+  font-size: 1rem;
+  font-size: 16px;
+
+}
+
+
+
+.a{
+  font-weight: bold;
+  align-items: center;
+  display: flex;
+  box-sizing: border-box;
+  display: block;
+  margin: auto;
+  justify-content: center;
+  text-align: center;
+  font-family: "lucida console";
+  font-size: 30px;
+  padding: 25px;
+  width: 300px;
+  border: 2px solid #2e0a0a;
+  background-color: #d3d3d3;
+  color: rgb(88, 23, 23);
+  border-radius: 7px;
+  cursor: pointer;
+  transition-duration: 0.4s;
+  box-shadow: 0 0 5px -1px rgba(0,0,0,0.);
+  text-decoration: none;
+}
+
+.a:hover {
+  background-color: #2e0a0a; 
+  color: rgb(209, 209, 209);
+  box-shadow: 0 0 5px -1px rgba(0,0,0,0.);
+  border: 2px solid #584242;
+}
+.a:active {
+  background-color: 2e0a0a;
+  box-shadow: 0 5px #6e5a5a;
+  transform: translateY(2px);
+}
+
+
+.b{
+  font-weight: bold;
+  align-items: center;
+  display: flex;
+  box-sizing: border-box;
+  display: block;
+  margin: auto;
+  justify-content: center;
+  text-align: center;
+  font-family: "lucida console";
+  font-size: 30px;
+  padding: 25px;
+  width: 300px;
+  border: 2px solid #2e0a0a;
+  background-color: #d3d3d3;
+  color: rgb(88, 23, 23);
+  border-radius: 7px;
+  cursor: pointer;
+  transition-duration: 0.4s;
+  box-shadow: 0 0 5px -1px rgba(0,0,0,0.);
+  text-decoration: none;
+}
+
+.b:hover {
+  background-color: #2e0a0a; 
+  color: rgb(209, 209, 209);
+  box-shadow: 0 0 5px -1px rgba(0,0,0,0.);
+  border: 2px solid #584242;
+}
+.b:active {
+  background-color: 2e0a0a;
+  box-shadow: 0 5px #6e5a5a;
+  transform: translateY(2px);
+}
+.c{
+  font-weight: bold;
+  align-items: center;
+  display: flex;
+  box-sizing: border-box;
+  display: block;
+  margin: auto;
+  justify-content: center;
+  text-align: center;
+  font-family: "lucida console";
+  font-size: 30px;
+  padding: 25px;
+  width: 300px;
+  border: 2px solid #2e0a0a;
+  background-color: #d3d3d3;
+  color: rgb(88, 23, 23);
+  border-radius: 7px;
+  cursor: pointer;
+  transition-duration: 0.4s;
+  box-shadow: 0 0 5px -1px rgba(0,0,0,0.);
+  text-decoration: none;
+}
+.c:hover {
+  background-color: #2e0a0a; 
+  color: rgb(209, 209, 209);
+  box-shadow: 0 0 5px -1px rgba(0,0,0,0.);
+  border: 2px solid #584242;
+}
+.c:active {
+  background-color: 2e0a0a;
+  box-shadow: 0 5px #6e5a5a;
+  transform: translateY(2px);
+  transition-duration: 0.4s
+}
+
+
+

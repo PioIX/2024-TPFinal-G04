@@ -2,7 +2,9 @@
 import Form from "@/components/form"
 import styles from "./page.module.css"
 import Button from "@/components/button"
+
 import { useState } from "react";
+
 
 export default function inicio() {
     const [inputNombre, setInputNombre] = useState("")
@@ -11,7 +13,8 @@ export default function inicio() {
 
     async function ingresarUsuario() {
         if (await existeUsuario() == true) {
-            alert("Haz ingresado")
+            console.log("Haz ingresado")
+            location.href ="login/menu"
         } else {
             alert("el usuario no existe o la contraseña no es correcta");
         }
@@ -44,52 +47,25 @@ export default function inicio() {
     }
 
     return (
+        <html className={styles.all}>
+        < link rel="page.module.css" href="https://fonts.google.com/specimen/Chakra+Petch?lang=en_Latn"></link>
+        <body >
         <div className={styles.todo}>
             <div className={styles.inicio}>
                 <br></br>
                 <p className={styles.texto}>Nombre de usuario</p>
-                <Form handleChange={(e) => setInputNombre(e.target.value)}/> 
+                <Form className={styles.usuario} handleChange={(e) => setInputNombre(e.target.value)}/> 
                 <br></br>
                 <p className={styles.texto}>Contraseña</p>
-                <Form handleChange={(e) => setInputPassword(e.target.value)}/>
+                <Form className={styles.usuario} handleChange={(e) => setInputPassword(e.target.value)}/>
                 <br></br>
                 <Button text="JUGAR" variant="jugar" className={styles.buttonJugar} onClick={ingresarUsuario}></Button>
-                <a href="./registro" className={styles.a}>¿Todavia no te haz registrado?</a>
+                <br></br><a href="./registro" className={styles.a}>¿Todavia no te haz registrado?</a>
             </div>
         </div>
+        </body>
+        </html>
     )
 }
 
-      /*<main className={styles.main}>
-      function spacepress(event) {
-        for(var i=0; i<event.target.value.length;i++ ){
-          var hola= String(event.target.value)
-          if (hola[i]==" "){
-            hola = hola.substring(0, hola.length - 1);
-            event.target.value=hola
-          }
-          
-        }
-        return
-      }
-      <div id="logindiv">
-      <h1>Preguntados</h1>
-      <br></br>
-      <label id="usernamecss" for="username">Nombre de usuario (No mas de 10 caracteres):</label>
-      <Input onkeypress={spacepress} placeholder="Nombre" type="text" id="username" maxlength="10" ></Input>
-      <br></br>
-      <label id="passwordcss" for="password">Contraseña (No mas de 10 caracteres):</label>
-            <Input onkeypress={spacepress} placeholder="Contraseña" type="text" id="password" maxlength="10" ></Input>
-            <br></br>
-            
-        </div>
-        <div id="loginbuttons">
-            <Button id="ingresar" type="button" onclick={login}>Ingresar</Button>
-            <Button id="registrarse" type="button" onclick={register}>Registrarse</Button>
-            
-        </div>
-    </main>
-    
-  );
-}
-*/
+ 

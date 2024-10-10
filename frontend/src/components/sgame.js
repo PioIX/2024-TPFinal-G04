@@ -5,98 +5,136 @@ import styles from "./Sgame.module.css"
 
 
 function getRandomInt(min, max) {
-    const minCeiled = Math.ceil(min);
-    const maxFloored = Math.floor(max);
-    return Math.floor(Math.random() * (maxFloored - minCeiled) + minCeiled); 
+	const minCeiled = Math.ceil(min);
+	const maxFloored = Math.floor(max);
+	return Math.floor(Math.random() * (maxFloored - minCeiled) + minCeiled);
 }
+
+function getRandoms() {
+	var positions = [];
+	var number = 1;
+
+	for (let index = 0; index < 5; index++) {
+		number = getRandomInt(0, 49);
+		do {
+			number = getRandomInt(0, 49);
+		} while (positions.includes(number));
+		positions.push(number)
+
+	}
+	return positions
+}
+
 
 export default function Naval(props) {
 
 
+	let [position, setPosition] = useState([]);
+	let [bombs, setBombs] = useState([]);
+
+	useEffect(() => {
+		setPosition(getRandoms());
+	}, [])
+
 	const manejarClick = (e) => {
 		// `e.target` es el elemento que fue clicado
-		const elementoClicado = e.target;
-		const idElemento = elementoClicado.getAttribute('id');
-		console.log(idElemento)
-		console.log(document.getElementById(idElemento))
-		console.log(document.getElementById(idElemento).getAttribute('class'))
-		document.getElementById(idElemento).setAttribute('class', 'Sgame_selected__hF5Ep')
+		//e.target.setAttribute('class', 'Sgame_selected__hF5Ep')//Sgame_td__fzQJ2
+		if (position.includes(Number(e.target.id)) && bombs.includes(e.target.id) == false) {
+			e.target.setAttribute('class', 'Sgame_pointselected__U2gv6')//Sgame_td__fzQJ2
+			var a = bombs
+			a.push(e.target.id)
+			setBombs(a)
+			if (bombs.length == 5) {
+				console.log("ganaste")
+			}
+		} else if (position.includes(Number(e.target.id)) && bombs.includes(e.target.id)) {
 
-	  };
-    
-    return(
-    <div id="board">
-		<div id="messageArea"></div>
-		<table >
-		<tbody>
-			<tr>
-				
-				<td onClick={manejarClick} ><div id="0" className={styles.selected}></div></td>
-				<td className={styles.td} onClick={manejarClick}><div id="1"></div></td>
-				<td className={styles.td} onClick={manejarClick}><div id="2"></div></td>
-				<td className={styles.td} onClick={manejarClick}><div id="3"></div></td>
-				<td className={styles.td} onClick={manejarClick}><div id="4"></div></td>
-				<td className={styles.td} onClick={manejarClick}><div id="5"></div></td>
-				<td className={styles.td} onClick={manejarClick}><div id="6"></div></td>
-			</tr>
-			<tr>
-				<td className={styles.td} onClick={manejarClick}><div id="7"></div></td>
-				<td className={styles.td} onClick={manejarClick}><div id="8"></div></td>
-				<td className={styles.td} onClick={manejarClick}><div id="9"></div></td>
-				<td className={styles.td} onClick={manejarClick}><div id="10"></div></td>
-				<td className={styles.td} onClick={manejarClick}><div id="11"></div></td>
-				<td className={styles.td} onClick={manejarClick}><div id="12"></div></td>
-				<td className={styles.td} onClick={manejarClick}><div id="13"></div></td>
-            </tr>
-			<tr>
-				<td className={styles.td} onClick={manejarClick}><div id="14"></div></td>
-				<td className={styles.td} onClick={manejarClick}><div id="15"></div></td>
-				<td className={styles.td} onClick={manejarClick}><div id="16"></div></td>
-				<td className={styles.td} onClick={manejarClick}><div id="17"></div></td>
-				<td className={styles.td} onClick={manejarClick}><div id="18"></div></td>
-				<td className={styles.td} onClick={manejarClick}><div id="19"></div></td>
-				<td className={styles.td} onClick={manejarClick}><div id="20"></div></td>
-			</tr>
-				
-			<tr>
-				<td className={styles.td} onClick={manejarClick}><div id="21"></div></td>
-				<td className={styles.td} onClick={manejarClick}><div id="22"></div></td>
-				<td className={styles.td} onClick={manejarClick}><div id="23"></div></td>
-				<td className={styles.td} onClick={manejarClick}><div id="24"></div></td>
-				<td className={styles.td} onClick={manejarClick}><div id="25"></div></td>
-				<td className={styles.td} onClick={manejarClick}><div id="26"></div></td>
-				<td className={styles.td} onClick={manejarClick}><div id="27"></div></td>
-			</tr>
-			<tr>
-				<td className={styles.td} onClick={manejarClick}><div id="28"></div></td>
-				<td className={styles.td} onClick={manejarClick}><div id="29"></div></td>
-				<td className={styles.td} onClick={manejarClick}><div id="30"></div></td>
-				<td className={styles.td} onClick={manejarClick}><div id="31"></div></td>
-				<td className={styles.td} onClick={manejarClick}><div id="32"></div></td>
-				<td className={styles.td} onClick={manejarClick}><div id="33"></div></td>
-				<td className={styles.td} onClick={manejarClick}><div id="34"></div></td>
-			</tr>
-			<tr>
-				<td className={styles.td} onClick={manejarClick}><div id="35"></div></td>
-				<td className={styles.td} onClick={manejarClick}><div id="36"></div></td>
-				<td className={styles.td} onClick={manejarClick}><div id="37"></div></td>
-				<td className={styles.td} onClick={manejarClick}><div id="38"></div></td>
-				<td className={styles.td} onClick={manejarClick}><div id="39"></div></td>
-				<td className={styles.td} onClick={manejarClick}><div id="40"></div></td>
-				<td className={styles.td} onClick={manejarClick}><div id="41"></div></td>
-			</tr>
-			<tr>
-				<td className={styles.td} onClick={manejarClick}><div id="42"></div></td>
-				<td className={styles.td} onClick={manejarClick}><div id="43"></div></td>
-				<td className={styles.td} onClick={manejarClick}><div id="44"></div></td>
-				<td className={styles.td} onClick={manejarClick}><div id="45"></div></td>
-				<td className={styles.td} onClick={manejarClick}><div id="46"></div></td>
-				<td className={styles.td} onClick={manejarClick}><div id="47"></div></td>
-				<td className={styles.td} onClick={manejarClick}><div id="48"></div></td>
-			</tr>
-            </tbody>
-		</table>
-	</div>)
+		} else {
+			e.target.setAttribute('class', 'Sgame_point__8L8s3')//Sgame_td__fzQJ2
+		}
+	};
+
+	function manejarHover(e) {
+		for (let index = 0; index < 5; index++) {
+			if (document.getElementById(position[index]).getAttribute('class') != "Sgame_pointselected__U2gv6")
+				document.getElementById(position[index]).setAttribute('class', 'Sgame_selected__hF5Ep')
+		}
+	}
+
+	return (
+		<div id="board">
+			<div id="messageArea">
+				<table >
+					<tbody>
+						<tr>
+
+							<td className={styles.td} onClick={manejarClick} onMouseEnter={manejarHover} id="0"></td>
+							<td className={styles.td} onClick={manejarClick} onMouseEnter={manejarHover} id="1"></td>
+							<td className={styles.td} onClick={manejarClick} onMouseEnter={manejarHover} id="2"></td>
+							<td className={styles.td} onClick={manejarClick} onMouseEnter={manejarHover} id="3"></td>
+							<td className={styles.td} onClick={manejarClick} onMouseEnter={manejarHover} id="4"></td>
+							<td className={styles.td} onClick={manejarClick} onMouseEnter={manejarHover} id="5"></td>
+							<td className={styles.td} onClick={manejarClick} onMouseEnter={manejarHover} id="6"></td>
+						</tr>
+						<tr>
+							<td className={styles.td} onClick={manejarClick} onMouseEnter={manejarHover} id="7"></td>
+							<td className={styles.td} onClick={manejarClick} onMouseEnter={manejarHover} id="8"></td>
+							<td className={styles.td} onClick={manejarClick} onMouseEnter={manejarHover} id="9"></td>
+							<td className={styles.td} onClick={manejarClick} onMouseEnter={manejarHover} id="10"></td>
+							<td className={styles.td} onClick={manejarClick} onMouseEnter={manejarHover} id="11"></td>
+							<td className={styles.td} onClick={manejarClick} onMouseEnter={manejarHover} id="12"></td>
+							<td className={styles.td} onClick={manejarClick} onMouseEnter={manejarHover} id="13"></td>
+						</tr>
+						<tr>
+							<td className={styles.td} onClick={manejarClick} onMouseEnter={manejarHover} id="14"></td>
+							<td className={styles.td} onClick={manejarClick} onMouseEnter={manejarHover} id="15"></td>
+							<td className={styles.td} onClick={manejarClick} onMouseEnter={manejarHover} id="16"></td>
+							<td className={styles.td} onClick={manejarClick} onMouseEnter={manejarHover} id="17"></td>
+							<td className={styles.td} onClick={manejarClick} onMouseEnter={manejarHover} id="18"></td>
+							<td className={styles.td} onClick={manejarClick} onMouseEnter={manejarHover} id="19"></td>
+							<td className={styles.td} onClick={manejarClick} onMouseEnter={manejarHover} id="20"></td>
+						</tr>
+
+						<tr>
+							<td className={styles.td} onClick={manejarClick} onMouseEnter={manejarHover} id="21"></td>
+							<td className={styles.td} onClick={manejarClick} onMouseEnter={manejarHover} id="22"></td>
+							<td className={styles.td} onClick={manejarClick} onMouseEnter={manejarHover} id="23"></td>
+							<td className={styles.td} onClick={manejarClick} onMouseEnter={manejarHover} id="24"></td>
+							<td className={styles.td} onClick={manejarClick} onMouseEnter={manejarHover} id="25"></td>
+							<td className={styles.td} onClick={manejarClick} onMouseEnter={manejarHover} id="26"></td>
+							<td className={styles.td} onClick={manejarClick} onMouseEnter={manejarHover} id="27"></td>
+						</tr>
+						<tr>
+							<td className={styles.td} onClick={manejarClick} onMouseEnter={manejarHover} id="28"></td>
+							<td className={styles.td} onClick={manejarClick} onMouseEnter={manejarHover} id="29"></td>
+							<td className={styles.td} onClick={manejarClick} onMouseEnter={manejarHover} id="30"></td>
+							<td className={styles.td} onClick={manejarClick} onMouseEnter={manejarHover} id="31"></td>
+							<td className={styles.td} onClick={manejarClick} onMouseEnter={manejarHover} id="32"></td>
+							<td className={styles.td} onClick={manejarClick} onMouseEnter={manejarHover} id="33"></td>
+							<td className={styles.td} onClick={manejarClick} onMouseEnter={manejarHover} id="34"></td>
+						</tr>
+						<tr>
+							<td className={styles.td} onClick={manejarClick} onMouseEnter={manejarHover} id="35"></td>
+							<td className={styles.td} onClick={manejarClick} onMouseEnter={manejarHover} id="36"></td>
+							<td className={styles.td} onClick={manejarClick} onMouseEnter={manejarHover} id="37"></td>
+							<td className={styles.td} onClick={manejarClick} onMouseEnter={manejarHover} id="38"></td>
+							<td className={styles.td} onClick={manejarClick} onMouseEnter={manejarHover} id="39"></td>
+							<td className={styles.td} onClick={manejarClick} onMouseEnter={manejarHover} id="40"></td>
+							<td className={styles.td} onClick={manejarClick} onMouseEnter={manejarHover} id="41"></td>
+						</tr>
+						<tr>
+							<td className={styles.td} onClick={manejarClick} onMouseEnter={manejarHover} id="42"></td>
+							<td className={styles.td} onClick={manejarClick} onMouseEnter={manejarHover} id="43"></td>
+							<td className={styles.td} onClick={manejarClick} onMouseEnter={manejarHover} id="44"></td>
+							<td className={styles.td} onClick={manejarClick} onMouseEnter={manejarHover} id="45"></td>
+							<td className={styles.td} onClick={manejarClick} onMouseEnter={manejarHover} id="46"></td>
+							<td className={styles.td} onClick={manejarClick} onMouseEnter={manejarHover} id="47"></td>
+							<td className={styles.td} onClick={manejarClick} onMouseEnter={manejarHover} id="48"></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>)
 
 }
 

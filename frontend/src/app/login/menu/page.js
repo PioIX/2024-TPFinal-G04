@@ -1,4 +1,61 @@
 "use client"
+import Form from "@/components/form"
+import styles from "./page.module.css"
+import Button from "@/components/button"
+import { useState } from "react";
+export default function inicio() {
+
+
+  async function ingresarUsuario() {
+      if (await existeUsuario() == true) {
+          alert("Haz ingresado")
+      } else {
+          alert("el usuario no existe o la contraseña no es correcta");
+      }
+  }
+
+  async function existeUsuario() {
+      const data = {
+          nombre_usuario: inputNombre,
+          contraseña: inputPassword
+      }
+
+      const response = await fetch('http://localhost:3001/usuarios', {
+          method: "POST",
+          headers: {
+              "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+      })
+
+      //Tengo que usar el await porque la respuesta del servidor es lenta
+      const result = await response.json()
+      if (result.length == 0) {
+          console.log("El usuario no existe")
+          return false
+      } else {
+          console.log("El usuario si existe")
+          setUserId(result[0].id_usuario)
+          return true
+      }
+  }
+
+  return (
+  <html className={styles.all}>
+  <body>
+  <div className={styles.todo}>
+      <div className={styles.inicio}>
+        <a href="./game" className={styles.a}>Play</a><br></br>
+        <a href="./ranking" className={styles.b}>Ranking</a><br></br>
+        <a href="../login" className={styles.c}>Cerrar sesion</a>
+      </div>
+  </div>
+  </body>
+  </html>
+  )
+}
+
+/*"use client"
 
 import Button from "@/components/button";
 import Form from "@/components/form";
@@ -45,3 +102,4 @@ import { useState, useEffect } from "react";
 
     )
   }
+  */
