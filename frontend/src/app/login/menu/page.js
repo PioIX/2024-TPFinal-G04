@@ -47,7 +47,7 @@ export default function inicio() {
       <div className={styles.inicio}>
         <a href="./game" className={styles.a}>Play</a><br></br>
         <a href="./ranking" className={styles.b}>Ranking</a><br></br>
-        <a href="../login" className={styles.c}>Cerra sesion</a>
+        <a href="../login" className={styles.c}>Cerrar sesion</a>
       </div>
   </div>
   </body>

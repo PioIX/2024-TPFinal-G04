@@ -18,8 +18,6 @@
   box-sizing: border-box;
   justify-content: center;
   align-items: center;
-
-
   margin: 0 0 0 0;
   padding-top: 15%;
   padding-bottom: 13%;
@@ -63,7 +61,6 @@
   border-bottom: 0;
   font-family: "lucida console","papyrus";
   vertical-align: middle;
-  text-align: center;
   color: rgb(0, 0, 0);
   text-align: center;
   font-size: 18px;
@@ -100,8 +97,6 @@
 }
 
 .a:active {
-  background-color: #2e0a0a; 
   color: rgb(209, 209, 209);
-  box-shadow: 0 5px #6e5a5a;
   transform: translateY(2px);
 }
