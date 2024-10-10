@@ -130,6 +130,11 @@ io.on("connection", (socket) => {
 	socket.on('numeros', data => {
 		io.to(req.session.room).emit('newNumero', { room: req.session.room, message: data });
 	});
+
+
+	socket.on('bombas', data => {
+		io.to(req.session.room).emit('newBombas', { room: req.session.room, message: data });
+	});
     /**
      socket.on('newMessage', (data)=>{
      console.log("Message: ", data)
