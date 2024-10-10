@@ -2,6 +2,7 @@
 import Button from "@/components/button";
 import { useState, useEffect } from "react";
 import styles from "./Sgame.module.css"
+import { useSocket } from "@/hooks/useSocket";
 
 
 function getRandomInt(min, max) {
@@ -31,15 +32,34 @@ export default function Naval(props) {
 
 	let [position, setPosition] = useState([]);
 	let [bombs, setBombs] = useState([]);
+	let started = false;
+    const {socket,isConnected}=useSocket();
 
 	useEffect(() => {
 		setPosition(getRandoms());
 	}, [])
 
+
+	useEffect(() => {
+		localStorage.setItem("misBombas", position);
+        if (!socket) return;
+		socket.on('newBombas', (data)=>{
+            if (data.message.position != localStorage.getItem("misBombas")) { 
+                localStorage.setItem("susBombas", data.message.position);
+            }
+          });
+
+        if (!started) {
+            socket.emit("joinRoom",{room: "Kaboom"})
+            socket.emit("bombas",{position: position})
+            started=true
+        }
+    }, [socket, isConnected])
+
 	const manejarClick = (e) => {
 		// `e.target` es el elemento que fue clicado
 		//e.target.setAttribute('class', 'Sgame_selected__hF5Ep')//Sgame_td__fzQJ2
-		if (position.includes(Number(e.target.id)) && bombs.includes(e.target.id) == false) {
+		if (localStorage.getItem("susBombas").includes(Number(e.target.id)) && bombs.includes(e.target.id) == false && localStorage.getItem("misBombas").includes(Number(e.target.id))){
 			e.target.setAttribute('class', 'Sgame_pointselected__U2gv6')//Sgame_td__fzQJ2
 			var a = bombs
 			a.push(e.target.id)
@@ -47,10 +67,18 @@ export default function Naval(props) {
 			if (bombs.length == 5) {
 				console.log("ganaste")
 			}
-		} else if (position.includes(Number(e.target.id)) && bombs.includes(e.target.id)) {
-
-		} else {
+		}else if (localStorage.getItem("susBombas").includes(Number(e.target.id)) && bombs.includes(e.target.id) == false && localStorage.getItem("misBombas").includes(Number(e.target.id))==false){
 			e.target.setAttribute('class', 'Sgame_point__8L8s3')//Sgame_td__fzQJ2
+			var a = bombs
+			a.push(e.target.id)
+			setBombs(a)
+			if (bombs.length == 5) {
+				console.log("ganaste")
+			}
+		} else if (localStorage.getItem("susBombas").includes(Number(e.target.id)) && bombs.includes(e.target.id)) {
+
+		} else if (localStorage.getItem("susBombas").includes(Number(e.target.id))==false && bombs.length < 5){
+			console.log("error")
 		}
 	};
 
