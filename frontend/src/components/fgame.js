@@ -101,7 +101,6 @@ export default function Numbers(props) {
 
     return (
         <div className="all">
-            <div className="todo">
             {number1 != 0 && <h1 className="cuenta">{number1}+{number2}*{number3}</h1>}
             <Button className="sumaresta" onClick={suma1} text="+" />
             <Button className="sumaresta" onClick={resta1} text="-" />
@@ -112,7 +111,6 @@ export default function Numbers(props) {
             <Button disabled={false} onClick={check} text="Check"  id="sumayresta" disable/>
             <h1 className="numero">{text}</h1>
             <h1 className="numero">{total}</h1>
-            </div>
         </div>
     )
 }
