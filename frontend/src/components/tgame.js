@@ -119,18 +119,19 @@ export default function Simon(props) {
     //Variable2         
 
     return (
-        <>
-            <div>
-                
-                <Image src={luz} alt="simon" width={300} height={240}></Image>
-                <br></br>
-                <Button onClick={game} text="Start"></Button>
-                <Button id="1" onClick={verifySequence} text="Azul"></Button>
-                <Button id="2" onClick={verifySequence} text="Amarillo"></Button>
-                <Button id="3" onClick={verifySequence} text="Verde"></Button>
-                <Button id="4" onClick={verifySequence} text="Rojo"></Button>
-            </div>
-        </>
+        <div className={styles.all}>
+        <div className={styles.todo}>
+        <div className={styles.child}>
+            <Image src={luz} alt="simon" width={300} height={240}></Image>
+            <br></br>
+            <Button className={styles.botones} onClick={game} text="Start"></Button>
+            <Button className={styles.botones} id="1" onClick={verifySequence} text="Azul"></Button>
+            <Button className={styles.botones} id="2" onClick={verifySequence} text="Amarillo"></Button>
+            <Button className={styles.botones} id="3" onClick={verifySequence} text="Verde"></Button>
+            <Button className={styles.botones} id="4" onClick={verifySequence} text="Rojo"></Button>
+        </div>
+        </div>
+        </div>
     )
 }
 //<h1>{secuencia}</h1>

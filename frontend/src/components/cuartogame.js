@@ -47,11 +47,11 @@ export default function Morse(props) {
     
     function punto(){
         return new Promise((resolve, reject) => {
-            setLuz("/turned_off_light.png")
+            setLuz("/morse_apagada.png")
             setTimeout(function () {
-                setLuz("/green_light.png")
+                setLuz("/morse_prendida.png")
                 setTimeout(function () {
-                    setLuz("/turned_off_light.png")
+                    setLuz("/morse_apagada.png")
                     resolve('luz')
                 }, 500);
             }, 500);
@@ -59,11 +59,11 @@ export default function Morse(props) {
     }
     function raya(){
         return new Promise((resolve, reject) => {
-            setLuz("/turned_off_light.png")
+            setLuz("/morse_apagada.png")
             setTimeout(function () {
-                setLuz("/green_light.png")
+                setLuz("/morse_prendida.png")
                 setTimeout(function () {
-                    setLuz("/turned_off_light.png")
+                    setLuz("/morse_apagada.png")
                     resolve('luz')
                 }, 1500);
             }, 500);
@@ -72,11 +72,11 @@ export default function Morse(props) {
     
     function final(){
         return new Promise((resolve, reject) => {
-            setLuz("/turned_off_light.png")
+            setLuz("/morse_apagada.png")
             setTimeout(function () {
                 setLuz("/red_light.png")
                 setTimeout(function () {
-                    setLuz("/turned_off_light.png")
+                    setLuz("/morse_apagada.png")
                     resolve('luz')
                 }, 5000);
             }, 500);
@@ -139,16 +139,20 @@ export default function Morse(props) {
     }
     
     return(
+        <div className={styles.all}>
+        <div className={styles.todo}>
         <div>
             <div>
-            <Button text="punto" onClick={printPunto}></Button>
-            <Button text="raya" onClick={printRaya}></Button>
-            <Button text="codigo" onClick={codigo}></Button>
+             <Button text="punto" onClick={printPunto}></Button>
+             <Button text="raya" onClick={printRaya}></Button>
+             <Button text="codigo" onClick={codigo}></Button>
                 <h1>{secuenciaUsuario}</h1>
                 <h1>{renglon}</h1>
                 
                 <Image src={luz} alt="morse" width={250} height={200}></Image>
             </div>
+        </div>
+        </div>
         </div>
     )
 }
