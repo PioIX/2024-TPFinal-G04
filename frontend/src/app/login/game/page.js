@@ -59,10 +59,9 @@ export default function Game() {
           <Laberinto className={styles.juegos}></Laberinto>
           <Laberinto2 className={styles.juegos}></Laberinto2>
         </div>
-        <Button onClick={changeScreen} text="<" />
         </div>
 
-        
+        <Button onClick={changeScreen} text="<" />
         <Button onClick={user1} text="1" />
         <Button onClick={user2} text="2" />
       </main>

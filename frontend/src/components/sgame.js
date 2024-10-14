@@ -91,8 +91,8 @@ export default function Naval(props) {
 
 	return (
 		<div id="board">
-			<div id="messageArea">
-				<table >
+			<div id="messageArea" className={styles.all}>
+				<table  className={styles.todo}>
 					<tbody>
 						<tr>
 

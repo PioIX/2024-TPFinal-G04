@@ -14,15 +14,16 @@
 }
 
 .cajitas{
-  padding-top: 5.5%;
+  padding-top: 2.6%;
   display: grid;
-  grid-template-columns: repeat(1, 1fr 1fr 1fr);
-  grid-template-rows: repeat(2,1fr 1fr 1fr);
+  grid-template-columns: repeat(3, 290px);
+  grid-template-rows: repeat(3, 290px);
 
-  grid-column-gap:  50px;
-  grid-row-gap: 2px;
 
-  padding-left: 18%;
+  grid-column-gap:  100px;
+  grid-row-gap: 100px;
+
+  padding-left: 17.5%;
   padding-right: 10%;
   margin: 0 0 0 0;
 
