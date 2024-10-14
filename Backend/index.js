@@ -47,6 +47,15 @@ io.use((socket, next) => {
 });
 
 
+app.put('/cambiarPuntaje', async function(req,res){
+    console.log(req.body)
+    const respuesta=await MySql.realizarQuery(`UPDATE Players 
+    SET 
+    point = ${req.body.point}
+    WHERE id = ${req.body.id};`)
+    console.log({respuesta})
+    res.send("ok")
+}) 
 
 app.get('/', function(req, res){
     res.status(200).send({
@@ -129,6 +138,11 @@ io.on("connection", (socket) => {
 	});
 	socket.on('numeros', data => {
 		io.to(req.session.room).emit('newNumero', { room: req.session.room, message: data });
+	});
+
+
+	socket.on('bombas', data => {
+		io.to(req.session.room).emit('newBombas', { room: req.session.room, message: data });
 	});
     /**
      socket.on('newMessage', (data)=>{
