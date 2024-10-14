@@ -99,8 +99,8 @@ export default function Numbers(props) {
     }, [])
 
     return (
-        <div>
-            {number1 != 0 && <h1>{number1}+{number2}*{number3}</h1>}
+        <div className="all">
+            {number1 != 0 && <h1 className="cuenta">{number1}+{number2}*{number3}</h1>}
             <Button className="sumaresta" onClick={suma1} text="+" />
             <Button className="sumaresta" onClick={resta1} text="-" />
             <h1 className="numero">{num1}</h1>
