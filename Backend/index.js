@@ -135,6 +135,15 @@ io.on("connection", (socket) => {
 	socket.on('bombas', data => {
 		io.to(req.session.room).emit('newBombas', { room: req.session.room, message: data });
 	});
+	socket.on('morse', data => {
+		io.to(req.session.room).emit('newMorse', { room: req.session.room, message: data });
+	});
+	socket.on('simon', data => {
+		io.to(req.session.room).emit('newSimon', { room: req.session.room, message: data });
+	});
+	socket.on('state', data => {
+		io.to(req.session.room).emit('newState', { room: req.session.room, message: data });
+	});
     /**
      socket.on('newMessage', (data)=>{
      console.log("Message: ", data)
