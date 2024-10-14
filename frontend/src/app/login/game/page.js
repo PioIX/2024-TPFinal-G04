@@ -41,10 +41,10 @@ export default function Game() {
           <div>
 
           <div className={styles.cajitas}>
-          <Naval></Naval>
-          <Numbers></Numbers>
-          <Simon></Simon>
-          <Morse></Morse>
+          <Naval className={styles.juegos}></Naval>
+          <Numbers className={styles.juegos}></Numbers>
+          <Simon className={styles.juegos}></Simon>
+          <Morse className={styles.juegos}></Morse>
           </div>
 
           </div>
@@ -56,8 +56,8 @@ export default function Game() {
         })}>
 
         <div className={styles.cajitas}>
-          <Laberinto></Laberinto>
-          <Laberinto2></Laberinto2>
+          <Laberinto className={styles.juegos}></Laberinto>
+          <Laberinto2 className={styles.juegos}></Laberinto2>
         </div>
         <Button onClick={changeScreen} text="<" />
         </div>

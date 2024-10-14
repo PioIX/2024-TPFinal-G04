@@ -139,17 +139,17 @@ export default function Morse(props) {
     }
     
     return(
-        <>
+        <div>
+            <div>
             <Button text="punto" onClick={printPunto}></Button>
             <Button text="raya" onClick={printRaya}></Button>
             <Button text="codigo" onClick={codigo}></Button>
-            <div>
                 <h1>{secuenciaUsuario}</h1>
                 <h1>{renglon}</h1>
                 
                 <Image src={luz} alt="morse" width={250} height={200}></Image>
             </div>
-        </>
+        </div>
     )
 }
 //<h1>{secuencia}</h1>

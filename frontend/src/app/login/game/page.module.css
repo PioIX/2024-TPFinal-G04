@@ -14,9 +14,12 @@
 }
 
 .cajitas{
+  padding-top: 5.5%;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-column-gap: 2px;
+  grid-template-columns: repeat(1, 1fr 1fr 1fr);
+  grid-template-rows: repeat(2,1fr 1fr 1fr);
+
+  grid-column-gap:  50px;
   grid-row-gap: 2px;
 
   padding-left: 18%;
@@ -24,4 +27,8 @@
   margin: 0 0 0 0;
 
 
+}
+
+.juegos{
+  height: ;
 }
