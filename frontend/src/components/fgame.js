@@ -20,7 +20,6 @@ export default function Numbers(props) {
     let [total2, setTotal2] = useState(0);
     let [text, setText] = useState("");
     const {socket,isConnected}=useSocket();
-
     let started = false;
 
     //envia

@@ -3,6 +3,7 @@ import Button from "./button";
 import { useState, useEffect } from "react";
 import styles from "./Cuartogame.module.css"
 import Image from "./image";
+import { useSocket } from "@/hooks/useSocket";
 function getRandomInt(min, max) {
     const minCeiled = Math.ceil(min);
     const maxFloored = Math.floor(max);
@@ -17,8 +18,12 @@ export default function Morse(props) {
     let [repit,setRepit]= useState(true)
     let [renglon,setRenglon]= useState("")
     let [secuenciaUsuario,setSecuenciaUsuario]= useState([])
+	let started = false;
+    const {socket,isConnected}=useSocket();
 
-    useEffect(() => {
+    
+    
+    function definirMorse(){
         var codigo = [getRandomInt(1,3),getRandomInt(1,3),getRandomInt(1,3),getRandomInt(1,3),getRandomInt(1,3),getRandomInt(1,3)]
         var one=0
         var two=0
@@ -41,9 +46,27 @@ export default function Morse(props) {
                 }
             }
         }
-        setSecuencia(codigo);
-
+        return codigo
+    }
+    useEffect(() => {
+        setSecuencia(definirMorse());
     }, [])
+    
+    useEffect(() => {
+		localStorage.setItem("miMorse", secuencia);
+        if (!socket) return;
+		socket.on('newMorse', (data)=>{
+            if (data.message.position != localStorage.getItem("miMorse")) { 
+                localStorage.setItem("suMorse", data.message.position);
+            }
+          });
+
+        if (!started) {
+            socket.emit("joinRoom",{room: "Kaboom"})
+            socket.emit("morse",{position: secuencia})
+            started=true
+        }
+    }, [socket, isConnected])
     
     function punto(){
         return new Promise((resolve, reject) => {
@@ -83,6 +106,7 @@ export default function Morse(props) {
         })
     }
     async function codigo(){
+        document.getElementById("codigo").disabled=true
         for (let index = 0; index < 6; index++) {
             if( secuencia[index]==1){
                 await punto()
@@ -91,14 +115,7 @@ export default function Morse(props) {
             }
         }
         await final()
-    }
-    async function plud(){
-        setRepit(!repit)
-    }
-    async function onOff(){
-        while(repit==true){
-            await codigo()
-        }
+        document.getElementById("codigo").disabled=false
     }
 
 
@@ -110,8 +127,10 @@ export default function Morse(props) {
             setSecuenciaUsuario(copy)
         }
         if (secuenciaUsuario.length==6) {
-            if(String(secuenciaUsuario)==String(secuencia)){
+            if(String(secuenciaUsuario)==String(localStorage.getItem("suMorse"))){
                 console.log("ganaste")
+                document.getElementById("botonPunto").disabled=true
+                document.getElementById("botonRaya").disabled=true
             }else{
                 console.log("Perdiste")
                 setSecuenciaUsuario([])
@@ -128,8 +147,10 @@ export default function Morse(props) {
         }
         
         if (secuenciaUsuario.length==6) {
-            if(String(secuenciaUsuario)==String(secuencia)){
+            if(String(secuenciaUsuario)==String(localStorage.getItem("suMorse"))){
                 console.log("ganaste")
+                document.getElementById("botonPunto").disabled=true
+                document.getElementById("botonRaya").disabled=true
             }else{
                 console.log("Perdiste")
                 setSecuenciaUsuario([])
@@ -139,6 +160,7 @@ export default function Morse(props) {
     }
     
     return(
+
         <div className={styles.all}>
         <div className={styles.todo}>
         <div>
@@ -146,6 +168,7 @@ export default function Morse(props) {
              <Button text="punto" onClick={printPunto}></Button>
              <Button text="raya" onClick={printRaya}></Button>
              <Button text="codigo" onClick={codigo}></Button>
+
                 <h1>{secuenciaUsuario}</h1>
                 <h1>{renglon}</h1>
                 

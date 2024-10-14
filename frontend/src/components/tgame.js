@@ -3,6 +3,7 @@ import Button from "@/components/button";
 import { useState, useEffect } from "react";
 import styles from "./Tgame.module.css"
 import Image from "./image";
+import { useSocket } from "@/hooks/useSocket";
 
 function getRandomInt(min, max) {
     const minCeiled = Math.ceil(min);
@@ -18,6 +19,43 @@ export default function Simon(props) {
     let [state, setState] = useState(0)
     let [stateActual, setStateActual] = useState(0)
     let [seguida, setSeguida] = useState([])
+    const {socket,isConnected}=useSocket();
+    let started = false;
+
+    useEffect(() => {
+        if (localStorage.getItem("userId")==1) {
+            localStorage.setItem("miSimon", secuencia);
+        }
+        if (!socket) return;
+        if (localStorage.getItem("userId")==2) {
+            socket.on('newSimon', (data)=>{
+                if (data.message.numero != localStorage.getItem("miSimon")) { 
+                    localStorage.setItem("miSimon", data.message.numero);
+                }
+            });
+        }
+
+        socket.on('newState', (data)=>{
+            if (data.message.numero != state) { 
+                setState(data.message.numero);
+                console.log("llego el state", state)
+                if(state==5){
+                    console.log("ganaste")
+                }
+            }
+            
+        });
+
+        if (!started) {
+            socket.emit("joinRoom",{room: "Kaboom"})
+            if (localStorage.getItem("userId")==1) {
+                
+                socket.emit("simon",{numero: secuencia})
+                console.log(secuencia, " lo envio")
+            }
+            started=true
+        }
+    }, [socket, isConnected])
 
     function blue() {
         return new Promise((resolve, reject) => {
@@ -68,34 +106,56 @@ export default function Simon(props) {
         })
     }
     async function game() {
-
-        for (let index = 0; index <= state; index++) {
-            if (secuencia[index] == 1) {
-                await blue()
-            }
-            if (secuencia[index] == 2) {
-                await yellow()
-            }
-            if (secuencia[index] == 3) {
-                await green()
-            }
-            if (secuencia[index] == 4) {
-                await red()
+        if (localStorage.getItem("userId")==1 && state%2==1) {
+            
+            for (let index = 0; index <= state; index++) {
+                if (selocalStorage.getItem("miSimon")[index] == 1) {
+                    await blue()
+                }
+                if (localStorage.getItem("miSimon")[index] == 2) {
+                    await yellow()
+                }
+                if (localStorage.getItem("miSimon")[index] == 3) {
+                    await green()
+                }
+                if (localStorage.getItem("miSimon")[index] == 4) {
+                    await red()
+                }
             }
         }
-
+        if (localStorage.getItem("userId")==2 && state%2==0) {
+            
+            for (let index = 0; index <= state; index++) {
+                if (localStorage.getItem("miSimon")[index] == 1) {
+                    await blue()
+                }
+                if (localStorage.getItem("miSimon")[index] == 2) {
+                    await yellow()
+                }
+                if (localStorage.getItem("miSimon")[index] == 3) {
+                    await green()
+                }
+                if (localStorage.getItem("miSimon")[index] == 4) {
+                    await red()
+                }
+            }
+        }
+            
         
     }
 
     useEffect(() => {
         var sequence = [getRandomInt(1, 5), getRandomInt(1, 5), getRandomInt(1, 5), getRandomInt(1, 5), getRandomInt(1, 5)]
-        setSecuencia(sequence);
+        if(localStorage.getItem("userId")==1){
+           setSecuencia(sequence);
+        }
+        console.log(state)
     }, [])
 
     function verifySequence(event) {
         let idBoton = event.target.id
-        if (idBoton == secuencia[stateActual]) {
-            seguida.push(secuencia[state])
+        if (idBoton == localStorage.getItem("miSimon")[stateActual]) {
+            seguida.push(localStorage.getItem("miSimon")[state])
             setStateActual(stateActual + 1)
             console.log("correcto")
         } else {
@@ -107,17 +167,17 @@ export default function Simon(props) {
             }else{
                 setSeguida([])
                 setState(state + 1)
+                socket.emit("state",{numero: state})
+                console.log("envie el state ", state)
                 setStateActual(0)
             }
         }
     }
-
-    // secuencia        1234
-    //state             3
-    // seguida          123
-    //stateActual       0
-    //Variable2         
-
+       
+    function stateSecuence(){
+        console.log(state)
+        console.log(localStorage.getItem("miSimon"))
+    }
     return (
         <div className={styles.all}>
         <div className={styles.todo}>
@@ -132,6 +192,7 @@ export default function Simon(props) {
         </div>
         </div>
         </div>
+
     )
 }
 //<h1>{secuencia}</h1>
