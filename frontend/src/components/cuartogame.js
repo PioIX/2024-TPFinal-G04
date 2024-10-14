@@ -160,7 +160,7 @@ export default function Morse(props) {
     }
     
     return(
-        <>
+        <div>
             <Button text="punto" onClick={printPunto} id="botonPunto"></Button>
             <Button text="raya" onClick={printRaya} id="botonRaya"></Button>
             <Button text="codigo" onClick={codigo} id="codigo"></Button>
