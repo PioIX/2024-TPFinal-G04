@@ -36,14 +36,17 @@ export default function Game() {
           [styles.grid]: true,
           [styles.display]: !page
         })}>
-
+          
           <Button onClick={changeScreen} text=">" />
-          <h1>Hola</h1>
-          <div classname="juegos1">
+          <div>
+
+          <div className={styles.cajitas}>
           <Naval></Naval>
           <Numbers></Numbers>
           <Simon></Simon>
           <Morse></Morse>
+          </div>
+
           </div>
         </div>
 
@@ -51,10 +54,12 @@ export default function Game() {
           [styles.grid]: true,
           [styles.display]: page
         })}>
+
+        <div className={styles.cajitas}>
           <Laberinto></Laberinto>
           <Laberinto2></Laberinto2>
-          <Button onClick={changeScreen} text="<" />
-          <h1>Chau</h1>
+        </div>
+        <Button onClick={changeScreen} text="<" />
         </div>
 
         
