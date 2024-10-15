@@ -38,7 +38,6 @@ export default function Simon(props) {
         socket.on('newState', (data) => {
             if (data.message.numero != state) {
                 setState(data.message.numero);
-                console.log("llego el state", state)
                 if (state == 5) {
                     console.log("ganaste")
                 }
@@ -51,7 +50,6 @@ export default function Simon(props) {
             if (localStorage.getItem("userId") == 1) {
 
                 socket.emit("simon", { numero: secuencia })
-                console.log(secuencia, " lo envio")
             }
             started = true
         }
@@ -158,18 +156,19 @@ export default function Simon(props) {
         if (localStorage.getItem("userId") == 1) {
             setSecuencia(sequence);
         }
-        console.log(state)
         if (localStorage.getItem("userId") == 2) {
             if (Array.isArray(localStorage.getItem("miSimon")) == true) {
                 setSecuencia(localStorage.getItem("miSimon"));
             }
         }
         if (localStorage.getItem("userId") == 2){
+            document.getElementById("s1").disabled=true
+            document.getElementById("s2").disabled=true
+            document.getElementById("s3").disabled=true
+            document.getElementById("s4").disabled=true
+        }
+        if (localStorage.getItem("userId") == 1){
             document.getElementById("lasecuencia").disabled=true
-            document.getElementById("1").disabled=true
-            document.getElementById("2").disabled=true
-            document.getElementById("3").disabled=true
-            document.getElementById("4").disabled=true
         }
     }, [])
 
@@ -181,7 +180,7 @@ export default function Simon(props) {
             }
             
         }
-        let idBoton = event.target.id
+        let idBoton = event.target.id[1]
         if (idBoton == secuence[stateActual]) {
             seguida.push(secuence[state])
             setStateActual(stateActual + 1)
@@ -201,48 +200,46 @@ export default function Simon(props) {
     }
     useEffect(() => {
         if (!socket) return;
-        console.log("mi state ", state)
-        console.log(state)
         socket.emit("state", { numero: state })
-        console.log("envie el state ", state)
         if (state==5) {
             console.log("Ganaste")
+            document.getElementById("lasecuencia").disabled=true
+            document.getElementById("s1").disabled=true
+            document.getElementById("s2").disabled=true
+            document.getElementById("s3").disabled=true
+            document.getElementById("s4").disabled=true
             
         }
-        if (localStorage.getItem("userId") == 2 && state%2==1){
-            document.getElementById("lasecuencia").disabled=true
-            document.getElementById("1").disabled=true
-            document.getElementById("2").disabled=true
-            document.getElementById("3").disabled=true
-            document.getElementById("4").disabled=true
-        }
-        if (localStorage.getItem("userId") == 2 && state%2==0){
+        if (localStorage.getItem("userId") == 1 && state%2==1 && state!=5){
             document.getElementById("lasecuencia").disabled=false
-            document.getElementById("1").disabled=false
-            document.getElementById("2").disabled=false
-            document.getElementById("3").disabled=false
-            document.getElementById("4").disabled=false
+            document.getElementById("s1").disabled=true
+            document.getElementById("s2").disabled=true
+            document.getElementById("s3").disabled=true
+            document.getElementById("s4").disabled=true
+        }
+        if (localStorage.getItem("userId") == 1 && state%2==0 && state!=5){
+            document.getElementById("lasecuencia").disabled=true
+            document.getElementById("s1").disabled=false
+            document.getElementById("s2").disabled=false
+            document.getElementById("s3").disabled=false
+            document.getElementById("s4").disabled=false
         }
         
-        if (localStorage.getItem("userId") == 1 && state%2==0) {
-            document.getElementById("lasecuencia").disabled=true
-            document.getElementById("1").disabled=true
-            document.getElementById("2").disabled=true
-            document.getElementById("3").disabled=true
-            document.getElementById("4").disabled=true
-        }
-        if (localStorage.getItem("userId") == 1 && state%2==1) {
+        if (localStorage.getItem("userId") == 2 && state%2==0 && state!=5) {
             document.getElementById("lasecuencia").disabled=false
-            document.getElementById("1").disabled=false
-            document.getElementById("2").disabled=false
-            document.getElementById("3").disabled=false
-            document.getElementById("4").disabled=false
+            document.getElementById("s1").disabled=true
+            document.getElementById("s2").disabled=true
+            document.getElementById("s3").disabled=true
+            document.getElementById("s4").disabled=true
+        }
+        if (localStorage.getItem("userId") == 2 && state%2==1 && state!=5) {
+            document.getElementById("lasecuencia").disabled=true
+            document.getElementById("s1").disabled=false
+            document.getElementById("s2").disabled=false
+            document.getElementById("s3").disabled=false
+            document.getElementById("s4").disabled=false
         }
     }, [state])
-    function stateSecuence() {
-        console.log(state)
-        console.log(localStorage.getItem("miSimon"))
-    }
     return (
 
         <>
@@ -252,11 +249,10 @@ export default function Simon(props) {
             <Image src={luz} alt="simon" width={300} height={240}></Image>
             <br></br>
             <Button className={styles.botones} onClick={game} text="Start" id="lasecuencia"></Button>
-            <Button onClick={stateSecuence} text="te cuento"></Button>
-            <Button className={styles.botones} id="1" onClick={verifySequence} text="Azul"></Button>
-            <Button className={styles.botones} id="2" onClick={verifySequence} text="Amarillo"></Button>
-            <Button className={styles.botones} id="3" onClick={verifySequence} text="Verde"></Button>
-            <Button className={styles.botones} id="4" onClick={verifySequence} text="Rojo"></Button>
+            <Button className={styles.botones} id="s1" onClick={verifySequence} text="Azul"></Button>
+            <Button className={styles.botones} id="s2" onClick={verifySequence} text="Amarillo"></Button>
+            <Button className={styles.botones} id="s3" onClick={verifySequence} text="Verde"></Button>
+            <Button className={styles.botones} id="s4" onClick={verifySequence} text="Rojo"></Button>
         </div>
         </div>
         </div>
