@@ -31,8 +31,9 @@ export default function Laberinto(props) {
 				<table >
 					<tbody>
 						<tr>
+							
 
-							<td className={styles.td} id="l0"></td>
+							<td className={styles.td} id="l0"><img height={30}  src="/laberito/bandera.png"/></td>
 							<td className={styles.td} id="l1"></td>
 							<td className={styles.td} id="l2"></td>
 							<td className={styles.td} id="l3"></td>
