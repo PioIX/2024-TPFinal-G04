@@ -153,6 +153,12 @@ io.on("connection", (socket) => {
 	socket.on('state', data => {
 		io.to(req.session.room).emit('newState', { room: req.session.room, message: data });
 	});
+	socket.on('laberinto', data => {
+		io.to(req.session.room).emit('newLaberinto', { room: req.session.room, message: data });
+	});
+	socket.on('labwin', data => {
+		io.to(req.session.room).emit('newLabwin', { room: req.session.room, message: data });
+	});
     /**
      socket.on('newMessage', (data)=>{
      console.log("Message: ", data)
