@@ -19,43 +19,43 @@ export default function Simon(props) {
     let [state, setState] = useState(0)
     let [stateActual, setStateActual] = useState(0)
     let [seguida, setSeguida] = useState([])
-    const {socket,isConnected}=useSocket();
+    const { socket, isConnected } = useSocket();
     let started = false;
 
     useEffect(() => {
-        if (localStorage.getItem("userId")==1) {
+        if (localStorage.getItem("userId") == 1) {
             localStorage.setItem("miSimon", secuencia);
         }
         if (!socket) return;
-        if (localStorage.getItem("userId")==2) {
-            socket.on('newSimon', (data)=>{
-                if (data.message.numero != localStorage.getItem("miSimon")) { 
+        if (localStorage.getItem("userId") == 2) {
+            socket.on('newSimon', (data) => {
+                if (data.message.numero != localStorage.getItem("miSimon")) {
                     localStorage.setItem("miSimon", data.message.numero);
                 }
             });
         }
 
-        socket.on('newState', (data)=>{
-            if (data.message.numero != state) { 
+        socket.on('newState', (data) => {
+            if (data.message.numero != state) {
                 setState(data.message.numero);
-                console.log("llego el state", state)
-                if(state==5){
+                if (state == 5) {
                     console.log("ganaste")
                 }
             }
-            
+
         });
 
         if (!started) {
-            socket.emit("joinRoom",{room: "Kaboom"})
-            if (localStorage.getItem("userId")==1) {
-                
-                socket.emit("simon",{numero: secuencia})
-                console.log(secuencia, " lo envio")
+            socket.emit("joinRoom", { room: "Kaboom" })
+            if (localStorage.getItem("userId") == 1) {
+
+                socket.emit("simon", { numero: secuencia })
             }
-            started=true
+            started = true
         }
     }, [socket, isConnected])
+
+    
 
     function blue() {
         return new Promise((resolve, reject) => {
@@ -106,56 +106,83 @@ export default function Simon(props) {
         })
     }
     async function game() {
-        if (localStorage.getItem("userId")==1 && state%2==1) {
+        var secuence=[]
+        for (let index = 0; index < localStorage.getItem("miSimon").length; index++) {
+            if (localStorage.getItem("miSimon")[index]!=",") {
+                secuence.push(localStorage.getItem("miSimon")[index])
+            }
+            
+        }
+        if (localStorage.getItem("userId") == 1 && state % 2 == 1) {
             
             for (let index = 0; index <= state; index++) {
-                if (selocalStorage.getItem("miSimon")[index] == 1) {
+                if (secuence[index] == 1) {
                     await blue()
                 }
-                if (localStorage.getItem("miSimon")[index] == 2) {
+                if (secuence[index] == 2) {
                     await yellow()
                 }
-                if (localStorage.getItem("miSimon")[index] == 3) {
+                if (secuence[index] == 3) {
                     await green()
                 }
-                if (localStorage.getItem("miSimon")[index] == 4) {
+                if (secuence[index] == 4) {
                     await red()
                 }
             }
         }
-        if (localStorage.getItem("userId")==2 && state%2==0) {
-            
+        if (localStorage.getItem("userId") == 2 && state % 2 == 0) {
+
             for (let index = 0; index <= state; index++) {
-                if (localStorage.getItem("miSimon")[index] == 1) {
+                if (secuence[index] == 1) {
                     await blue()
                 }
-                if (localStorage.getItem("miSimon")[index] == 2) {
+                if (secuence[index] == 2) {
                     await yellow()
                 }
-                if (localStorage.getItem("miSimon")[index] == 3) {
+                if (secuence[index] == 3) {
                     await green()
                 }
-                if (localStorage.getItem("miSimon")[index] == 4) {
+                if (secuence[index] == 4) {
                     await red()
                 }
             }
         }
-            
-        
+
+
     }
 
     useEffect(() => {
         var sequence = [getRandomInt(1, 5), getRandomInt(1, 5), getRandomInt(1, 5), getRandomInt(1, 5), getRandomInt(1, 5)]
-        if(localStorage.getItem("userId")==1){
-           setSecuencia(sequence);
+        if (localStorage.getItem("userId") == 1) {
+            setSecuencia(sequence);
         }
-        console.log(state)
+        if (localStorage.getItem("userId") == 2) {
+            if (Array.isArray(localStorage.getItem("miSimon")) == true) {
+                setSecuencia(localStorage.getItem("miSimon"));
+            }
+        }
+        if (localStorage.getItem("userId") == 2){
+            document.getElementById("s1").disabled=true
+            document.getElementById("s2").disabled=true
+            document.getElementById("s3").disabled=true
+            document.getElementById("s4").disabled=true
+        }
+        if (localStorage.getItem("userId") == 1){
+            document.getElementById("lasecuencia").disabled=true
+        }
     }, [])
 
     function verifySequence(event) {
-        let idBoton = event.target.id
-        if (idBoton == localStorage.getItem("miSimon")[stateActual]) {
-            seguida.push(localStorage.getItem("miSimon")[state])
+        var secuence=[]
+        for (let index = 0; index < localStorage.getItem("miSimon").length; index++) {
+            if (localStorage.getItem("miSimon")[index]!=",") {
+                secuence.push(localStorage.getItem("miSimon")[index])
+            }
+            
+        }
+        let idBoton = event.target.id[1]
+        if (idBoton == secuence[stateActual]) {
+            seguida.push(secuence[state])
             setStateActual(stateActual + 1)
             console.log("correcto")
         } else {
@@ -164,34 +191,72 @@ export default function Simon(props) {
         if (stateActual == state) {
             if (state == 5) {
                 console.log("ganaste")
-            }else{
+            } else {
                 setSeguida([])
                 setState(state + 1)
-                socket.emit("state",{numero: state})
-                console.log("envie el state ", state)
                 setStateActual(0)
             }
         }
     }
-       
-    function stateSecuence(){
-        console.log(state)
-        console.log(localStorage.getItem("miSimon"))
-    }
+    useEffect(() => {
+        if (!socket) return;
+        socket.emit("state", { numero: state })
+        if (state==5) {
+            console.log("Ganaste")
+            document.getElementById("lasecuencia").disabled=true
+            document.getElementById("s1").disabled=true
+            document.getElementById("s2").disabled=true
+            document.getElementById("s3").disabled=true
+            document.getElementById("s4").disabled=true
+            
+        }
+        if (localStorage.getItem("userId") == 1 && state%2==1 && state!=5){
+            document.getElementById("lasecuencia").disabled=false
+            document.getElementById("s1").disabled=true
+            document.getElementById("s2").disabled=true
+            document.getElementById("s3").disabled=true
+            document.getElementById("s4").disabled=true
+        }
+        if (localStorage.getItem("userId") == 1 && state%2==0 && state!=5){
+            document.getElementById("lasecuencia").disabled=true
+            document.getElementById("s1").disabled=false
+            document.getElementById("s2").disabled=false
+            document.getElementById("s3").disabled=false
+            document.getElementById("s4").disabled=false
+        }
+        
+        if (localStorage.getItem("userId") == 2 && state%2==0 && state!=5) {
+            document.getElementById("lasecuencia").disabled=false
+            document.getElementById("s1").disabled=true
+            document.getElementById("s2").disabled=true
+            document.getElementById("s3").disabled=true
+            document.getElementById("s4").disabled=true
+        }
+        if (localStorage.getItem("userId") == 2 && state%2==1 && state!=5) {
+            document.getElementById("lasecuencia").disabled=true
+            document.getElementById("s1").disabled=false
+            document.getElementById("s2").disabled=false
+            document.getElementById("s3").disabled=false
+            document.getElementById("s4").disabled=false
+        }
+    }, [state])
     return (
+
+        <>
         <div className={styles.all}>
         <div className={styles.todo}>
         <div className={styles.child}>
             <Image src={luz} alt="simon" width={300} height={240}></Image>
             <br></br>
-            <Button className={styles.botones} onClick={game} text="Start"></Button>
-            <Button className={styles.botones} id="1" onClick={verifySequence} text="Azul"></Button>
-            <Button className={styles.botones} id="2" onClick={verifySequence} text="Amarillo"></Button>
-            <Button className={styles.botones} id="3" onClick={verifySequence} text="Verde"></Button>
-            <Button className={styles.botones} id="4" onClick={verifySequence} text="Rojo"></Button>
+            <Button className={styles.botones} onClick={game} text="Start" id="lasecuencia"></Button>
+            <Button className={styles.botones} id="s1" onClick={verifySequence} text="Azul"></Button>
+            <Button className={styles.botones} id="s2" onClick={verifySequence} text="Amarillo"></Button>
+            <Button className={styles.botones} id="s3" onClick={verifySequence} text="Verde"></Button>
+            <Button className={styles.botones} id="s4" onClick={verifySequence} text="Rojo"></Button>
         </div>
         </div>
         </div>
+</>
 
     )
 }

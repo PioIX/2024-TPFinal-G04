@@ -160,14 +160,15 @@ export default function Morse(props) {
     }
     
     return(
+        <>
 
         <div className={styles.all}>
         <div className={styles.todo}>
         <div>
             <div>
-             <Button text="punto" onClick={printPunto}></Button>
-             <Button text="raya" onClick={printRaya}></Button>
-             <Button text="codigo" onClick={codigo}></Button>
+             <Button text="punto" onClick={printPunto} id="botonPunto"></Button>
+            <Button text="raya" onClick={printRaya} id="botonRaya"></Button>
+            <Button text="codigo" onClick={codigo} id="codigo"></Button>
 
                 <h1>{secuenciaUsuario}</h1>
                 <h1>{renglon}</h1>
@@ -177,6 +178,7 @@ export default function Morse(props) {
         </div>
         </div>
         </div>
+</>
     )
 }
 //<h1>{secuencia}</h1>
