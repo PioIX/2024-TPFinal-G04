@@ -14,7 +14,7 @@ function getRandomInt(min, max) {
 
 export default function Morse(props) {
     let [secuencia, setSecuencia] = useState([])
-    let [luz, setLuz] = useState("/turned_off_light.png")//"/turned_off_light.png"
+    let [luz, setLuz] = useState("/morse_apagado.png")//"/turned_off_light.png"
     let [repit,setRepit]= useState(true)
     let [renglon,setRenglon]= useState("")
     let [secuenciaUsuario,setSecuenciaUsuario]= useState([])
@@ -70,11 +70,11 @@ export default function Morse(props) {
     
     function punto(){
         return new Promise((resolve, reject) => {
-            setLuz("/morse_apagada.png")
+            setLuz("/morse_apagado.png")
             setTimeout(function () {
-                setLuz("/morse_prendida.png")
+                setLuz("/morse_prendido.png")
                 setTimeout(function () {
-                    setLuz("/morse_apagada.png")
+                    setLuz("/morse_apagado.png")
                     resolve('luz')
                 }, 500);
             }, 500);
@@ -82,11 +82,11 @@ export default function Morse(props) {
     }
     function raya(){
         return new Promise((resolve, reject) => {
-            setLuz("/morse_apagada.png")
+            setLuz("/morse_apagado.png")
             setTimeout(function () {
-                setLuz("/morse_prendida.png")
+                setLuz("/morse_prendido.png")
                 setTimeout(function () {
-                    setLuz("/morse_apagada.png")
+                    setLuz("/morse_apagado.png")
                     resolve('luz')
                 }, 1500);
             }, 500);
@@ -95,11 +95,11 @@ export default function Morse(props) {
     
     function final(){
         return new Promise((resolve, reject) => {
-            setLuz("/morse_apagada.png")
+            setLuz("/morse_apagado.png")
             setTimeout(function () {
-                setLuz("/red_light.png")
+                setLuz("/morse_rojo.png")
                 setTimeout(function () {
-                    setLuz("/morse_apagada.png")
+                    setLuz("/morse_apagado.png")
                     resolve('luz')
                 }, 5000);
             }, 500);
