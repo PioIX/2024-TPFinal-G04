@@ -93,7 +93,7 @@ export default function Naval(props) {
 		<div id="board">
 			<div id="messageArea" className={styles.all}>
 				<table  className={styles.todo}>
-					<tbody>
+					<tbody className={styles.fondo}>
 						<tr>
 
 							<td className={styles.td} onClick={manejarClick} onMouseEnter={manejarHover} id="0"></td>
