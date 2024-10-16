@@ -13,31 +13,56 @@ function getRandomInt(min, max) {
 
 
 export default function Traducir(props) {
-    var [palabra,setPalabra]= useState(["Bomba","Morir","Clave","Llave","Cable","Boton","Luces","Genio","Juego","Tecla","Fuego","Grupo","Corte","Ruina","Habla","Letra","Reloj","Grito","Cobre","Plata","Metal","Hueso","Marca","Lento","Débil","Dudas","Preso","Dolor","Matar","Muera","Largo","Corto","Turno"])
+    var [palabra,setPalabra]= useState(["Bomba","Morir","Clave","Llave","Cable","Boton","Luces","Genio","Juego","Tecla","Fuego","Grupo","Corte","Ruina","Habla","Letra","Reloj","Grito","Cobre","Plata","Metal","Hueso","Marca","Lento","Debil","Dudas","Preso","Dolor","Matar","Muera","Largo","Corto","Turno"])
+    var [elegida,setElegida]= useState()
+    var [suelegida,setSuelegida]= useState()
+    var [valor,setValor]= useState("")
     const { socket, isConnected } = useSocket();
     let started = false;
 
     useEffect(() => {
-		localStorage.setItem("miTraduccion", palabra);
+		localStorage.setItem("miTraduccion", elegida);
         if (!socket) return;
 		socket.on('newTraduccion', (data)=>{
-            if (data.message.palabra != localStorage.getItem("miTraduccion")) { 
-                localStorage.setItem("SuTraduccion", data.message.palabra);
+            console.log(data)
+            if (data.message.position != localStorage.getItem("miTraduccion")) { 
+                localStorage.setItem("suTraduccion", data.message.position);
+                setSuelegida(data.message.position);
+                console.log(data.message.position)
             }
           });
 
         if (!started) {
             socket.emit("joinRoom",{room: "Kaboom"})
-            socket.emit("traduccion",{position: palabra})
+            socket.emit("traduccion",{position: elegida})
             started=true
         }
     }, [socket, isConnected])
 
 
+    useEffect(() => {
+        setElegida(palabra[getRandomInt(0,palabra.length-1)])
+        setSuelegida(localStorage.getItem("suTraduccion"));
+    }, [])
+
+    function cambiarValor(e) {
+        console.log(e.target.value)
+        for (let i = 0; i < e.target.value.length; i++) {
+            const element = e.target.value[i];
+            
+        if (element >= 'a' && element <= 'z') {
+            setValor(e.target.value)
+        }            
+        }
+
+    }
+
     return(
         <>
             <div>
-                <h1>{palabra[20]}</h1>
+                <h1>{localStorage.getItem("miTraduccion")}</h1>
+                <h1>{suelegida}</h1>
+                <input value={valor} onChange={cambiarValor}/>
             </div>
         </>
     )
