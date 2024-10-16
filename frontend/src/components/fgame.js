@@ -84,10 +84,10 @@ export default function Numbers(props) {
         let auxtotal = String(num1) + String(num2)
         setTotal(auxtotal)
         if (String(auxtotal) == String(localStorage.getItem("respuestaSuya"))) {
-            setText("bien")
+            console.log("bien")
             document.getElementById("sumayresta").disabled=true
         } else {
-            setText("mal")
+            console.log("mal")
         }
     }
 
@@ -103,15 +103,20 @@ export default function Numbers(props) {
         <div className={styles.todo}>
         <div>
             {number1 != 0 && <h1 className="cuenta">{number1}+{number2}*{number3}</h1>}
-            <Button className="sumaresta" onClick={suma1} text="+" />
-            <Button className="sumaresta" onClick={resta1} text="-" />
-            <h1 className="numero">{num1}</h1>
-            <Button className="sumaresta" onClick={suma2} text="+" />
-            <Button className="sumaresta" onClick={resta2} text="-" />
-            <h1 className="numero">{num2}</h1>
+            <div >
+                <div className={styles.sumas}>
+                <Button className={styles.suma} onClick={suma1} text="+" />
+                <Button className={styles.suma} onClick={suma2} text="+" />
+                </div>
+                <div className={styles.numeros}>
+                <h1 className={styles.numero}>{num1}</h1>
+                <h1 className={styles.numero}>{num2}</h1>
+                </div>
+                <div className={styles.restas}>
+                <Button className={styles.resta} onClick={resta1} text="-" />
+                <Button className={styles.resta} onClick={resta2} text="-" /></div>
+            </div>
             <Button disabled={false} onClick={check} text="Check"  id="sumayresta" disable/>
-            <h1 className="numero">{text}</h1>
-            <h1 className="numero">{total}</h1>
             </div>
             </div>
             </div>
