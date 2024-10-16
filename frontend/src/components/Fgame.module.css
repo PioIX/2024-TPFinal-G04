@@ -1,18 +1,35 @@
 .display{
-   display: none;
-  }
+ display: none;
+}
 .all{
-    width: 100%;
-    height: 100%;
-    margin-top: 13px;
-  }
+  width: 100%;
+  height: 100%;
+  margin-top: 13px;
+}
   
-  .todo{
-	display: flex;
-	box-sizing: border-box;
-	justify-content: center;
-	align-items: center;
-	margin: 0 0 0 0;
-	font-size: 1rem;
-	font-size: 16px;
-  }
+.todo{
+display: flex;
+box-sizing: border-box;
+justify-content: center;
+align-items: center;
+margin: 0 0 0 0;
+font-size: 1rem;
+font-size: 16px;
+}
+
+.numeros, .sumas, .restas{
+  display: flex;
+}
+
+.suma{
+  display: inline-block;
+
+}
+.numero{
+  display: inline-block;
+
+}
+.resta{
+  display: inline-block;
+
+}
