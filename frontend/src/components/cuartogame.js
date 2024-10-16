@@ -14,7 +14,7 @@ function getRandomInt(min, max) {
 
 export default function Morse(props) {
     let [secuencia, setSecuencia] = useState([])
-    let [luz, setLuz] = useState("/turned_off_light.png")//"/turned_off_light.png"
+    let [luz, setLuz] = useState("/morse_apagado.png")//"/turned_off_light.png"
     let [repit,setRepit]= useState(true)
     let [renglon,setRenglon]= useState("")
     let [secuenciaUsuario,setSecuenciaUsuario]= useState([])
