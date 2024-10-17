@@ -110,13 +110,13 @@ export default function Numbers(props) {
                 </div>
                 <div className={styles.numeros}>
                 <h1 className={styles.numero}>{num1}</h1>
-                <h1 className={styles.numero}>{num2}</h1>
+                <h1 className={styles.numero2}>{num2}</h1>
                 </div>
                 <div className={styles.restas}>
                 <Button className={styles.resta} onClick={resta1} text="-" />
                 <Button className={styles.resta} onClick={resta2} text="-" /></div>
+                <Button className={styles.check} disabled={false} onClick={check} text="CHECK"  id="sumayresta" disable/>
             </div>
-            <Button disabled={false} onClick={check} text="Check"  id="sumayresta" disable/>
             </div>
             </div>
             </div>
