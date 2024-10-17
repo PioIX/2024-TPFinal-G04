@@ -10,6 +10,7 @@ import Naval from "@/components/sgame";
 import Simon from "@/components/tgame";
 import Morse from "@/components/cuartogame";
 import Laberinto from "@/components/laberinto";
+import Traducir from "@/components/traducir";
 
 
 export default function Game() {
@@ -58,6 +59,7 @@ export default function Game() {
         <Button onClick={user2} text="2" />
         <div className={styles.cajitas}>
           <Laberinto className={styles.juegos}></Laberinto>
+          <Traducir></Traducir>
         </div>
         </div>
 

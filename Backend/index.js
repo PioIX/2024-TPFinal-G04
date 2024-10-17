@@ -159,6 +159,11 @@ io.on("connection", (socket) => {
 	socket.on('labwin', data => {
 		io.to(req.session.room).emit('newLabwin', { room: req.session.room, message: data });
 	});
+	socket.on('traduccion', data => {
+		io.to(req.session.room).emit('newTraduccion', { room: req.session.room, message: data });
+	});
+	
+	
     /**
      socket.on('newMessage', (data)=>{
      console.log("Message: ", data)
