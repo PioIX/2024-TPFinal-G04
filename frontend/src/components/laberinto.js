@@ -3,7 +3,6 @@ import Button from "@/components/button";
 import { useState, useEffect } from "react";
 import styles from "./Laberinto.module.css"
 import { useSocket } from "@/hooks/useSocket";
-
 function getRandomInt(min, max) {
     const minCeiled = Math.ceil(min);
     const maxFloored = Math.floor(max);
