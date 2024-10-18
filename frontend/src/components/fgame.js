@@ -102,6 +102,7 @@ export default function Numbers(props) {
         <div className={styles.all}>
         <div className={styles.todo}>
         <div>
+
             {number1 != 0 && <h1 className={styles.cuenta}>{number1} + {number2} * {number3}</h1>}
             <div >
                 <div className={styles.sumas}>
