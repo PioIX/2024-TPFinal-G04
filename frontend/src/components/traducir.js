@@ -46,7 +46,8 @@ export default function Traducir(props) {
     };
 
     function letraANumero(){
-        setNumeroletra("")
+        setNumeroletra("") 
+        if(suelegida!=undefined){
         for (let index = 0; index < suelegida.length; index++) {
             if(suelegida[index]=="a"){
                 setNumeroletra(numeroletra+="1 ")
@@ -129,7 +130,7 @@ export default function Traducir(props) {
             if(suelegida[index]=="z"){
                 setNumeroletra(numeroletra+="27 ")
             }
-            
+        }
         }
     }
 

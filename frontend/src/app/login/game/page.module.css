@@ -6,27 +6,69 @@
 .all{
   width: 100%;
   height: 100%;
-
   background-image: url(../../../../public/game_background.png);
   background-size: cover;
   background-repeat: no-repeat;
+  
 
 }
 
 .cajitas{
-  padding-top: 2.6%;
+  padding-top: 3.9%;
   display: grid;
   grid-template-columns: repeat(3, 295px);
-  grid-template-rows: repeat(3, 290px);
+  grid-template-rows: repeat(2, 290px);
 
 
   grid-column-gap:  100px;
   grid-row-gap: 100px;
 
-  padding-left: 17.5%;
+  padding-left: 17.7%;
   padding-right: 11%;
   margin: 0 0 0 0;
 
 
 }
 
+.voltear{
+  position: absolute;
+  border: 2px solid #555555;
+  font-size: 30px;
+  background-color: #d6d6d6;
+  color: #555555;
+  font-family: "lucida console";
+  cursor: pointer;
+  transition-duration: 0.2s;
+}
+.voltear:hover {
+  background: #4b4b4b;
+  cursor: pointer;
+  color: #d6d6d6;
+  
+}
+.voltearcreo{
+  position: absolute;
+  left: 154px;
+  border: 2px solid #555555;
+  font-size: 30px;
+  background-color: #d6d6d6;
+  color: #555555;
+  font-family: "lucida console";
+}
+.voltearcreo2{
+  position: absolute;
+  left: 190px;
+  border: 2px solid #555555;
+  font-size: 30px;
+  background-color: #d6d6d6;
+  color: #555555;
+  font-family: "lucida console";
+}
+.voltearcreo:hover {
+  background: #4b4b4b;
+  cursor: pointer;
+}
+.voltearcreo2:hover {
+  background: #4b4b4b;
+  cursor: pointer;
+}
