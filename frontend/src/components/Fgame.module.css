@@ -1,18 +1,97 @@
 .display{
-   display: none;
-  }
+ display: none;
+}
 .all{
-    width: 100%;
-    height: 100%;
-    margin-top: 13px;
-  }
+  width: 100%;
+  height: 100%;
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
   
-  .todo{
-	display: flex;
-	box-sizing: border-box;
-	justify-content: center;
-	align-items: center;
-	margin: 0 0 0 0;
-	font-size: 1rem;
-	font-size: 16px;
-  }
+.todo{
+display: flex;
+box-sizing: border-box;
+justify-content: center;
+align-items: center;
+margin: 0 0 0 0;
+
+}
+
+.numeros, .sumas, .restas{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+}
+
+.suma, .resta{
+  display: inline-block;
+  font-weight: bold;
+  background: rgb(158, 160, 163);
+  color: rgb(0, 0, 0);
+  width: 88px;
+  font-size: 20px;
+  font-weight: 900;
+  cursor: pointer;
+  transition-duration: 0.2s;
+  margin-left: 5px;
+  margin-right: 5px;
+  border: 4px solid #161616;
+}
+
+.suma:hover, .resta:hover{
+	background: #818181;
+	cursor: pointer;
+}
+.numero2, .numero{
+  font-size: 90px;
+  font-family: "lucida console";
+  border: 4px solid #161616;
+  background: rgb(158, 160, 163);
+  color: rgb(0, 0, 0);
+  text-align: center;
+  width: 80px;
+  height: 80px;
+  margin: 0px;
+  margin-left: 5px;
+  margin-right: 5px;
+  
+
+
+}
+
+ .check{
+  display: inline-block;
+  font-weight: bold;
+  border-radius: 7px;
+	background-color: #9b9b9b;
+  color: rgb(0, 0, 0);
+  width: 90px;
+  height: 30px;
+  font-weight: 600;
+  font-family: "lucida consol";
+  font-size: 20px;
+  cursor: pointer;
+  transition-duration: 0.2s;
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-top: 7px;
+  border: 2px solid #161616;
+}
+.check:hover{
+	background: #696969;
+}
+
+.cuenta{
+  color:rgb(172, 172, 172);
+  -webkit-text-stroke: 2px rgb(31, 31, 31);
+  font-family: "lucida consol";
+  font-size: 50px;
+  margin-bottom: 1px;
+  margin-top: 1px;
+  
+}

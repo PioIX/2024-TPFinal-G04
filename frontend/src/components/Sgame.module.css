@@ -1,4 +1,4 @@
-.all{
+ .all{
 	width: 100%;
 	height: 100%;
 	background-size: cover;
@@ -11,42 +11,51 @@
 	box-sizing: border-box;
 	justify-content: center;
 	align-items: center;
-	margin: 0 0 0 0;
-	padding-top: 15%;
+	padding-top: 13.85%;
 	padding-bottom: 13%;
 	font-size: 1rem;
 	font-size: 16px;
+	
+	
   }
 
 .td {
 	position: relative;
-	width: 29px;
-	height: 29px;
-	border: 2px solid #152C59;
-	border-radius: 15px;
-	
+	width: 32px;
+	height: 28px;
+	border: 3px solid #000000;
+	border-radius: 10px;
+	background-color: #656566;
+
 }
 
 .td:hover {
-	background: #538daa;
+	background: #4b4b4b;
+	cursor: pointer;
 }
+.td:active {
+	color: #1a1a1a;
+	transform: translateY(2px);
+  }
 
-
-
-
- 
 .selected {
 	position: relative;
 	width: 20px;
 	height: 20px;
-	border: 2px solid #152C59;
-	border-radius: 15px;
+	border: 3px solid #161616;
+	border-radius: 10px;
+	background-color: #656566;
+
 }
 
 .selected:hover {
-	background: #c90e0e;
+	background: #8f0909;
+	cursor: pointer;
 }
-
+.aselected:active {
+	color: #571616;
+	transform: translateY(2px);
+  }
 
 
 
@@ -54,28 +63,40 @@
 	position: relative;
 	width: 20px;
 	height: 20px;
-	border: 2px solid #152C59;
+	border: 3px solid #161616;
 	border-radius: 15px;
-	background-color: #1c9225;
+	background-color: #724949;
 	
 }
 
 .point:hover {
-	background: #1c9225;
+	background-color: #4b2e2e;
+	cursor: pointer;
 }
-
+.hover:active {
+	color: #2e2929;
+	transform: translateY(2px);
+  }
  .pointselected {
 	position: relative;
 	width: 20px;
 	height: 20px;
-	border: 2px solid #152C59;
+	border: 3px solid #161616;
 	border-radius: 15px;
-	background-color: #1c9225;
+	background-color: #724949;
 	
 }
 
 .pointselected:hover {
-	background: #c90e0e;
+	background: #8f0909;
+	cursor: pointer;
 }
 
+.pointselected:active {
+	color: #1a1a1a;
+	transform: translateY(2px);
+  }
 
+.fondo{
+background-color: #2b27277a;
+}

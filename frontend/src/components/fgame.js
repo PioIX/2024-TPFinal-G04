@@ -102,14 +102,22 @@ export default function Numbers(props) {
         <div className={styles.all}>
         <div className={styles.todo}>
         <div>
-            {number1 != 0 && <h1 className="cuenta">{number1}+{number2}*{number3}</h1>}
-            <Button className="sumaresta" onClick={suma1} text="+" />
-            <Button className="sumaresta" onClick={resta1} text="-" />
-            <h1 className="numero">{num1}</h1>
-            <Button className="sumaresta" onClick={suma2} text="+" />
-            <Button className="sumaresta" onClick={resta2} text="-" />
-            <h1 className="numero">{num2}</h1>
-            <Button disabled={false} onClick={check} text="Check"  id="sumayresta" disable/>
+
+            {number1 != 0 && <h1 className={styles.cuenta}>{number1} + {number2} * {number3}</h1>}
+            <div >
+                <div className={styles.sumas}>
+                <Button className={styles.suma} onClick={suma1} text="+" />
+                <Button className={styles.suma} onClick={suma2} text="+" />
+                </div>
+                <div className={styles.numeros}>
+                <h1 className={styles.numero}>{num1}</h1>
+                <h1 className={styles.numero2}>{num2}</h1>
+                </div>
+                <div className={styles.restas}>
+                <Button className={styles.resta} onClick={resta1} text="-" />
+                <Button className={styles.resta} onClick={resta2} text="-" /></div>
+                <Button className={styles.check} disabled={false} onClick={check} text="CHECK"  id="sumayresta" disable/>
+            </div>
             </div>
             </div>
             </div>

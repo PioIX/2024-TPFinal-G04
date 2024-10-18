@@ -37,16 +37,15 @@ export default function Game() {
           [styles.display]: !page
         })}>
           
-          <Button onClick={changeScreen} text=">" />
+          <Button className={styles.voltear} onClick={changeScreen} text="Voltear" />
           <div>
 
           <div className={styles.cajitas}>
           <Naval className={styles.juegos}></Naval>
-          <Numbers className={styles.juegos}></Numbers>
+          <Numbers className={styles.numbersgame}></Numbers>
           <Simon className={styles.juegos}></Simon>
           <Morse className={styles.juegos}></Morse>
           </div>
-
           </div>
         </div>
 
@@ -54,16 +53,16 @@ export default function Game() {
           [styles.grid]: true,
           [styles.display]: page
         })}>
-
+        <Button className={styles.voltear} onClick={changeScreen} text="Voltear" />
+        <Button className={styles.voltearcreo} onClick={user1} text="1" />
+        <Button className={styles.voltearcreo2} onClick={user2} text="2" />
         <div className={styles.cajitas}>
           <Laberinto className={styles.juegos}></Laberinto>
           <Traducir></Traducir>
         </div>
         </div>
 
-        <Button onClick={changeScreen} text="<" />
-        <Button onClick={user1} text="1" />
-        <Button onClick={user2} text="2" />
+
       </main>
       </body>
       </html>

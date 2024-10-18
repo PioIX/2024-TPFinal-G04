@@ -26,7 +26,7 @@ const server = app.listen(port, function(){
 const io = require('socket.io')(server, {
 	cors: {
 		// IMPORTANTE: REVISAR PUERTO DEL FRONTEND
-		origin: "http://localhost:3000",            	// Permitir el origen localhost:3000
+		origin: "http://localhost:3000",            	// Permitir el origen localhost:3000 y 3001
 		methods: ["GET", "POST", "PUT", "DELETE"],  	// Métodos permitidos
 		credentials: true                           	// Habilitar el envío de cookies
 	}
