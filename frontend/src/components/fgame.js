@@ -84,10 +84,10 @@ export default function Numbers(props) {
         let auxtotal = String(num1) + String(num2)
         setTotal(auxtotal)
         if (String(auxtotal) == String(localStorage.getItem("respuestaSuya"))) {
-            setText("bien")
+            console.log("bien")
             document.getElementById("sumayresta").disabled=true
         } else {
-            setText("mal")
+            console.log("mal")
         }
     }
 
@@ -110,8 +110,6 @@ export default function Numbers(props) {
             <Button className="sumaresta" onClick={resta2} text="-" />
             <h1 className="numero">{num2}</h1>
             <Button disabled={false} onClick={check} text="Check"  id="sumayresta" disable/>
-            <h1 className="numero">{text}</h1>
-            <h1 className="numero">{total}</h1>
             </div>
             </div>
             </div>
