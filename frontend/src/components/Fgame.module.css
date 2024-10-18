@@ -4,7 +4,7 @@
 .all{
   width: 100%;
   height: 100%;
-  margin-top: 20px;
+  margin-top: 30px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -31,31 +31,36 @@ margin: 0 0 0 0;
 .suma, .resta{
   display: inline-block;
   font-weight: bold;
-  border-radius: 7px;
   background: rgb(158, 160, 163);
   color: rgb(0, 0, 0);
-  width: 80px;
+  width: 88px;
+  font-size: 20px;
   font-weight: 900;
   cursor: pointer;
   transition-duration: 0.2s;
   margin-left: 5px;
   margin-right: 5px;
-  border: 2px solid #161616;
+  border: 4px solid #161616;
 }
+
 .suma:hover, .resta:hover{
-  background-color: #5e5e5e;
+	background: #818181;
+	cursor: pointer;
 }
 .numero2, .numero{
   font-size: 90px;
   font-family: "lucida console";
   border: 4px solid #161616;
   background: rgb(158, 160, 163);
+  color: rgb(0, 0, 0);
   text-align: center;
   width: 80px;
   height: 80px;
+  margin: 0px;
   margin-left: 5px;
   margin-right: 5px;
-  margin: 7px;
+  
+
 
 }
 
@@ -63,17 +68,30 @@ margin: 0 0 0 0;
   display: inline-block;
   font-weight: bold;
   border-radius: 7px;
-  background: rgb(158, 160, 163);
+	background-color: #9b9b9b;
   color: rgb(0, 0, 0);
-  width: 80px;
-  font-weight: 700;
+  width: 90px;
+  height: 30px;
+  font-weight: 600;
+  font-family: "lucida consol";
+  font-size: 20px;
   cursor: pointer;
   transition-duration: 0.2s;
   margin-left: 5px;
   margin-right: 5px;
-  margin-top: 15px;
+  margin-top: 7px;
   border: 2px solid #161616;
 }
 .check:hover{
-  background-color: #5e5e5e;
+	background: #696969;
+}
+
+.cuenta{
+  color:rgb(172, 172, 172);
+  -webkit-text-stroke: 2px rgb(31, 31, 31);
+  font-family: "lucida consol";
+  font-size: 50px;
+  margin-bottom: 1px;
+  margin-top: 1px;
+  
 }

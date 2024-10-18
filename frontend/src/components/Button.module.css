@@ -1,7 +1,15 @@
 .display{
 	display: flex;
-	justify-content: center;
 
-	
+	position: relative;
 
-  }
+	border: 3px solid #000000;
+	border-radius: 10px;
+	background-color: #656566;
+
+}
+
+.display:hover {
+	background: #4b4b4b;
+	cursor: pointer;
+}
