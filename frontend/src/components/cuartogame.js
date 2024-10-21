@@ -56,14 +56,14 @@ export default function Morse(props) {
 		localStorage.setItem("miMorse", secuencia);
         if (!socket) return;
 		socket.on('newMorse', (data)=>{
-            if (data.message.position != localStorage.getItem("miMorse")) { 
+            if (data.message.user != localStorage.getItem("userId")) { 
                 localStorage.setItem("suMorse", data.message.position);
             }
           });
 
         if (!started) {
             socket.emit("joinRoom",{room: "Kaboom"})
-            socket.emit("morse",{position: secuencia})
+            socket.emit("morse",{position: secuencia,user:localStorage.getItem("userId")})
             started=true
         }
     }, [socket, isConnected])

@@ -39,19 +39,19 @@ export default function Naval(props) {
 		setPosition(getRandoms());
 	}, [])
 
-
 	useEffect(() => {
 		localStorage.setItem("misBombas", position);
         if (!socket) return;
 		socket.on('newBombas', (data)=>{
-            if (data.message.position != localStorage.getItem("misBombas")) { 
+            if (data.message.user != localStorage.getItem("userId")) { 
                 localStorage.setItem("susBombas", data.message.position);
             }
           });
 
         if (!started) {
             socket.emit("joinRoom",{room: "Kaboom"})
-            socket.emit("bombas",{position: position})
+            socket.emit("bombas",{position: position
+				,user:localStorage.getItem("userId")})
             started=true
         }
     }, [socket, isConnected])

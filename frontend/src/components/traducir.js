@@ -21,12 +21,11 @@ export default function Traducir(props) {
     const { socket, isConnected } = useSocket();
     let started = false;
     let a = 1
-
     useEffect(() => {
 		localStorage.setItem("miTraduccion", elegida);
         if (!socket) return;
 		socket.on('newTraduccion', (data)=>{
-            if (data.message.position != localStorage.getItem("miTraduccion")) { 
+            if (data.message.user != localStorage.getItem("userId")) { 
                 localStorage.setItem("suTraduccion", data.message.position);
                 setSuelegida("")
                 setSuelegida(data.message.position);
@@ -35,7 +34,8 @@ export default function Traducir(props) {
 
         if (!started) {
             socket.emit("joinRoom",{room: "Kaboom"})
-            socket.emit("traduccion",{position: elegida})
+            socket.emit("traduccion",{position: elegida
+                ,user:localStorage.getItem("userId")})
             started=true
         }
     }, [socket, isConnected])
