@@ -22,6 +22,7 @@ export default function Simon(props) {
     const { socket, isConnected } = useSocket();
     let started = false;
 
+
     useEffect(() => {
         if (localStorage.getItem("userId") == 1) {
             localStorage.setItem("miSimon", secuencia);

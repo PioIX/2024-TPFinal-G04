@@ -162,6 +162,9 @@ io.on("connection", (socket) => {
 	socket.on('traduccion', data => {
 		io.to(req.session.room).emit('newTraduccion', { room: req.session.room, message: data });
 	});
+	socket.on('contrasena', data => {
+		io.to(req.session.room).emit('newContrasena', { room: req.session.room, message: data });
+	});
 	
 	
     /**

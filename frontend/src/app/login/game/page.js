@@ -11,7 +11,7 @@ import Simon from "@/components/tgame";
 import Morse from "@/components/cuartogame";
 import Laberinto from "@/components/laberinto";
 import Traducir from "@/components/traducir";
-
+import Contraseña from "@/components/contrasena";
 
 export default function Game() {
 
@@ -59,6 +59,7 @@ export default function Game() {
         <div className={styles.cajitas}>
           <Laberinto className={styles.juegos}></Laberinto>
           <Traducir></Traducir>
+          <Contraseña></Contraseña>
         </div>
         </div>
 
