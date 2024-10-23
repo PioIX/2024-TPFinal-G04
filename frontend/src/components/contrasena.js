@@ -15,7 +15,7 @@ function getRandomInt(min, max) {
 export default function Contraseña(props) {
     var [palabra, setPalabra] = useState(["Bomba", "Morir", "Clave", "Llave", "Cable", "Boton", "Luces", "Genio", "Juego", "Tecla", "Fuego", "Grupo", "Corte", "Ruina", "Habla", "Letra", "Reloj", "Grito", "Cobre", "Plata", "Metal", "Hueso", "Marca", "Lento", "Debil", "Dudas", "Preso", "Dolor", "Matar", "Muera", "Largo", "Corto", "Turno"])
     var [elegida, setElegida] = useState("")
-    var [lista, setLista] = useState([["a"], ["a"], ["a"], ["a"], ["a"]])
+    var [lista, setLista] = useState([[], [], [], [], []])
     var [valor, setValor] = useState("")
     var [positions, setPositions] = useState(0)
     var [positions2, setPositions2] = useState(0)

@@ -168,6 +168,9 @@ io.on("connection", (socket) => {
 	socket.on('devolucion', data => {
 		io.to(req.session.room).emit('newDevolucion', { room: req.session.room, message: data });
 	});
+	socket.on('flechas', data => {
+		io.to(req.session.room).emit('newFlechas', { room: req.session.room, message: data });
+	});
 	
 	
     /**
