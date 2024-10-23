@@ -248,7 +248,7 @@ export default function Traducir(props) {
         <>
             <div>
                 <Button text="Check" onClick={checkTrad}></Button>
-                <input onChange={(event) => handleInputChange(event)} id="myInput" maxlength="5"  />
+                <input onChange={(event) => handleInputChange(event)} id="myInput" maxLength="5"  />
                 <h1>{numeroletra}</h1>
                 <h1>A=1</h1>
             </div>
