@@ -11,8 +11,9 @@ function getRandomInt(min, max) {
 	return Math.floor(Math.random() * (maxFloored - minCeiled) + minCeiled);
 }
 export default function Flechas(props) {
-    var [arrows, setArrows] = useState([[]]);
+    var [arrows, setArrows] = useState([[[]]]);
 	var [timer,setTimer]= useState()
+	var [flechitas,setFlechitas]= useState()
 	var [player,setPlayer]=useState()
     const { socket, isConnected } = useSocket();
     let started = false;
@@ -50,19 +51,20 @@ export default function Flechas(props) {
             setArrows([[definirFlecha()],[definirFlecha()],[definirFlecha()],[definirFlecha()],[definirFlecha()]])
         }
         if (localStorage.getItem("userId") == 2 && localStorage.getItem("miFlecha") != undefined) {
-            if (JSON.parse(localStorage.getItem("miFlecha"))[0].length > 3) {
+            if (JSON.parse(localStorage.getItem("miFlecha"))[0][0].length > 3) {
                 setArrows(JSON.parse(localStorage.getItem("miFlecha")))
             }
         }
     }, [])
     useEffect(() => {
-        if (localStorage.getItem("userId") == 1 && arrows[0].length>3) {
+        if (localStorage.getItem("userId") == 1 && arrows[0][0].length>3) {
             socket.emit("flechas", { flechas: arrows})
         }
+        flechaNumero(0)
     }, [arrows])
     
     function definirFlecha(){
-        var codigo = [getRandomInt(1,5),getRandomInt(1,5),getRandomInt(1,5),getRandomInt(1,5),getRandomInt(1,5),getRandomInt(1,5)]
+        var codigo = [getRandomInt(1,5),getRandomInt(1,5),getRandomInt(1,5),getRandomInt(1,5),getRandomInt(1,5)]
         var one=0
         var two=0
         var three=0
@@ -76,8 +78,8 @@ export default function Flechas(props) {
                 three++
             }else{four++}
         }
-        while(one>4 || two>4){
-            var codigo = [getRandomInt(1,5),getRandomInt(1,5),getRandomInt(1,5),getRandomInt(1,5),getRandomInt(1,5),getRandomInt(1,5)]
+        while(one>2 || two>2|| three>2|| four>2){
+            var codigo = [getRandomInt(1,5),getRandomInt(1,5),getRandomInt(1,5),getRandomInt(1,5),getRandomInt(1,5)]
             var one=0
             var two=0
             var three=0
@@ -95,7 +97,22 @@ export default function Flechas(props) {
         return codigo
     }
 
-
+    function flechaNumero(capa){
+        var a=""
+        for (let index = 0; index < 5; index++) {
+            const element = arrows[0][capa][index];
+            if (element==1) {
+                a+="↑"
+            }else if (element==2) {
+                a+="↓"
+            }if (element==3) {
+                a+="→"
+            }if (element==4) {
+                a+="←"
+            }     
+        }
+        setFlechitas(()=>a)
+    }
 
     function revelar(){
         console.log(arrows)
@@ -113,6 +130,7 @@ export default function Flechas(props) {
             <div>
                 <Button text="revelar" onClick={revelar}></Button>
                 <h1>{arrows[0][0]}</h1>
+                <h1>{flechitas}</h1>
             </div>
     
         )
