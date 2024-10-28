@@ -39,27 +39,40 @@ export default function Naval(props) {
 		setPosition(getRandoms());
 	}, [])
 
-
 	useEffect(() => {
 		localStorage.setItem("misBombas", position);
         if (!socket) return;
 		socket.on('newBombas', (data)=>{
-            if (data.message.position != localStorage.getItem("misBombas")) { 
+            if (data.message.user != localStorage.getItem("userId")) { 
                 localStorage.setItem("susBombas", data.message.position);
             }
           });
 
         if (!started) {
             socket.emit("joinRoom",{room: "Kaboom"})
-            socket.emit("bombas",{position: position})
+            socket.emit("bombas",{position: position
+				,user:localStorage.getItem("userId")})
             started=true
         }
     }, [socket, isConnected])
 
 	const manejarClick = (e) => {
 		// `e.target` es el elemento que fue clicado
+		var secuence=[]
+		var num=""
+        for (let index = 0; index < localStorage.getItem("susBombas").length; index++) {
+            if (localStorage.getItem("susBombas")[index]!=",") {
+                num+=localStorage.getItem("susBombas")[index]
+				if (index==localStorage.getItem("susBombas").length-1) {
+					secuence.push(parseInt(num))
+				}
+            }else{
+				secuence.push(parseInt(num))
+				num=""
+			}
+        }
 		//e.target.setAttribute('class', 'Sgame_selected__hF5Ep')//Sgame_td__fzQJ2
-		if (localStorage.getItem("susBombas").includes(Number(e.target.id)) && bombs.includes(e.target.id) == false && localStorage.getItem("misBombas").includes(Number(e.target.id))){
+		if (secuence.includes(Number(e.target.id)) && bombs.includes(e.target.id) == false && localStorage.getItem("misBombas").includes(Number(e.target.id))){
 			e.target.setAttribute('class', 'Sgame_pointselected__U2gv6')//Sgame_td__fzQJ2
 			var a = bombs
 			a.push(e.target.id)
@@ -67,7 +80,7 @@ export default function Naval(props) {
 			if (bombs.length == 5) {
 				console.log("ganaste")
 			}
-		}else if (localStorage.getItem("susBombas").includes(Number(e.target.id)) && bombs.includes(e.target.id) == false && localStorage.getItem("misBombas").includes(Number(e.target.id))==false){
+		}else if (secuence.includes(Number(e.target.id)) && bombs.includes(e.target.id) == false && localStorage.getItem("misBombas").includes(Number(e.target.id))==false){
 			e.target.setAttribute('class', 'Sgame_point__8L8s3')//Sgame_td__fzQJ2
 			var a = bombs
 			a.push(e.target.id)
@@ -75,9 +88,9 @@ export default function Naval(props) {
 			if (bombs.length == 5) {
 				console.log("ganaste")
 			}
-		} else if (localStorage.getItem("susBombas").includes(Number(e.target.id)) && bombs.includes(e.target.id)) {
+		} else if (secuence.includes(Number(e.target.id)) && bombs.includes(e.target.id)) {
 
-		} else if (localStorage.getItem("susBombas").includes(Number(e.target.id))==false && bombs.length < 5){
+		} else if (secuence.includes(Number(e.target.id))==false && bombs.length < 5){
 			console.log("error")
 		}
 	};

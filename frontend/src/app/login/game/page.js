@@ -11,7 +11,8 @@ import Simon from "@/components/tgame";
 import Morse from "@/components/cuartogame";
 import Laberinto from "@/components/laberinto";
 import Traducir from "@/components/traducir";
-
+import Contraseña from "@/components/contrasena";
+import Flechas from "@/components/flechas";
 
 export default function Game() {
 
@@ -28,44 +29,46 @@ export default function Game() {
     localStorage.setItem("userId", 2);
   }
   return (
-      <html className={styles.all}>
-      
+    <html className={styles.all}>
+
       <body>
-      <main className={styles.main}>
-        <div className={clsx({
-          [styles.grid]: true,
-          [styles.display]: !page
-        })}>
-          
-          <Button className={styles.voltear} onClick={changeScreen} text="Voltear" />
-          <div>
+        <main className={styles.main}>
+          <div className={clsx({
+            [styles.grid]: true,
+            [styles.display]: !page
+          })}>
 
-          <div className={styles.cajitas}>
-          <Naval className={styles.juegos}></Naval>
-          <Numbers className={styles.numbersgame}></Numbers>
-          <Simon className={styles.juegos}></Simon>
-          <Morse className={styles.juegos}></Morse>
+            <Button className={styles.voltear} onClick={changeScreen} text="Voltear" />
+            <div>
+
+              <div className={styles.cajitas}>
+                <Naval className={styles.juegos}></Naval>
+                <Numbers className={styles.numbersgame}></Numbers>
+                <Simon className={styles.juegos}></Simon>
+                <Morse className={styles.juegos}></Morse>
+              </div>
+            </div>
           </div>
+
+          <div className={clsx({
+            [styles.grid]: true,
+            [styles.display]: page
+          })}>
+            <Button className={styles.voltear} onClick={changeScreen} text="Voltear" />
+            <Button className={styles.voltearcreo} onClick={user1} text="1" />
+            <Button className={styles.voltearcreo2} onClick={user2} text="2" />
+            <div className={styles.cajitas}>
+              <Laberinto className={styles.juegos}></Laberinto>
+              <Traducir></Traducir>
+              <Contraseña></Contraseña>
+              <Flechas></Flechas>
+            </div>
           </div>
-        </div>
-
-        <div className={clsx({
-          [styles.grid]: true,
-          [styles.display]: page
-        })}>
-        <Button className={styles.voltear} onClick={changeScreen} text="Voltear" />
-        <Button className={styles.voltearcreo} onClick={user1} text="1" />
-        <Button className={styles.voltearcreo2} onClick={user2} text="2" />
-        <div className={styles.cajitas}>
-          <Laberinto className={styles.juegos}></Laberinto>
-          <Traducir></Traducir>
-        </div>
-        </div>
 
 
-      </main>
+        </main>
       </body>
-      </html>
+    </html>
 
   )
 }

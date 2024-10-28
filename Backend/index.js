@@ -162,6 +162,21 @@ io.on("connection", (socket) => {
 	socket.on('traduccion', data => {
 		io.to(req.session.room).emit('newTraduccion', { room: req.session.room, message: data });
 	});
+	socket.on('contrasena', data => {
+		io.to(req.session.room).emit('newContrasena', { room: req.session.room, message: data });
+	});
+	socket.on('devolucion', data => {
+		io.to(req.session.room).emit('newDevolucion', { room: req.session.room, message: data });
+	});
+	socket.on('flechas', data => {
+		io.to(req.session.room).emit('newFlechas', { room: req.session.room, message: data });
+	});
+	socket.on('startflechas', data => {
+		io.to(req.session.room).emit('newStartFlechas', { room: req.session.room, message: data });
+	});
+	socket.on('winflechas', data => {
+		io.to(req.session.room).emit('newWinflechas', { room: req.session.room, message: data });
+	});
 	
 	
     /**

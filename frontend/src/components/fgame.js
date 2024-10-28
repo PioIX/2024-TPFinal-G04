@@ -26,21 +26,23 @@ export default function Numbers(props) {
     /*function handleClick(){
         socket.emit("numeros",{numero: 8})
       }*/
-
+        
       //recibe
       useEffect(() => {
         let auxtotal2 = (number2 * number3) + number1
         localStorage.setItem("respuestaMia", auxtotal2);
         if (!socket) return;
         socket.on('newNumero', (data)=>{
-            if (data.message.numero != localStorage.getItem("respuestaMia")) { 
+            if (data.message.user != localStorage.getItem("userId")) { 
                 localStorage.setItem("respuestaSuya", data.message.numero);
             }
           });
 
         if (!started) {
             socket.emit("joinRoom",{room: "Kaboom"})
-            socket.emit("numeros",{numero: auxtotal2})
+            socket.emit("numeros",{numero: auxtotal2,
+                user:localStorage.getItem("userId")
+            })
             started=true
         }
     }, [socket, isConnected])
@@ -102,7 +104,8 @@ export default function Numbers(props) {
         <div className={styles.all}>
         <div className={styles.todo}>
         <div>
-            {number1 != 0 && <h1 className={styles.cuenta}>{number1} + {number2} * {number3}</h1>}
+
+            {number1 != 0 && <h1 className={styles.cuenta}>{number1}+{number2}x{number3}</h1>}
             <div >
                 <div className={styles.sumas}>
                 <Button className={styles.suma} onClick={suma1} text="+" />

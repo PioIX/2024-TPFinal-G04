@@ -22,6 +22,7 @@ export default function Simon(props) {
     const { socket, isConnected } = useSocket();
     let started = false;
 
+
     useEffect(() => {
         if (localStorage.getItem("userId") == 1) {
             localStorage.setItem("miSimon", secuencia);
@@ -246,9 +247,10 @@ export default function Simon(props) {
         <div className={styles.all}>
         <div className={styles.todo}>
         <div className={styles.child}>
+            <Button className={styles.start} onClick={game} text="Start" id="lasecuencia"></Button>
             <Image src={luz} alt="simon" width={300} height={240}></Image>
             <br></br>
-            <Button className={styles.botones} onClick={game} text="Start" id="lasecuencia"></Button>
+
             <Button className={styles.botones} id="s1" onClick={verifySequence} text="Azul"></Button>
             <Button className={styles.botones} id="s2" onClick={verifySequence} text="Amarillo"></Button>
             <Button className={styles.botones} id="s3" onClick={verifySequence} text="Verde"></Button>

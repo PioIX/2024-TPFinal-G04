@@ -166,9 +166,9 @@ export default function Laberinto(props) {
 		
 		return(
 			<div id="board">
-				<div id="messageArea">
-					<table >
-						<tbody>
+				<div id="messageArea" className={styles.all}>
+					<table className={styles.todo}>
+						<tbody className={styles.fondo}>
 							<tr>
 								
 	
