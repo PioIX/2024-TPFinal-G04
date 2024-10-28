@@ -42,6 +42,7 @@ export default function Traducir(props) {
 
     const handleInputChange = (event) => {
         document.getElementById("myInput").value = document.getElementById("myInput").value.replace(/[^a-z]/g, '');
+        //console.log(valor)
         setValor(document.getElementById("myInput").value)
     };
 
@@ -240,6 +241,8 @@ export default function Traducir(props) {
     function checkTrad(){
         if (valor==suelegida) {
             console.log("ganaste")
+            document.getElementById("BotonTraduccion").disabled=true
+            document.getElementById("myInput").disabled=true
         }else{
             console.log("perdiste")
         }
@@ -247,8 +250,8 @@ export default function Traducir(props) {
     return(
         <>
             <div>
-                <Button text="Check" onClick={checkTrad}></Button>
-                <input onChange={(event) => handleInputChange(event)} id="myInput" maxLength="5"  />
+                <Button id="BotonTraduccion" text="Check" onClick={checkTrad}></Button>
+                <input  onChange={(event) => handleInputChange(event)} id="myInput" maxLength="5"  />
                 <h1>{numeroletra}</h1>
                 <h1>A=1</h1>
             </div>
