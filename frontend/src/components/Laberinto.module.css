@@ -26,29 +26,21 @@
 	width: 32px;
 	height: 28px;
 	border: 3px solid #000000;
-	border-radius: 10px;
+	border-radius: 4px;
 	background-color: #a7a7a7;
 
 		
 }
 
-.td:hover {
-	background: #4b4b4b;
-	cursor: pointer;
-}
-.td:active {
-	color: #1a1a1a;
-	transform: translateY(2px);
-  }
 
-  .wall {
-	background-color: #00ff0d;
+
+.wall {
+	background-color: #8a4040;
 	position: relative;
 	width: 32px;
 	height: 28px;
 	border: 3px solid #000000;
-	border-radius: 10px;
-
+	border-radius: 4px;
 }
 
  .point {
@@ -63,11 +55,11 @@
 
 .point:hover {
 	background-color: #4b2e2e;
-	cursor: pointer;
+
 }
 .hover:active {
 	color: #2e2929;
-	transform: translateY(2px);
+
   }
  .pointselected {
 	position: relative;

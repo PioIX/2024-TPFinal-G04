@@ -25,12 +25,12 @@
 	height: 28px;
 	border: 3px solid #292929;
 	border-radius: 10px;
-	background-color: #656566;
+	background-color: #a1a1a1;
 
 }
 
 .td:hover {
-	background: #4b4b4b;
+	background: #747474;
 	cursor: pointer;
 	transform: translateY(1px);
 }
@@ -45,7 +45,7 @@
 	height: 20px;
 	border: 3px solid #292929;
 	border-radius: 10px;
-	background-color: #656566;
+	background-color: #a1a1a1;
 
 }
 
@@ -65,9 +65,9 @@
 	position: relative;
 	width: 20px;
 	height: 20px;
-	border: 3px solid #292929;
+	border: 3px solid #000000;
 	border-radius: 10px;
-	background-color: #724949;
+	background-color: #5c1212;
 	
 }
 
@@ -84,9 +84,9 @@
 	position: relative;
 	width: 20px;
 	height: 20px;
-	border: 3px solid #292929;
+	border: 3px solid #000000;
 	border-radius: 10px;
-	background-color: #724949;
+	background-color: #491010;
 	
 }
 

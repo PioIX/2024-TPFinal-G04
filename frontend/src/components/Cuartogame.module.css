@@ -6,19 +6,18 @@
 	justify-content: center;
 	align-items: center;
 	text-align: center;
-  }
+}
 	
-  .todo{
+.todo{
   display: flex;
   box-sizing: border-box;
   justify-content: center;
   align-items: center;
-  margin: 0 0 0 0;
-  
-  }
+  margin: 0 0 0 0; 
+}
 
 
-  .punto, .raya, .codigo{
+.punto, .raya, .codigo{
 	display: inline-block;
 	background: rgb(158, 160, 163);
 	color: rgb(0, 0, 0);
@@ -30,18 +29,34 @@
 	margin-left: 5px;
 	margin-right: 5px;
 	border: 2px solid #3a3a3a;
-  }
+	border-radius: 4px;
+}
   
-  .punto:hover, .raya:hover, .codigo:hover{
-	  background: #818181;
-	  cursor: pointer;
-  }
-	
-	.botones:hover, .start:hover {
-	  background: #818181;
-	  cursor: pointer;
-	  transform: translateY(0.5px);
-  }
+.punto:hover, .raya:hover, .codigo:hover{
+  background: #818181;
+  cursor: pointer;
+  transform: translateY(0.5px);;
+}
+.punto:active, .raya:active, .codigo:active{
+	background: #818181;
+	cursor: pointer;
+	transform: translateY(0.1px);;
+}
 
-  .botones:active, .start:active {
-	transform: translateY(1px);}
+.botones:hover, .start:hover {
+	background: #818181;
+	cursor: pointer;
+	transform: translateY(0.5px);
+}
+
+.botones:active, .start:active {
+	transform: translateY(1px);
+}
+
+.respuesta{
+	position: absolute;
+	left:385px;
+	font-weight: 900;
+	font-family: "lucida console";
+	bottom: 140px;
+}
