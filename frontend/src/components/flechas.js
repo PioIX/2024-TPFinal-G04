@@ -15,11 +15,12 @@ export default function Flechas(props) {
     var [timer, setTimer] = useState()
     var [flechitas, setFlechitas] = useState()
     var [secuencia, setSecuencia] = useState("")
-    var [capa, setCapa] = useState(1)
+    var [capa, setCapa] = useState(0)
     var [player, setPlayer] = useState()
     var [comFlecha1, setComFlecha1] = useState("")
     var [comFlecha2, setComFlecha2] = useState("")
     var [comFlecha3, setComFlecha3] = useState("")
+    var [ganaste, setGanaste] = useState(false)
     const { socket, isConnected } = useSocket();
     let started = false;
 
@@ -47,10 +48,13 @@ export default function Flechas(props) {
         }
         if (localStorage.getItem("userId") == 1) {
             socket.on('newWinflechas', (data) => {
-                if (data.message.ganar=="perdio") {
+                if (data.message.ganar == "perdio2") {
                     setFlechitas("")
                 }
-                if (data.message.ganar=="gano") {
+                if (data.message.ganar == "perdio") {
+                    console.log("equivocado")
+                }
+                if (data.message.ganar == "gano") {
                     console.log("ganaste")
                 }
             });
@@ -77,29 +81,29 @@ export default function Flechas(props) {
 
 
         }
-        if(localStorage.getItem("userId") == 2){
-        document.getElementById("flechaArriba").disabled = true
-        document.getElementById("flechaAbajo").disabled = true
-        document.getElementById("flechaDerecha").disabled = true
-        document.getElementById("flechaIzquierda").disabled = true}
+        if (localStorage.getItem("userId") == 2) {
+            document.getElementById("flechaArriba").disabled = true
+            document.getElementById("flechaAbajo").disabled = true
+            document.getElementById("flechaDerecha").disabled = true
+            document.getElementById("flechaIzquierda").disabled = true
+        }
 
     }, [])
     useEffect(() => {
         if (localStorage.getItem("userId") == 1 && arrows[0][0].length > 3) {
             socket.emit("flechas", { flechas: arrows })
         }
-        flechaNumero(0)
-        if (localStorage.getItem("userId") == 2 && arrows[0][0].length > 3){
-            var a=""
-            var b=""
-            var c=""
+        if (localStorage.getItem("userId") == 2 && arrows[0][0].length > 3) {
+            var a = ""
+            var b = ""
+            var c = ""
             for (let i = 0; i < arrows[0][0].length; i++) {
-                    a += arrows[0][0][i];
-                    b += arrows[1][0][i];
-                    c += arrows[2][0][i];
-                
-                
-                
+                a += arrows[0][0][i];
+                b += arrows[1][0][i];
+                c += arrows[2][0][i];
+
+
+
             }
             setComFlecha1(a)
             setComFlecha2(b)
@@ -142,55 +146,155 @@ export default function Flechas(props) {
     }
 
 
-    function sumarArriba() {comFlecha1
-        console.log("hola") 
-        setSecuencia(secuencia+="1")
-        console.log(arrows[capa][0])
-        if (secuencia.length==5 && capa==0) {
-            if (secuencia==comFlecha1) {
-                setCapa(()=>capa+=1)
-                socket.emit("startflechas", { capas: capa })
-            }else{
+    function sumarArriba() {
+        setSecuencia(secuencia += "1")
+        if (secuencia.length == 5 && capa == 0) {
+            if (secuencia == comFlecha1) {
+                setCapa(() => 1)
+                setTimer(10)
+                setSecuencia(() => "")
+            } else {
                 console.log("perdio")
                 socket.emit("winflechas", { ganar: "perdio" })
-                setSecuencia(()=>"")
+                setSecuencia(() => "")
             }
         }
-        if (secuencia.length==5 && capa==1) {
-            if (secuencia==comFlecha2) {
-                setCapa(()=>capa+=1)
-                socket.emit("startflechas", { capas: capa })
-            }else{
+        if (secuencia.length == 5 && capa == 1) {
+            if (secuencia == comFlecha2) {
+                setCapa(() => 2)
+                setTimer(10)
+                setSecuencia(() => "")
+            } else {
                 console.log("perdio")
                 socket.emit("winflechas", { ganar: "perdio" })
-                setSecuencia(()=>"")
+                setSecuencia(() => "")
             }
         }
-        if (secuencia.length==5 && capa==2) {
-            if (secuencia==comFlecha3) {
+        if (secuencia.length == 5 && capa == 2) {
+            if (secuencia == comFlecha3) {
                 socket.emit("winflechas", { ganar: "gano" })
                 console.log("ganaste")
-            }else{
+                setGanaste(true)
+            } else {
                 console.log("perdio")
                 socket.emit("winflechas", { ganar: "perdio" })
-                setSecuencia(()=>"")
+                setSecuencia(() => "")
             }
         }
     }
     function sumarAbajo() {
-        setSecuencia(secuencia+="2")
+        setSecuencia(secuencia += "2")
+        if (secuencia.length == 5 && capa == 0) {
+            if (secuencia == comFlecha1) {
+                setCapa(() => 1)
+                setTimer(10)
+                setSecuencia(() => "")
+            } else {
+                console.log("perdio")
+                socket.emit("winflechas", { ganar: "perdio" })
+                setSecuencia(() => "")
+            }
+        }
+        if (secuencia.length == 5 && capa == 1) {
+            if (secuencia == comFlecha2) {
+                setCapa(() => 2)
+                setTimer(10)
+                setSecuencia(() => "")
+            } else {
+                console.log("perdio")
+                socket.emit("winflechas", { ganar: "perdio" })
+                setSecuencia(() => "")
+            }
+        }
+        if (secuencia.length == 5 && capa == 2) {
+            if (secuencia == comFlecha3) {
+                socket.emit("winflechas", { ganar: "gano" })
+                console.log("ganaste")
+                setGanaste(true)
+            } else {
+                console.log("perdio")
+                socket.emit("winflechas", { ganar: "perdio" })
+                setSecuencia(() => "")
+            }
+        }
     }
     function sumarDerecha() {
-        setSecuencia(secuencia+="3")
+        setSecuencia(secuencia += "3")
+        if (secuencia.length == 5 && capa == 0) {
+            if (secuencia == comFlecha1) {
+                setCapa(() => 1)
+                setTimer(10)
+                setSecuencia(() => "")
+            } else {
+                console.log("perdio")
+                socket.emit("winflechas", { ganar: "perdio" })
+                setSecuencia(() => "")
+            }
+        }
+        if (secuencia.length == 5 && capa == 1) {
+            if (secuencia == comFlecha2) {
+                setCapa(() => 2)
+                setTimer(10)
+                setSecuencia(() => "")
+            } else {
+                console.log("perdio")
+                socket.emit("winflechas", { ganar: "perdio" })
+                setSecuencia(() => "")
+            }
+        }
+        if (secuencia.length == 5 && capa == 2) {
+            if (secuencia == comFlecha3) {
+                socket.emit("winflechas", { ganar: "gano" })
+                console.log("ganaste")
+                setGanaste(true)
+            } else {
+                console.log("perdio")
+                socket.emit("winflechas", { ganar: "perdio" })
+                setSecuencia(() => "")
+            }
+        }
     }
     function sumarIzquierda() {
-        setSecuencia(secuencia+="4")
+        setSecuencia(secuencia += "4")
+        if (secuencia.length == 5 && capa == 0) {
+            if (secuencia == comFlecha1) {
+                setCapa(() => 1)
+                setTimer(10)
+                setSecuencia(() => "")
+            } else {
+                console.log("perdio")
+                socket.emit("winflechas", { ganar: "perdio" })
+                setSecuencia(() => "")
+            }
+        }
+        if (secuencia.length == 5 && capa == 1) {
+            if (secuencia == comFlecha2) {
+                setCapa(() => 2)
+                setTimer(10)
+                setSecuencia(() => "")
+            } else {
+                console.log("perdio")
+                socket.emit("winflechas", { ganar: "perdio" })
+                setSecuencia(() => "")
+            }
+        }
+        if (secuencia.length == 5 && capa == 2) {
+            if (secuencia == comFlecha3) {
+                socket.emit("winflechas", { ganar: "gano" })
+                console.log("ganaste")
+                setGanaste(true)
+            } else {
+                console.log("perdio")
+                socket.emit("winflechas", { ganar: "perdio" })
+                setSecuencia(() => "")
+            }
+        }
     }
 
-    function flechaNumero(capa) {
+    function flechaNumero(capan) {
         var a = ""
         for (let index = 0; index < 5; index++) {
-            const element = arrows[0][capa][index];
+            const element = arrows[capan][0][index];
             if (element == 1) {
                 a += "↑"
             } else if (element == 2) {
@@ -207,54 +311,63 @@ export default function Flechas(props) {
     function revelar() {
         console.log(arrows[capa][0])
     }
-    
+
     function start() {
-        setTimer(8)
+        setTimer(10)
         if (localStorage.getItem("userId") == 2) {
-            
+
             document.getElementById("flechaArriba").disabled = false
             document.getElementById("flechaAbajo").disabled = false
             document.getElementById("flechaDerecha").disabled = false
             document.getElementById("flechaIzquierda").disabled = false
             document.getElementById("startflechas").disabled = true
-            socket.emit("startflechas", { capas: capa })
+            setCapa(() => 0)
+            if (capa==0) {
+                socket.emit("startflechas", { capas: capa })
+            }
         }
     }
+    useEffect(() => {
+        if (localStorage.getItem("userId") == 2) {
+            if (!socket) return;
+            socket.emit("startflechas", { capas: capa })
 
-        useEffect( () =>{
-            if (timer != 0) {
-                setTimeout(() => {
-                    var a = timer;
-                    if (a>0) {
-                        
-                        a--
-                        setTimer(a)
-                    }
-                    if (a==0 && localStorage.getItem("userId") == 2) {
-                        console.log("perdiste") 
-                        socket.emit("winflechas", { ganar: "perdio" })
-                        setSecuencia(()=>"")
-                        a=""
-                        setTimer(a)
-                        document.getElementById("startflechas").disabled = false
-                        document.getElementById("flechaArriba").disabled = true
-                        document.getElementById("flechaAbajo").disabled = true
-                        document.getElementById("flechaDerecha").disabled = true
-                        document.getElementById("flechaIzquierda").disabled = true
-                        
-                    }
-                }, 1000);                
-            }
-        }, [timer])
-            
-        
-        
+        }
+    }, [capa])
+    useEffect(() => {
+        if (timer != 0) {
+            const myTimeout= setTimeout(() => {
+                var a = timer;
+                if (a > 0 && ganaste == false) {
+
+                    a--
+                    setTimer(a)
+                }
+                if (a == 0 && localStorage.getItem("userId") == 2) {
+                    console.log("perdiste")
+                    socket.emit("winflechas", { ganar: "perdio2" })
+                    setSecuencia(() => "")
+                    a = ""
+                    setTimer(a)
+                    document.getElementById("startflechas").disabled = false
+                    document.getElementById("flechaArriba").disabled = true
+                    document.getElementById("flechaAbajo").disabled = true
+                    document.getElementById("flechaDerecha").disabled = true
+                    document.getElementById("flechaIzquierda").disabled = true
+
+                }
+            }, 1000);
+            return () => clearTimeout(myTimeout);
+        }
+    }, [timer])
+
+
+
 
     if (localStorage.getItem("userId") == 1) {
         return (
             <div>
                 <Button text="revelar" onClick={revelar}></Button>
-                <h1>{arrows[0][0]}</h1>
                 <h1>{flechitas}</h1>
             </div>
 
@@ -262,7 +375,7 @@ export default function Flechas(props) {
     }
 
 
-    
+
     if (localStorage.getItem("userId") == 2) {
         return (
             <div>
@@ -275,9 +388,6 @@ export default function Flechas(props) {
                 <Button id="flechaDerecha" text="→" onClick={sumarDerecha} ></Button>
                 <Button id="flechaIzquierda" text="←" onClick={sumarIzquierda} ></Button>
                 <h1>{timer}</h1>
-                <h1>{comFlecha1}</h1>
-                <h1>{comFlecha2}</h1>
-                <h1>{comFlecha3}</h1>
                 <h1>{secuencia}</h1>
             </div>
 
