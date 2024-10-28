@@ -23,7 +23,7 @@
 	position: relative;
 	width: 32px;
 	height: 28px;
-	border: 3px solid #000000;
+	border: 3px solid #292929;
 	border-radius: 10px;
 	background-color: #656566;
 
@@ -32,6 +32,7 @@
 .td:hover {
 	background: #4b4b4b;
 	cursor: pointer;
+	transform: translateY(1px);
 }
 .td:active {
 	color: #1a1a1a;
@@ -42,7 +43,7 @@
 	position: relative;
 	width: 20px;
 	height: 20px;
-	border: 3px solid #161616;
+	border: 3px solid #292929;
 	border-radius: 10px;
 	background-color: #656566;
 
@@ -51,8 +52,9 @@
 .selected:hover {
 	background: #8f0909;
 	cursor: pointer;
+	transform: translateY(1px);
 }
-.aselected:active {
+.selected:active {
 	color: #571616;
 	transform: translateY(2px);
   }
@@ -63,7 +65,7 @@
 	position: relative;
 	width: 20px;
 	height: 20px;
-	border: 3px solid #161616;
+	border: 3px solid #292929;
 	border-radius: 10px;
 	background-color: #724949;
 	
@@ -72,8 +74,9 @@
 .point:hover {
 	background-color: #4b2e2e;
 	cursor: pointer;
+	transform: translateY(1px);
 }
-.hover:active {
+.point:active {
 	color: #2e2929;
 	transform: translateY(2px);
   }
@@ -81,7 +84,7 @@
 	position: relative;
 	width: 20px;
 	height: 20px;
-	border: 3px solid #161616;
+	border: 3px solid #292929;
 	border-radius: 10px;
 	background-color: #724949;
 	
@@ -90,6 +93,8 @@
 .pointselected:hover {
 	background: #8f0909;
 	cursor: pointer;
+	transform: translateY(1px);
+
 }
 
 .pointselected:active {

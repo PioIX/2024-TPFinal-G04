@@ -29,6 +29,7 @@ margin: 0 0 0 0;
 }
 
 .suma, .resta{
+  font-family: "lucida console";
   display: inline-block;
   font-weight: bold;
   background: rgb(158, 160, 163);
@@ -40,17 +41,25 @@ margin: 0 0 0 0;
   transition-duration: 0.2s;
   margin-left: 5px;
   margin-right: 5px;
-  border: 4px solid #161616;
+  border: 4px solid #292929;
+  
 }
 
 .suma:hover, .resta:hover{
 	background: #818181;
 	cursor: pointer;
+  transform: translateY(0.5px);;
+  
 }
+.suma:active, .resta:active{
+  transform: translateY(1px);;
+  
+}
+
 .numero2, .numero{
   font-size: 90px;
   font-family: "lucida console";
-  border: 4px solid #161616;
+  border: 4px solid #292929;
   background: rgb(158, 160, 163);
   color: rgb(0, 0, 0);
   text-align: center;
@@ -73,19 +82,25 @@ margin: 0 0 0 0;
   width: 90px;
   height: 30px;
   font-weight: 600;
-  font-family: "lucida consol";
+  font-family: "lucida console";
   font-size: 20px;
   cursor: pointer;
   transition-duration: 0.2s;
   margin-left: 5px;
   margin-right: 5px;
   margin-top: 7px;
-  border: 2px solid #161616;
+  border: 2px solid #3a3a3a;
 }
 .check:hover{
 	background: #696969;
+  cursor: pointer;
+  transform: translateY(1px);;
 }
-
+.check:active{
+	background: #696969;
+  cursor: pointer;
+  transform: translateY(2px);;
+}
 .cuenta{
   color:rgb(172, 172, 172);
   -webkit-text-stroke: 1px rgb(0, 0, 0);
