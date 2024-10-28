@@ -14,8 +14,12 @@ export default function Flechas(props) {
     var [arrows, setArrows] = useState([[[]]]);
     var [timer, setTimer] = useState()
     var [flechitas, setFlechitas] = useState()
+    var [secuencia, setSecuencia] = useState("")
     var [capa, setCapa] = useState(0)
     var [player, setPlayer] = useState()
+    var [comFlecha1, setComFlecha1] = useState("")
+    var [comFlecha2, setComFlecha2] = useState("")
+    var [comFlecha3, setComFlecha3] = useState("")
     const { socket, isConnected } = useSocket();
     let started = false;
 
@@ -41,6 +45,13 @@ export default function Flechas(props) {
                 flechaNumero(data.message.capas)
             });
         }
+        if (localStorage.getItem("userId") == 1) {
+            socket.on('newWinflechas', (data) => {
+                if (data.message.ganar=="perdio") {
+                    setFlechitas("")
+                }
+            });
+        }
         /*
         var json = JSON.stringify(data.message.position);
         setLista(JSON.parse(localStorage.getItem("miletra")));*/
@@ -60,6 +71,8 @@ export default function Flechas(props) {
             if (JSON.parse(localStorage.getItem("miFlecha"))[0][0].length > 3) {
                 setArrows(JSON.parse(localStorage.getItem("miFlecha")))
             }
+
+
         }
     }, [])
     useEffect(() => {
@@ -67,6 +80,26 @@ export default function Flechas(props) {
             socket.emit("flechas", { flechas: arrows })
         }
         flechaNumero(0)
+        if (localStorage.getItem("userId") == 2 && arrows[0][0].length > 3){
+            var a=""
+            var b=""
+            var c=""
+            for (let i = 0; i < arrows.length; i++) {
+                console.log(arrows[i])
+                if (i<5) {
+                    a += arrows[i];
+                }else if(i>4 && i<10){
+                    b += arrows[i];
+                }else{
+                    c+= arrows[i];
+                }
+                
+                
+            }
+            setComFlecha1(a)
+            setComFlecha2(b)
+            setComFlecha3(c)
+        }
     }, [arrows])
 
     function definirFlecha() {
@@ -101,6 +134,20 @@ export default function Flechas(props) {
             }
         }
         return codigo
+    }
+
+
+    function sumarArriba() {
+        setSecuencia(secuencia+="1")
+    }
+    function sumarAbajo() {
+        setSecuencia(secuencia+="2")
+    }
+    function sumarDerecha() {
+        setSecuencia(secuencia+="3")
+    }
+    function sumarIzquierda() {
+        setSecuencia(secuencia+="4")
     }
 
     function flechaNumero(capa) {
@@ -175,7 +222,7 @@ export default function Flechas(props) {
     }
 
 
-
+    
     if (localStorage.getItem("userId") == 2) {
         return (
             <div>
@@ -183,11 +230,15 @@ export default function Flechas(props) {
                 <br></br>
                 <Button id="startflechas" text="start" onClick={start}></Button>
                 <br></br>
-                <Button id="flechaArriba" text="↑" onClick={revelar} disabled></Button>
-                <Button id="flechaAbajo" text="↓" onClick={revelar} disabled></Button>
-                <Button id="flechaDerecha" text="→" onClick={revelar} disabled></Button>
-                <Button id="flechaIzquierda" text="←" onClick={revelar} disabled></Button>
+                <Button id="flechaArriba" text="↑" onClick={sumarArriba} disabled></Button>
+                <Button id="flechaAbajo" text="↓" onClick={sumarAbajo} disabled></Button>
+                <Button id="flechaDerecha" text="→" onClick={sumarDerecha} disabled></Button>
+                <Button id="flechaIzquierda" text="←" onClick={sumarIzquierda} disabled></Button>
                 <h1>{timer}</h1>
+                <h1>{comFlecha1}</h1>
+                <h1>{comFlecha2}</h1>
+                <h1>{comFlecha3}</h1>
+                <h1>{arrows}</h1>
             </div>
 
         )

@@ -130,6 +130,7 @@ export default function Contraseña(props) {
         var ans=lista[0][positions] + lista[1][positions2] + lista[2][positions3] + lista[3][positions4] + lista[4][positions5]
             if (ans == elegida) {
                 console.log("ganaste")
+                document.getElementById("checkeoContrasena").disabled=true
             } else {
                 console.log("perdiste")
             }
@@ -209,7 +210,7 @@ export default function Contraseña(props) {
     return (
         <>
             <div>
-                <Button text="Check" onClick={checkTrad}></Button>
+                <Button id="checkeoContrasena" text="Check" onClick={checkTrad}></Button>
                 <br></br>
                 <Button text="+1" onClick={masposition1}></Button>
                 <Button text="+2" onClick={masposition2}></Button>
