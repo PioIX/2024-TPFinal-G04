@@ -68,20 +68,17 @@ margin: 0 0 0 0;
   margin: 0px;
   margin-left: 5px;
   margin-right: 5px;
-  
-
-
 }
 
  .check{
   display: inline-block;
   font-weight: bold;
-  border-radius: 7px;
+  border-radius: 4px;
 	background-color: #9b9b9b;
   color: rgb(0, 0, 0);
   width: 90px;
   height: 30px;
-  font-weight: 600;
+  font-weight: 500;
   font-family: "lucida console";
   font-size: 20px;
   cursor: pointer;
@@ -94,12 +91,12 @@ margin: 0 0 0 0;
 .check:hover{
 	background: #696969;
   cursor: pointer;
-  transform: translateY(1px);;
+  transform: translateY(0.5px);;
 }
 .check:active{
 	background: #696969;
   cursor: pointer;
-  transform: translateY(2px);;
+  transform: translateY(1px);;
 }
 .cuenta{
   color:rgb(172, 172, 172);

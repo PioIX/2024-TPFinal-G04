@@ -1,7 +1,7 @@
 "use client"
 import Button from "@/components/button";
 import { useState, useEffect } from "react";
-import styles from "./Traducir.module.css"
+import styles from "./Contrasena.module.css"
 import { useSocket } from "@/hooks/useSocket";
 
 
@@ -207,22 +207,24 @@ export default function Contraseña(props) {
     }
 
     return (
-        <>
+        <div className={styles.all}>
+        <div className={styles.todo}>
             <div>
-                <Button text="Check" onClick={checkTrad}></Button>
+                <Button className={styles.check} text="Check" onClick={checkTrad}></Button>
                 <br></br>
-                <Button text="+1" onClick={masposition1}></Button>
-                <Button text="+2" onClick={masposition2}></Button>
-                <Button text="+3" onClick={masposition3}></Button>
-                <Button text="+4" onClick={masposition4}></Button>
-                <Button text="+5" onClick={masposition5}></Button>
-                <h1>{lista[0][positions]}  {lista[1][positions2]}  {lista[2][positions3]}  {lista[3][positions4]}  {lista[4][positions5]} </h1>
-                <Button text="-1" onClick={menosposition1}></Button>
-                <Button text="-2" onClick={menosposition2}></Button>
-                <Button text="-3" onClick={menosposition3}></Button>
-                <Button text="-4" onClick={menosposition4}></Button>
-                <Button text="-5" onClick={menosposition5}></Button>
+                <Button className={styles.masomenos} text="+1" onClick={masposition1}></Button>
+                <Button className={styles.masomenos} text="+2" onClick={masposition2}></Button>
+                <Button className={styles.masomenos} text="+3" onClick={masposition3}></Button>
+                <Button className={styles.masomenos} text="+4" onClick={masposition4}></Button>
+                <Button className={styles.masomenos} text="+5" onClick={masposition5}></Button>
+                <h1 className={styles.letricas} >{lista[0][positions]}  {lista[1][positions2]}  {lista[2][positions3]}  {lista[3][positions4]}  {lista[4][positions5]} </h1>
+                <Button className={styles.masomenos} text="-1" onClick={menosposition1}></Button>
+                <Button className={styles.masomenos} text="-2" onClick={menosposition2}></Button>
+                <Button className={styles.masomenos} text="-3" onClick={menosposition3}></Button>
+                <Button className={styles.masomenos} text="-4" onClick={menosposition4}></Button>
+                <Button className={styles.masomenos} text="-5" onClick={menosposition5}></Button>
             </div>
-        </>
+        </div>
+        </div>
     )
 }
