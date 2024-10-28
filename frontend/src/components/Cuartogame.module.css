@@ -1,19 +1,47 @@
 .all{
 	width: 100%;
 	height: 100%;
-	background-size: cover;
-	background-repeat: no-repeat;
-  
-  }
-  
-  .todo{
+	margin-top: 30px;
 	display: flex;
-	box-sizing: border-box;
 	justify-content: center;
 	align-items: center;
-	margin: 0 0 0 0;
-	padding-top: 15%;
-	padding-bottom: 13%;
-	font-size: 1rem;
-	font-size: 16px;
+	text-align: center;
   }
+	
+  .todo{
+  display: flex;
+  box-sizing: border-box;
+  justify-content: center;
+  align-items: center;
+  margin: 0 0 0 0;
+  
+  }
+
+
+  .punto, .raya, .codigo{
+	display: inline-block;
+	background: rgb(158, 160, 163);
+	color: rgb(0, 0, 0);
+	width: 88px;
+	font-size: 20px;
+    font-family: "lucida console";
+	cursor: pointer;
+	transition-duration: 0.2s;
+	margin-left: 5px;
+	margin-right: 5px;
+	border: 2px solid #3a3a3a;
+  }
+  
+  .punto:hover, .raya:hover, .codigo:hover{
+	  background: #818181;
+	  cursor: pointer;
+  }
+	
+	.botones:hover, .start:hover {
+	  background: #818181;
+	  cursor: pointer;
+	  transform: translateY(0.5px);
+  }
+
+  .botones:active, .start:active {
+	transform: translateY(1px);}

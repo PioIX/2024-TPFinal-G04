@@ -18,32 +18,46 @@
   .child{
     justify-content: center;
 	align-items: center;
-
+	font-family: "lucida console";
     }
 
 
 	.botones, .start {
         display: inline;
-		font-weight: bold;
 		background: rgb(158, 160, 163);
 		color: rgb(0, 0, 0);
-		font-size: 18px;
+		font-size: 16px;
 		font-weight: 600;
 		cursor: pointer;
 		transition-duration: 0.2s;
-		margin-left: 2.5px;
-		margin-right: 2.5px;
-		border: 2px solid #161616;
+		margin-left: 1.5px;
+		margin-right: 1.5px;
+		border: 2px solid #292929;
+		font-family: "lucida console";
 
 
 	  }
 	  
-	  .botones:hover, .start:hover {
-		  background: #818181;
-		  cursor: pointer;
-	  }
-	  .start {
-		position: absolute;
-		right: 465px;
-		top: 120px;
-	}
+.botones:hover, .start:hover {
+	background: #818181;
+	cursor: pointer;
+	transform: translateY(0.5px);
+}
+.botones:active, .start:active {
+	transform: translateY(1px);
+}
+.start {
+	position: absolute;
+	right: 455px;
+	font-family: "lucida console";
+	top: 120px;
+}
+
+.start:hover{
+	background: #818181;
+	cursor: pointer;
+	transform: translateY(0.5px);
+}
+.start:active{
+  transform: translateY(1px);
+}
