@@ -1,7 +1,7 @@
 "use client"
 import Button from "@/components/button";
 import { useState, useEffect } from "react";
-import styles from "./Traducir.module.css"
+import styles from "./Contrasena.module.css"
 import { useSocket } from "@/hooks/useSocket";
 
 

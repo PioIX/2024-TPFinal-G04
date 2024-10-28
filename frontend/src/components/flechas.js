@@ -1,7 +1,7 @@
 "use client"
 import Button from "@/components/button";
 import { useState, useEffect } from "react";
-import styles from "./Sgame.module.css"
+import styles from "./Flechas.module.css"
 import { useSocket } from "@/hooks/useSocket";
 
 
@@ -15,7 +15,7 @@ export default function Flechas(props) {
     var [timer, setTimer] = useState()
     var [flechitas, setFlechitas] = useState()
     var [secuencia, setSecuencia] = useState("")
-    var [capa, setCapa] = useState(0)
+    var [capa, setCapa] = useState(1)
     var [player, setPlayer] = useState()
     var [comFlecha1, setComFlecha1] = useState("")
     var [comFlecha2, setComFlecha2] = useState("")
@@ -50,6 +50,9 @@ export default function Flechas(props) {
                 if (data.message.ganar=="perdio") {
                     setFlechitas("")
                 }
+                if (data.message.ganar=="gano") {
+                    console.log("ganaste")
+                }
             });
         }
         /*
@@ -74,6 +77,12 @@ export default function Flechas(props) {
 
 
         }
+        if(localStorage.getItem("userId") == 2){
+        document.getElementById("flechaArriba").disabled = true
+        document.getElementById("flechaAbajo").disabled = true
+        document.getElementById("flechaDerecha").disabled = true
+        document.getElementById("flechaIzquierda").disabled = true}
+
     }, [])
     useEffect(() => {
         if (localStorage.getItem("userId") == 1 && arrows[0][0].length > 3) {
@@ -84,15 +93,11 @@ export default function Flechas(props) {
             var a=""
             var b=""
             var c=""
-            for (let i = 0; i < arrows.length; i++) {
-                console.log(arrows[i])
-                if (i<5) {
-                    a += arrows[i];
-                }else if(i>4 && i<10){
-                    b += arrows[i];
-                }else{
-                    c+= arrows[i];
-                }
+            for (let i = 0; i < arrows[0][0].length; i++) {
+                    a += arrows[0][0][i];
+                    b += arrows[1][0][i];
+                    c += arrows[2][0][i];
+                
                 
                 
             }
@@ -137,8 +142,40 @@ export default function Flechas(props) {
     }
 
 
-    function sumarArriba() {
+    function sumarArriba() {comFlecha1
+        console.log("hola") 
         setSecuencia(secuencia+="1")
+        console.log(arrows[capa][0])
+        if (secuencia.length==5 && capa==0) {
+            if (secuencia==comFlecha1) {
+                setCapa(()=>capa+=1)
+                socket.emit("startflechas", { capas: capa })
+            }else{
+                console.log("perdio")
+                socket.emit("winflechas", { ganar: "perdio" })
+                setSecuencia(()=>"")
+            }
+        }
+        if (secuencia.length==5 && capa==1) {
+            if (secuencia==comFlecha2) {
+                setCapa(()=>capa+=1)
+                socket.emit("startflechas", { capas: capa })
+            }else{
+                console.log("perdio")
+                socket.emit("winflechas", { ganar: "perdio" })
+                setSecuencia(()=>"")
+            }
+        }
+        if (secuencia.length==5 && capa==2) {
+            if (secuencia==comFlecha3) {
+                socket.emit("winflechas", { ganar: "gano" })
+                console.log("ganaste")
+            }else{
+                console.log("perdio")
+                socket.emit("winflechas", { ganar: "perdio" })
+                setSecuencia(()=>"")
+            }
+        }
     }
     function sumarAbajo() {
         setSecuencia(secuencia+="2")
@@ -168,45 +205,48 @@ export default function Flechas(props) {
     }
 
     function revelar() {
-        console.log(arrows)
+        console.log(arrows[capa][0])
+    }
+    
+    function start() {
+        setTimer(8)
+        if (localStorage.getItem("userId") == 2) {
+            
+            document.getElementById("flechaArriba").disabled = false
+            document.getElementById("flechaAbajo").disabled = false
+            document.getElementById("flechaDerecha").disabled = false
+            document.getElementById("flechaIzquierda").disabled = false
+            document.getElementById("startflechas").disabled = true
+            socket.emit("startflechas", { capas: capa })
+        }
     }
 
-    function start() {
-        var a=8
-        setTimer(a)
-        document.getElementById("flechaArriba").disabled = false
-        document.getElementById("flechaAbajo").disabled = false
-        document.getElementById("flechaDerecha").disabled = false
-        document.getElementById("flechaIzquierda").disabled = false
-        document.getElementById("startflechas").disabled = true
-        socket.emit("startflechas", { capas: capa })
-
-            var interval =setInterval(() => {
-                if (a>0) {
-                    
-                    a--
-                    setTimer(a)
-                    console.log(a)
-                    console.log(timer)
-                }
-                if (a==0) {
-                    console.log("perdiste") 
-                    socket.emit("winflechas", { ganar: "perdio" })
-                    clearInterval(interval);
-                    a=""
-                    setTimer(a)
-                    document.getElementById("startflechas").disabled = false
-                    document.getElementById("flechaArriba").disabled = true
-                    document.getElementById("flechaAbajo").disabled = true
-                    document.getElementById("flechaDerecha").disabled = true
-                    document.getElementById("flechaIzquierda").disabled = true
-                    
-                    
-                    
-                }
-            }, 1000);
-        
-        }
+        useEffect( () =>{
+            if (timer != 0) {
+                setTimeout(() => {
+                    var a = timer;
+                    if (a>0) {
+                        
+                        a--
+                        setTimer(a)
+                    }
+                    if (a==0 && localStorage.getItem("userId") == 2) {
+                        console.log("perdiste") 
+                        socket.emit("winflechas", { ganar: "perdio" })
+                        setSecuencia(()=>"")
+                        a=""
+                        setTimer(a)
+                        document.getElementById("startflechas").disabled = false
+                        document.getElementById("flechaArriba").disabled = true
+                        document.getElementById("flechaAbajo").disabled = true
+                        document.getElementById("flechaDerecha").disabled = true
+                        document.getElementById("flechaIzquierda").disabled = true
+                        
+                    }
+                }, 1000);                
+            }
+        }, [timer])
+            
         
         
 
@@ -230,15 +270,15 @@ export default function Flechas(props) {
                 <br></br>
                 <Button id="startflechas" text="start" onClick={start}></Button>
                 <br></br>
-                <Button id="flechaArriba" text="↑" onClick={sumarArriba} disabled></Button>
-                <Button id="flechaAbajo" text="↓" onClick={sumarAbajo} disabled></Button>
-                <Button id="flechaDerecha" text="→" onClick={sumarDerecha} disabled></Button>
-                <Button id="flechaIzquierda" text="←" onClick={sumarIzquierda} disabled></Button>
+                <Button id="flechaArriba" text="↑" onClick={sumarArriba} ></Button>
+                <Button id="flechaAbajo" text="↓" onClick={sumarAbajo} ></Button>
+                <Button id="flechaDerecha" text="→" onClick={sumarDerecha} ></Button>
+                <Button id="flechaIzquierda" text="←" onClick={sumarIzquierda} ></Button>
                 <h1>{timer}</h1>
                 <h1>{comFlecha1}</h1>
                 <h1>{comFlecha2}</h1>
                 <h1>{comFlecha3}</h1>
-                <h1>{arrows}</h1>
+                <h1>{secuencia}</h1>
             </div>
 
         )
