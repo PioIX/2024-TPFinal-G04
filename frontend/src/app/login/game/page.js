@@ -16,6 +16,18 @@ import Flechas from "@/components/flechas";
 
 export default function Game() {
 
+
+  useEffect(() => {
+    // Añadir clase al <html> cuando se monte el componente
+    document.documentElement.classList.add(styles.all);
+
+    // Limpiar al desmontar el componente
+    return () => {
+      document.documentElement.classList.remove(styles.all);
+    };
+  }, []);
+
+
   let [page, setPage] = useState(false);
 
   function changeScreen() {
@@ -29,9 +41,7 @@ export default function Game() {
     localStorage.setItem("userId", 2);
   }
   return (
-    <html className={styles.all}>
 
-      <body>
         <main className={styles.main}>
           <div className={clsx({
             [styles.grid]: true,
@@ -67,8 +77,6 @@ export default function Game() {
 
 
         </main>
-      </body>
-    </html>
 
   )
 }
