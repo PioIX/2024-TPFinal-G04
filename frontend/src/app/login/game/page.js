@@ -13,6 +13,7 @@ import Laberinto from "@/components/laberinto";
 import Traducir from "@/components/traducir";
 import Contraseña from "@/components/contrasena";
 import Flechas from "@/components/flechas";
+import Maniqui from "@/components/maniqui";
 
 export default function Game() {
 
@@ -56,6 +57,7 @@ export default function Game() {
                 <Numbers className={styles.numbersgame}></Numbers>
                 <Simon className={styles.juegos}></Simon>
                 <Morse className={styles.juegos}></Morse>
+                <Maniqui className={styles.juegos}></Maniqui>
               </div>
             </div>
           </div>

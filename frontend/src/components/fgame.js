@@ -16,9 +16,6 @@ export default function Numbers(props) {
     let [number1, setNumber1] = useState(0);
     let [number2, setNumber2] = useState(0);
     let [number3, setNumber3] = useState(0);
-    let [total, setTotal] = useState(0);
-    let [total2, setTotal2] = useState(0);
-    let [text, setText] = useState("");
     const {socket,isConnected}=useSocket();
     let started = false;
 
@@ -84,7 +81,6 @@ export default function Numbers(props) {
 
     function check() {
         let auxtotal = String(num1) + String(num2)
-        setTotal(auxtotal)
         if (String(auxtotal) == String(localStorage.getItem("respuestaSuya"))) {
             console.log("bien")
             document.getElementById("sumayresta").disabled=true

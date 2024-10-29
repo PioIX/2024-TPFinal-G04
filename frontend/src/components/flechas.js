@@ -172,8 +172,9 @@ export default function Flechas(props) {
         }
         if (secuencia.length == 5 && capa == 2) {
             if (secuencia == comFlecha3) {
-                socket.emit("winflechas", { ganar: "gano" })
+                socket.emit("winflechas", { ganar: "gano" })//
                 console.log("ganaste")
+                flechaNumero(2)
                 setGanaste(true)
             } else {
                 console.log("perdio")
@@ -210,6 +211,7 @@ export default function Flechas(props) {
             if (secuencia == comFlecha3) {
                 socket.emit("winflechas", { ganar: "gano" })
                 console.log("ganaste")
+                flechaNumero(2)
                 setGanaste(true)
             } else {
                 console.log("perdio")
@@ -246,6 +248,7 @@ export default function Flechas(props) {
             if (secuencia == comFlecha3) {
                 socket.emit("winflechas", { ganar: "gano" })
                 console.log("ganaste")
+                flechaNumero(2)
                 setGanaste(true)
             } else {
                 console.log("perdio")
@@ -282,6 +285,7 @@ export default function Flechas(props) {
             if (secuencia == comFlecha3) {
                 socket.emit("winflechas", { ganar: "gano" })
                 console.log("ganaste")
+                flechaNumero(2)
                 setGanaste(true)
             } else {
                 console.log("perdio")
@@ -308,9 +312,6 @@ export default function Flechas(props) {
         setFlechitas(() => a)
     }
 
-    function revelar() {
-        console.log(arrows[capa][0])
-    }
 
     function start() {
         setTimer(10)
@@ -367,7 +368,7 @@ export default function Flechas(props) {
     if (localStorage.getItem("userId") == 1) {
         return (
             <div>
-                <Button text="revelar" onClick={revelar}></Button>
+                <h1>Flechas</h1>
                 <h1>{flechitas}</h1>
             </div>
 
@@ -379,7 +380,6 @@ export default function Flechas(props) {
     if (localStorage.getItem("userId") == 2) {
         return (
             <div>
-                <Button text="revelar" onClick={revelar}></Button>
                 <br></br>
                 <Button id="startflechas" text="start" onClick={start}></Button>
                 <br></br>
