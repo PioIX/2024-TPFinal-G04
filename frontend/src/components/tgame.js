@@ -247,14 +247,14 @@ export default function Simon(props) {
         <div className={styles.all}>
         <div className={styles.todo}>
         <div className={styles.child}>
-            <Button className={styles.start} onClick={game} text="Start" id="lasecuencia"></Button>
+            <Button className={styles.start} onClick={game} text="START" id="lasecuencia"></Button>
             <Image src={luz} alt="simon" width={300} height={240}></Image>
             <br></br>
 
-            <Button className={styles.botones} id="s1" onClick={verifySequence} text="Azul"></Button>
-            <Button className={styles.botones} id="s2" onClick={verifySequence} text="Amarillo"></Button>
-            <Button className={styles.botones} id="s3" onClick={verifySequence} text="Verde"></Button>
-            <Button className={styles.botones} id="s4" onClick={verifySequence} text="Rojo"></Button>
+            <Button className={styles.botones} id="s1" onClick={verifySequence} text="AZUL"></Button>
+            <Button className={styles.botones} id="s2" onClick={verifySequence} text="AMARILLO"></Button>
+            <Button className={styles.botones} id="s3" onClick={verifySequence} text="VERDE"></Button>
+            <Button className={styles.botones} id="s4" onClick={verifySequence} text="ROJO"></Button>
         </div>
         </div>
         </div>
