@@ -61,10 +61,10 @@ export default function Laberinto(props) {
 			for (let index = 0; index < Array.length; index++) {
 				if (document.getElementById("ls"+Array[index])!=undefined) {
 					if (Array[index]==Array[0]) {
-						document.getElementById("ls"+Array[index]).innerHTML='<img height=35  src="/laberinto/corazon.png"/>'
+						document.getElementById("ls"+Array[index]).innerHTML='<img className={styles.img} height=21 src="/laberinto/corazon.png"/>'
 					}
 					if (Array[index]==Array[Array.length-1]) {
-						document.getElementById("ls"+Array[index]).innerHTML='<img height=35  src="/laberinto/bandera.png"/>'
+						document.getElementById("ls"+Array[index]).innerHTML='<img className={styles.img} height=21 src="/laberinto/bandera.png"/>'
 					}
 				}
 			}
@@ -75,7 +75,7 @@ export default function Laberinto(props) {
 	function derecha(){
 		if (lab.includes(player+1)) {
 			document.getElementById("ls"+player).innerHTML=""
-			document.getElementById("ls"+String(player+1)).innerHTML='<img height=35  src="/laberinto/corazon.png"/>'
+			document.getElementById("ls"+String(player+1)).innerHTML='<img className={styles.img} height=21 src="/laberinto/corazon.png"/>'
 			setPlayer(player+1)
 		}else{
 			socket.emit("labwin", { numero: "perdiste" })
@@ -91,7 +91,7 @@ export default function Laberinto(props) {
 	function izquierda(){
 		if (lab.includes(player-1)) {
 			document.getElementById("ls"+player).innerHTML=""
-			document.getElementById("ls"+String(player-1)).innerHTML='<img height=35  src="/laberinto/corazon.png"/>'
+			document.getElementById("ls"+String(player-1)).innerHTML='<img className={styles.img} height=21  src="/laberinto/corazon.png"/>'
 			setPlayer(player-1)
 		}else{
 			socket.emit("labwin", { numero: "perdiste" })
@@ -107,7 +107,7 @@ export default function Laberinto(props) {
 	function arriba(){
 		if (lab.includes(player-7)) {
 			document.getElementById("ls"+player).innerHTML=""
-			document.getElementById("ls"+String(player-7)).innerHTML='<img height=35  src="/laberinto/corazon.png"/>'
+			document.getElementById("ls"+String(player-7)).innerHTML='<img className={styles.img} height=21 src="/laberinto/corazon.png"/>'
 			setPlayer(player-7)
 		}else{
 			socket.emit("labwin", { numero: "perdiste" })
@@ -123,7 +123,7 @@ export default function Laberinto(props) {
 	function abajo(){
 		if (lab.includes(player+7)) {
 			document.getElementById("ls"+player).innerHTML=""
-			document.getElementById("ls"+String(player+7)).innerHTML='<img height=35  src="/laberinto/corazon.png"/>'
+			document.getElementById("ls"+String(player+7)).innerHTML='<img className={styles.img} height=21 src="/laberinto/corazon.png"/>'
 			setPlayer(player+7)
 		}else{
 			socket.emit("labwin", { numero: "perdiste" })
@@ -245,78 +245,78 @@ export default function Laberinto(props) {
 		
 		return(
 			<div id="board">
-				<Button id="derechal" onClick={derecha} text="derecha"></Button>
-				<Button id="izquierdal" onClick={izquierda} text="izquierda"></Button>
-				<Button id="arribal" onClick={arriba} text="arriba"></Button>
-				<Button id="abajol" onClick={abajo} text="abajo"></Button>
-				<div id="messageArea">
-					<table >
-						<tbody>
+				<Button className={styles.derecha} id="derechal" onClick={derecha} text="🢂"></Button>
+				<Button className={styles.izquierda} id="izquierdal" onClick={izquierda} text="🢀"></Button>
+				<Button className={styles.arriba} id="arribal" onClick={arriba} text="🢁"></Button>
+				<Button className={styles.abajo} id="abajol" onClick={abajo} text="🢃"></Button>
+				<div className={styles.all} id="messageArea">
+					<table className={styles.todo2} >
+						<tbody className={styles.fondo2}>
 							<tr>
 								
 	
-								<td className={styles.td} id="ls0"></td>
-								<td className={styles.td} id="ls1"></td>
-								<td className={styles.td} id="ls2"></td>
-								<td className={styles.td} id="ls3"></td>
-								<td className={styles.td} id="ls4"></td>
-								<td className={styles.td} id="ls5"></td>
-								<td className={styles.td} id="ls6"></td>
+								<td className={styles.td2} id="ls0"></td>
+								<td className={styles.td2} id="ls1"></td>
+								<td className={styles.td2} id="ls2"></td>
+								<td className={styles.td2} id="ls3"></td>
+								<td className={styles.td2} id="ls4"></td>
+								<td className={styles.td2} id="ls5"></td>
+								<td className={styles.td2} id="ls6"></td>
 							</tr>
 							<tr>
-								<td className={styles.td} id="ls7"></td>
-								<td className={styles.td} id="ls8"></td>
-								<td className={styles.td} id="ls9"></td>
-								<td className={styles.td} id="ls10"></td>
-								<td className={styles.td} id="ls11"></td>
-								<td className={styles.td} id="ls12"></td>
-								<td className={styles.td} id="ls13"></td>
+								<td className={styles.td2} id="ls7"></td>
+								<td className={styles.td2} id="ls8"></td>
+								<td className={styles.td2} id="ls9"></td>
+								<td className={styles.td2} id="ls10"></td>
+								<td className={styles.td2} id="ls11"></td>
+								<td className={styles.td2} id="ls12"></td>
+								<td className={styles.td2} id="ls13"></td>
 							</tr>
 							<tr>
-								<td className={styles.td} id="ls14"></td>
-								<td className={styles.td} id="ls15"></td>
-								<td className={styles.td} id="ls16"></td>
-								<td className={styles.td} id="ls17"></td>
-								<td className={styles.td} id="ls18"></td>
-								<td className={styles.td} id="ls19"></td>
-								<td className={styles.td} id="ls20"></td>
+								<td className={styles.td2} id="ls14"></td>
+								<td className={styles.td2} id="ls15"></td>
+								<td className={styles.td2} id="ls16"></td>
+								<td className={styles.td2} id="ls17"></td>
+								<td className={styles.td2} id="ls18"></td>
+								<td className={styles.td2} id="ls19"></td>
+								<td className={styles.td2} id="ls20"></td>
 							</tr>
 	
 							<tr>
-								<td className={styles.td} id="ls21"></td>
-								<td className={styles.td} id="ls22"></td>
-								<td className={styles.td} id="ls23"></td>
-								<td className={styles.td} id="ls24"></td>
-								<td className={styles.td} id="ls25"></td>
-								<td className={styles.td} id="ls26"></td>
-								<td className={styles.td} id="ls27"></td>
+								<td className={styles.td2} id="ls21"></td>
+								<td className={styles.td2} id="ls22"></td>
+								<td className={styles.td2} id="ls23"></td>
+								<td className={styles.td2} id="ls24"></td>
+								<td className={styles.td2} id="ls25"></td>
+								<td className={styles.td2} id="ls26"></td>
+								<td className={styles.td2} id="ls27"></td>
 							</tr>
 							<tr>
-								<td className={styles.td} id="ls28"></td>
-								<td className={styles.td} id="ls29"></td>
-								<td className={styles.td} id="ls30"></td>
-								<td className={styles.td} id="ls31"></td>
-								<td className={styles.td} id="ls32"></td>
-								<td className={styles.td} id="ls33"></td>
-								<td className={styles.td} id="ls34"></td>
+								<td className={styles.td2} id="ls28"></td>
+								<td className={styles.td2} id="ls29"></td>
+								<td className={styles.td2} id="ls30"></td>
+								<td className={styles.td2} id="ls31"></td>
+								<td className={styles.td2} id="ls32"></td>
+								<td className={styles.td2} id="ls33"></td>
+								<td className={styles.td2} id="ls34"></td>
 							</tr>
 							<tr>
-								<td className={styles.td} id="ls35"></td>
-								<td className={styles.td} id="ls36"></td>
-								<td className={styles.td} id="ls37"></td>
-								<td className={styles.td} id="ls38"></td>
-								<td className={styles.td} id="ls39"></td>
-								<td className={styles.td} id="ls40"></td>
-								<td className={styles.td} id="ls41"></td>
+								<td className={styles.td2} id="ls35"></td>
+								<td className={styles.td2} id="ls36"></td>
+								<td className={styles.td2} id="ls37"></td>
+								<td className={styles.td2} id="ls38"></td>
+								<td className={styles.td2} id="ls39"></td>
+								<td className={styles.td2} id="ls40"></td>
+								<td className={styles.td2} id="ls41"></td>
 							</tr>
 							<tr>
-								<td className={styles.td} id="ls42"></td>
-								<td className={styles.td} id="ls43"></td>
-								<td className={styles.td} id="ls44"></td>
-								<td className={styles.td} id="ls45"></td>
-								<td className={styles.td} id="ls46"></td>
-								<td className={styles.td} id="ls47"></td>
-								<td className={styles.td} id="ls48"></td>
+								<td className={styles.td2} id="ls42"></td>
+								<td className={styles.td2} id="ls43"></td>
+								<td className={styles.td2} id="ls44"></td>
+								<td className={styles.td2} id="ls45"></td>
+								<td className={styles.td2} id="ls46"></td>
+								<td className={styles.td2} id="ls47"></td>
+								<td className={styles.td2} id="ls48"></td>
 							</tr>
 						</tbody>
 					</table>
