@@ -177,6 +177,9 @@ io.on("connection", (socket) => {
 	socket.on('winflechas', data => {
 		io.to(req.session.room).emit('newWinflechas', { room: req.session.room, message: data });
 	});
+	socket.on('maniqui', data => {
+		io.to(req.session.room).emit('newManiqui', { room: req.session.room, message: data });
+	});
 	
 	
     /**
