@@ -38,9 +38,9 @@ export default function Naval(props) {
 	useEffect(() => {
 		setPosition(getRandoms());
 	}, [])
-
+	JSON.stringify(position)
 	useEffect(() => {
-		localStorage.setItem("misBombas", position);
+		localStorage.setItem("misBombas", JSON.stringify(position));
         if (!socket) return;
 		socket.on('newBombas', (data)=>{
             if (data.message.user != localStorage.getItem("userId")) { 
@@ -60,6 +60,8 @@ export default function Naval(props) {
 		// `e.target` es el elemento que fue clicado
 		var secuence=[]
 		var num=""
+		var misbombitas=localStorage.getItem("misBombas")
+		misbombitas=JSON.parse(misbombitas)
         for (let index = 0; index < localStorage.getItem("susBombas").length; index++) {
             if (localStorage.getItem("susBombas")[index]!=",") {
                 num+=localStorage.getItem("susBombas")[index]
@@ -72,7 +74,7 @@ export default function Naval(props) {
 			}
         }
 		//e.target.setAttribute('class', 'Sgame_selected__hF5Ep')//Sgame_td__fzQJ2
-		if (secuence.includes(Number(e.target.id)) && bombs.includes(e.target.id) == false && localStorage.getItem("misBombas").includes(Number(e.target.id))){
+		if (secuence.includes(Number(e.target.id)) && bombs.includes(e.target.id) == false && misbombitas.includes(Number(e.target.id))){
 			e.target.setAttribute('class', 'Sgame_pointselected__U2gv6')//Sgame_td__fzQJ2
 			var a = bombs
 			a.push(e.target.id)
@@ -80,7 +82,7 @@ export default function Naval(props) {
 			if (bombs.length == 5) {
 				console.log("ganaste")
 			}
-		}else if (secuence.includes(Number(e.target.id)) && bombs.includes(e.target.id) == false && localStorage.getItem("misBombas").includes(Number(e.target.id))==false){
+		}else if (secuence.includes(Number(e.target.id)) && bombs.includes(e.target.id) == false && misbombitas.includes(Number(e.target.id))==false){
 			e.target.setAttribute('class', 'Sgame_point__8L8s3')//Sgame_td__fzQJ2
 			var a = bombs
 			a.push(e.target.id)
