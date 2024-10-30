@@ -151,7 +151,7 @@ export default function Flechas(props) {
         if (secuencia.length == 5 && capa == 0) {
             if (secuencia == comFlecha1) {
                 setCapa(() => 1)
-                setTimer(10)
+                setTimer(12)
                 setSecuencia(() => "")
             } else {
                 console.log("perdio")
@@ -162,7 +162,7 @@ export default function Flechas(props) {
         if (secuencia.length == 5 && capa == 1) {
             if (secuencia == comFlecha2) {
                 setCapa(() => 2)
-                setTimer(10)
+                setTimer(12)
                 setSecuencia(() => "")
             } else {
                 console.log("perdio")
@@ -188,7 +188,7 @@ export default function Flechas(props) {
         if (secuencia.length == 5 && capa == 0) {
             if (secuencia == comFlecha1) {
                 setCapa(() => 1)
-                setTimer(10)
+                setTimer(12)
                 setSecuencia(() => "")
             } else {
                 console.log("perdio")
@@ -199,7 +199,7 @@ export default function Flechas(props) {
         if (secuencia.length == 5 && capa == 1) {
             if (secuencia == comFlecha2) {
                 setCapa(() => 2)
-                setTimer(10)
+                setTimer(12)
                 setSecuencia(() => "")
             } else {
                 console.log("perdio")
@@ -225,7 +225,7 @@ export default function Flechas(props) {
         if (secuencia.length == 5 && capa == 0) {
             if (secuencia == comFlecha1) {
                 setCapa(() => 1)
-                setTimer(10)
+                setTimer(12)
                 setSecuencia(() => "")
             } else {
                 console.log("perdio")
@@ -236,7 +236,7 @@ export default function Flechas(props) {
         if (secuencia.length == 5 && capa == 1) {
             if (secuencia == comFlecha2) {
                 setCapa(() => 2)
-                setTimer(10)
+                setTimer(12)
                 setSecuencia(() => "")
             } else {
                 console.log("perdio")
@@ -262,7 +262,7 @@ export default function Flechas(props) {
         if (secuencia.length == 5 && capa == 0) {
             if (secuencia == comFlecha1) {
                 setCapa(() => 1)
-                setTimer(10)
+                setTimer(12)
                 setSecuencia(() => "")
             } else {
                 console.log("perdio")
@@ -273,7 +273,7 @@ export default function Flechas(props) {
         if (secuencia.length == 5 && capa == 1) {
             if (secuencia == comFlecha2) {
                 setCapa(() => 2)
-                setTimer(10)
+                setTimer(12)
                 setSecuencia(() => "")
             } else {
                 console.log("perdio")
@@ -314,7 +314,7 @@ export default function Flechas(props) {
 
 
     function start() {
-        setTimer(10)
+        setTimer(12)
         if (localStorage.getItem("userId") == 2) {
 
             document.getElementById("flechaArriba").disabled = false
@@ -388,7 +388,6 @@ export default function Flechas(props) {
                 <Button id="flechaDerecha" text="→" onClick={sumarDerecha} ></Button>
                 <Button id="flechaIzquierda" text="←" onClick={sumarIzquierda} ></Button>
                 <h1>{timer}</h1>
-                <h1>{secuencia}</h1>
             </div>
 
         )

@@ -46,6 +46,9 @@ export default function Maniqui(props) {
     function verifySequence(){
         if (maniqui==localStorage.getItem("SuManiqui")) {
             console.log("ganaste")
+            document.getElementById("mani1").disabled=true
+            document.getElementById("mani-").disabled=true
+            document.getElementById("mani+").disabled=true
         }else{
             console.log("perdiste")
         }
