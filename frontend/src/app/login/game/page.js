@@ -14,6 +14,7 @@ import Traducir from "@/components/traducir";
 import Contraseña from "@/components/contrasena";
 import Flechas from "@/components/flechas";
 import Maniqui from "@/components/maniqui";
+import Simbolos from "@/components/simbolos";
 
 export default function Game() {
 
@@ -74,6 +75,7 @@ export default function Game() {
               <Traducir></Traducir>
               <Contraseña></Contraseña>
               <Flechas></Flechas>
+              <Simbolos></Simbolos>
             </div>
           </div>
 
