@@ -16,7 +16,7 @@ export default function Flechas(props) {
     var [flechitas, setFlechitas] = useState()
     var [secuencia, setSecuencia] = useState("")
     var [capa, setCapa] = useState(0)
-    var [player, setPlayer] = useState()
+    var [secuencia2, setSecuencia2] = useState("")
     var [comFlecha1, setComFlecha1] = useState("")
     var [comFlecha2, setComFlecha2] = useState("")
     var [comFlecha3, setComFlecha3] = useState("")
@@ -148,145 +148,172 @@ export default function Flechas(props) {
 
     function sumarArriba() {
         setSecuencia(secuencia += "1")
+        setSecuencia2(secuencia2+="↑")
         if (secuencia.length == 5 && capa == 0) {
             if (secuencia == comFlecha1) {
                 setCapa(() => 1)
-                setTimer(10)
+                setTimer(12)
                 setSecuencia(() => "")
+                setSecuencia2(()=>"")
             } else {
                 console.log("perdio")
                 socket.emit("winflechas", { ganar: "perdio" })
                 setSecuencia(() => "")
+                setSecuencia2(()=>"")
             }
         }
         if (secuencia.length == 5 && capa == 1) {
             if (secuencia == comFlecha2) {
                 setCapa(() => 2)
-                setTimer(10)
+                setTimer(12)
                 setSecuencia(() => "")
+                setSecuencia2(()=>"")
             } else {
                 console.log("perdio")
                 socket.emit("winflechas", { ganar: "perdio" })
                 setSecuencia(() => "")
+                setSecuencia2(()=>"")
             }
         }
         if (secuencia.length == 5 && capa == 2) {
             if (secuencia == comFlecha3) {
-                socket.emit("winflechas", { ganar: "gano" })
+                socket.emit("winflechas", { ganar: "gano" })//
                 console.log("ganaste")
+                flechaNumero(2)
                 setGanaste(true)
             } else {
                 console.log("perdio")
                 socket.emit("winflechas", { ganar: "perdio" })
                 setSecuencia(() => "")
+                setSecuencia2(()=>"")
             }
         }
     }
     function sumarAbajo() {
         setSecuencia(secuencia += "2")
+        setSecuencia2(secuencia2 += "↓")
         if (secuencia.length == 5 && capa == 0) {
             if (secuencia == comFlecha1) {
                 setCapa(() => 1)
-                setTimer(10)
+                setTimer(12)
                 setSecuencia(() => "")
+                setSecuencia2(()=>"")
             } else {
                 console.log("perdio")
                 socket.emit("winflechas", { ganar: "perdio" })
                 setSecuencia(() => "")
+                setSecuencia2(()=>"")
             }
         }
         if (secuencia.length == 5 && capa == 1) {
             if (secuencia == comFlecha2) {
                 setCapa(() => 2)
-                setTimer(10)
+                setTimer(12)
                 setSecuencia(() => "")
             } else {
                 console.log("perdio")
                 socket.emit("winflechas", { ganar: "perdio" })
                 setSecuencia(() => "")
+                setSecuencia2(()=>"")
             }
         }
         if (secuencia.length == 5 && capa == 2) {
             if (secuencia == comFlecha3) {
                 socket.emit("winflechas", { ganar: "gano" })
                 console.log("ganaste")
+                flechaNumero(2)
                 setGanaste(true)
             } else {
                 console.log("perdio")
                 socket.emit("winflechas", { ganar: "perdio" })
                 setSecuencia(() => "")
+                setSecuencia2(()=>"")
             }
         }
     }
     function sumarDerecha() {
         setSecuencia(secuencia += "3")
+        setSecuencia2(secuencia2 += "→")
         if (secuencia.length == 5 && capa == 0) {
             if (secuencia == comFlecha1) {
                 setCapa(() => 1)
-                setTimer(10)
+                setTimer(12)
                 setSecuencia(() => "")
+                setSecuencia2(()=>"")
             } else {
                 console.log("perdio")
                 socket.emit("winflechas", { ganar: "perdio" })
                 setSecuencia(() => "")
+                setSecuencia2(()=>"")
             }
         }
         if (secuencia.length == 5 && capa == 1) {
             if (secuencia == comFlecha2) {
                 setCapa(() => 2)
-                setTimer(10)
+                setTimer(12)
                 setSecuencia(() => "")
+                setSecuencia2(()=>"")
             } else {
                 console.log("perdio")
                 socket.emit("winflechas", { ganar: "perdio" })
                 setSecuencia(() => "")
+                setSecuencia2(()=>"")
             }
         }
         if (secuencia.length == 5 && capa == 2) {
             if (secuencia == comFlecha3) {
                 socket.emit("winflechas", { ganar: "gano" })
                 console.log("ganaste")
+                flechaNumero(2)
                 setGanaste(true)
             } else {
                 console.log("perdio")
                 socket.emit("winflechas", { ganar: "perdio" })
                 setSecuencia(() => "")
+                setSecuencia2(()=>"")
             }
         }
     }
     function sumarIzquierda() {
         setSecuencia(secuencia += "4")
+        setSecuencia2(secuencia2 += "←")
         if (secuencia.length == 5 && capa == 0) {
             if (secuencia == comFlecha1) {
                 setCapa(() => 1)
-                setTimer(10)
+                setTimer(12)
                 setSecuencia(() => "")
+                setSecuencia2(()=>"")
             } else {
                 console.log("perdio")
                 socket.emit("winflechas", { ganar: "perdio" })
                 setSecuencia(() => "")
+                setSecuencia2(()=>"")
             }
         }
         if (secuencia.length == 5 && capa == 1) {
             if (secuencia == comFlecha2) {
                 setCapa(() => 2)
-                setTimer(10)
+                setTimer(12)
                 setSecuencia(() => "")
+                setSecuencia2(()=>"")
             } else {
                 console.log("perdio")
                 socket.emit("winflechas", { ganar: "perdio" })
                 setSecuencia(() => "")
+                setSecuencia2(()=>"")
             }
         }
         if (secuencia.length == 5 && capa == 2) {
             if (secuencia == comFlecha3) {
                 socket.emit("winflechas", { ganar: "gano" })
                 console.log("ganaste")
+                flechaNumero(2)
                 setGanaste(true)
             } else {
                 console.log("perdio")
                 socket.emit("winflechas", { ganar: "perdio" })
                 setSecuencia(() => "")
+                setSecuencia2(()=>"")
             }
         }
     }
@@ -308,12 +335,9 @@ export default function Flechas(props) {
         setFlechitas(() => a)
     }
 
-    function revelar() {
-        console.log(arrows[capa][0])
-    }
 
     function start() {
-        setTimer(10)
+        setTimer(12)
         if (localStorage.getItem("userId") == 2) {
 
             document.getElementById("flechaArriba").disabled = false
@@ -367,7 +391,7 @@ export default function Flechas(props) {
     if (localStorage.getItem("userId") == 1) {
         return (
             <div>
-                <Button text="revelar" onClick={revelar}></Button>
+                <h1>Flechas</h1>
                 <h1>{flechitas}</h1>
             </div>
 
@@ -379,7 +403,6 @@ export default function Flechas(props) {
     if (localStorage.getItem("userId") == 2) {
         return (
             <div>
-                <Button text="revelar" onClick={revelar}></Button>
                 <br></br>
                 <Button id="startflechas" text="start" onClick={start}></Button>
                 <br></br>
@@ -388,7 +411,7 @@ export default function Flechas(props) {
                 <Button id="flechaDerecha" text="→" onClick={sumarDerecha} ></Button>
                 <Button id="flechaIzquierda" text="←" onClick={sumarIzquierda} ></Button>
                 <h1>{timer}</h1>
-                <h1>{secuencia}</h1>
+                <h1>{secuencia2}</h1>
             </div>
 
         )

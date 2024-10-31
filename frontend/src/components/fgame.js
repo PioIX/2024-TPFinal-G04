@@ -16,9 +16,6 @@ export default function Numbers(props) {
     let [number1, setNumber1] = useState(0);
     let [number2, setNumber2] = useState(0);
     let [number3, setNumber3] = useState(0);
-    let [total, setTotal] = useState(0);
-    let [total2, setTotal2] = useState(0);
-    let [text, setText] = useState("");
     const {socket,isConnected}=useSocket();
     let started = false;
 
@@ -84,10 +81,13 @@ export default function Numbers(props) {
 
     function check() {
         let auxtotal = String(num1) + String(num2)
-        setTotal(auxtotal)
         if (String(auxtotal) == String(localStorage.getItem("respuestaSuya"))) {
             console.log("bien")
             document.getElementById("sumayresta").disabled=true
+            document.getElementById("fgame+1").disabled=true
+            document.getElementById("fgame+2").disabled=true
+            document.getElementById("fgame-1").disabled=true
+            document.getElementById("fgame-2").disabled=true
         } else {
             console.log("mal")
         }
@@ -108,16 +108,16 @@ export default function Numbers(props) {
             {number1 != 0 && <h1 className={styles.cuenta}>{number1}+{number2}x{number3}</h1>}
             <div >
                 <div className={styles.sumas}>
-                <Button className={styles.suma} onClick={suma1} text="+" />
-                <Button className={styles.suma} onClick={suma2} text="+" />
+                <Button className={styles.suma} onClick={suma1} text="+" id="fgame+1"/>
+                <Button className={styles.suma} onClick={suma2} text="+" id="fgame+2"/>
                 </div>
                 <div className={styles.numeros}>
                 <h1 className={styles.numero}>{num1}</h1>
                 <h1 className={styles.numero2}>{num2}</h1>
                 </div>
                 <div className={styles.restas}>
-                <Button className={styles.resta} onClick={resta1} text="-" />
-                <Button className={styles.resta} onClick={resta2} text="-" /></div>
+                <Button className={styles.resta} onClick={resta1} text="-" id="fgame-1"/>
+                <Button className={styles.resta} onClick={resta2} text="-" id="fgame-2"/></div>
                 <Button className={styles.check} disabled={false} onClick={check} text="CHECK"  id="sumayresta" disable/>
             </div>
             </div>

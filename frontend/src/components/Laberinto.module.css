@@ -40,7 +40,9 @@
 	border: 3px solid #000000;
 	border-radius: 4px;
 	background-color: #a7a7a7;
-
+    justify-content: center;
+	text-align: center;
+	align-items: center;
 }
 
 .td2 {
@@ -119,6 +121,7 @@ background-color: #2b27277a;
     font-size: 20px;
     cursor: pointer;
     transition-duration: 0.2s;
+	border-color: #000000;
 
 }
 .derecha:hover, .izquierda:hover, .arriba:hover, .abajo:hover{
@@ -133,11 +136,21 @@ background-color: #2b27277a;
 }
 .derecha{
 	position: relative;
-	top:166px;
-	left:273px;
+	top:165px;
+	left:276px;
 }
 .izquierda{
 	position: relative;
-	top:166px;
+	top:165px;
 	margin-left:-40px;
+}
+.arriba{
+	position: relative;
+	top:28px;
+	left:112px;
+}
+.abajo{
+	position: relative;
+	top:302px;
+	left:84px;
 }
