@@ -214,20 +214,20 @@ export default function Contraseña(props) {
 
                 <Button className={styles.check} id="checkeoContrasena" text="Check" onClick={checkTrad}></Button>
 
-  
-
                 <br></br>
-                <Button className={styles.masomenos} text="+1" onClick={masposition1}></Button>
-                <Button className={styles.masomenos} text="+2" onClick={masposition2}></Button>
-                <Button className={styles.masomenos} text="+3" onClick={masposition3}></Button>
-                <Button className={styles.masomenos} text="+4" onClick={masposition4}></Button>
-                <Button className={styles.masomenos} text="+5" onClick={masposition5}></Button>
+                <div className={styles.sumas}>
+                <Button className={styles.masomenos} text="▲" onClick={masposition1}></Button>
+                <Button className={styles.masomenos} text="▲" onClick={masposition2}></Button>
+                <Button className={styles.masomenos} text="▲" onClick={masposition3}></Button>
+                <Button className={styles.masomenos} text="▲" onClick={masposition4}></Button>
+                <Button className={styles.masomenos} text="▲" onClick={masposition5}></Button>
+                </div>
                 <h1 className={styles.letricas} >{lista[0][positions]}  {lista[1][positions2]}  {lista[2][positions3]}  {lista[3][positions4]}  {lista[4][positions5]} </h1>
-                <Button className={styles.masomenos} text="-1" onClick={menosposition1}></Button>
-                <Button className={styles.masomenos} text="-2" onClick={menosposition2}></Button>
-                <Button className={styles.masomenos} text="-3" onClick={menosposition3}></Button>
-                <Button className={styles.masomenos} text="-4" onClick={menosposition4}></Button>
-                <Button className={styles.masomenos} text="-5" onClick={menosposition5}></Button>
+                <Button className={styles.masomenos} text="▼" onClick={menosposition1}></Button>
+                <Button className={styles.masomenos} text="▼" onClick={menosposition2}></Button>
+                <Button className={styles.masomenos} text="▼" onClick={menosposition3}></Button>
+                <Button className={styles.masomenos} text="▼" onClick={menosposition4}></Button>
+                <Button className={styles.masomenos} text="▼" onClick={menosposition5}></Button>
             </div>
         </div>
         </div>
