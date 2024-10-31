@@ -117,7 +117,8 @@ export default function Numbers(props) {
                 </div>
                 <div className={styles.restas}>
                 <Button className={styles.resta} onClick={resta1} text="-" id="fgame-1"/>
-                <Button className={styles.resta} onClick={resta2} text="-" id="fgame-2"/></div>
+                <Button className={styles.resta} onClick={resta2} text="-" id="fgame-2"/>
+                </div>
                 <Button className={styles.check} disabled={false} onClick={check} text="CHECK"  id="sumayresta" disable/>
             </div>
             </div>
