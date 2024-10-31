@@ -70,12 +70,18 @@ export default function Maniqui(props) {
     }
 
         return(
-            <div>
-            <Button className={styles.botones} id="mani1" onClick={verifySequence} text="check"></Button>
-            <Button className={styles.botones} id="mani-" onClick={maniquiIzquierda} text="-"></Button>
-            <Button className={styles.botones} id="mani+" onClick={maniquiDerecha} text="+"></Button>
-                <Image src={"/miniquis/pose"+maniqui+".png"} alt="maniqui" width={200} height={160}></Image>
-                <Image src={"/miniquis/pose"+randomManiqui+".png"} alt="maniqui" width={200} height={160}></Image>
+            <div className={styles.all}>
+            <div  className={styles.todo}>
+
+            <Button className={styles.izquierda} id="mani-" onClick={maniquiIzquierda} text="🡸"></Button>
+            <Button className={styles.derecha} id="mani+" onClick={maniquiDerecha} text="🡺"></Button>
+                <div className={styles.maniquies}>
+                <Image className={styles.maniquiimg1} src={"/miniquis/pose"+maniqui+".png"} alt="maniqui" width={137} height={177}></Image>
+                <Image className={styles.maniquiimg2} src={"/miniquis/pose"+randomManiqui+".png"} alt="maniqui" width={137} height={177}></Image>
+                </div>
+            <Button className={styles.check} id="mani1" onClick={verifySequence} text="check"></Button>
+
+            </div>
             </div>
         )
 
