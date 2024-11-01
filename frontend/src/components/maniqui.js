@@ -73,8 +73,8 @@ export default function Maniqui(props) {
             <div className={styles.all}>
             <div  className={styles.todo}>
                 <div className={styles.maniquies}>
-                <Image className={styles.maniquiimg1} src={"/miniquis/pose"+maniqui+".png"} alt="maniqui" width={137} height={177}></Image>
-                <Image className={styles.maniquiimg2} src={"/miniquis/pose"+randomManiqui+".png"} alt="maniqui" width={137} height={177}></Image>
+                <Image className={styles.maniquiimg1} src={"/miniquis/pose"+maniqui+".png"} alt="maniqui" width={140} height={165}></Image>
+                <Image className={styles.maniquiimg2} src={"/miniquis/pose"+randomManiqui+".png"} alt="maniqui" width={140} height={165}></Image>
                 </div>
             <Button className={styles.izquierda} id="mani-" onClick={maniquiIzquierda} text="🡸"></Button>
             <Button className={styles.derecha} id="mani+" onClick={maniquiDerecha} text="🡺"></Button>

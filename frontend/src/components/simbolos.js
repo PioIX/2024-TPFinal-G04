@@ -52,7 +52,7 @@ export default function Simbolos(props) {
         var positions = [];
 	    var number = 1;
 
-        for (let index = 0; index < 9; index++) {
+        for (let index = 0; index < 16; index++) {
             number = getRandomInt(1, 28);
             do {
                 number = getRandomInt(1, 28);
@@ -113,17 +113,17 @@ export default function Simbolos(props) {
         console.log(simboloCom)
     }
 	const checksim = (e) => {
-        console.log(parseInt(e.target.id[0]))
-        if (simboloCom.includes(parseInt(e.target.id[0])) && simboloClick.includes(parseInt(e.target.id[0]))==false) {
+        var regex = /(\d+)/g;
+        if (simboloCom.includes(parseInt(e.target.id.match(regex))) && simboloClick.includes(parseInt(e.target.id.match(regex)))==false) {
             var m=[].concat(simboloClick)
-            m.push(parseInt(e.target.id[0]))
+            m.push(parseInt(e.target.id.match(regex)))
             setSimboloClick(()=>m)
             console.log("bien")
 
             if(m.length==5){
                 console.log("ganaste")
             }
-        }else if (simboloCom.includes(parseInt(e.target.id[0]))==false) {
+        }else if (simboloCom.includes(parseInt(e.target.id.match(regex)))==false && simboloClick.length!=5) {
             console.log("perdiste")
         }
         
@@ -136,15 +136,25 @@ export default function Simbolos(props) {
              <Image id={simboloEl[0]+"sim"} src={"/simbolos/simbolos"+simboloEl[0]+".png"} alt="simbolop1" width={50} height={50} onClick={checksim}></Image>
              <Image id={simboloEl[1]+"sim"} src={"/simbolos/simbolos"+simboloEl[1]+".png"} alt="simbolop2" width={50} height={50} onClick={checksim}></Image>
              <Image id={simboloEl[2]+"sim"} src={"/simbolos/simbolos"+simboloEl[2]+".png"} alt="simbolop3" width={50} height={50} onClick={checksim}></Image>
+             <Image id={simboloEl[9]+"sim"} src={"/simbolos/simbolos"+simboloEl[9]+".png"} alt="simbolop3" width={50} height={50} onClick={checksim}></Image>
              <br></br>
              <Image id={simboloEl[3]+"sim"} src={"/simbolos/simbolos"+simboloEl[3]+".png"} alt="simbolop4" width={50} height={50} onClick={checksim}></Image>
              <Image id={simboloEl[4]+"sim"} src={"/simbolos/simbolos"+simboloEl[4]+".png"} alt="simbolop5" width={50} height={50} onClick={checksim}></Image>
              <Image id={simboloEl[5]+"sim"} src={"/simbolos/simbolos"+simboloEl[5]+".png"} alt="simbolop6" width={50} height={50} onClick={checksim}></Image>
+             <Image id={simboloEl[10]+"sim"} src={"/simbolos/simbolos"+simboloEl[10]+".png"} alt="simbolop6" width={50} height={50} onClick={checksim}></Image>
              <br></br>
              <Image id={simboloEl[6]+"sim"} src={"/simbolos/simbolos"+simboloEl[6]+".png"} alt="simbolop7" width={50} height={50} onClick={checksim}></Image>
              <Image id={simboloEl[7]+"sim"} src={"/simbolos/simbolos"+simboloEl[7]+".png"} alt="simbolop8" width={50} height={50} onClick={checksim}></Image>
              <Image id={simboloEl[8]+"sim"} src={"/simbolos/simbolos"+simboloEl[8]+".png"} alt="simbolop9" width={50} height={50} onClick={checksim}></Image>
-            </div>
+             <Image id={simboloEl[11]+"sim"} src={"/simbolos/simbolos"+simboloEl[11]+".png"} alt="simbolop9" width={50} height={50} onClick={checksim}></Image>
+             <br></br>
+             <Image id={simboloEl[12]+"sim"} src={"/simbolos/simbolos"+simboloEl[12]+".png"} alt="simbolop7" width={50} height={50} onClick={checksim}></Image>
+             <Image id={simboloEl[13]+"sim"} src={"/simbolos/simbolos"+simboloEl[13]+".png"} alt="simbolop8" width={50} height={50} onClick={checksim}></Image>
+             <Image id={simboloEl[14]+"sim"} src={"/simbolos/simbolos"+simboloEl[14]+".png"} alt="simbolop9" width={50} height={50} onClick={checksim}></Image>
+             <Image id={simboloEl[15]+"sim"} src={"/simbolos/simbolos"+simboloEl[15]+".png"} alt="simbolop9" width={50} height={50} onClick={checksim}></Image>
+
+            </div>  
+
         )
     }
     if (localStorage.getItem("userId")==2 && simboloEl[1]!=undefined) {
