@@ -25,7 +25,7 @@
 	box-sizing: border-box;
 	justify-content: center;
 	align-items: center;
-	padding-top: 10%;
+	padding-top: 15%;
 	padding-bottom: 13%;
 	font-size: 1rem;
 	font-size: 16px;
@@ -47,8 +47,8 @@
 
 .td2 {
 	position: relative;
-	width: 26px;
-	height: 24px;
+	width: 22px;
+	height: 20px;
 	border: 3px solid #000000;
 	border-radius: 4px;
 	background-color: #a7a7a7;
@@ -110,19 +110,19 @@ background-color: #2b27277a;
 }
 
 .derecha, .izquierda, .arriba, .abajo{
-    font-weight: bold;
+
     border-radius: 4px;
     background-color: #bdbdbd;
     color: rgb(0, 0, 0);
-    width: 30px;
-    height: 30px;
+    width: 26px;
+    height: 24px;
     font-weight: 500;
     font-family: "lucida console";
-    font-size: 20px;
+    font-size: 22px;
     cursor: pointer;
     transition-duration: 0.2s;
 	border-color: #000000;
-
+justify-content: center;
 }
 .derecha:hover, .izquierda:hover, .arriba:hover, .abajo:hover{
     background: #a0a0a0;
@@ -136,21 +136,21 @@ background-color: #2b27277a;
 }
 .derecha{
 	position: relative;
-	top:165px;
-	left:276px;
+	top:166px;
+	left:260px;
 }
 .izquierda{
 	position: relative;
-	top:165px;
-	margin-left:-40px;
+	top:166px;
+	margin-left:-15px;
 }
 .arriba{
 	position: relative;
-	top:28px;
+	top:40px;
 	left:112px;
 }
 .abajo{
 	position: relative;
-	top:302px;
+	top:290px;
 	left:84px;
 }
