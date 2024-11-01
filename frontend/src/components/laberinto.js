@@ -252,10 +252,10 @@ export default function Laberinto(props) {
 		
 		return(
 			<div id="board">
-				<Button className={styles.derecha} id="derechal" onClick={derecha} text="🢂"></Button>
-				<Button className={styles.izquierda} id="izquierdal" onClick={izquierda} text="🢀"></Button>
-				<Button className={styles.arriba} id="arribal" onClick={arriba} text="🢁"></Button>
-				<Button className={styles.abajo} id="abajol" onClick={abajo} text="🢃"></Button>
+				<Button className={styles.derecha} id="derechal" onClick={derecha} text="►"></Button>
+				<Button className={styles.izquierda} id="izquierdal" onClick={izquierda} text="◄"></Button>
+				<Button className={styles.arriba} id="arribal" onClick={arriba} text="▲"></Button>
+				<Button className={styles.abajo} id="abajol" onClick={abajo} text="▼"></Button>
 				<div className={styles.all} id="messageArea">
 					<table className={styles.todo2} >
 						<tbody className={styles.fondo2}>
