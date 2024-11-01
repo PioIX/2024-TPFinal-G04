@@ -55,6 +55,8 @@
 	align-items: center;
 	justify-content: center;
 	justify-items: center;
+	text-align: center; /* Para centrar horizontalmente */
+	vertical-align: middle;
 
 }
 
