@@ -210,6 +210,7 @@ export default function Flechas(props) {
                 setCapa(() => 2)
                 setTimer(12)
                 setSecuencia(() => "")
+                setSecuencia2(()=>"")
             } else {
                 console.log("perdio")
                 socket.emit("winflechas", { ganar: "perdio" })
@@ -371,6 +372,7 @@ export default function Flechas(props) {
                     console.log("perdiste")
                     socket.emit("winflechas", { ganar: "perdio2" })
                     setSecuencia(() => "")
+                    setSecuencia2(()=>"")
                     a = ""
                     setTimer(a)
                     document.getElementById("startflechas").disabled = false

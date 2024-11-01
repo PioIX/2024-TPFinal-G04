@@ -131,7 +131,6 @@ export default function Simbolos(props) {
     if (localStorage.getItem("userId")==1 && simboloEl[1]!=undefined) {
         return (
             <div className={styles.all}>
-                <Button onClick={revelar} text="reveal"></Button>
              <br></br>
              <Image id={simboloEl[0]+"sim"} src={"/simbolos/simbolos"+simboloEl[0]+".png"} alt="simbolop1" width={50} height={50} onClick={checksim}></Image>
              <Image id={simboloEl[1]+"sim"} src={"/simbolos/simbolos"+simboloEl[1]+".png"} alt="simbolop2" width={50} height={50} onClick={checksim}></Image>
@@ -160,7 +159,6 @@ export default function Simbolos(props) {
     if (localStorage.getItem("userId")==2 && simboloEl[1]!=undefined) {
         return (
             <div className={styles.all}>
-                <Button onClick={revelar} text="reveal"></Button>
              <br></br>
              <Image src={"/simbolos/simbolos"+simboloEl[0]+".png"} alt="simbolo1" width={50} height={50}></Image>
              <Image src={"/simbolos/simbolos"+simboloEl[1]+".png"} alt="simbolo2" width={50} height={50}></Image>
