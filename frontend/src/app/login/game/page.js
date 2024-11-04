@@ -15,6 +15,7 @@ import Contraseña from "@/components/contrasena";
 import Flechas from "@/components/flechas";
 import Maniqui from "@/components/maniqui";
 import Simbolos from "@/components/simbolos";
+import Timer from "@/components/timer";
 
 export default function Game() {
 
@@ -76,6 +77,8 @@ export default function Game() {
               <Contraseña></Contraseña>
               <Flechas></Flechas>
               <Simbolos></Simbolos>
+              <Timer></Timer>
+
             </div>
           </div>
 
