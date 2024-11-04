@@ -186,6 +186,9 @@ io.on("connection", (socket) => {
 	socket.on('simboloState', data => {
 		io.to(req.session.room).emit('newSimboloState', { room: req.session.room, message: data });
 	});
+	socket.on('timer', data => {
+		io.to(req.session.room).emit('newTimer', { room: req.session.room, message: data });
+	});
 	
 	
     /**
