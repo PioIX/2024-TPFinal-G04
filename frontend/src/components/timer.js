@@ -3,9 +3,9 @@ import Button from "@/components/button";
 import { useState, useEffect } from "react";
 import styles from "./Timer.module.css"
 import { useSocket } from "@/hooks/useSocket";
-var [vidas, setVidas] = useState(3)
 
 export default function Timer(props) {
+    var [vidas, setVidas] = useState(3)
     let [ganaste, setGanaste] = useState([])
     var [timer, setTimer] = useState()
     var [reloj, setReloj] = useState()
@@ -76,10 +76,3 @@ export default function Timer(props) {
     )
 }
 
-
-export default function perder(){
-    setVidas(vidas-=1)
-    if (vidas==0) {
-        
-    }
-}
