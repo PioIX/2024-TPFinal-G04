@@ -404,17 +404,19 @@ export default function Flechas(props) {
 
     if (localStorage.getItem("userId") == 2) {
         return (
+            <div className={styles.all}>
+            <div className={styles.todo}>
             <div>
                 <br></br>
-                <Button id="startflechas" text="start" onClick={start}></Button>
+                <Button className={styles.check} id="startflechas" text="START" onClick={start}></Button>
                 <br></br>
-                <Button id="flechaArriba" text="↑" onClick={sumarArriba} ></Button>
-                <Button id="flechaAbajo" text="↓" onClick={sumarAbajo} ></Button>
-                <Button id="flechaDerecha" text="→" onClick={sumarDerecha} ></Button>
-                <Button id="flechaIzquierda" text="←" onClick={sumarIzquierda} ></Button>
-                <h1>{timer}</h1>
+                <Button className={styles.arriba} id="flechaArriba" text="🢁" onClick={sumarArriba} ></Button>
+                <Button className={styles.abajo} id="flechaAbajo" text="🢃" onClick={sumarAbajo} ></Button>
+                <Button className={styles.derecha} id="flechaDerecha" text="🢂" onClick={sumarDerecha} ></Button>
+                <Button className={styles.izquierda} id="flechaIzquierda" text="🢀" onClick={sumarIzquierda} ></Button>
+                <h1 className={styles.timer}>{timer}</h1>
                 <h1>{secuencia2}</h1>
-            </div>
+            </div></div></div>
 
         )
     }

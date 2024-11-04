@@ -25,8 +25,8 @@
 	box-sizing: border-box;
 	justify-content: center;
 	align-items: center;
-	padding-top: 15%;
-	padding-bottom: 13%;
+	padding-top: 8%;
+	padding-bottom: 10%;
 	font-size: 1rem;
 	font-size: 16px;
 	
@@ -51,7 +51,7 @@
 	height: 20px;
 	border: 3px solid #000000;
 	border-radius: 4px;
-	background-color: #a7a7a7;
+	background-color: #c9c9c9;
 	align-items: center;
 	justify-content: center;
 	justify-items: center;
@@ -113,8 +113,8 @@ background-color: #2b27277a;
 
 .derecha, .izquierda, .arriba, .abajo{
     padding: 0px 0;
-    border-radius: 4px;
-    background-color: #bdbdbd;
+    border-radius: 2px;
+    background-color: #c9c9c9;
     color: rgb(0, 0, 0);
 
     font-weight: 500;
@@ -139,29 +139,29 @@ background-color: #2b27277a;
 	width: 26px;
     height: 44px;
 	position: relative;
-	top:166px;
+	top:151px;
 	left:260px;
 }
 .izquierda{
 	width: 26px;
     height: 44px;
 	position: relative;
-	top:166px;
+	top:151px;
 	margin-left:-15px;
 }
 .arriba{
 	width: 46px;
     height: 24px;
 	position: relative;
-	top:40px;
-	left:90px;
+	top:35px;
+	left:88px;
 }
 .abajo{
 	width: 46px;
     height: 24px;
 	position: relative;
-	top:290px;
-	left: 44px;
+	top:275px;
+	left: 42px;
 }
 .img{
     display: flex;

@@ -130,7 +130,7 @@ export default function Laberinto(props) {
 	function abajo(){
 		if (lab.includes(player+7)) {
 			document.getElementById("ls"+player).innerHTML=""
-			document.getElementById("ls"+String(player+7)).innerHTML='<img className={styles.img} height=21 src="/laberinto/corazon.png"/>'
+			document.getElementById("ls"+String(player+7)).innerHTML='<img className={styles.img} height=18 src="/laberinto/corazon.png"/>'
 			setPlayer(player+7)
 		}else{
 			socket.emit("labwin", { numero: "perdiste" })
