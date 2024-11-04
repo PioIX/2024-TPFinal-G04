@@ -60,6 +60,7 @@ export default function Game() {
                 <Simon className={styles.juegos}></Simon>
                 <Morse className={styles.juegos}></Morse>
                 <Maniqui className={styles.juegos}></Maniqui>
+                <Timer></Timer>
               </div>
             </div>
           </div>
@@ -77,7 +78,7 @@ export default function Game() {
               <Contraseña></Contraseña>
               <Flechas></Flechas>
               <Simbolos></Simbolos>
-              <Timer></Timer>
+              
 
             </div>
           </div>
