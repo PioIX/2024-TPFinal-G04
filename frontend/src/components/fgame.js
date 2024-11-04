@@ -3,12 +3,20 @@ import Button from "@/components/button";
 import { useState, useEffect } from "react";
 import styles from "./Fgame.module.css"
 import { useSocket } from "@/hooks/useSocket";
-
+import { perderComponente } from "@/functions/functions";
+import Image from "./image";
 function getRandomInt(min, max) {
     const minCeiled = Math.ceil(min);
     const maxFloored = Math.floor(max);
     return Math.floor(Math.random() * (maxFloored - minCeiled) + minCeiled);
 }
+
+/*
+let [luzcomponente, setLuzComponente] = useState("/luzcomponente/apagado.png");
+perderComponente(setLuzComponente)
+<Image src={luzcomponente} alt="componente1" width={80} height={80} className={styles.luz}></Image>
+*/ 
+
 
 export default function Numbers(props) {
     let [num1, setNum1] = useState(0);
@@ -16,9 +24,9 @@ export default function Numbers(props) {
     let [number1, setNumber1] = useState(0);
     let [number2, setNumber2] = useState(0);
     let [number3, setNumber3] = useState(0);
+    let [luzcomponente, setLuzComponente] = useState("/luzcomponente/apagado.png");
     const {socket,isConnected}=useSocket();
     let started = false;
-
     //envia
     /*function handleClick(){
         socket.emit("numeros",{numero: 8})
@@ -89,7 +97,7 @@ export default function Numbers(props) {
             document.getElementById("fgame-1").disabled=true
             document.getElementById("fgame-2").disabled=true
         } else {
-            console.log("mal")
+            perderComponente(setLuzComponente)
         }
     }
 
@@ -104,6 +112,7 @@ export default function Numbers(props) {
         <div className={styles.all}>
         <div className={styles.todo}>
         <div>
+            <Image src={luzcomponente} alt="componente1" width={80} height={80} className={styles.luz}></Image>
 
             {number1 != 0 && <h1 className={styles.cuenta}>{number1}+{number2}x{number3}</h1>}
             <div >
@@ -120,6 +129,7 @@ export default function Numbers(props) {
                 <Button className={styles.resta} onClick={resta2} text="-" id="fgame-2"/>
                 </div>
                 <Button className={styles.check} disabled={false} onClick={check} text="CHECK"  id="sumayresta" disable/>
+                
             </div>
             </div>
             </div>
