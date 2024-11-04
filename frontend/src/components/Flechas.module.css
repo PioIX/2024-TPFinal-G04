@@ -1,0 +1,117 @@
+.display{
+    display: none;
+}
+
+.all{
+    width: 100%;
+    height: 100%;
+    margin-top: -80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+     
+.todo{
+   display: flex;
+   box-sizing: border-box;
+   justify-content: center;
+   align-items: center;
+   margin: 0 0 0 0;
+}
+
+.derecha, .izquierda, .arriba, .abajo{
+    padding: 0px 0;
+    border-radius: 2px;
+    background-color: #cecece;
+    color: rgb(0, 0, 0);
+    font-weight: 500;
+    font-family: "lucida console";
+    font-size: 45px;
+    cursor: pointer;
+    transition-duration: 0.2s;
+	border-color: #000000;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+}
+.derecha:hover, .izquierda:hover, .arriba:hover, .abajo:hover{
+    background: #a0a0a0;
+    cursor: pointer;
+    transform: translateY(0.5px);;
+}
+.derecha:active, .izquierda:active, .arriba:active, .abajo:active{
+    background: #888888;
+    cursor: pointer;
+    transform: translateY(1px);;
+}
+.check{
+    position: absolute;
+    font-weight: bold;
+    left:290px;
+    bottom: 240px;
+    border-radius: 4px;
+    background-color: #cccccc;
+    color: rgb(0, 0, 0);
+    width: 90px;
+    height: 40px;
+    font-weight: 500;
+    font-family: "lucida console";
+    font-size: 20px;
+    cursor: pointer;
+    transition-duration: 0.2s;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 30px;
+    border: 2px solid #3a3a3a;
+}
+.timer{
+    padding: 0px 0;
+    border-radius: 2px;
+    color: rgb(231, 231, 231);
+    font-weight: 500;
+    font-family: "lucida console";
+    font-size: 45px;
+    cursor: pointer;
+    transition-duration: 0.2s;
+	border-color: #000000;
+    justify-content: center;
+    position: absolute;
+    left:390px;
+    bottom: 97px;
+    width: 90px;
+}
+.check:hover{
+    background: #8d8d8d;
+    cursor: pointer;
+    transform: translateY(0.5px);;
+}
+.check:active{
+    background: #696969;
+    cursor: pointer;
+    transform: translateY(1px);;
+}
+.derecha{
+	position:relative;
+	top:90px;
+	left:55px;
+    width: 64px;
+}
+.izquierda{
+    width: 64px;
+	position: relative;
+	top:90px;
+    left: -180px;
+}
+.arriba{
+    height: 64px;
+	position: relative;
+	top:15px;
+	left:92px;
+}
+.abajo{
+    height: 64px;
+	position: relative;
+	top:166px;
+	left: 34px;
+}

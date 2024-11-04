@@ -212,7 +212,7 @@ export default function Contraseña(props) {
         <div className={styles.todo}>
             <div>
 
-                <Button className={styles.check} id="checkeoContrasena" text="Check" onClick={checkTrad}></Button>
+                <Button className={styles.check} id="checkeoContrasena" text="CHECK" onClick={checkTrad}></Button>
 
                 <br></br>
                 <div className={styles.sumas}>
