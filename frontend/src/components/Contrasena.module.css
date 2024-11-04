@@ -35,7 +35,8 @@
     transition-duration: 0.2s;
     margin-left: 5px;
     margin-right: 5px;
-    margin-top: 7px;
+    margin-top: 5px;
+    margin-bottom: 25px;
     border: 2px solid #3a3a3a;
 }
 .check:hover{
@@ -49,33 +50,54 @@
     transform: translateY(1px);;
 }
 
-.masomenos{
-    font-weight: bold;
-    border-radius: 4px;
-    background-color: #dddddd;
-    color: rgb(0, 0, 0);
-    width: 40px;
-    height: 30px;
-    font-weight: 500;
+.numeros, .sumas, .restas{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  
+  }
+  
+  .mas, .menos{
     font-family: "lucida console";
-    font-size: 20px;
+    display: inline-block;
+    font-weight: bold;
+    background: #bdbdbd;
+    color: rgb(0, 0, 0);
+    width: 42px;
+    height: 30px;
+    font-size: 29px;
+    font-weight: 900;
     cursor: pointer;
     transition-duration: 0.2s;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    margin-left: 1px;
-    margin-right: 1px;
-    border: 2px solid #3a3a3a;
-}
+    margin: 0;
 
-.masomenos:hover{
-    background: #cecece;
-    cursor: pointer;
+    border: 2px solid #292929;
+    
+  }
+  
+  .mas:hover, .menos:hover{
+      background: #999999;
+      cursor: pointer;
     transform: translateY(0.5px);;
-}
-.masomenos:active{
-    background: #888888;
-    cursor: pointer;
+    
+  }
+  .mas:active, .menos:active{
     transform: translateY(1px);;
-}
+    
+  }
+  
+ 
+  .numero2, .numero, .numero3, .numero4,.numero5{
+    vertical-align: middle;
+    font-size: 29px;
+    font-family: "lucida console";
+    border: 2px solid #292929;
+    background:  #bdbdbd;
+    color: rgb(0, 0, 0);
+    text-align: center;
+    width: 38px;
+    margin: 0;
 
+    align-self: center;
+    padding: 20px 0;}

@@ -112,19 +112,18 @@ background-color: #2b27277a;
 }
 
 .derecha, .izquierda, .arriba, .abajo{
-
+    padding: 0px 0;
     border-radius: 4px;
     background-color: #bdbdbd;
     color: rgb(0, 0, 0);
-    width: 26px;
-    height: 24px;
+
     font-weight: 500;
     font-family: "lucida console";
     font-size: 22px;
     cursor: pointer;
     transition-duration: 0.2s;
 	border-color: #000000;
-justify-content: center;
+    justify-content: center;
 }
 .derecha:hover, .izquierda:hover, .arriba:hover, .abajo:hover{
     background: #a0a0a0;
@@ -137,24 +136,32 @@ justify-content: center;
     transform: translateY(1px);;
 }
 .derecha{
+	width: 26px;
+    height: 44px;
 	position: relative;
 	top:166px;
 	left:260px;
 }
 .izquierda{
+	width: 26px;
+    height: 44px;
 	position: relative;
 	top:166px;
 	margin-left:-15px;
 }
 .arriba{
+	width: 46px;
+    height: 24px;
 	position: relative;
 	top:40px;
-	left:112px;
+	left:90px;
 }
 .abajo{
+	width: 46px;
+    height: 24px;
 	position: relative;
 	top:290px;
-	left:84px;
+	left: 44px;
 }
 .img{
     display: flex;

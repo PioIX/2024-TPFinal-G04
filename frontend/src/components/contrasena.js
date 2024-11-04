@@ -216,18 +216,26 @@ export default function Contraseña(props) {
 
                 <br></br>
                 <div className={styles.sumas}>
-                <Button className={styles.masomenos} text="▲" onClick={masposition1}></Button>
-                <Button className={styles.masomenos} text="▲" onClick={masposition2}></Button>
-                <Button className={styles.masomenos} text="▲" onClick={masposition3}></Button>
-                <Button className={styles.masomenos} text="▲" onClick={masposition4}></Button>
-                <Button className={styles.masomenos} text="▲" onClick={masposition5}></Button>
+                <Button className={styles.mas} text="▲" onClick={masposition1}></Button>
+                <Button className={styles.mas} text="▲" onClick={masposition2}></Button>
+                <Button className={styles.mas} text="▲" onClick={masposition3}></Button>
+                <Button className={styles.mas} text="▲" onClick={masposition4}></Button>
+                <Button className={styles.mas} text="▲" onClick={masposition5}></Button>
                 </div>
-                <h1 className={styles.letricas} >{lista[0][positions]}  {lista[1][positions2]}  {lista[2][positions3]}  {lista[3][positions4]}  {lista[4][positions5]} </h1>
-                <Button className={styles.masomenos} text="▼" onClick={menosposition1}></Button>
-                <Button className={styles.masomenos} text="▼" onClick={menosposition2}></Button>
-                <Button className={styles.masomenos} text="▼" onClick={menosposition3}></Button>
-                <Button className={styles.masomenos} text="▼" onClick={menosposition4}></Button>
-                <Button className={styles.masomenos} text="▼" onClick={menosposition5}></Button>
+                <div className={styles.numeros}>
+                <h1 className={styles.numero} >{lista[0][positions]}</h1>
+                <h1 className={styles.numero2} >{lista[1][positions2]}</h1>
+                <h1 className={styles.numero3} >{lista[2][positions3]}</h1>
+                <h1 className={styles.numero4} >{lista[3][positions4]}</h1>
+                <h1 className={styles.numero5} >{lista[4][positions5]}</h1>
+                </div>
+                <div className={styles.restas}>
+                <Button className={styles.menos} text="▼" onClick={menosposition1}></Button>
+                <Button className={styles.menos} text="▼" onClick={menosposition2}></Button>
+                <Button className={styles.menos} text="▼" onClick={menosposition3}></Button>
+                <Button className={styles.menos} text="▼" onClick={menosposition4}></Button>
+                <Button className={styles.menos} text="▼" onClick={menosposition5}></Button>
+                </div>
             </div>
         </div>
         </div>

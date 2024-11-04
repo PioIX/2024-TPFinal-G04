@@ -68,10 +68,10 @@ export default function Laberinto(props) {
 					if (Array[index]==Array[0]) {
 						//'<img className={styles.img} height=21 src="/laberinto/corazon.png"/>'
 						//<Image className={styles.img} src={"/laberinto/corazon.png"} height={21} ></Image>
-						document.getElementById("ls"+Array[index]).innerHTML='<img className={styles.img} height=21 src="/laberinto/corazon.png"/>'
+						document.getElementById("ls"+Array[index]).innerHTML='<img className={styles.img} height=18 src="/laberinto/corazon.png"/>'
 					}
 					if (Array[index]==Array[Array.length-1]) {
-						document.getElementById("ls"+Array[index]).innerHTML='<img className={styles.img} height=21 src="/laberinto/bandera.png"/>'
+						document.getElementById("ls"+Array[index]).innerHTML='<img className={styles.img} height=18 src="/laberinto/bandera.png"/>'
 					}
 				}
 			}
@@ -82,7 +82,7 @@ export default function Laberinto(props) {
 	function derecha(){
 		if (lab.includes(player+1)) {
 			document.getElementById("ls"+player).innerHTML=""
-			document.getElementById("ls"+String(player+1)).innerHTML='<img className={styles.img} height=21 src="/laberinto/corazon.png"/>'
+			document.getElementById("ls"+String(player+1)).innerHTML='<img className={styles.img} height=18 src="/laberinto/corazon.png"/>'
 			setPlayer(player+1)
 		}else{
 			socket.emit("labwin", { numero: "perdiste" })
@@ -98,7 +98,7 @@ export default function Laberinto(props) {
 	function izquierda(){
 		if (lab.includes(player-1)) {
 			document.getElementById("ls"+player).innerHTML=""
-			document.getElementById("ls"+String(player-1)).innerHTML='<img className={styles.img} height=21  src="/laberinto/corazon.png"/>'
+			document.getElementById("ls"+String(player-1)).innerHTML='<img className={styles.img} height=18  src="/laberinto/corazon.png"/>'
 			setPlayer(player-1)
 		}else{
 			socket.emit("labwin", { numero: "perdiste" })
@@ -114,7 +114,7 @@ export default function Laberinto(props) {
 	function arriba(){
 		if (lab.includes(player-7)) {
 			document.getElementById("ls"+player).innerHTML=""
-			document.getElementById("ls"+String(player-7)).innerHTML='<img className={styles.img} height=21 src="/laberinto/corazon.png"/>'
+			document.getElementById("ls"+String(player-7)).innerHTML='<img className={styles.img} height=18 src="/laberinto/corazon.png"/>'
 			setPlayer(player-7)
 		}else{
 			socket.emit("labwin", { numero: "perdiste" })
