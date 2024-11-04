@@ -3,6 +3,6 @@
 
 export default function Image(props) {
     return(
-        <img src={props.src} alt={props.alt} width={props.width} height={props.height}></img>
+        <img id={props.id} onClick={props.onClick} src={props.src} alt={props.alt} width={props.width} height={props.height} className={props.className}></img>
     )
 }

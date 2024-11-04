@@ -3,6 +3,11 @@ import Button from "@/components/button";
 import { useState, useEffect } from "react";
 import styles from "./Laberinto.module.css"
 import { useSocket } from "@/hooks/useSocket";
+import Image from "./image";
+import Persona from "./personita";
+
+
+
 function getRandomInt(min, max) {
     const minCeiled = Math.ceil(min);
     const maxFloored = Math.floor(max);
@@ -61,6 +66,8 @@ export default function Laberinto(props) {
 			for (let index = 0; index < Array.length; index++) {
 				if (document.getElementById("ls"+Array[index])!=undefined) {
 					if (Array[index]==Array[0]) {
+						//'<img className={styles.img} height=21 src="/laberinto/corazon.png"/>'
+						//<Image className={styles.img} src={"/laberinto/corazon.png"} height={21} ></Image>
 						document.getElementById("ls"+Array[index]).innerHTML='<img className={styles.img} height=21 src="/laberinto/corazon.png"/>'
 					}
 					if (Array[index]==Array[Array.length-1]) {
@@ -245,16 +252,15 @@ export default function Laberinto(props) {
 		
 		return(
 			<div id="board">
-				<Button className={styles.derecha} id="derechal" onClick={derecha} text="🢂"></Button>
-				<Button className={styles.izquierda} id="izquierdal" onClick={izquierda} text="🢀"></Button>
-				<Button className={styles.arriba} id="arribal" onClick={arriba} text="🢁"></Button>
-				<Button className={styles.abajo} id="abajol" onClick={abajo} text="🢃"></Button>
+				<Button className={styles.derecha} id="derechal" onClick={derecha} text="►"></Button>
+				<Button className={styles.izquierda} id="izquierdal" onClick={izquierda} text="◄"></Button>
+				<Button className={styles.arriba} id="arribal" onClick={arriba} text="▲"></Button>
+				<Button className={styles.abajo} id="abajol" onClick={abajo} text="▼"></Button>
 				<div className={styles.all} id="messageArea">
 					<table className={styles.todo2} >
 						<tbody className={styles.fondo2}>
 							<tr>
-								
-	
+							
 								<td className={styles.td2} id="ls0"></td>
 								<td className={styles.td2} id="ls1"></td>
 								<td className={styles.td2} id="ls2"></td>
@@ -317,6 +323,7 @@ export default function Laberinto(props) {
 								<td className={styles.td2} id="ls46"></td>
 								<td className={styles.td2} id="ls47"></td>
 								<td className={styles.td2} id="ls48"></td>
+								
 							</tr>
 						</tbody>
 					</table>

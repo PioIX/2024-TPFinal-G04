@@ -35,7 +35,8 @@
     cursor: pointer;
     transition-duration: 0.2s;
     position: absolute;
-    margin-bottom: -230px;
+    margin-left: 150px;
+    margin-bottom: -250px;
     border: 2px solid #3a3a3a;
 }
 .check:hover{
@@ -51,17 +52,22 @@
 
 .izquierda{
     position: absolute;
-    bottom: 293px;
-    left: 685px;
+    bottom: 170px;
+    left: 715px; 
     border: 2px solid #3a3a3a;
     background-color: #bdbdbd;
+    width: 30px;
+    height: 30px;
 }
 .derecha{
     position: absolute;
-    bottom: 293px;
-    left: 810px;
+    bottom: 170px;
+    left: 780px; 
+
     border: 2px solid #3a3a3a;
     background-color: #bdbdbd;
+    width: 30px;
+    height: 30px;
 }
 
 .derecha:hover, .izquierda:hover{
@@ -74,3 +80,18 @@
     cursor: pointer;
     transform: translateY(1px);;
 }
+/* .izquierda{
+     position: absolute;
+    bottom: 293px;
+    left: 685px; 
+    border: 2px solid #3a3a3a;
+    background-color: #bdbdbd;
+}
+.derecha{
+     position: absolute;
+    bottom: 293px;
+    left: 810px; 
+
+    border: 2px solid #3a3a3a;
+    background-color: #bdbdbd;
+} */
