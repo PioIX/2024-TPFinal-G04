@@ -118,7 +118,7 @@ export default function Naval(props) {
 	return (
 		<div id="board">
 			<div id="messageArea" className={styles.all}>
-				<Image src={luzcomponente} alt="componente1" width={80} height={80} ></Image>
+				<Image className={styles.lucesita} src={luzcomponente} alt="componente1" width={80} height={80} ></Image>
 				<table  className={styles.todo}>
 					<tbody className={styles.fondo}>
 						<tr>

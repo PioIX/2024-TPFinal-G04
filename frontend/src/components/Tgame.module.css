@@ -61,3 +61,8 @@
 .start:active{
   transform: translateY(1px);
 }
+.lucesita{
+	position: absolute;
+	top: 37px;
+	left: 560px;
+}
