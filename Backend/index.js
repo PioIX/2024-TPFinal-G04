@@ -189,6 +189,9 @@ io.on("connection", (socket) => {
 	socket.on('timer', data => {
 		io.to(req.session.room).emit('newTimer', { room: req.session.room, message: data });
 	});
+	socket.on('vidas', data => {
+		io.to(req.session.room).emit('newVidas', { room: req.session.room, message: data });
+	});
 	
 	
     /**

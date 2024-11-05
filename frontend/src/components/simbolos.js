@@ -38,7 +38,6 @@ export default function Simbolos(props) {
                 }
             }
         });
-
         if (!started) {
             socket.emit("joinRoom", { room: "Kaboom" })
             if (localStorage.getItem("userId") == 1) {
@@ -122,9 +121,11 @@ export default function Simbolos(props) {
 
             if(m.length==5){
                 console.log("ganaste")
+                socket.emit("simboloState", { win: "ganaste" })
             }
         }else if (simboloCom.includes(parseInt(e.target.id.match(regex)))==false && simboloClick.length!=5) {
             console.log("perdiste")
+            socket.emit("simboloState", { win: "lose" })
         }
         
     }
