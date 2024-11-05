@@ -12,11 +12,12 @@ function getRandomInt(min, max) {
 }
 
 /*
+import { perderComponente } from "@/functions/functions";
+import Image from "./image";
 let [luzcomponente, setLuzComponente] = useState("/luzcomponente/apagado.png");
 perderComponente(setLuzComponente)
-<Image src={luzcomponente} alt="componente1" width={80} height={80} className={styles.luz}></Image>
+<Image src={luzcomponente} alt="componente1" width={80} height={80} ></Image>
 */ 
-
 
 export default function Numbers(props) {
     let [num1, setNum1] = useState(0);
@@ -101,6 +102,7 @@ export default function Numbers(props) {
         }
     }
 
+   
 
     useEffect(() => {
         setNumber1(getRandomInt(1, 10))

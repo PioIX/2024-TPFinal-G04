@@ -1,10 +1,17 @@
+
 export function perderVida(){
     var a =localStorage.getItem("lives")-1
     localStorage.setItem("lives",a)
 
 }
 
+export function naonao(vidasOtro){
+    if (vidasOtro!=undefined) {
+        vidasOtro-=1
+    }
+}
 export function perderComponente(setLuzComponente){
+    
     return new Promise((resolve, reject) => {
         setLuzComponente("/luzcomponente/apagado.png")
         setTimeout(function () {

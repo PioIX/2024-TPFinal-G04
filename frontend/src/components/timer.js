@@ -26,6 +26,12 @@ export default function Timer(props) {
                 console.log("perdiste")
             }
         });
+        socket.on('newVidas', (data) => {
+            if (localStorage.getItem("userId") != data.message.user) {
+                localStorage.setItem("vidasSuyas", vida)
+                console.log("llego ", vida)
+            }
+        });
 
         if (!started) {
             socket.emit("joinRoom", { room: "Kaboom" })
@@ -39,6 +45,8 @@ export default function Timer(props) {
         setTimer(5*60)//*60
         localStorage.setItem("lives", 3)
         setVidas(localStorage.getItem("lives"))
+        if (!socket) return;
+        socket.emit("vidas", { vida: 3 , user:localStorage.getItem("userId")})
     }, [])
 
 
@@ -78,7 +86,7 @@ export default function Timer(props) {
         }
     }, [timer])
 
-    function mostrarVida(){
+    function mostrarVida(vida, perro){
         console.log(localStorage.getItem("lives"))
         console.log(vidas)
     }
