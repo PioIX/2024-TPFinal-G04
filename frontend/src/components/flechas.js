@@ -148,7 +148,7 @@ export default function Flechas(props) {
 
     function sumarArriba() {
         setSecuencia(secuencia += "1")
-        setSecuencia2(secuencia2+="↑")
+        setSecuencia2(secuencia2+="🢁")
         if (secuencia.length == 5 && capa == 0) {
             if (secuencia == comFlecha1) {
                 setCapa(() => 1)
@@ -191,7 +191,7 @@ export default function Flechas(props) {
     }
     function sumarAbajo() {
         setSecuencia(secuencia += "2")
-        setSecuencia2(secuencia2 += "↓")
+        setSecuencia2(secuencia2 += "🢃")
         if (secuencia.length == 5 && capa == 0) {
             if (secuencia == comFlecha1) {
                 setCapa(() => 1)
@@ -234,7 +234,7 @@ export default function Flechas(props) {
     }
     function sumarDerecha() {
         setSecuencia(secuencia += "3")
-        setSecuencia2(secuencia2 += "→")
+        setSecuencia2(secuencia2 += "🢂")
         if (secuencia.length == 5 && capa == 0) {
             if (secuencia == comFlecha1) {
                 setCapa(() => 1)
@@ -277,7 +277,7 @@ export default function Flechas(props) {
     }
     function sumarIzquierda() {
         setSecuencia(secuencia += "4")
-        setSecuencia2(secuencia2 += "←")
+        setSecuencia2(secuencia2 += "🢀")
         if (secuencia.length == 5 && capa == 0) {
             if (secuencia == comFlecha1) {
                 setCapa(() => 1)
@@ -324,13 +324,13 @@ export default function Flechas(props) {
         for (let index = 0; index < 5; index++) {
             const element = arrows[capan][0][index];
             if (element == 1) {
-                a += "↑"
+                a += "🢁"
             } else if (element == 2) {
-                a += "↓"
+                a += "🢃"
             } if (element == 3) {
-                a += "→"
+                a += "🢂"
             } if (element == 4) {
-                a += "←"
+                a += "🢀"
             }
         }
         setFlechitas(() => a)
@@ -415,7 +415,7 @@ export default function Flechas(props) {
                 <Button className={styles.derecha} id="flechaDerecha" text="🢂" onClick={sumarDerecha} ></Button>
                 <Button className={styles.izquierda} id="flechaIzquierda" text="🢀" onClick={sumarIzquierda} ></Button>
                 <h1 className={styles.timer}>{timer}</h1>
-                <h1>{secuencia2}</h1>
+                <h1 className={styles.secuenciafinal}>{secuencia2}</h1>
             </div></div></div>
 
         )

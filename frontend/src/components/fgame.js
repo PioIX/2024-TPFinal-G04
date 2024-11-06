@@ -114,7 +114,7 @@ export default function Numbers(props) {
         <div className={styles.all}>
         <div className={styles.todo}>
         <div>
-            <Image src={luzcomponente} alt="componente1" width={80} height={80} className={styles.luz}></Image>
+            <Image className={styles.lucesita} src={luzcomponente} alt="componente1" width={80} height={80}></Image>
 
             {number1 != 0 && <h1 className={styles.cuenta}>{number1}+{number2}x{number3}</h1>}
             <div >
