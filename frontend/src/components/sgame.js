@@ -3,7 +3,17 @@ import Button from "@/components/button";
 import { useState, useEffect } from "react";
 import styles from "./Sgame.module.css"
 import { useSocket } from "@/hooks/useSocket";
+import Image from "./image";
+import { perderComponente } from "@/functions/functions";
 
+
+/*
+import { perderComponente } from "@/functions/functions";
+import Image from "./image";
+let [luzcomponente, setLuzComponente] = useState("/luzcomponente/apagado.png");
+perderComponente(setLuzComponente)
+<Image src={luzcomponente} alt="componente1" width={80} height={80} ></Image>
+*/ 
 
 function getRandomInt(min, max) {
 	const minCeiled = Math.ceil(min);
@@ -32,6 +42,7 @@ export default function Naval(props) {
 
 	let [position, setPosition] = useState([]);
 	let [bombs, setBombs] = useState([]);
+	let [luzcomponente, setLuzComponente] = useState("/luzcomponente/apagado.png");
 	let started = false;
     const {socket,isConnected}=useSocket();
 
@@ -93,7 +104,7 @@ export default function Naval(props) {
 		} else if (secuence.includes(Number(e.target.id)) && bombs.includes(e.target.id)) {
 
 		} else if (secuence.includes(Number(e.target.id))==false && bombs.length < 5){
-			console.log("error")
+			perderComponente(setLuzComponente)
 		}
 	};
 
@@ -107,6 +118,7 @@ export default function Naval(props) {
 	return (
 		<div id="board">
 			<div id="messageArea" className={styles.all}>
+				<Image className={styles.lucesita} src={luzcomponente} alt="componente1" width={80} height={80} ></Image>
 				<table  className={styles.todo}>
 					<tbody className={styles.fondo}>
 						<tr>

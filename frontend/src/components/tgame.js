@@ -19,6 +19,7 @@ export default function Simon(props) {
     let [state, setState] = useState(0)
     let [stateActual, setStateActual] = useState(0)
     let [seguida, setSeguida] = useState([])
+    let [luzcomponente, setLuzComponente] = useState("/luzcomponente/apagado.png");
     const { socket, isConnected } = useSocket();
     let started = false;
 
@@ -248,6 +249,7 @@ export default function Simon(props) {
         <div className={styles.todo}>
         <div className={styles.child}>
             <Button className={styles.start} onClick={game} text="START" id="lasecuencia"></Button>
+            <Image className={styles.lucesita} src={luzcomponente} alt="componente1" width={80} height={80} ></Image>
             <Image src={luz} alt="simon" width={300} height={240}></Image>
             <br></br>
 
