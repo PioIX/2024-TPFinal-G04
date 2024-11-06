@@ -3,6 +3,8 @@ import Button from "@/components/button";
 import { useState, useEffect } from "react";
 import styles from "./Contrasena.module.css"
 import { useSocket } from "@/hooks/useSocket";
+import { perderComponente } from "@/functions/functions";
+import Image from "./image";
 
 
 function getRandomInt(min, max) {
@@ -10,9 +12,17 @@ function getRandomInt(min, max) {
     const maxFloored = Math.floor(max);
     return Math.floor(Math.random() * (maxFloored - minCeiled) + minCeiled);
 }
+/*
+import { perderComponente } from "@/functions/functions";
+import Image from "./image";
+let [luzcomponente, setLuzComponente] = useState("/luzcomponente/apagado.png");
+perderComponente(setLuzComponente)
+<Image src={luzcomponente} alt="componente1" width={80} height={80} ></Image>
+*/ 
 
 
 export default function Contraseña(props) {
+    let [luzcomponente, setLuzComponente] = useState("/luzcomponente/apagado.png");
     var [palabra, setPalabra] = useState(["Bomba", "Morir", "Clave", "Llave", "Cable", "Boton", "Luces", "Genio", "Juego", "Tecla", "Fuego", "Grupo", "Corte", "Ruina", "Habla", "Letra", "Reloj", "Grito", "Cobre", "Plata", "Metal", "Hueso", "Marca", "Lento", "Debil", "Dudas", "Preso", "Dolor", "Matar", "Muera", "Largo", "Corto", "Turno"])
     var [elegida, setElegida] = useState("")
     var [lista, setLista] = useState([[], [], [], [], []])
@@ -132,7 +142,7 @@ export default function Contraseña(props) {
                 console.log("ganaste")
                 document.getElementById("checkeoContrasena").disabled=true
             } else {
-                console.log("perdiste")
+                perderComponente(setLuzComponente)
             }
     }
 

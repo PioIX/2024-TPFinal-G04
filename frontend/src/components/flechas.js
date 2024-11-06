@@ -20,6 +20,7 @@ function getRandomInt(min, max) {
 }
 export default function Flechas(props) {
     let [luzcomponente, setLuzComponente] = useState("/luzcomponente/apagado.png");
+    let [boolean, setBoolean] = useState(true);
     var [arrows, setArrows] = useState([[[]]]);
     var [timer, setTimer] = useState()
     var [flechitas, setFlechitas] = useState()
@@ -62,7 +63,6 @@ export default function Flechas(props) {
                     setFlechitas("")
                 }
                 if (data.message.ganar == "perdio") {
-                    perderComponente(setLuzComponente)
                     console.log("equivocado")
                 }
                 if (data.message.ganar == "gano") {
@@ -349,6 +349,7 @@ export default function Flechas(props) {
 
 
     function start() {
+        setBoolean(false)
         setTimer(12)
         if (localStorage.getItem("userId") == 2) {
 
@@ -380,13 +381,13 @@ export default function Flechas(props) {
                     setTimer(a)
                 }
                 if (a == 0 && localStorage.getItem("userId") == 2) {
-                    console.log("perdiste")
+                    perderComponente(setLuzComponente)
+                    setBoolean(true)
                     socket.emit("winflechas", { ganar: "perdio2" })
                     setSecuencia(() => "")
                     setSecuencia2(()=>"")
                     a = ""
                     setTimer(a)
-                    document.getElementById("startflechas").disabled = false
                     document.getElementById("flechaArriba").disabled = true
                     document.getElementById("flechaAbajo").disabled = true
                     document.getElementById("flechaDerecha").disabled = true
@@ -419,7 +420,7 @@ export default function Flechas(props) {
             <div className={styles.todo}>
             <div>
                 <br></br>
-                <Button className={styles.check} id="startflechas" text="START" onClick={start}></Button>
+                {boolean==true ? <Button className={styles.check} id="startflechas" text="START" onClick={start}></Button>: <></>}
                 <br></br>
                 <Button className={styles.arriba} id="flechaArriba" text="🢁" onClick={sumarArriba} ></Button>
                 <Button className={styles.abajo} id="flechaAbajo" text="🢃" onClick={sumarAbajo} ></Button>
