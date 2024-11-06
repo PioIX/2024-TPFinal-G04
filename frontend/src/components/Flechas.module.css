@@ -76,8 +76,8 @@
 	border-color: #000000;
     justify-content: center;
     position: absolute;
-    left:400px;
-    top: 540px;
+    left:398px;
+    top: 541px;
     width: 90px;
 }
 .check:hover{
@@ -92,26 +92,26 @@
 }
 .derecha{
 	position:relative;
-	top:49px;
+	top:47px;
 	left:55px;
 
 }
 .izquierda{
 
 	position: relative;
-	top:49px;
+	top:47px;
     left: -170px;
 }
 .arriba{
     width: 65px;
 	position: relative;
 	top:-22px;
-	left:109px;
+	left:105px;
 }
 .abajo{
     width: 65px;
 	position: relative;
-	top:119px;
+	top:114px;
 	left: 40px;
 }
 .secuenciafinal{
