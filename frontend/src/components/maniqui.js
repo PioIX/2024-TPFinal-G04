@@ -4,7 +4,15 @@ import { useState, useEffect } from "react";
 import styles from "./Maniqui.module.css"
 import { useSocket } from "@/hooks/useSocket";
 import Image from "./image";
+import { perderComponente } from "@/functions/functions";
 
+/*
+import { perderComponente } from "@/functions/functions";
+import Image from "./image";
+let [luzcomponente, setLuzComponente] = useState("/luzcomponente/apagado.png");
+perderComponente(setLuzComponente)
+<Image src={luzcomponente} alt="componente1" width={80} height={80} ></Image>
+*/ 
 function getRandomInt(min, max) {
     const minCeiled = Math.ceil(min);
     const maxFloored = Math.floor(max);
@@ -12,8 +20,9 @@ function getRandomInt(min, max) {
 }
 
 export default function Maniqui(props) {
-
     
+    
+    let [luzcomponente, setLuzComponente] = useState("/luzcomponente/apagado.png");
     let [randomManiqui, setRandomManiqui] = useState(0);
     let [maniqui, setManiqui] = useState(0);
     const {socket,isConnected}=useSocket();
@@ -50,7 +59,7 @@ export default function Maniqui(props) {
             document.getElementById("mani-").disabled=true
             document.getElementById("mani+").disabled=true
         }else{
-            console.log("perdiste")
+            perderComponente(setLuzComponente)
         }
     }
 

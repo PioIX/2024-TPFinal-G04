@@ -5,8 +5,15 @@ import styles from "./Laberinto.module.css"
 import { useSocket } from "@/hooks/useSocket";
 import Image from "./image";
 import Persona from "./personita";
+import { perderComponente } from "@/functions/functions";
 
-
+/*
+import { perderComponente } from "@/functions/functions";
+import Image from "./image";
+let [luzcomponente, setLuzComponente] = useState("/luzcomponente/apagado.png");
+perderComponente(setLuzComponente)
+<Image src={luzcomponente} alt="componente1" width={80} height={80} ></Image>
+*/ 
 
 function getRandomInt(min, max) {
     const minCeiled = Math.ceil(min);
@@ -15,6 +22,7 @@ function getRandomInt(min, max) {
 }
 
 export default function Laberinto(props) {
+	let [luzcomponente, setLuzComponente] = useState("/luzcomponente/apagado.png");
     var [position, setPosition] = useState([[0,1,2,9,16,17,18,25,32,33,40,41],[0,7,14,15,16,9,10,11,18,25,32,31,30,37,44],[39,40,33,26,19,12,11,10,17,24,23,30,37,44,43,42,35,28,21,14,15,8,1],[36,43,44,45,46,39,32,33,34,27,20,19,18,17,10,3,2,1,8],[19,18,11,4,3,2,9,16,23,30,31,32,33,40,47,46,45,44,43,42,35,28,21],[48,47,46,39,32,31,30,29,28,21,14,7,0,1,2,3,4,5,12,19,18,17,16],[6,13,20,19,18,11,4,3,2,1,8,15,16,23,30,29,36,43,44,45,38,39,32,33,34,41,48,47],[2,3,4,5,12,19,18,17,16,15,22,29,36,43,44,45,46,47,48,41,34,33],[36,43,44,45,46,39,40,41,34,27,20,19,18,25,24,23,22,15,8,1,2,3,10],[26,19,12,5,4,3,10,17,16,15,14,21,28,35,42,43,44,45,46,39,32,31,30],[44,43,42,35,28,29,30,23,16,9,2,3,4,11,18,25,32,33,40,47,46],[37,44,43,42,35,28,21,22,23,24,31,32,33,26,19,12,5,4,3,10,9,8,7],[43,44,37,30,29,22,15,8,1,2,3,10,17,24,25,26,27,34,41,40,39],[8,1,2,3,4,11,12,13,20,27,34,41,40,39,32,25,24,23,22,29,36,37],[0,1,2,3,4,5,12,19,18,17,16,15,14,21,28,29,30,31,32,33,40,47,46,45,44,43,42]]);
     var [random, setRandom] = useState(getRandomInt(0, position.length))
 	var [lab,setLab]= useState()
@@ -41,7 +49,7 @@ export default function Laberinto(props) {
             if (data.message.numero == "win") {
                 console.log("ganaste")
             }else{
-				console.log("perdiste")
+				perderComponente(setLuzComponente)
 			}
 
         });
@@ -85,6 +93,7 @@ export default function Laberinto(props) {
 			document.getElementById("ls"+String(player+1)).innerHTML='<img className={styles.img} height=18 src="/laberinto/corazon.png"/>'
 			setPlayer(player+1)
 		}else{
+			perderComponente(setLuzComponente)
 			socket.emit("labwin", { numero: "perdiste" })
 		}
 		if (player+1==lab[lab.length-1]) {
@@ -101,6 +110,7 @@ export default function Laberinto(props) {
 			document.getElementById("ls"+String(player-1)).innerHTML='<img className={styles.img} height=18  src="/laberinto/corazon.png"/>'
 			setPlayer(player-1)
 		}else{
+			perderComponente(setLuzComponente)
 			socket.emit("labwin", { numero: "perdiste" })
 		}
 		if (player-1==lab[lab.length-1]) {
@@ -117,6 +127,7 @@ export default function Laberinto(props) {
 			document.getElementById("ls"+String(player-7)).innerHTML='<img className={styles.img} height=18 src="/laberinto/corazon.png"/>'
 			setPlayer(player-7)
 		}else{
+			perderComponente(setLuzComponente)
 			socket.emit("labwin", { numero: "perdiste" })
 		}
 		if (player-7==lab[lab.length-1]) {
@@ -133,6 +144,7 @@ export default function Laberinto(props) {
 			document.getElementById("ls"+String(player+7)).innerHTML='<img className={styles.img} height=18 src="/laberinto/corazon.png"/>'
 			setPlayer(player+7)
 		}else{
+			perderComponente(setLuzComponente)
 			socket.emit("labwin", { numero: "perdiste" })
 		}
 		if (player+7==lab[lab.length-1]) {

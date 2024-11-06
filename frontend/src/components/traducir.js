@@ -3,8 +3,17 @@ import Button from "@/components/button";
 import { useState, useEffect } from "react";
 import styles from "./Traducir.module.css"
 import { useSocket } from "@/hooks/useSocket";
+import { perderComponente } from "@/functions/functions";
+import Image from "./image";
 
 
+/*
+import { perderComponente } from "@/functions/functions";
+import Image from "./image";
+let [luzcomponente, setLuzComponente] = useState("/luzcomponente/apagado.png");
+perderComponente(setLuzComponente)
+<Image src={luzcomponente} alt="componente1" width={80} height={80} ></Image>
+*/ 
 function getRandomInt(min, max) {
     const minCeiled = Math.ceil(min);
     const maxFloored = Math.floor(max);
@@ -13,6 +22,7 @@ function getRandomInt(min, max) {
 
 
 export default function Traducir(props) {
+    let [luzcomponente, setLuzComponente] = useState("/luzcomponente/apagado.png");
     var [palabra,setPalabra]= useState(["Bomba","Morir","Clave","Llave","Cable","Boton","Luces","Genio","Juego","Tecla","Fuego","Grupo","Corte","Ruina","Habla","Letra","Reloj","Grito","Cobre","Plata","Metal","Hueso","Marca","Lento","Debil","Dudas","Preso","Dolor","Matar","Muera","Largo","Corto","Turno"])
     var [elegida,setElegida]= useState("")
     var [suelegida,setSuelegida]= useState("")
@@ -244,7 +254,7 @@ export default function Traducir(props) {
             document.getElementById("BotonTraduccion").disabled=true
             document.getElementById("myInput").disabled=true
         }else{
-            console.log("perdiste")
+            perderComponente(setLuzComponente)
         }
     }
     return(

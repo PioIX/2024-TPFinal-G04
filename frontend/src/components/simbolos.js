@@ -4,7 +4,15 @@ import { useState, useEffect } from "react";
 import styles from "./Simbolos.module.css"
 import { useSocket } from "@/hooks/useSocket";
 import Image from "./image";
+import { perderComponente } from "@/functions/functions";
 
+/*
+import { perderComponente } from "@/functions/functions";
+import Image from "./image";
+let [luzcomponente, setLuzComponente] = useState("/luzcomponente/apagado.png");
+perderComponente(setLuzComponente)
+<Image src={luzcomponente} alt="componente1" width={80} height={80} ></Image>
+*/ 
 function getRandomInt(min, max) {
     const minCeiled = Math.ceil(min);
     const maxFloored = Math.floor(max);
@@ -12,6 +20,7 @@ function getRandomInt(min, max) {
 }
 
 export default function Simbolos(props) {
+    let [luzcomponente, setLuzComponente] = useState("/luzcomponente/apagado.png");
     let [simboloEl, setSimboloEl] = useState([]);
     let [simboloCom, setSimboloCom] = useState([]);
     let [simboloClick, setSimboloClick] = useState([]);
@@ -32,7 +41,7 @@ export default function Simbolos(props) {
         socket.on('newSimboloState', (data) => {
             if (localStorage.getItem("userId") == 2) {
                 if(data.message.win=="lose"){
-                    console.log("perdiste")
+                    perderComponente(setLuzComponente)
                 }else{
                     console.log("ganaste")
                 }
@@ -107,10 +116,6 @@ export default function Simbolos(props) {
 
     }, [])
 
-    function revelar(){
-        console.log(simboloEl)
-        console.log(simboloCom)
-    }
 	const checksim = (e) => {
         var regex = /(\d+)/g;
         if (simboloCom.includes(parseInt(e.target.id.match(regex))) && simboloClick.includes(parseInt(e.target.id.match(regex)))==false) {
@@ -124,7 +129,7 @@ export default function Simbolos(props) {
                 socket.emit("simboloState", { win: "ganaste" })
             }
         }else if (simboloCom.includes(parseInt(e.target.id.match(regex)))==false && simboloClick.length!=5) {
-            console.log("perdiste")
+            perderComponente(setLuzComponente)
             socket.emit("simboloState", { win: "lose" })
         }
         
