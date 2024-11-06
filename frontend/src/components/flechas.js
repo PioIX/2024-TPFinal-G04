@@ -404,7 +404,7 @@ export default function Flechas(props) {
     if (localStorage.getItem("userId") == 1) {
         return (
             <div>
-                <h1>Flechas</h1>
+                <h1>Presione start</h1>
                 <h1>{flechitas}</h1>
             </div>
 
