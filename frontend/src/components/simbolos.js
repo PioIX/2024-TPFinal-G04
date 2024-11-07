@@ -167,11 +167,11 @@ export default function Simbolos(props) {
             <div className={styles.all}>
              <br></br><div className={styles.simbolospares1}>
              <Image className={styles.simbolos1} src={"/simbolos/simbolos"+simboloEl[0]+".png"} alt="simbolo1" width={50} height={50}></Image>
-             <Image className={styles.simbolos1} src={"/simbolos/simbolos"+simboloEl[1]+".png"} alt="simbolo2" width={50} height={50}></Image>
-             <Image className={styles.simbolos1} src={"/simbolos/simbolos"+simboloEl[2]+".png"} alt="simbolo3" width={50} height={50}></Image>
+             <Image className={styles.simbolos2} src={"/simbolos/simbolos"+simboloEl[1]+".png"} alt="simbolo2" width={50} height={50}></Image>
+             <Image className={styles.simbolos3} src={"/simbolos/simbolos"+simboloEl[2]+".png"} alt="simbolo3" width={50} height={50}></Image>
              </div><br></br><div className={styles.simbolospares1}>
-             <Image className={styles.simbolos1} src={"/simbolos/simbolos"+simboloEl[3]+".png"} alt="simbolo4" width={50} height={50}></Image>
-             <Image className={styles.simbolos1} src={"/simbolos/simbolos"+simboloEl[4]+".png"} alt="simbolo5" width={50} height={50}></Image>
+             <Image className={styles.simbolos4} src={"/simbolos/simbolos"+simboloEl[3]+".png"} alt="simbolo4" width={50} height={50}></Image>
+             <Image className={styles.simbolos5} src={"/simbolos/simbolos"+simboloEl[4]+".png"} alt="simbolo5" width={50} height={50}></Image>
              </div>
             </div>
         )
