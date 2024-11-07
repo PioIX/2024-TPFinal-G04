@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import styles from "./Contrasena.module.css"
 import { useSocket } from "@/hooks/useSocket";
 import { perderComponente } from "@/functions/functions";
+import { ganarComponente } from "@/functions/functions";
 import Image from "./image";
 
 
@@ -13,6 +14,7 @@ function getRandomInt(min, max) {
     return Math.floor(Math.random() * (maxFloored - minCeiled) + minCeiled);
 }
 /*
+import { ganarComponente } from "@/functions/functions";
 import { perderComponente } from "@/functions/functions";
 import Image from "./image";
 let [luzcomponente, setLuzComponente] = useState("/luzcomponente/apagado.png");
@@ -139,7 +141,7 @@ export default function Contraseña(props) {
     function checkTrad() {
         var ans=lista[0][positions] + lista[1][positions2] + lista[2][positions3] + lista[3][positions4] + lista[4][positions5]
             if (ans == elegida) {
-                console.log("ganaste")
+                ganarComponente(setLuzComponente)
                 document.getElementById("checkeoContrasena").disabled=true
             } else {
                 perderComponente(setLuzComponente)
@@ -222,6 +224,7 @@ export default function Contraseña(props) {
         <div className={styles.todo}>
             <div>
 
+                <Image src={luzcomponente} alt="componente1" width={80} height={80} ></Image>
                 <Button className={styles.check} id="checkeoContrasena" text="CHECK" onClick={checkTrad}></Button>
 
                 <br></br>
