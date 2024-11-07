@@ -10,11 +10,17 @@ export function naonao(vidasOtro){
         vidasOtro-=1
     }
 }
+
+let timeoutPerderVida;
+
 export function perderComponente(setLuzComponente){
     
     return new Promise((resolve, reject) => {
         setLuzComponente("/luzcomponente/apagado.png")
-        setTimeout(function () {
+        clearTimeout(timeoutPerderVida);
+        timeoutPerderVida = setTimeout(function () {
+            let vida= localStorage.getItem("lives")-1
+            localStorage.setItem("lives", vida)
             setLuzComponente("/luzcomponente/luz_roja.png")
             setTimeout(function () {
                 setLuzComponente("/luzcomponente/apagado.png")

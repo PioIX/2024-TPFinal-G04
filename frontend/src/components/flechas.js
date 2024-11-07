@@ -3,14 +3,24 @@ import Button from "@/components/button";
 import { useState, useEffect } from "react";
 import styles from "./Flechas.module.css"
 import { useSocket } from "@/hooks/useSocket";
+import { perderComponente } from "@/functions/functions";
+import Image from "./image";
 
-
+/*
+import { perderComponente } from "@/functions/functions";
+import Image from "./image";
+let [luzcomponente, setLuzComponente] = useState("/luzcomponente/apagado.png");
+perderComponente(setLuzComponente)
+<Image src={luzcomponente} alt="componente1" width={80} height={80} ></Image>
+*/ 
 function getRandomInt(min, max) {
     const minCeiled = Math.ceil(min);
     const maxFloored = Math.floor(max);
     return Math.floor(Math.random() * (maxFloored - minCeiled) + minCeiled);
 }
 export default function Flechas(props) {
+    let [luzcomponente, setLuzComponente] = useState("/luzcomponente/apagado.png");
+    let [boolean, setBoolean] = useState(true);
     var [arrows, setArrows] = useState([[[]]]);
     var [timer, setTimer] = useState()
     var [flechitas, setFlechitas] = useState()
@@ -49,6 +59,7 @@ export default function Flechas(props) {
         if (localStorage.getItem("userId") == 1) {
             socket.on('newWinflechas', (data) => {
                 if (data.message.ganar == "perdio2") {
+                    perderComponente(setLuzComponente)
                     setFlechitas("")
                 }
                 if (data.message.ganar == "perdio") {
@@ -156,7 +167,7 @@ export default function Flechas(props) {
                 setSecuencia(() => "")
                 setSecuencia2(()=>"")
             } else {
-                console.log("perdio")
+                perderComponente(setLuzComponente)
                 socket.emit("winflechas", { ganar: "perdio" })
                 setSecuencia(() => "")
                 setSecuencia2(()=>"")
@@ -169,7 +180,7 @@ export default function Flechas(props) {
                 setSecuencia(() => "")
                 setSecuencia2(()=>"")
             } else {
-                console.log("perdio")
+                perderComponente(setLuzComponente)
                 socket.emit("winflechas", { ganar: "perdio" })
                 setSecuencia(() => "")
                 setSecuencia2(()=>"")
@@ -182,7 +193,7 @@ export default function Flechas(props) {
                 flechaNumero(2)
                 setGanaste(true)
             } else {
-                console.log("perdio")
+                perderComponente(setLuzComponente)
                 socket.emit("winflechas", { ganar: "perdio" })
                 setSecuencia(() => "")
                 setSecuencia2(()=>"")
@@ -199,7 +210,7 @@ export default function Flechas(props) {
                 setSecuencia(() => "")
                 setSecuencia2(()=>"")
             } else {
-                console.log("perdio")
+                perderComponente(setLuzComponente)
                 socket.emit("winflechas", { ganar: "perdio" })
                 setSecuencia(() => "")
                 setSecuencia2(()=>"")
@@ -212,7 +223,7 @@ export default function Flechas(props) {
                 setSecuencia(() => "")
                 setSecuencia2(()=>"")
             } else {
-                console.log("perdio")
+                perderComponente(setLuzComponente)
                 socket.emit("winflechas", { ganar: "perdio" })
                 setSecuencia(() => "")
                 setSecuencia2(()=>"")
@@ -225,7 +236,7 @@ export default function Flechas(props) {
                 flechaNumero(2)
                 setGanaste(true)
             } else {
-                console.log("perdio")
+                perderComponente(setLuzComponente)
                 socket.emit("winflechas", { ganar: "perdio" })
                 setSecuencia(() => "")
                 setSecuencia2(()=>"")
@@ -242,7 +253,7 @@ export default function Flechas(props) {
                 setSecuencia(() => "")
                 setSecuencia2(()=>"")
             } else {
-                console.log("perdio")
+                perderComponente(setLuzComponente)
                 socket.emit("winflechas", { ganar: "perdio" })
                 setSecuencia(() => "")
                 setSecuencia2(()=>"")
@@ -255,7 +266,7 @@ export default function Flechas(props) {
                 setSecuencia(() => "")
                 setSecuencia2(()=>"")
             } else {
-                console.log("perdio")
+                perderComponente(setLuzComponente)
                 socket.emit("winflechas", { ganar: "perdio" })
                 setSecuencia(() => "")
                 setSecuencia2(()=>"")
@@ -268,7 +279,7 @@ export default function Flechas(props) {
                 flechaNumero(2)
                 setGanaste(true)
             } else {
-                console.log("perdio")
+                perderComponente(setLuzComponente)
                 socket.emit("winflechas", { ganar: "perdio" })
                 setSecuencia(() => "")
                 setSecuencia2(()=>"")
@@ -285,7 +296,7 @@ export default function Flechas(props) {
                 setSecuencia(() => "")
                 setSecuencia2(()=>"")
             } else {
-                console.log("perdio")
+                perderComponente(setLuzComponente)
                 socket.emit("winflechas", { ganar: "perdio" })
                 setSecuencia(() => "")
                 setSecuencia2(()=>"")
@@ -298,7 +309,7 @@ export default function Flechas(props) {
                 setSecuencia(() => "")
                 setSecuencia2(()=>"")
             } else {
-                console.log("perdio")
+                perderComponente(setLuzComponente)
                 socket.emit("winflechas", { ganar: "perdio" })
                 setSecuencia(() => "")
                 setSecuencia2(()=>"")
@@ -311,7 +322,7 @@ export default function Flechas(props) {
                 flechaNumero(2)
                 setGanaste(true)
             } else {
-                console.log("perdio")
+                perderComponente(setLuzComponente)
                 socket.emit("winflechas", { ganar: "perdio" })
                 setSecuencia(() => "")
                 setSecuencia2(()=>"")
@@ -338,6 +349,7 @@ export default function Flechas(props) {
 
 
     function start() {
+        setBoolean(false)
         setTimer(12)
         if (localStorage.getItem("userId") == 2) {
 
@@ -369,13 +381,13 @@ export default function Flechas(props) {
                     setTimer(a)
                 }
                 if (a == 0 && localStorage.getItem("userId") == 2) {
-                    console.log("perdiste")
+                    perderComponente(setLuzComponente)
+                    setBoolean(true)
                     socket.emit("winflechas", { ganar: "perdio2" })
                     setSecuencia(() => "")
                     setSecuencia2(()=>"")
                     a = ""
                     setTimer(a)
-                    document.getElementById("startflechas").disabled = false
                     document.getElementById("flechaArriba").disabled = true
                     document.getElementById("flechaAbajo").disabled = true
                     document.getElementById("flechaDerecha").disabled = true
@@ -393,7 +405,7 @@ export default function Flechas(props) {
     if (localStorage.getItem("userId") == 1) {
         return (
             <div>
-                <h1>Flechas</h1>
+                <h1>Presione start</h1>
                 <h1>{flechitas}</h1>
             </div>
 
@@ -408,7 +420,7 @@ export default function Flechas(props) {
             <div className={styles.todo}>
             <div>
                 <br></br>
-                <Button className={styles.check} id="startflechas" text="START" onClick={start}></Button>
+                {boolean==true ? <Button className={styles.check} id="startflechas" text="START" onClick={start}></Button>: <></>}
                 <br></br>
                 <Button className={styles.arriba} id="flechaArriba" text="🢁" onClick={sumarArriba} ></Button>
                 <Button className={styles.abajo} id="flechaAbajo" text="🢃" onClick={sumarAbajo} ></Button>

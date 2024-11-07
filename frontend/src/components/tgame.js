@@ -4,6 +4,8 @@ import { useState, useEffect } from "react";
 import styles from "./Tgame.module.css"
 import Image from "./image";
 import { useSocket } from "@/hooks/useSocket";
+import { perderComponente } from "@/functions/functions";
+
 
 function getRandomInt(min, max) {
     const minCeiled = Math.ceil(min);
@@ -11,6 +13,14 @@ function getRandomInt(min, max) {
     return Math.floor(Math.random() * (maxFloored - minCeiled) + minCeiled);
 }
 
+
+/*
+import { perderComponente } from "@/functions/functions";
+import Image from "./image";
+let [luzcomponente, setLuzComponente] = useState("/luzcomponente/apagado.png");
+perderComponente(setLuzComponente)
+<Image src={luzcomponente} alt="componente1" width={80} height={80} ></Image>
+*/ 
 
 export default function Simon(props) {
 
@@ -188,7 +198,7 @@ export default function Simon(props) {
             setStateActual(stateActual + 1)
             console.log("correcto")
         } else {
-            console.log("incorrecto")
+            perderComponente(setLuzComponente)
         }
         if (stateActual == state) {
             if (state == 5) {

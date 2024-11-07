@@ -4,15 +4,24 @@ import { useState, useEffect } from "react";
 import styles from "./Cuartogame.module.css"
 import Image from "./image";
 import { useSocket } from "@/hooks/useSocket";
+import { perderComponente } from "@/functions/functions";
 function getRandomInt(min, max) {
     const minCeiled = Math.ceil(min);
     const maxFloored = Math.floor(max);
     return Math.floor(Math.random() * (maxFloored - minCeiled) + minCeiled);
 }
 
+/*
+import { perderComponente } from "@/functions/functions";
+import Image from "./image";
+let [luzcomponente, setLuzComponente] = useState("/luzcomponente/apagado.png");
+perderComponente(setLuzComponente)
+<Image src={luzcomponente} alt="componente1" width={80} height={80} ></Image>
+*/ 
 
 
 export default function Morse(props) {
+    let [luzcomponente, setLuzComponente] = useState("/luzcomponente/apagado.png");
     let [secuencia, setSecuencia] = useState([])
     let [luz, setLuz] = useState("/morse_apagado.png")//"/turned_off_light.png"
     let [repit,setRepit]= useState(true)
@@ -132,7 +141,7 @@ export default function Morse(props) {
                 document.getElementById("botonPunto").disabled=true
                 document.getElementById("botonRaya").disabled=true
             }else{
-                console.log("Perdiste")
+                perderComponente(setLuzComponente)
                 setSecuenciaUsuario([])
                 setRenglon("")
             }
@@ -152,7 +161,7 @@ export default function Morse(props) {
                 document.getElementById("botonPunto").disabled=true
                 document.getElementById("botonRaya").disabled=true
             }else{
-                console.log("Perdiste")
+                perderComponente(setLuzComponente)
                 setSecuenciaUsuario([])
                 setRenglon("")
             }

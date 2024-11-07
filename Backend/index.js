@@ -192,6 +192,9 @@ io.on("connection", (socket) => {
 	socket.on('vidas', data => {
 		io.to(req.session.room).emit('newVidas', { room: req.session.room, message: data });
 	});
+	socket.on('reloj', data => {
+		io.to(req.session.room).emit('newReloj', { room: req.session.room, message: data });
+	});
 	
 	
     /**

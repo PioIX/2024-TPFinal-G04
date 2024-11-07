@@ -4,7 +4,15 @@ import { useState, useEffect } from "react";
 import styles from "./Simbolos.module.css"
 import { useSocket } from "@/hooks/useSocket";
 import Image from "./image";
+import { perderComponente } from "@/functions/functions";
 
+/*
+import { perderComponente } from "@/functions/functions";
+import Image from "./image";
+let [luzcomponente, setLuzComponente] = useState("/luzcomponente/apagado.png");
+perderComponente(setLuzComponente)
+<Image src={luzcomponente} alt="componente1" width={80} height={80} ></Image>
+*/ 
 function getRandomInt(min, max) {
     const minCeiled = Math.ceil(min);
     const maxFloored = Math.floor(max);
@@ -12,6 +20,7 @@ function getRandomInt(min, max) {
 }
 
 export default function Simbolos(props) {
+    let [luzcomponente, setLuzComponente] = useState("/luzcomponente/apagado.png");
     let [simboloEl, setSimboloEl] = useState([]);
     let [simboloCom, setSimboloCom] = useState([]);
     let [simboloClick, setSimboloClick] = useState([]);
@@ -32,7 +41,7 @@ export default function Simbolos(props) {
         socket.on('newSimboloState', (data) => {
             if (localStorage.getItem("userId") == 2) {
                 if(data.message.win=="lose"){
-                    console.log("perdiste")
+                    perderComponente(setLuzComponente)
                 }else{
                     console.log("ganaste")
                 }
@@ -107,10 +116,6 @@ export default function Simbolos(props) {
 
     }, [])
 
-    function revelar(){
-        console.log(simboloEl)
-        console.log(simboloCom)
-    }
 	const checksim = (e) => {
         var regex = /(\d+)/g;
         if (simboloCom.includes(parseInt(e.target.id.match(regex))) && simboloClick.includes(parseInt(e.target.id.match(regex)))==false) {
@@ -124,7 +129,7 @@ export default function Simbolos(props) {
                 socket.emit("simboloState", { win: "ganaste" })
             }
         }else if (simboloCom.includes(parseInt(e.target.id.match(regex)))==false && simboloClick.length!=5) {
-            console.log("perdiste")
+            perderComponente(setLuzComponente)
             socket.emit("simboloState", { win: "lose" })
         }
         
@@ -132,27 +137,27 @@ export default function Simbolos(props) {
     if (localStorage.getItem("userId")==1 && simboloEl[1]!=undefined) {
         return (
             <div className={styles.all}>
-             <br></br>
-             <Image id={simboloEl[0]+"sim"} src={"/simbolos/simbolos"+simboloEl[0]+".png"} alt="simbolop1" width={50} height={50} onClick={checksim}></Image>
-             <Image id={simboloEl[1]+"sim"} src={"/simbolos/simbolos"+simboloEl[1]+".png"} alt="simbolop2" width={50} height={50} onClick={checksim}></Image>
-             <Image id={simboloEl[2]+"sim"} src={"/simbolos/simbolos"+simboloEl[2]+".png"} alt="simbolop3" width={50} height={50} onClick={checksim}></Image>
-             <Image id={simboloEl[9]+"sim"} src={"/simbolos/simbolos"+simboloEl[9]+".png"} alt="simbolop3" width={50} height={50} onClick={checksim}></Image>
-             <br></br>
-             <Image id={simboloEl[3]+"sim"} src={"/simbolos/simbolos"+simboloEl[3]+".png"} alt="simbolop4" width={50} height={50} onClick={checksim}></Image>
-             <Image id={simboloEl[4]+"sim"} src={"/simbolos/simbolos"+simboloEl[4]+".png"} alt="simbolop5" width={50} height={50} onClick={checksim}></Image>
-             <Image id={simboloEl[5]+"sim"} src={"/simbolos/simbolos"+simboloEl[5]+".png"} alt="simbolop6" width={50} height={50} onClick={checksim}></Image>
-             <Image id={simboloEl[10]+"sim"} src={"/simbolos/simbolos"+simboloEl[10]+".png"} alt="simbolop6" width={50} height={50} onClick={checksim}></Image>
-             <br></br>
-             <Image id={simboloEl[6]+"sim"} src={"/simbolos/simbolos"+simboloEl[6]+".png"} alt="simbolop7" width={50} height={50} onClick={checksim}></Image>
-             <Image id={simboloEl[7]+"sim"} src={"/simbolos/simbolos"+simboloEl[7]+".png"} alt="simbolop8" width={50} height={50} onClick={checksim}></Image>
-             <Image id={simboloEl[8]+"sim"} src={"/simbolos/simbolos"+simboloEl[8]+".png"} alt="simbolop9" width={50} height={50} onClick={checksim}></Image>
-             <Image id={simboloEl[11]+"sim"} src={"/simbolos/simbolos"+simboloEl[11]+".png"} alt="simbolop9" width={50} height={50} onClick={checksim}></Image>
-             <br></br>
-             <Image id={simboloEl[12]+"sim"} src={"/simbolos/simbolos"+simboloEl[12]+".png"} alt="simbolop7" width={50} height={50} onClick={checksim}></Image>
-             <Image id={simboloEl[13]+"sim"} src={"/simbolos/simbolos"+simboloEl[13]+".png"} alt="simbolop8" width={50} height={50} onClick={checksim}></Image>
-             <Image id={simboloEl[14]+"sim"} src={"/simbolos/simbolos"+simboloEl[14]+".png"} alt="simbolop9" width={50} height={50} onClick={checksim}></Image>
-             <Image id={simboloEl[15]+"sim"} src={"/simbolos/simbolos"+simboloEl[15]+".png"} alt="simbolop9" width={50} height={50} onClick={checksim}></Image>
-
+             <br></br><div className={styles.simbolospares}>
+             <Image className={styles.simbolos} id={simboloEl[0]+"sim"} src={"/simbolos/simbolos"+simboloEl[0]+".png"} alt="simbolop1" width={50} height={50} onClick={checksim}></Image>
+             <Image className={styles.simbolos} id={simboloEl[1]+"sim"} src={"/simbolos/simbolos"+simboloEl[1]+".png"} alt="simbolop2" width={50} height={50} onClick={checksim}></Image>
+             <Image className={styles.simbolos} id={simboloEl[2]+"sim"} src={"/simbolos/simbolos"+simboloEl[2]+".png"} alt="simbolop3" width={50} height={50} onClick={checksim}></Image>
+             <Image className={styles.simbolos} id={simboloEl[9]+"sim"} src={"/simbolos/simbolos"+simboloEl[9]+".png"} alt="simbolop3" width={50} height={50} onClick={checksim}></Image>
+             </div><br></br><div className={styles.simbolospares}>
+             <Image className={styles.simbolos} id={simboloEl[3]+"sim"} src={"/simbolos/simbolos"+simboloEl[3]+".png"} alt="simbolop4" width={50} height={50} onClick={checksim}></Image>
+             <Image className={styles.simbolos} id={simboloEl[4]+"sim"} src={"/simbolos/simbolos"+simboloEl[4]+".png"} alt="simbolop5" width={50} height={50} onClick={checksim}></Image>
+             <Image className={styles.simbolos} id={simboloEl[5]+"sim"} src={"/simbolos/simbolos"+simboloEl[5]+".png"} alt="simbolop6" width={50} height={50} onClick={checksim}></Image>
+             <Image className={styles.simbolos} id={simboloEl[10]+"sim"} src={"/simbolos/simbolos"+simboloEl[10]+".png"} alt="simbolop6" width={50} height={50} onClick={checksim}></Image>
+             </div><br></br><div className={styles.simbolospares}>
+             <Image className={styles.simbolos} id={simboloEl[6]+"sim"} src={"/simbolos/simbolos"+simboloEl[6]+".png"} alt="simbolop7" width={50} height={50} onClick={checksim}></Image>
+             <Image className={styles.simbolos} id={simboloEl[7]+"sim"} src={"/simbolos/simbolos"+simboloEl[7]+".png"} alt="simbolop8" width={50} height={50} onClick={checksim}></Image>
+             <Image className={styles.simbolos} id={simboloEl[8]+"sim"} src={"/simbolos/simbolos"+simboloEl[8]+".png"} alt="simbolop9" width={50} height={50} onClick={checksim}></Image>
+             <Image className={styles.simbolos} id={simboloEl[11]+"sim"} src={"/simbolos/simbolos"+simboloEl[11]+".png"} alt="simbolop9" width={50} height={50} onClick={checksim}></Image>
+             </div><br></br><div className={styles.simbolospares}>
+             <Image className={styles.simbolos} id={simboloEl[12]+"sim"} src={"/simbolos/simbolos"+simboloEl[12]+".png"} alt="simbolop7" width={50} height={50} onClick={checksim}></Image>
+             <Image className={styles.simbolos} id={simboloEl[13]+"sim"} src={"/simbolos/simbolos"+simboloEl[13]+".png"} alt="simbolop8" width={50} height={50} onClick={checksim}></Image>
+             <Image className={styles.simbolos} id={simboloEl[14]+"sim"} src={"/simbolos/simbolos"+simboloEl[14]+".png"} alt="simbolop9" width={50} height={50} onClick={checksim}></Image>
+             <Image className={styles.simbolos} id={simboloEl[15]+"sim"} src={"/simbolos/simbolos"+simboloEl[15]+".png"} alt="simbolop9" width={50} height={50} onClick={checksim}></Image>
+             </div>
             </div>  
 
         )
@@ -160,14 +165,14 @@ export default function Simbolos(props) {
     if (localStorage.getItem("userId")==2 && simboloEl[1]!=undefined) {
         return (
             <div className={styles.all}>
-             <br></br>
-             <Image src={"/simbolos/simbolos"+simboloEl[0]+".png"} alt="simbolo1" width={50} height={50}></Image>
-             <Image src={"/simbolos/simbolos"+simboloEl[1]+".png"} alt="simbolo2" width={50} height={50}></Image>
-             <Image src={"/simbolos/simbolos"+simboloEl[2]+".png"} alt="simbolo3" width={50} height={50}></Image>
-             <br></br>
-             <Image src={"/simbolos/simbolos"+simboloEl[3]+".png"} alt="simbolo4" width={50} height={50}></Image>
-             <Image src={"/simbolos/simbolos"+simboloEl[4]+".png"} alt="simbolo5" width={50} height={50}></Image>
-            
+             <br></br><div className={styles.simbolospares1}>
+             <Image className={styles.simbolos1} src={"/simbolos/simbolos"+simboloEl[0]+".png"} alt="simbolo1" width={50} height={50}></Image>
+             <Image className={styles.simbolos1} src={"/simbolos/simbolos"+simboloEl[1]+".png"} alt="simbolo2" width={50} height={50}></Image>
+             <Image className={styles.simbolos1} src={"/simbolos/simbolos"+simboloEl[2]+".png"} alt="simbolo3" width={50} height={50}></Image>
+             </div><br></br><div className={styles.simbolospares1}>
+             <Image className={styles.simbolos1} src={"/simbolos/simbolos"+simboloEl[3]+".png"} alt="simbolo4" width={50} height={50}></Image>
+             <Image className={styles.simbolos1} src={"/simbolos/simbolos"+simboloEl[4]+".png"} alt="simbolo5" width={50} height={50}></Image>
+             </div>
             </div>
         )
     }
