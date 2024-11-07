@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import styles from "./Traducir.module.css"
 import { useSocket } from "@/hooks/useSocket";
 import { perderComponente } from "@/functions/functions";
+import { ganarComponente } from "@/functions/functions";
 import Image from "./image";
 
 
@@ -250,7 +251,7 @@ export default function Traducir(props) {
 
     function checkTrad(){
         if (valor==suelegida) {
-            console.log("ganaste")
+            ganarComponente(setLuzComponente)
             document.getElementById("BotonTraduccion").disabled=true
             document.getElementById("myInput").disabled=true
         }else{
@@ -260,6 +261,7 @@ export default function Traducir(props) {
     return(
         <div className={styles.all}>
         <div className={styles.todo}>
+            <Image src={luzcomponente} alt="componente1" width={80} height={80} ></Image>
             <div>
 
                 <Button className={styles.check} id="BotonTraduccion" text="CHECK" onClick={checkTrad}></Button>

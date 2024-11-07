@@ -5,6 +5,7 @@ import styles from "./Simbolos.module.css"
 import { useSocket } from "@/hooks/useSocket";
 import Image from "./image";
 import { perderComponente } from "@/functions/functions";
+import { ganarComponente } from "@/functions/functions";
 
 /*
 import { perderComponente } from "@/functions/functions";
@@ -43,7 +44,7 @@ export default function Simbolos(props) {
                 if(data.message.win=="lose"){
                     perderComponente(setLuzComponente)
                 }else{
-                    console.log("ganaste")
+                    ganarComponente(setLuzComponente)
                 }
             }
         });
@@ -122,10 +123,9 @@ export default function Simbolos(props) {
             var m=[].concat(simboloClick)
             m.push(parseInt(e.target.id.match(regex)))
             setSimboloClick(()=>m)
-            console.log("bien")
 
             if(m.length==5){
-                console.log("ganaste")
+                ganarComponente(setLuzComponente)
                 socket.emit("simboloState", { win: "ganaste" })
             }
         }else if (simboloCom.includes(parseInt(e.target.id.match(regex)))==false && simboloClick.length!=5) {
@@ -137,6 +137,7 @@ export default function Simbolos(props) {
     if (localStorage.getItem("userId")==1 && simboloEl[1]!=undefined) {
         return (
             <div className={styles.all}>
+                <Image src={luzcomponente} alt="componente1" width={80} height={80} ></Image>
              <br></br><div className={styles.simbolospares}>
              <Image className={styles.simbolos} id={simboloEl[0]+"sim"} src={"/simbolos/simbolos"+simboloEl[0]+".png"} alt="simbolop1" width={50} height={50} onClick={checksim}></Image>
              <Image className={styles.simbolos} id={simboloEl[1]+"sim"} src={"/simbolos/simbolos"+simboloEl[1]+".png"} alt="simbolop2" width={50} height={50} onClick={checksim}></Image>
@@ -165,6 +166,7 @@ export default function Simbolos(props) {
     if (localStorage.getItem("userId")==2 && simboloEl[1]!=undefined) {
         return (
             <div className={styles.all}>
+                <Image src={luzcomponente} alt="componente1" width={80} height={80} ></Image>
              <br></br><div className={styles.simbolospares1}>
              <Image className={styles.simbolos1} src={"/simbolos/simbolos"+simboloEl[0]+".png"} alt="simbolo1" width={50} height={50}></Image>
              <Image className={styles.simbolos2} src={"/simbolos/simbolos"+simboloEl[1]+".png"} alt="simbolo2" width={50} height={50}></Image>

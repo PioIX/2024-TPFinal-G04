@@ -5,6 +5,7 @@ import styles from "./Sgame.module.css"
 import { useSocket } from "@/hooks/useSocket";
 import Image from "./image";
 import { perderComponente } from "@/functions/functions";
+import { ganarComponente } from "@/functions/functions";
 
 
 /*
@@ -91,7 +92,7 @@ export default function Naval(props) {
 			a.push(e.target.id)
 			setBombs(a)
 			if (bombs.length == 5) {
-				console.log("ganaste")
+				ganarComponente(setLuzComponente)
 			}
 		}else if (secuence.includes(Number(e.target.id)) && bombs.includes(e.target.id) == false && misbombitas.includes(Number(e.target.id))==false){
 			e.target.setAttribute('class', 'Sgame_point__8L8s3')//Sgame_td__fzQJ2
@@ -99,7 +100,7 @@ export default function Naval(props) {
 			a.push(e.target.id)
 			setBombs(a)
 			if (bombs.length == 5) {
-				console.log("ganaste")
+				ganarComponente(setLuzComponente)
 			}
 		} else if (secuence.includes(Number(e.target.id)) && bombs.includes(e.target.id)) {
 

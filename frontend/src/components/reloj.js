@@ -5,6 +5,7 @@ import styles from "./Reloj.module.css"
 import { useSocket } from "@/hooks/useSocket";
 import Image from "./image";
 import { perderComponente } from "@/functions/functions";
+import { ganarComponente } from "@/functions/functions";
 
 /*
 import { perderComponente } from "@/functions/functions";
@@ -54,10 +55,10 @@ export default function Reloj(props) {
 
     function verifySequence(){
         if (reloj==localStorage.getItem("SuReloj")) {
-            console.log("ganaste")
-            document.getElementById("mani1").disabled=true
-            document.getElementById("mani-").disabled=true
-            document.getElementById("mani+").disabled=true
+            ganarComponente(setLuzComponente)
+            document.getElementById("reloj1").disabled=true
+            document.getElementById("reloj-").disabled=true
+            document.getElementById("reloj+").disabled=true
         }else{
             perderComponente(setLuzComponente)
         }
@@ -77,15 +78,12 @@ export default function Reloj(props) {
             setReloj(12)
         }
     }
-        function revelar(){
-            console.log(reloj)
-            console.log(randomReloj)
-        }
 
         if (localStorage.getItem("userId")==1) {
             return(
                 <div className={styles.all}>
                 <div  className={styles.todo}>
+                <Image src={luzcomponente} alt="componente1" width={80} height={80} ></Image>
                     <div className={styles.reloj}>
                     <Image className={styles.circuloBlanco} src={"/reloj/circuloBlanco.png"}alt="reloj" width={168} height={145}></Image>
                     <Image className={styles.horas} src={"/reloj/"+reloj+"HORA.png"} alt="reloj" width={140} height={165}></Image>
@@ -104,6 +102,7 @@ export default function Reloj(props) {
             return(
                 <div className={styles.all}>
                 <div  className={styles.todo}>
+                <Image src={luzcomponente} alt="componente1" width={80} height={80} ></Image>
                     <div className={styles.reloj}>
                     <Image className={styles.circuloBlanco} src={"/reloj/circuloBlanco.png"}alt="reloj" width={168} height={145}></Image>
                     <Image className={styles.horas} src={"/reloj/RELOJ.png"} alt="reloj" width={140} height={165}></Image>
@@ -111,9 +110,9 @@ export default function Reloj(props) {
                     <Image className={styles.base} src={"/reloj/"+randomReloj+"HORA.png"} alt="reloj" width={140} height={165}></Image>
                 
                     </div>
-                <Button className={styles.izquierda} id="reloj2-" onClick={relojIzquierda} text="🡸"></Button>
-                <Button className={styles.derecha} id="reloj2+" onClick={relojDerecha} text="🡺"></Button>
-                <Button className={styles.check} id="reloj2" onClick={verifySequence} text="CHECK"></Button>
+                <Button className={styles.izquierda} id="reloj-" onClick={relojIzquierda} text="🡸"></Button>
+                <Button className={styles.derecha} id="reloj+" onClick={relojDerecha} text="🡺"></Button>
+                <Button className={styles.check} id="reloj1" onClick={verifySequence} text="CHECK"></Button>
     
                 </div>
                 </div>

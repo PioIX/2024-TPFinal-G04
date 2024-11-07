@@ -4,8 +4,8 @@ import { useState, useEffect } from "react";
 import styles from "./Laberinto.module.css"
 import { useSocket } from "@/hooks/useSocket";
 import Image from "./image";
-import Persona from "./personita";
 import { perderComponente } from "@/functions/functions";
+import { ganarComponente } from "@/functions/functions";
 
 /*
 import { perderComponente } from "@/functions/functions";
@@ -47,7 +47,7 @@ export default function Laberinto(props) {
 
         socket.on('newLabwin', (data) => {
             if (data.message.numero == "win") {
-                console.log("ganaste")
+                ganarComponente(setLuzComponente)
             }else{
 				perderComponente(setLuzComponente)
 			}
@@ -97,6 +97,7 @@ export default function Laberinto(props) {
 			socket.emit("labwin", { numero: "perdiste" })
 		}
 		if (player+1==lab[lab.length-1]) {
+			ganarComponente(setLuzComponente)
 			socket.emit("labwin", { numero: "win" })
 			document.getElementById("izquierdal").disabled=true
 			document.getElementById("derechal").disabled=true
@@ -114,6 +115,7 @@ export default function Laberinto(props) {
 			socket.emit("labwin", { numero: "perdiste" })
 		}
 		if (player-1==lab[lab.length-1]) {
+			ganarComponente(setLuzComponente)
 			socket.emit("labwin", { numero: "win" })
 			document.getElementById("izquierdal").disabled=true
 			document.getElementById("derechal").disabled=true
@@ -131,6 +133,7 @@ export default function Laberinto(props) {
 			socket.emit("labwin", { numero: "perdiste" })
 		}
 		if (player-7==lab[lab.length-1]) {
+			ganarComponente(setLuzComponente)
 			socket.emit("labwin", { numero: "win" })
 			document.getElementById("izquierdal").disabled=true
 			document.getElementById("derechal").disabled=true
@@ -148,6 +151,7 @@ export default function Laberinto(props) {
 			socket.emit("labwin", { numero: "perdiste" })
 		}
 		if (player+7==lab[lab.length-1]) {
+			ganarComponente(setLuzComponente)
 			socket.emit("labwin", { numero: "win" })
 			document.getElementById("izquierdal").disabled=true
 			document.getElementById("derechal").disabled=true
@@ -186,6 +190,7 @@ export default function Laberinto(props) {
 		return(
 			<div id="board">
 				<div id="messageArea" className={styles.all}>
+					<Image src={luzcomponente} alt="componente1" width={80} height={80} ></Image>
 					<table className={styles.todo}>
 						<tbody className={styles.fondo}>
 							<tr>
@@ -264,6 +269,7 @@ export default function Laberinto(props) {
 		
 		return(
 			<div id="board">
+				<Image src={luzcomponente} alt="componente1" width={80} height={80} ></Image>
 				<Button className={styles.derecha} id="derechal" onClick={derecha} text="►"></Button>
 				<Button className={styles.izquierda} id="izquierdal" onClick={izquierda} text="◄"></Button>
 				<Button className={styles.arriba} id="arribal" onClick={arriba} text="▲"></Button>

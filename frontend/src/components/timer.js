@@ -29,7 +29,11 @@ export default function Timer(props) {
         socket.on('newVidas', (data) => {
             if (localStorage.getItem("userId") != data.message.user) {
                 localStorage.setItem("vidasSuyas", vida)
-                console.log("llego ", vida)
+            }
+        });
+        socket.on('newGanasteBomba', (data) => {
+            if (localStorage.getItem("userId") != data.message.user) {
+                localStorage.setItem("componentesSuyos", data.message.componentes)
             }
         });
 
@@ -42,9 +46,10 @@ export default function Timer(props) {
 
     useEffect(() => {
         setGanaste(false)
-        setTimer(5*60)//*60
+        setTimer(10*60)//*60
         localStorage.setItem("lives", 3)
         setVidas(localStorage.getItem("lives"))
+        localStorage.setItem("componentesMios", 0)
         if (!socket) return;
         socket.emit("vidas", { vida: 3 , user:localStorage.getItem("userId")})
     }, [])
@@ -54,10 +59,22 @@ export default function Timer(props) {
         setVidas(localStorage.getItem("lives"))
         if (localStorage.getItem("lives")<=0) {
             console.log("perdiste")
+            if (!socket) return;
             socket.emit("timer", { ganar: "perdio" , user:localStorage.getItem("userId")})
         }
     }, [localStorage.getItem("lives")])
 
+    useEffect(() => {
+        if (parseInt(localStorage.getItem("componentesSuyos"))==11 && parseInt(localStorage.getItem("componentesMios"))==11) {
+            setGanaste(true)
+        }
+    }, [localStorage.getItem("componentesSuyos"), localStorage.getItem("componentesMios")])
+
+    useEffect(() => {
+        console.log(localStorage.getItem("componentesMios"))
+        if (!socket) return;
+        socket.emit("ganasteBomba", { componentes: localStorage.getItem("componentesMios") , user:localStorage.getItem("userId")})
+    }, [localStorage.getItem("componentesMios")])
     var mins=0
     var secs=0
     useEffect(() => {
@@ -86,9 +103,9 @@ export default function Timer(props) {
         }
     }, [timer])
 
-    function mostrarVida(vida, perro){
-        console.log(localStorage.getItem("lives"))
-        console.log(vidas)
+    function mostrarFunc() {
+        console.log(localStorage.getItem("componentesMios"))
+        console.log(localStorage.getItem("componentesSuyos"))
     }
     return(
         <div className="card">
