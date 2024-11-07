@@ -91,10 +91,9 @@ export default function Reloj(props) {
                     <Image className={styles.maniquiimg2} src={"/reloj/"+randomReloj+"MINUTO.png"} alt="reloj" width={140} height={165}></Image>
                 <Image className={styles.maniquiimg1} src={"/reloj/RELOJ.png"} alt="reloj" width={140} height={165}></Image>
                     </div>
-                <Button className={styles.izquierda} id="mani-" onClick={revelar} text="revelar"></Button>
-                <Button className={styles.izquierda} id="mani-" onClick={relojIzquierda} text="🡸"></Button>
-                <Button className={styles.derecha} id="mani+" onClick={relojDerecha} text="🡺"></Button>
-                <Button className={styles.check} id="mani1" onClick={verifySequence} text="CHECK"></Button>
+                <Button className={styles.izquierda} id="reloj-" onClick={relojIzquierda} text="🡸"></Button>
+                <Button className={styles.derecha} id="reloj+" onClick={relojDerecha} text="🡺"></Button>
+                <Button className={styles.check} id="reloj1" onClick={verifySequence} text="CHECK"></Button>
     
                 </div>
                 </div>
@@ -109,10 +108,9 @@ export default function Reloj(props) {
                     <Image className={styles.maniquiimg1} src={"/reloj/"+reloj+"MINUTO.png"} alt="reloj" width={140} height={165}></Image>
                     <Image className={styles.maniquiimg2} src={"/reloj/"+randomReloj+"HORA.png"} alt="reloj" width={140} height={165}></Image>
                     </div>
-                <Button className={styles.izquierda} id="mani-" onClick={revelar} text="revelar"></Button>
-                <Button className={styles.izquierda} id="mani-" onClick={relojIzquierda} text="🡸"></Button>
-                <Button className={styles.derecha} id="mani+" onClick={relojDerecha} text="🡺"></Button>
-                <Button className={styles.check} id="mani1" onClick={verifySequence} text="CHECK"></Button>
+                <Button className={styles.izquierda} id="reloj2-" onClick={relojIzquierda} text="🡸"></Button>
+                <Button className={styles.derecha} id="reloj2+" onClick={relojDerecha} text="🡺"></Button>
+                <Button className={styles.check} id="reloj2" onClick={verifySequence} text="CHECK"></Button>
     
                 </div>
                 </div>

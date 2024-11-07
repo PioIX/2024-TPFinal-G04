@@ -23,6 +23,7 @@ export default function Flechas(props) {
     let [boolean, setBoolean] = useState(true);
     var [arrows, setArrows] = useState([[[]]]);
     var [timer, setTimer] = useState()
+    var [timer2, setTimer2] = useState(3)
     var [flechitas, setFlechitas] = useState()
     var [secuencia, setSecuencia] = useState("")
     var [capa, setCapa] = useState(0)
@@ -54,6 +55,7 @@ export default function Flechas(props) {
         if (localStorage.getItem("userId") == 1) {
             socket.on('newStartFlechas', (data) => {
                 flechaNumero(data.message.capas)
+                setTimer2(0)
             });
         }
         if (localStorage.getItem("userId") == 1) {
@@ -347,12 +349,41 @@ export default function Flechas(props) {
         setFlechitas(() => a)
     }
 
+    
+        useEffect(() => {
+            
+            if (timer2 != 0) {
+                const myTimeout2= setTimeout(() => {
+                    if (timer2 > 0) {
+                        setTimer2(10)
+                        var randomizador=[definirFlecha()]
+                        var a = ""
+                        for (let index = 0; index < 5; index++) {
+                            const element = randomizador[0][index];
+                            if (element == 1) {
+                                a += "🢁"
+                            } else if (element == 2) {
+                                a += "🢃"
+                            } if (element == 3) {
+                                a += "🢂"
+                            } if (element == 4) {
+                                a += "🢀"
+                            }
+                        }
+                        setFlechitas(() => a)
 
+                    }
+                    
+                }, 500);
+                return () => clearTimeout(myTimeout2);
+            }
+        }, [flechitas])
+    
     function start() {
         setBoolean(false)
         setTimer(12)
         if (localStorage.getItem("userId") == 2) {
-
+            
             document.getElementById("flechaArriba").disabled = false
             document.getElementById("flechaAbajo").disabled = false
             document.getElementById("flechaDerecha").disabled = false
