@@ -27,38 +27,7 @@
    margin: 0 0 0 0;
    
    }
-.simbolospares1{
 
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    margin-left: -10px;
-    margin-top:-26px;
-}
-  
-.simbolos1{
-
-    font-family: "lucida console";
-    display: inline-block;
-    font-weight: bold;
-    background: rgb(158, 160, 163);
-    color: rgb(0, 0, 0);
-    width: 70px;
-    height: 70px;
-    transition-duration: 0.2s;
-    margin-bottom: 10px;
-    border: 2px solid #292929;
-}
-.simbolos1:hover{
-	background: #818181;
-	cursor: pointer;
-    transform: translateY(1px);;
-  
-}
-.simbolos1:active{
-  transform: translateY(2px);;
-  
-}
 .simbolospares{
     justify-content: center;
     align-items: center;
@@ -91,4 +60,44 @@
 .simbolos:active{
   transform: translateY(2px);;
   
+}
+
+
+  
+.simbolos1, .simbolos2, .simbolos3, .simbolos4, .simbolos5{
+    font-family: "lucida console";
+    font-weight: bold;
+    background: rgb(158, 160, 163);
+    color: rgb(0, 0, 0);
+    width: 70px;
+    height: 70px;
+    transition-duration: 0.2s;
+
+    border: 2px solid #292929;
+}
+
+.simbolos1{
+position: absolute;
+top:540px;
+left:705px;
+}
+.simbolos2{
+position: absolute;
+top:540px;
+left:795px;
+}
+.simbolos3{
+position: absolute;
+top:540px;
+left:885px;
+}
+.simbolos4{
+position: absolute;
+top:630px;
+left:745px;
+}
+.simbolos5{
+position: absolute;
+top:630px;
+left:835px;
 }
