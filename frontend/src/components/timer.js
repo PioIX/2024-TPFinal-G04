@@ -92,9 +92,6 @@ export default function Timer(props) {
     }
     return(
         <div className="card">
-            <Button text="ganar" onClick={ganar}></Button>
-            <Button text="Perder" onClick={perderVida}></Button>
-            <Button text="Mostrar" onClick={mostrarVida}></Button>
             <h1>{reloj}</h1>
             <h1>vidas {vidas}</h1>
         </div>
