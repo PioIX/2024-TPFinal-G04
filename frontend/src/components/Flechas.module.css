@@ -47,21 +47,19 @@
 .check{
     position: absolute;
     font-weight: bold;
-    left:290px;
-    top: 465px;
     border-radius: 4px;
     background-color: #cccccc;
     color: rgb(0, 0, 0);
-    width: 90px;
-    height: 40px;
+
+    height: 70px;
     font-weight: 500;
     font-family: "lucida console";
     font-size: 20px;
     cursor: pointer;
     transition-duration: 0.2s;
-    margin-left: 5px;
-    margin-right: 5px;
-    margin-top: 30px;
+    left:391px;
+    top: 565px;
+    width: 80px;
     border: 2px solid #3a3a3a;
 }
 .timer{
@@ -76,8 +74,8 @@
 	border-color: #000000;
     justify-content: center;
     position: absolute;
-    left:398px;
-    top: 541px;
+    left:385px;
+    top: 550px;
     width: 90px;
 }
 .check:hover{
@@ -92,27 +90,27 @@
 }
 .derecha{
 	position:relative;
-	top:47px;
-	left:55px;
+	top:56px;
+	left:40px;
 
 }
 .izquierda{
 
 	position: relative;
-	top:47px;
-    left: -170px;
+	top:56px;
+    left: -175px;
 }
 .arriba{
     width: 65px;
 	position: relative;
-	top:-22px;
-	left:105px;
+	top:-15px;
+	left:96px;
 }
 .abajo{
     width: 65px;
 	position: relative;
-	top:114px;
-	left: 40px;
+	top:127px;
+	left: 31px;
 }
 .secuenciafinal{
     color: rgb(231, 231, 231);
@@ -120,6 +118,28 @@
     font-family: "lucida console";
     font-size: 30px;
     position: absolute;
-    top: 680px;
+    top: 685px;
     left:370px;
+}
+
+.startee{
+    color: #ebebeb;
+    background-color: #313131;
+    border: 4px #000000;
+    width:290px;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+    text-align: center;
+    margin-left:-1px;
+    margin-top: 50px;
+}
+.flechitas{
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+    text-align: center;
+    margin-left:-1;
+    font-size: 59px;
+    color: #ebebeb;
 }

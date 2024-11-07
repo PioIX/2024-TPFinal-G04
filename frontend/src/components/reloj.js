@@ -86,12 +86,13 @@ export default function Reloj(props) {
             return(
                 <div className={styles.all}>
                 <div  className={styles.todo}>
-                    <div className={styles.maniquies}>
-                    <Image className={styles.maniquiimg1} src={"/reloj/"+reloj+"HORA.png"} alt="reloj" width={140} height={165}></Image>
-                    <Image className={styles.maniquiimg2} src={"/reloj/"+randomReloj+"MINUTO.png"} alt="reloj" width={140} height={165}></Image>
-                <Image className={styles.maniquiimg1} src={"/reloj/RELOJ.png"} alt="reloj" width={140} height={165}></Image>
+                    <div className={styles.reloj}>
+                    <Image className={styles.circuloBlanco} src={"/reloj/circuloBlanco.png"}alt="reloj" width={168} height={145}></Image>
+                    <Image className={styles.horas} src={"/reloj/"+reloj+"HORA.png"} alt="reloj" width={140} height={165}></Image>
+                    <Image className={styles.minutos} src={"/reloj/"+randomReloj+"MINUTO.png"} alt="reloj" width={140} height={165}></Image>
+                <Image className={styles.base} src={"/reloj/RELOJ.png"} alt="reloj" width={140} height={165}></Image>
                     </div>
-                <Button className={styles.izquierda} id="mani-" onClick={revelar} text="revelar"></Button>
+                <Button className={styles.revelar} id="mani-" onClick={revelar} text="REVELAR"></Button>
                 <Button className={styles.izquierda} id="mani-" onClick={relojIzquierda} text="🡸"></Button>
                 <Button className={styles.derecha} id="mani+" onClick={relojDerecha} text="🡺"></Button>
                 <Button className={styles.check} id="mani1" onClick={verifySequence} text="CHECK"></Button>
@@ -104,12 +105,14 @@ export default function Reloj(props) {
             return(
                 <div className={styles.all}>
                 <div  className={styles.todo}>
-                    <div className={styles.maniquies}>
-                    <Image className={styles.maniquiimg1} src={"/reloj/RELOJ.png"} alt="reloj" width={140} height={165}></Image>
-                    <Image className={styles.maniquiimg1} src={"/reloj/"+reloj+"MINUTO.png"} alt="reloj" width={140} height={165}></Image>
-                    <Image className={styles.maniquiimg2} src={"/reloj/"+randomReloj+"HORA.png"} alt="reloj" width={140} height={165}></Image>
+                    <div className={styles.reloj}>
+                    <Image className={styles.circuloBlanco} src={"/reloj/circuloBlanco.png"}alt="reloj" width={168} height={145}></Image>
+                    <Image className={styles.horas} src={"/reloj/RELOJ.png"} alt="reloj" width={140} height={165}></Image>
+                    <Image className={styles.minutos} src={"/reloj/"+reloj+"MINUTO.png"} alt="reloj" width={140} height={165}></Image>
+                    <Image className={styles.base} src={"/reloj/"+randomReloj+"HORA.png"} alt="reloj" width={140} height={165}></Image>
+                
                     </div>
-                <Button className={styles.izquierda} id="mani-" onClick={revelar} text="revelar"></Button>
+                <Button className={styles.revelar} id="mani-" onClick={revelar} text="REVELAR"></Button>
                 <Button className={styles.izquierda} id="mani-" onClick={relojIzquierda} text="🡸"></Button>
                 <Button className={styles.derecha} id="mani+" onClick={relojDerecha} text="🡺"></Button>
                 <Button className={styles.check} id="mani1" onClick={verifySequence} text="CHECK"></Button>
