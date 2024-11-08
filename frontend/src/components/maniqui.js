@@ -5,6 +5,7 @@ import styles from "./Maniqui.module.css"
 import { useSocket } from "@/hooks/useSocket";
 import Image from "./image";
 import { perderComponente } from "@/functions/functions";
+import { ganarComponente } from "@/functions/functions";
 
 /*
 import { perderComponente } from "@/functions/functions";
@@ -12,7 +13,7 @@ import Image from "./image";
 let [luzcomponente, setLuzComponente] = useState("/luzcomponente/apagado.png");
 perderComponente(setLuzComponente)
 <Image src={luzcomponente} alt="componente1" width={80} height={80} ></Image>
-*/ 
+*/
 function getRandomInt(min, max) {
     const minCeiled = Math.ceil(min);
     const maxFloored = Math.floor(max);
@@ -20,30 +21,31 @@ function getRandomInt(min, max) {
 }
 
 export default function Maniqui(props) {
-    
-    
+
+
     let [luzcomponente, setLuzComponente] = useState("/luzcomponente/apagado.png");
     let [randomManiqui, setRandomManiqui] = useState(0);
     let [maniqui, setManiqui] = useState(0);
-    const {socket,isConnected}=useSocket();
+    const { socket, isConnected } = useSocket();
     let started = false;
 
     useEffect(() => {
-        
+
         localStorage.setItem("MiManiqui", randomManiqui);
         if (!socket) return;
-        socket.on('newManiqui', (data)=>{
-            if (data.message.user != localStorage.getItem("userId")) { 
+        socket.on('newManiqui', (data) => {
+            if (data.message.user != localStorage.getItem("userId")) {
                 localStorage.setItem("SuManiqui", data.message.numero);
             }
-          });
+        });
 
         if (!started) {
-            socket.emit("joinRoom",{room: "Kaboom"})
-            socket.emit("maniqui",{numero: randomManiqui,
-                user:localStorage.getItem("userId")
+            socket.emit("joinRoom", { room: "Kaboom" })
+            socket.emit("maniqui", {
+                numero: randomManiqui,
+                user: localStorage.getItem("userId")
             })
-            started=true
+            started = true
         }
     }, [socket, isConnected])
 
@@ -52,25 +54,25 @@ export default function Maniqui(props) {
         setManiqui(getRandomInt(0, 9))
     }, [])
 
-    function verifySequence(){
-        if (maniqui==localStorage.getItem("SuManiqui")) {
-            console.log("ganaste")
-            document.getElementById("mani1").disabled=true
-            document.getElementById("mani-").disabled=true
-            document.getElementById("mani+").disabled=true
-        }else{
+    function verifySequence() {
+        if (maniqui == localStorage.getItem("SuManiqui")) {
+            ganarComponente(setLuzComponente)
+            document.getElementById("mani1").disabled = true
+            document.getElementById("mani-").disabled = true
+            document.getElementById("mani+").disabled = true
+        } else {
             perderComponente(setLuzComponente)
         }
     }
 
-    function maniquiDerecha(){
+    function maniquiDerecha() {
         if (maniqui != 8) {
             setManiqui(maniqui += 1)
         } else {
             setManiqui(0)
         }
     }
-    function maniquiIzquierda(){
+    function maniquiIzquierda() {
         if (maniqui != 0) {
             setManiqui(maniqui -= 1)
         } else {
@@ -78,19 +80,20 @@ export default function Maniqui(props) {
         }
     }
 
-        return(
-            <div className={styles.all}>
-            <div  className={styles.todo}>
+    return (
+        <div className={styles.all}>
+            <div className={styles.todo}>
+            <Image src={luzcomponente} alt="componente1" width={80} height={80} ></Image>
                 <div className={styles.maniquies}>
-                <Image className={styles.maniquiimg1} src={"/miniquis/pose"+maniqui+".png"} alt="maniqui" width={140} height={165}></Image>
-                <Image className={styles.maniquiimg2} src={"/miniquis/pose"+randomManiqui+".png"} alt="maniqui" width={140} height={165}></Image>
+                    <Image className={styles.maniquiimg1} src={"/miniquis/pose" + maniqui + ".png"} alt="maniqui" width={140} height={165}></Image>
+                    <Image className={styles.maniquiimg2} src={"/miniquis/pose" + randomManiqui + ".png"} alt="maniqui" width={140} height={165}></Image>
                 </div>
-            <Button className={styles.izquierda} id="mani-" onClick={maniquiIzquierda} text="🡸"></Button>
-            <Button className={styles.derecha} id="mani+" onClick={maniquiDerecha} text="🡺"></Button>
-            <Button className={styles.check} id="mani1" onClick={verifySequence} text="CHECK"></Button>
+                <Button className={styles.izquierda} id="mani-" onClick={maniquiIzquierda} text="🡸"></Button>
+                <Button className={styles.derecha} id="mani+" onClick={maniquiDerecha} text="🡺"></Button>
+                <Button className={styles.check} id="mani1" onClick={verifySequence} text="CHECK"></Button>
 
             </div>
-            </div>
-        )
+        </div>
+    )
 
 }

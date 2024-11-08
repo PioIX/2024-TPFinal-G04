@@ -5,6 +5,7 @@ import styles from "./Tgame.module.css"
 import Image from "./image";
 import { useSocket } from "@/hooks/useSocket";
 import { perderComponente } from "@/functions/functions";
+import { ganarComponente } from "@/functions/functions";
 
 
 function getRandomInt(min, max) {
@@ -20,7 +21,7 @@ import Image from "./image";
 let [luzcomponente, setLuzComponente] = useState("/luzcomponente/apagado.png");
 perderComponente(setLuzComponente)
 <Image src={luzcomponente} alt="componente1" width={80} height={80} ></Image>
-*/ 
+*/
 
 export default function Simon(props) {
 
@@ -51,7 +52,7 @@ export default function Simon(props) {
             if (data.message.numero != state) {
                 setState(data.message.numero);
                 if (state == 5) {
-                    console.log("ganaste")
+                    ganarComponente(setLuzComponente)
                 }
             }
 
@@ -67,7 +68,7 @@ export default function Simon(props) {
         }
     }, [socket, isConnected])
 
-    
+
 
     function blue() {
         return new Promise((resolve, reject) => {
@@ -118,15 +119,15 @@ export default function Simon(props) {
         })
     }
     async function game() {
-        var secuence=[]
+        var secuence = []
         for (let index = 0; index < localStorage.getItem("miSimon").length; index++) {
-            if (localStorage.getItem("miSimon")[index]!=",") {
+            if (localStorage.getItem("miSimon")[index] != ",") {
                 secuence.push(localStorage.getItem("miSimon")[index])
             }
-            
+
         }
         if (localStorage.getItem("userId") == 1 && state % 2 == 1) {
-            
+
             for (let index = 0; index <= state; index++) {
                 if (secuence[index] == 1) {
                     await blue()
@@ -173,36 +174,35 @@ export default function Simon(props) {
                 setSecuencia(localStorage.getItem("miSimon"));
             }
         }
-        if (localStorage.getItem("userId") == 2){
-            document.getElementById("s1").disabled=true
-            document.getElementById("s2").disabled=true
-            document.getElementById("s3").disabled=true
-            document.getElementById("s4").disabled=true
+        if (localStorage.getItem("userId") == 2) {
+            document.getElementById("s1").disabled = true
+            document.getElementById("s2").disabled = true
+            document.getElementById("s3").disabled = true
+            document.getElementById("s4").disabled = true
         }
-        if (localStorage.getItem("userId") == 1){
-            document.getElementById("lasecuencia").disabled=true
+        if (localStorage.getItem("userId") == 1) {
+            document.getElementById("lasecuencia").disabled = true
         }
     }, [])
 
     function verifySequence(event) {
-        var secuence=[]
+        var secuence = []
         for (let index = 0; index < localStorage.getItem("miSimon").length; index++) {
-            if (localStorage.getItem("miSimon")[index]!=",") {
+            if (localStorage.getItem("miSimon")[index] != ",") {
                 secuence.push(localStorage.getItem("miSimon")[index])
             }
-            
+
         }
         let idBoton = event.target.id[1]
         if (idBoton == secuence[stateActual]) {
             seguida.push(secuence[state])
             setStateActual(stateActual + 1)
-            console.log("correcto")
         } else {
             perderComponente(setLuzComponente)
         }
         if (stateActual == state) {
             if (state == 5) {
-                console.log("ganaste")
+                ganarComponente(setLuzComponente)
             } else {
                 setSeguida([])
                 setState(state + 1)
@@ -213,64 +213,64 @@ export default function Simon(props) {
     useEffect(() => {
         if (!socket) return;
         socket.emit("state", { numero: state })
-        if (state==5) {
-            console.log("Ganaste")
-            document.getElementById("lasecuencia").disabled=true
-            document.getElementById("s1").disabled=true
-            document.getElementById("s2").disabled=true
-            document.getElementById("s3").disabled=true
-            document.getElementById("s4").disabled=true
-            
+        if (state == 5) {
+            ganarComponente(setLuzComponente)
+            document.getElementById("lasecuencia").disabled = true
+            document.getElementById("s1").disabled = true
+            document.getElementById("s2").disabled = true
+            document.getElementById("s3").disabled = true
+            document.getElementById("s4").disabled = true
+
         }
-        if (localStorage.getItem("userId") == 1 && state%2==1 && state!=5){
-            document.getElementById("lasecuencia").disabled=false
-            document.getElementById("s1").disabled=true
-            document.getElementById("s2").disabled=true
-            document.getElementById("s3").disabled=true
-            document.getElementById("s4").disabled=true
+        if (localStorage.getItem("userId") == 1 && state % 2 == 1 && state != 5) {
+            document.getElementById("lasecuencia").disabled = false
+            document.getElementById("s1").disabled = true
+            document.getElementById("s2").disabled = true
+            document.getElementById("s3").disabled = true
+            document.getElementById("s4").disabled = true
         }
-        if (localStorage.getItem("userId") == 1 && state%2==0 && state!=5){
-            document.getElementById("lasecuencia").disabled=true
-            document.getElementById("s1").disabled=false
-            document.getElementById("s2").disabled=false
-            document.getElementById("s3").disabled=false
-            document.getElementById("s4").disabled=false
+        if (localStorage.getItem("userId") == 1 && state % 2 == 0 && state != 5) {
+            document.getElementById("lasecuencia").disabled = true
+            document.getElementById("s1").disabled = false
+            document.getElementById("s2").disabled = false
+            document.getElementById("s3").disabled = false
+            document.getElementById("s4").disabled = false
         }
-        
-        if (localStorage.getItem("userId") == 2 && state%2==0 && state!=5) {
-            document.getElementById("lasecuencia").disabled=false
-            document.getElementById("s1").disabled=true
-            document.getElementById("s2").disabled=true
-            document.getElementById("s3").disabled=true
-            document.getElementById("s4").disabled=true
+
+        if (localStorage.getItem("userId") == 2 && state % 2 == 0 && state != 5) {
+            document.getElementById("lasecuencia").disabled = false
+            document.getElementById("s1").disabled = true
+            document.getElementById("s2").disabled = true
+            document.getElementById("s3").disabled = true
+            document.getElementById("s4").disabled = true
         }
-        if (localStorage.getItem("userId") == 2 && state%2==1 && state!=5) {
-            document.getElementById("lasecuencia").disabled=true
-            document.getElementById("s1").disabled=false
-            document.getElementById("s2").disabled=false
-            document.getElementById("s3").disabled=false
-            document.getElementById("s4").disabled=false
+        if (localStorage.getItem("userId") == 2 && state % 2 == 1 && state != 5) {
+            document.getElementById("lasecuencia").disabled = true
+            document.getElementById("s1").disabled = false
+            document.getElementById("s2").disabled = false
+            document.getElementById("s3").disabled = false
+            document.getElementById("s4").disabled = false
         }
     }, [state])
     return (
 
         <>
-        <div className={styles.all}>
-        <div className={styles.todo}>
-        <div className={styles.child}>
-            <Button className={styles.start} onClick={game} text="START" id="lasecuencia"></Button>
-            <Image className={styles.lucesita} src={luzcomponente} alt="componente1" width={80} height={80} ></Image>
-            <Image src={luz} alt="simon" width={300} height={240}></Image>
-            <br></br>
+            <div className={styles.all}>
+                <div className={styles.todo}>
+                    <Image src={luzcomponente} alt="componente1" width={80} height={80} ></Image>
+                    <div className={styles.child}>
+                        <Button className={styles.start} onClick={game} text="START" id="lasecuencia"></Button>
+                        <Image src={luz} alt="simon" width={300} height={240}></Image>
+                        <br></br>
 
-            <Button className={styles.botones} id="s1" onClick={verifySequence} text="AZUL"></Button>
-            <Button className={styles.botones} id="s2" onClick={verifySequence} text="AMARILLO"></Button>
-            <Button className={styles.botones} id="s3" onClick={verifySequence} text="VERDE"></Button>
-            <Button className={styles.botones} id="s4" onClick={verifySequence} text="ROJO"></Button>
-        </div>
-        </div>
-        </div>
-</>
+                        <Button className={styles.botones} id="s1" onClick={verifySequence} text="AZUL"></Button>
+                        <Button className={styles.botones} id="s2" onClick={verifySequence} text="AMARILLO"></Button>
+                        <Button className={styles.botones} id="s3" onClick={verifySequence} text="VERDE"></Button>
+                        <Button className={styles.botones} id="s4" onClick={verifySequence} text="ROJO"></Button>
+                    </div>
+                </div>
+            </div>
+        </>
 
     )
 }

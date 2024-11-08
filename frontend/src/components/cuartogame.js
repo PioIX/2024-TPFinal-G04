@@ -5,6 +5,7 @@ import styles from "./Cuartogame.module.css"
 import Image from "./image";
 import { useSocket } from "@/hooks/useSocket";
 import { perderComponente } from "@/functions/functions";
+import { ganarComponente } from "@/functions/functions";
 function getRandomInt(min, max) {
     const minCeiled = Math.ceil(min);
     const maxFloored = Math.floor(max);
@@ -17,6 +18,7 @@ import Image from "./image";
 let [luzcomponente, setLuzComponente] = useState("/luzcomponente/apagado.png");
 perderComponente(setLuzComponente)
 <Image src={luzcomponente} alt="componente1" width={80} height={80} ></Image>
+import { ganarComponente } from "@/functions/functions";
 */ 
 
 
@@ -137,7 +139,7 @@ export default function Morse(props) {
         }
         if (secuenciaUsuario.length==6) {
             if(String(secuenciaUsuario)==String(localStorage.getItem("suMorse"))){
-                console.log("ganaste")
+                ganarComponente(setLuzComponente)
                 document.getElementById("botonPunto").disabled=true
                 document.getElementById("botonRaya").disabled=true
             }else{
@@ -157,7 +159,7 @@ export default function Morse(props) {
         
         if (secuenciaUsuario.length==6) {
             if(String(secuenciaUsuario)==String(localStorage.getItem("suMorse"))){
-                console.log("ganaste")
+                ganarComponente(setLuzComponente)
                 document.getElementById("botonPunto").disabled=true
                 document.getElementById("botonRaya").disabled=true
             }else{
@@ -175,6 +177,7 @@ export default function Morse(props) {
         <div className={styles.todo}>
             
             <div>
+            <Image src={luzcomponente} alt="componente1" width={80} height={80} ></Image>
             <Button className={styles.codigo} text="CODIGO" onClick={codigo} id="codigo"></Button>
             <Button className={styles.punto} text="PUNTO" onClick={printPunto} id="botonPunto"></Button>
             <Button className={styles.raya} text="RAYA" onClick={printRaya} id="botonRaya"></Button>

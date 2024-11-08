@@ -5,12 +5,6 @@ export function perderVida(){
 
 }
 
-export function naonao(vidasOtro){
-    if (vidasOtro!=undefined) {
-        vidasOtro-=1
-    }
-}
-
 let timeoutPerderVida;
 
 export function perderComponente(setLuzComponente){
@@ -27,6 +21,17 @@ export function perderComponente(setLuzComponente){
                 resolve('luz')
             }, 1000);
         }, 200);
-})}
-
-export function ganarComponente(){}
+    })}
+    
+let timeoutGanarComp;
+export function ganarComponente(setLuzComponente){
+    return new Promise((resolve, reject) => {
+        clearTimeout(timeoutGanarComp);
+        timeoutGanarComp = setTimeout(function () {
+            let comp= parseInt(localStorage.getItem("componentesMios"))+1
+            localStorage.setItem("componentesMios", comp)
+            resolve('luz')
+        }, 200);
+        setLuzComponente("/luzcomponente/luz_verde.png")
+    })
+}

@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import styles from "./Fgame.module.css"
 import { useSocket } from "@/hooks/useSocket";
 import { perderComponente } from "@/functions/functions";
+import { ganarComponente } from "@/functions/functions";
 import Image from "./image";
 function getRandomInt(min, max) {
     const minCeiled = Math.ceil(min);
@@ -41,6 +42,9 @@ export default function Numbers(props) {
         socket.on('newNumero', (data)=>{
             if (data.message.user != localStorage.getItem("userId")) { 
                 localStorage.setItem("respuestaSuya", data.message.numero);
+                if (localStorage.getItem("respuestaSuya").length==1) {
+                    localStorage.setItem("respuestaSuya", '0'+localStorage.getItem("respuestaSuya"))
+                }
             }
           });
 
@@ -91,7 +95,7 @@ export default function Numbers(props) {
     function check() {
         let auxtotal = String(num1) + String(num2)
         if (String(auxtotal) == String(localStorage.getItem("respuestaSuya"))) {
-            console.log("bien")
+            ganarComponente(setLuzComponente)
             document.getElementById("sumayresta").disabled=true
             document.getElementById("fgame+1").disabled=true
             document.getElementById("fgame+2").disabled=true
