@@ -131,7 +131,7 @@
     justify-items: center;
     align-items: center;
     text-align: center;
-    margin-left:-1px;
+    margin-left:0px;
     margin-top: 50px;
 }
 .flechitas{
@@ -139,7 +139,13 @@
     justify-items: center;
     align-items: center;
     text-align: center;
-    margin-left:-1;
+    margin-left:-1px;
     font-size: 58px;
     color: #ebebeb;
 }
+
+.lucesita{
+	position: absolute;
+	top: 408px;
+	left: 564px;
+  }

@@ -83,7 +83,7 @@ export default function Maniqui(props) {
     return (
         <div className={styles.all}>
             <div className={styles.todo}>
-            <Image src={luzcomponente} alt="componente1" width={80} height={80} ></Image>
+            <Image className={styles.lucesita}src={luzcomponente} alt="componente1" width={80} height={80} ></Image>
                 <div className={styles.maniquies}>
                     <Image className={styles.maniquiimg1} src={"/miniquis/pose" + maniqui + ".png"} alt="maniqui" width={140} height={165}></Image>
                     <Image className={styles.maniquiimg2} src={"/miniquis/pose" + randomManiqui + ".png"} alt="maniqui" width={140} height={165}></Image>
