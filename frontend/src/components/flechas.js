@@ -425,7 +425,7 @@ export default function Flechas(props) {
     if (localStorage.getItem("userId") == 1) {
         return (
             <div >
-                <Image src={luzcomponente} alt="componente1" width={80} height={80} ></Image>
+                <Image className={styles.lucesita} src={luzcomponente} alt="componente1" width={80} height={80} ></Image>
                 <h1 className={styles.startee}>Presione start</h1>
                 <h1 className={styles.flechitas}>{flechitas}</h1>
             
@@ -444,7 +444,7 @@ export default function Flechas(props) {
                 <br></br>
                 {boolean==true ? <Button className={styles.check} id="startflechas" text="START" onClick={start}></Button>: <></>}
                 <br></br>
-                <Image src={luzcomponente} alt="componente1" width={80} height={80} ></Image>
+                <Image className={styles.lucesita} src={luzcomponente} alt="componente1" width={80} height={80} ></Image>
                 <Button className={styles.arriba} id="flechaArriba" text="🢁" onClick={sumarArriba} ></Button>
                 <Button className={styles.abajo} id="flechaAbajo" text="🢃" onClick={sumarAbajo} ></Button>
                 <Button className={styles.derecha} id="flechaDerecha" text="🢂" onClick={sumarDerecha} ></Button>

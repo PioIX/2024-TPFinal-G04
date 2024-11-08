@@ -224,7 +224,7 @@ export default function Contraseña(props) {
         <div className={styles.todo}>
             <div>
 
-                <Image src={luzcomponente} alt="componente1" width={80} height={80} ></Image>
+                <Image className={styles.lucesita} src={luzcomponente} alt="componente1" width={80} height={80} ></Image>
                 <Button className={styles.check} id="checkeoContrasena" text="CHECK" onClick={checkTrad}></Button>
 
                 <br></br>

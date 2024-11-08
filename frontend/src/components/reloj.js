@@ -83,7 +83,7 @@ export default function Reloj(props) {
             return(
                 <div className={styles.all}>
                 <div  className={styles.todo}>
-                <Image src={luzcomponente} alt="componente1" width={80} height={80} ></Image>
+                <Image className={styles.lucesita} src={luzcomponente} alt="componente1" width={80} height={80} ></Image>
                     <div className={styles.reloj}>
                     <Image className={styles.circuloBlanco} src={"/reloj/circuloBlanco.png"}alt="reloj" width={168} height={145}></Image>
                     <Image className={styles.horas} src={"/reloj/"+reloj+"HORA.png"} alt="reloj" width={140} height={165}></Image>
@@ -102,7 +102,7 @@ export default function Reloj(props) {
             return(
                 <div className={styles.all}>
                 <div  className={styles.todo}>
-                <Image src={luzcomponente} alt="componente1" width={80} height={80} ></Image>
+                <Image className={styles.lucesita} src={luzcomponente} alt="componente1" width={80} height={80} ></Image>
                     <div className={styles.reloj}>
                     <Image className={styles.circuloBlanco} src={"/reloj/circuloBlanco.png"}alt="reloj" width={168} height={145}></Image>
                     <Image className={styles.horas} src={"/reloj/RELOJ.png"} alt="reloj" width={140} height={165}></Image>

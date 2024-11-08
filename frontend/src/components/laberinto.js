@@ -190,7 +190,7 @@ export default function Laberinto(props) {
 		return(
 			<div id="board">
 				<div id="messageArea" className={styles.all}>
-					<Image src={luzcomponente} alt="componente1" width={80} height={80} ></Image>
+					<Image className={styles.lucesita} src={luzcomponente} alt="componente1" width={80} height={80} ></Image>
 					<table className={styles.todo}>
 						<tbody className={styles.fondo}>
 							<tr>
@@ -269,7 +269,7 @@ export default function Laberinto(props) {
 		
 		return(
 			<div id="board">
-				<Image src={luzcomponente} alt="componente1" width={80} height={80} ></Image>
+				<Image className={styles.lucesita} src={luzcomponente} alt="componente1" width={80} height={80} ></Image>
 				<Button className={styles.derecha} id="derechal" onClick={derecha} text="►"></Button>
 				<Button className={styles.izquierda} id="izquierdal" onClick={izquierda} text="◄"></Button>
 				<Button className={styles.arriba} id="arribal" onClick={arriba} text="▲"></Button>

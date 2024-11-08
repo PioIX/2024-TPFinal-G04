@@ -15,14 +15,32 @@
   align-items: center;
   margin: 0 0 0 0; 
 }
-
-
-.punto, .raya, .codigo{
-	display: inline-block;
+.codigo{
 	background: rgb(158, 160, 163);
 	color: rgb(0, 0, 0);
-	width: 88px;
+	font-weight: 900;
 	font-size: 20px;
+	padding: 0px 0;
+    font-family: "lucida console";
+	cursor: pointer;
+	transition-duration: 0.2s;
+	border: 2px solid #3a3a3a;
+	border-radius: 4px;
+	width: 88px;
+	height: 43px;
+	position: absolute;
+	top:500px;
+	left:389px;
+}
+
+.punto{
+	padding: 0px 0;
+	width:43px;
+	height: 43px;
+	background: rgb(158, 160, 163);
+	color: rgb(0, 0, 0);
+	font-weight: 900;
+	font-size: 40px;
     font-family: "lucida console";
 	cursor: pointer;
 	transition-duration: 0.2s;
@@ -30,8 +48,30 @@
 	margin-right: 5px;
 	border: 2px solid #3a3a3a;
 	border-radius: 4px;
+	position: absolute;
+	top:700px;
+	left:360px;
 }
   
+.raya{
+	padding: 0px 0;
+	width:43px;
+	height: 43px;
+	background: rgb(158, 160, 163);
+	color: rgb(0, 0, 0);
+	font-weight: 900;
+	font-size: 40px;
+    font-family: "lucida console";
+	cursor: pointer;
+	transition-duration: 0.2s;
+	margin-left: 5px;
+	margin-right: 5px;
+	border: 2px solid #3a3a3a;
+	border-radius: 4px;
+	position: absolute;
+	top:700px;
+	left:420px;
+}
 .punto:hover, .raya:hover, .codigo:hover{
   background: #818181;
   cursor: pointer;
@@ -44,19 +84,33 @@
 }
 
 .botones:hover, .start:hover {
-	background: #818181;
+	background: #9b9b9b;
 	cursor: pointer;
 	transform: translateY(0.5px);
 }
 
 .botones:active, .start:active {
 	transform: translateY(1px);
+	background-color: #555555;
 }
 
 .respuesta{
 	position: absolute;
-	left:385px;
+	left:330px;
 	font-weight: 900;
 	font-family: "lucida console";
-	bottom: 140px;
+	bottom: 120px;
+	color: #e9e9e9;
+	font-size: 60px;
 }
+.lucesita{
+	position: absolute;
+	top: 408px;
+	left: 564px;
+  }
+
+  .imagen{
+	position: absolute;
+	top:540px;
+	left:255px;
+  }
