@@ -22,7 +22,7 @@
     }
 
 
-	.botones, .start {
+	.botones1, .botones2, .botones3, .botones4, .start {
         display: inline;
 		background: rgb(158, 160, 163);
 		color: rgb(0, 0, 0);
@@ -38,12 +38,14 @@
 
 	  }
 	  
-.botones:hover, .start:hover {
-	background: #818181;
+.botones1:hover, .start:hover, .botones2:hover, .botones3:hover, .botones4:hover {
 	cursor: pointer;
 	transform: translateY(0.5px);
 }
-.botones:active, .start:active {
+.start:hover{
+	background-color: #818181;
+}
+.botones1:active, .start:active, .botones2:active, .botones3:active, .botones4:active, {
 	transform: translateY(1px);
 }
 .start {
@@ -66,3 +68,27 @@
 	top: 40px;
 	left: 1347px;
   }
+ .botones1{
+	margin-left: 50px;
+	background-color: rgb(54, 107, 143);
+	width:45px;
+	height: 35px;
+ }
+ .botones2{
+
+	background-color: rgb(165, 144, 51);
+	width:45px;
+	height: 35px;
+ }
+ .botones3{
+
+	background-color: rgb(59, 117, 57);
+	width:45px;
+	height: 35px;
+ }
+ .botones4{
+
+	background-color: rgb(153, 53, 53);
+	width:45px;
+	height: 35px;
+ }

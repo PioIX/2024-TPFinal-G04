@@ -263,10 +263,10 @@ export default function Simon(props) {
                         <Image src={luz} alt="simon" width={300} height={240}></Image>
                         <br></br>
 
-                        <Button className={styles.botones} id="s1" onClick={verifySequence} text="AZUL"></Button>
-                        <Button className={styles.botones} id="s2" onClick={verifySequence} text="AMARILLO"></Button>
-                        <Button className={styles.botones} id="s3" onClick={verifySequence} text="VERDE"></Button>
-                        <Button className={styles.botones} id="s4" onClick={verifySequence} text="ROJO"></Button>
+                        <Button className={styles.botones1} id="s1" onClick={verifySequence} text=" "></Button>
+                        <Button className={styles.botones2} id="s2" onClick={verifySequence} text=" "></Button>
+                        <Button className={styles.botones3} id="s3" onClick={verifySequence} text=" " ></Button>
+                        <Button className={styles.botones4} id="s4" onClick={verifySequence} text=" " ></Button>
                     </div>
                 </div>
             </div>

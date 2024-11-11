@@ -52,6 +52,7 @@ export default function Timer(props) {
         localStorage.setItem("componentesMios", 0)
         if (!socket) return;
         socket.emit("vidas", { vida: 3 , user:localStorage.getItem("userId")})
+        setVidas
     }, [])
 
 
@@ -107,10 +108,19 @@ export default function Timer(props) {
         console.log(localStorage.getItem("componentesMios"))
         console.log(localStorage.getItem("componentesSuyos"))
     }
+
     return(
-        <div className="card">
-            <h1>{reloj}</h1>
-            <h1>vidas {vidas}</h1>
+        <div className={styles.all}>
+            <div className={styles.todo}>
+                <div className="card">
+                <link href="https://fonts.cdnfonts.com/css/ds-digital" rel="stylesheet"></link>
+                <h1 className={styles.reloj}> {reloj}</h1>
+                </div>
+                
+                <h1 className={styles.vidasxfondo}>✖ ✖ ✖ </h1>
+                <h1 className={styles.vidasx}>{" "} {[...Array(Number(vidas))].map((_, i) => (<span key={i} className={styles.vida}>✖ </span> ))}</h1>
+                
+            </div>
         </div>
 
     )
