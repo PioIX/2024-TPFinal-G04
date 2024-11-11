@@ -137,7 +137,7 @@ export default function Simbolos(props) {
     if (localStorage.getItem("userId")==1 && simboloEl[1]!=undefined) {
         return (
             <div className={styles.all}>
-                <Image src={luzcomponente} alt="componente1" width={80} height={80} ></Image>
+                <Image src={luzcomponente} className={styles.lucesita} alt="componente1" width={80} height={80} ></Image>
              <br></br><div className={styles.simbolospares}>
              <Image className={styles.simbolos} id={simboloEl[0]+"sim"} src={"/simbolos/simbolos"+simboloEl[0]+".png"} alt="simbolop1" width={50} height={50} onClick={checksim}></Image>
              <Image className={styles.simbolos} id={simboloEl[1]+"sim"} src={"/simbolos/simbolos"+simboloEl[1]+".png"} alt="simbolop2" width={50} height={50} onClick={checksim}></Image>
@@ -166,7 +166,7 @@ export default function Simbolos(props) {
     if (localStorage.getItem("userId")==2 && simboloEl[1]!=undefined) {
         return (
             <div className={styles.all}>
-                <Image src={luzcomponente} alt="componente1" width={80} height={80} ></Image>
+                <Image className={styles.lucesita} src={luzcomponente} alt="componente1" width={80} height={80} ></Image>
              <br></br><div className={styles.simbolospares1}>
              <Image className={styles.simbolos1} src={"/simbolos/simbolos"+simboloEl[0]+".png"} alt="simbolo1" width={50} height={50}></Image>
              <Image className={styles.simbolos2} src={"/simbolos/simbolos"+simboloEl[1]+".png"} alt="simbolo2" width={50} height={50}></Image>

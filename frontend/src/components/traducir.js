@@ -261,7 +261,7 @@ export default function Traducir(props) {
     return(
         <div className={styles.all}>
         <div className={styles.todo}>
-            <Image src={luzcomponente} alt="componente1" width={80} height={80} ></Image>
+            <Image src={luzcomponente} className={styles.lucesita} alt="componente1" width={80} height={80} ></Image>
             <div>
 
                 <Button className={styles.check} id="BotonTraduccion" text="CHECK" onClick={checkTrad}></Button>

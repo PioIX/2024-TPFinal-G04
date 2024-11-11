@@ -257,7 +257,7 @@ export default function Simon(props) {
         <>
             <div className={styles.all}>
                 <div className={styles.todo}>
-                    <Image src={luzcomponente} alt="componente1" width={80} height={80} ></Image>
+                    <Image src={luzcomponente} className={styles.lucesita} alt="componente1" width={80} height={80} ></Image>
                     <div className={styles.child}>
                         <Button className={styles.start} onClick={game} text="START" id="lasecuencia"></Button>
                         <Image src={luz} alt="simon" width={300} height={240}></Image>

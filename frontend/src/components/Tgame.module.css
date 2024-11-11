@@ -30,7 +30,7 @@
 		font-weight: 500;
 		cursor: pointer;
 		transition-duration: 0.2s;
-		margin-left: 1.5px;
+		margin-left: 4px;
 		margin-right: 1.5px;
 		border: 2px solid #292929;
 		font-family: "lucida console";
@@ -63,6 +63,6 @@
 }
 .lucesita{
 	position: absolute;
-	top: 37px;
-	left: 560px;
-}
+	top: 40px;
+	left: 1347px;
+  }
