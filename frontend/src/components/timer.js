@@ -4,12 +4,14 @@ import { useState, useEffect } from "react";
 import styles from "./Timer.module.css"
 import { useSocket } from "@/hooks/useSocket";
 import { perderVida } from "@/functions/functions";
+import { useRouter } from "next/navigation";
 export default function Timer(props) {
     let [vidas, setVidas] = useState(3)
     let [ganaste, setGanaste] = useState([])
     var [timer, setTimer] = useState()
     var [reloj, setReloj] = useState()
     const { socket, isConnected } = useSocket();
+    const router = useRouter();
     let started = false;
 
 
@@ -24,6 +26,7 @@ export default function Timer(props) {
         socket.on('newTimer', (data) => {
             if (localStorage.getItem("userId") != data.message.user) {
                 console.log("perdiste")
+                router.push("/login/game/perder")
             }
         });
         socket.on('newVidas', (data) => {
@@ -62,12 +65,14 @@ export default function Timer(props) {
             console.log("perdiste")
             if (!socket) return;
             socket.emit("timer", { ganar: "perdio" , user:localStorage.getItem("userId")})
+            router.push("/login/game/perder")
         }
     }, [localStorage.getItem("lives")])
 
     useEffect(() => {
         if (parseInt(localStorage.getItem("componentesSuyos"))==11 && parseInt(localStorage.getItem("componentesMios"))==11) {
             setGanaste(true)
+            router.push("/login/game/ganar")
         }
     }, [localStorage.getItem("componentesSuyos"), localStorage.getItem("componentesMios")])
 

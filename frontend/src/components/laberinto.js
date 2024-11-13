@@ -41,8 +41,8 @@ export default function Laberinto(props) {
                 if (data.message.numero != localStorage.getItem("miLaberinto")) {
                     localStorage.setItem("miLaberinto", data.message.numero);
                 }
+				laberinto()
             });
-			laberinto()
         }
 
         socket.on('newLabwin', (data) => {
@@ -62,6 +62,17 @@ export default function Laberinto(props) {
             started = true
         }
     }, [socket, isConnected])
+	
+	useEffect(() => {
+		console.log("Llegue")
+		if (localStorage.getItem("userId") == 2) {
+			for (let i = 0; i <= 48; i++) {
+				document.getElementById("ls"+i).innerHTML=""
+			}
+			laberinto()
+		}
+	}, [localStorage.getItem("miLaberinto")])
+		
 
 	function paintWall(Array) {
 		if (localStorage.getItem("userId") == 1) {
