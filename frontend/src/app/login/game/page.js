@@ -21,31 +21,21 @@ import Reloj from "@/components/reloj";
 export default function Game() {
   const { socket, isConnected } = useSocket();
   let started = false;
-
   
-  useEffect(() => {
-    if (localStorage.getItem("player2")=="true" && localStorage.getItem("player1")=="true") {
-      localStorage.setItem("player1",false)
-      localStorage.setItem("player2",false)
-      location.reload()
-      console.log("entre")
+  
 
+  useEffect(() => {
+    
+  if (!socket) {return}
+  socket.on('newRefrescar', (data)=>{
+    if (data.message.user != localStorage.getItem("userId")) { 
+        location.reload()
     }
-  }, [localStorage.getItem("player2"),localStorage.getItem("player1")])
+  });
+  if (!socket) return;
+  socket.emit("refrescar",{refresh: elegida
+    ,user:localStorage.getItem("userId")})
 
-  useEffect(() => {
-    if (!socket) return;
-    socket.on('newResetFunction', (data) => {
-      if (data.message.player1!=undefined) {
-        localStorage.setItem("player1",true)
-      }
-      if (data.message.player2!=undefined) {
-        localStorage.setItem("player2",true)
-        
-      }
-      
-    });
-  
     
   if (!started) {
     socket.emit("joinRoom", { room: "Kaboom" })
@@ -57,13 +47,14 @@ export default function Game() {
 
 useEffect(() => {
   // Añadir clase al <html> cuando se monte el componente
+  document.documentElement.classList.add(styles.all);
   
-  if (localStorage.getItem("userId") == 0) {
-    document.documentElement.classList.add(styles.selectPlayer);
-  } else {
-    document.documentElement.classList.add(styles.all);
-  }
+  
+  
+  
+  
   // Limpiar al desmontar el componente
+ 
   return () => {
     document.documentElement.classList.remove(styles.all);
   };
@@ -76,25 +67,7 @@ function changeScreen() {
   setPage(!page)
   console.log(localStorage.getItem("userId"))
 }
-function user1() {
-  localStorage.setItem("userId", 1);
-  //Falta el otro id personal
-  if (!socket) return;
-  socket.emit("resetFunction",{player1: true})
-}
-function user2() {
-  localStorage.setItem("userId", 2);
-  if (!socket) return;
-  socket.emit("resetFunction",{player2: true})
-}
-if (localStorage.getItem("userId") == 0) {
-  return (
-    <main className={styles.selectPlayer}>
-      <Button text="Player 1" onClick={user1}></Button>
-      <Button text="Player 2" onClick={user2}></Button>
-    </main>
-  )
-}
+
 return (
 
   <main className={styles.main}>
@@ -123,8 +96,6 @@ return (
       [styles.display]: page
     })}>
       <Button className={styles.voltear} onClick={changeScreen} text="Voltear" />
-      <Button className={styles.voltearcreo} onClick={user1} text="1" />
-      <Button className={styles.voltearcreo2} onClick={user2} text="2" />
       <div className={styles.cajitas}>
         <Laberinto className={styles.juegos}></Laberinto>
         <Traducir></Traducir>
@@ -141,4 +112,5 @@ return (
   </main>
 
 )
+
 }
