@@ -40,6 +40,8 @@ const sessionMiddleware = session({
 	saveUninitialized: false
 });
 
+let usuariosEnSala = 0;
+
 app.use(sessionMiddleware);
 
 io.use((socket, next) => {
@@ -198,7 +200,20 @@ io.on("connection", (socket) => {
 	socket.on('ganasteBomba', data => {
 		io.to(req.session.room).emit('newGanasteBomba', { room: req.session.room, message: data });
 	});
+	let vector=[{
+		codigo: "Kaboom",
+		user1: 0,
+		user2 : 0,
+	}]
+
+	socket.on('resetFunction', data => {
+		io.to(req.session.room).emit('newResetFunction', { room: req.session.room, message: data });
+	});
+
 	
+	socket.on('refrescar', data => {
+		io.to(req.session.room).emit('newRefrescar', { room: req.session.room, message: data });
+	});
 	
     /**
      socket.on('newMessage', (data)=>{
@@ -208,3 +223,7 @@ io.on("connection", (socket) => {
 		console.log("Disconnect");
 	})
 });
+
+function obtenerPosicionEnVector(vector) {
+
+}

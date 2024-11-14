@@ -13,6 +13,17 @@
 
 }
 
+.selectPlayer{
+  
+    width: 100%;
+    height: 100%;
+    background-image: url(../../../../public/x.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+  
+}
+
+
 .cajitas{
   padding-top: 3.9%;
   display: grid;
