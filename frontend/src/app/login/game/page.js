@@ -33,9 +33,14 @@ export default function Game() {
     }
   });
   if (!socket) return;
-  socket.emit("refrescar",{refresh: elegida
-    ,user:localStorage.getItem("userId")})
-
+  if (localStorage.getItem("userId")==2 && localStorage.getItem("refresh")==0) {
+    localStorage.setItem("refresh",1)
+    socket.emit("refrescar",{user:localStorage.getItem("userId")})
+    setTimeout(() => {
+      location.reload()
+      socket.emit("refrescar",{user:localStorage.getItem("userId")})
+    }, 1000);
+  }
     
   if (!started) {
     socket.emit("joinRoom", { room: "Kaboom" })

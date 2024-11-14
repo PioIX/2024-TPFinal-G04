@@ -267,7 +267,7 @@ export default function Traducir(props) {
                 <Button className={styles.check} id="BotonTraduccion" text="CHECK" onClick={checkTrad}></Button>
                 <input className={styles.form} onChange={(event) => handleInputChange(event)} id="myInput" maxLength="5"  />
                 <h1 className={styles.letras} >{numeroletra}</h1>
-                <h1 className={styles.a1} >A=1</h1>
+                <h1 className={styles.a1} >A=1 P=17</h1>
 
 
             </div>

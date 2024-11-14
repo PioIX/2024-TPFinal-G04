@@ -44,6 +44,7 @@ export default function inicio() {
     localStorage.setItem("userId", 0)
     localStorage.setItem("player2", false)
     localStorage.setItem("player1", false)
+    localStorage.setItem("refresh",0)
   }
   return (
   <html className={styles.all}>
