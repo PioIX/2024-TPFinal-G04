@@ -83,3 +83,26 @@
   background: #4b4b4b;
   cursor: pointer;
 }
+
+.a{
+  font-weight: bold;
+  align-items: center;
+  display: flex;
+  box-sizing: border-box;
+  display: block;
+  margin: auto;
+  justify-content: center;
+  text-align: center;
+  font-family: "lucida console";
+  font-size: 30px;
+  padding: 25px;
+  width: 300px;
+  border: 2px solid #2e0a0a;
+  background-color: #d3d3d3;
+  color: rgb(88, 23, 23);
+  border-radius: 7px;
+  cursor: pointer;
+  transition-duration: 0.4s;
+  box-shadow: 0 0 5px -1px rgba(0,0,0,0.);
+  text-decoration: none;
+}

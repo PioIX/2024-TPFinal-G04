@@ -44,13 +44,14 @@ export default function inicio() {
     localStorage.setItem("userId", 0)
     localStorage.setItem("player2", false)
     localStorage.setItem("player1", false)
+    localStorage.setItem("refresh",0)
   }
   return (
   <html className={styles.all}>
   <body>
   <div className={styles.todo}>
       <div className={styles.inicio}>
-        <a href="./game" onClick={resetPlayer} className={styles.a}>Play</a><br></br>
+        <a href="./select" onClick={resetPlayer} className={styles.a}>Play</a><br></br>
         <a href="./ranking" className={styles.b}>Ranking</a><br></br>
         <a href="../login" className={styles.c}>Cerrar sesion</a>
       </div>

@@ -35,21 +35,21 @@ export default function Morse(props) {
     
     
     function definirMorse(){
-        var codigo = [getRandomInt(1,3),getRandomInt(1,3),getRandomInt(1,3),getRandomInt(1,3),getRandomInt(1,3),getRandomInt(1,3)]
+        var codigo = [getRandomInt(1,3),getRandomInt(1,3),getRandomInt(1,3),getRandomInt(1,3),getRandomInt(1,3)]
         var one=0
         var two=0
-        for (let index = 0; index < 6; index++) {
+        for (let index = 0; index < 5; index++) {
             if(codigo[index]==1){
                 one++
             }else{
                 two++
             }
         }
-        while(one>4 || two>4){
-            var codigo = [getRandomInt(1,3),getRandomInt(1,3),getRandomInt(1,3),getRandomInt(1,3),getRandomInt(1,3),getRandomInt(1,3)]
+        while(one>3 || two>3){
+            var codigo = [getRandomInt(1,3),getRandomInt(1,3),getRandomInt(1,3),getRandomInt(1,3),getRandomInt(1,3)]
             var one=0
             var two=0
-            for (let index = 0; index < 6; index++) {
+            for (let index = 0; index < 5; index++) {
                 if(codigo[index]==1){
                     one++
                 }else{
@@ -118,7 +118,7 @@ export default function Morse(props) {
     }
     async function codigo(){
         document.getElementById("codigo").disabled=true
-        for (let index = 0; index < 6; index++) {
+        for (let index = 0; index < 5; index++) {
             if( secuencia[index]==1){
                 await punto()
             }else{
@@ -131,13 +131,13 @@ export default function Morse(props) {
 
 
     function printPunto(){
-        if (secuenciaUsuario.length<6) {
+        if (secuenciaUsuario.length<5) {
             var copy=secuenciaUsuario
             copy.push(1)
             setRenglon(renglon+"·")
             setSecuenciaUsuario(copy)
         }
-        if (secuenciaUsuario.length==6) {
+        if (secuenciaUsuario.length==5) {
             if(String(secuenciaUsuario)==String(localStorage.getItem("suMorse"))){
                 ganarComponente(setLuzComponente)
                 document.getElementById("botonPunto").disabled=true
@@ -150,14 +150,14 @@ export default function Morse(props) {
         }
     }
     function printRaya(){
-        if (secuenciaUsuario.length<6) {
+        if (secuenciaUsuario.length<5) {
             var copy=secuenciaUsuario
             copy.push(2)
             setRenglon(renglon+"-")
             setSecuenciaUsuario(copy)
         }
         
-        if (secuenciaUsuario.length==6) {
+        if (secuenciaUsuario.length==5) {
             if(String(secuenciaUsuario)==String(localStorage.getItem("suMorse"))){
                 ganarComponente(setLuzComponente)
                 document.getElementById("botonPunto").disabled=true
