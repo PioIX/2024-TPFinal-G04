@@ -1,97 +1,49 @@
-.display{
-    display: none;
-  
-  }
-  
-  .all{
-    width: 100%;
-    height: 100%;
-    background-image: url(../../../../../public/game_background.png);
-    background-size: cover;
-    background-repeat: no-repeat;
-    
-  
-  }
-  
-  .cajitas{
-    padding-top: 3.9%;
-    display: grid;
-    grid-template-columns: repeat(3, 295px);
-    grid-template-rows: repeat(2, 290px);
-  
-  
-    grid-column-gap:  100px;
-    grid-row-gap: 100px;
-  
-    padding-left: 17.7%;
-    padding-right: 11%;
-    margin: 0 0 0 0;
-  
-  
-  }
-  
-  .voltear{
-    position: absolute;
-    border: 2px solid #555555;
-    font-size: 30px;
-    background-color: #d6d6d6;
-    color: #555555;
-    font-family: "lucida console";
-    cursor: pointer;
-    transition-duration: 0.2s;
-  }
-  .voltear:hover {
-    background: #4b4b4b;
-    cursor: pointer;
-    color: #d6d6d6;
-    
-  }
-  .voltearcreo{
-    position: absolute;
-    left: 154px;
-    border: 2px solid #555555;
-    font-size: 30px;
-    background-color: #d6d6d6;
-    color: #555555;
-    font-family: "lucida console";
-  }
-  .voltearcreo2{
-    position: absolute;
-    left: 190px;
-    border: 2px solid #555555;
-    font-size: 30px;
-    background-color: #d6d6d6;
-    color: #555555;
-    font-family: "lucida console";
-  }
-  .voltearcreo:hover {
-    background: #4b4b4b;
-    cursor: pointer;
-  }
-  .voltearcreo2:hover {
-    background: #4b4b4b;
-    cursor: pointer;
-  }
-  
-.a{
-    font-weight: bold;
-    align-items: center;
-    display: flex;
-    box-sizing: border-box;
-    display: block;
-    margin: auto;
-    justify-content: center;
-    text-align: center;
-    font-family: "lucida console";
-    font-size: 30px;
-    padding: 25px;
-    width: 300px;
-    border: 2px solid #2e0a0a;
-    background-color: #d3d3d3;
-    color: rgb(88, 23, 23);
-    border-radius: 7px;
-    cursor: pointer;
-    transition-duration: 0.4s;
-    box-shadow: 0 0 5px -1px rgba(0,0,0,0.);
-    text-decoration: none;
-  }
+.display {
+  display: none;
+
+}
+
+.all {
+  width: 100%;
+  height: 100%;
+  background-image: url(../../../../../public/game_background.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.todo {
+  display: flex;
+  box-sizing: border-box;
+  justify-content: center;
+  align-items: center;
+  margin: 0 0 0 0;
+}
+
+.a {
+  position: absolute;
+  top: 570px;
+  font-weight: bold;
+  display: flex;
+  box-sizing: border-box;
+  padding: 0 auto;
+  margin: auto;
+  justify-content: center;
+  text-align: center;
+  font-family: "papyrus";
+  font-size: 50px;
+  padding: 0px;
+  width: 140px;
+  height: 70px;
+  color: rgb(143, 137, 137);
+  border-radius: 7px;
+  cursor: pointer;
+  transition-duration: 0.4s;
+  box-shadow: 0 0 5px -1px rgba(0, 0, 0, 0.);
+  text-decoration: none;
+}
+
+.a:hover {
+  transform: translateY(0.5px);
+  color: rgb(88, 30, 30);
+
+}

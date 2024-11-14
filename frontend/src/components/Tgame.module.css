@@ -1,94 +1,125 @@
-.all{
+.all {
 	width: 100%;
 	height: 100%;
 	background-size: cover;
 	background-repeat: no-repeat;
-  
-  }
-  
-  .todo{
+
+}
+
+.todo {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-    margin-top: 30px;
+	margin-top: 30px;
 	font-size: 1rem;
 	font-size: 16px;
-  }
+}
 
-  .child{
-    justify-content: center;
+.child {
+	justify-content: center;
 	align-items: center;
 	font-family: "lucida console";
-    }
+}
 
 
-	.botones1, .botones2, .botones3, .botones4, .start {
-        display: inline;
-		background: rgb(158, 160, 163);
-		color: rgb(0, 0, 0);
-		font-size: 16px;
-		font-weight: 500;
-		cursor: pointer;
-		transition-duration: 0.2s;
-		margin-left: 4px;
-		margin-right: 1.5px;
-		border: 2px solid #292929;
-		font-family: "lucida console";
-		border-radius: 4px;
+.botones1,
+.botones2,
+.botones3,
+.botones4,
+.start {
+	display: inline;
+	background: rgb(158, 160, 163);
+	color: rgb(0, 0, 0);
+	font-size: 16px;
+	font-weight: 500;
+	cursor: pointer;
+	transition-duration: 0.2s;
+	margin-left: 4px;
+	margin-right: 1.5px;
+	border: 2px solid #292929;
+	font-family: "lucida console";
+	border-radius: 4px;
 
-	  }
-	  
-.botones1:hover, .start:hover, .botones2:hover, .botones3:hover, .botones4:hover {
+}
+
+.botones1:hover,
+.start:hover,
+.botones2:hover,
+.botones3:hover,
+.botones4:hover {
 	cursor: pointer;
 	transform: translateY(0.5px);
 }
-.start:hover{
+
+.start:hover {
 	background-color: #818181;
 }
-.botones1:active, .start:active, .botones2:active, .botones3:active, .botones4:active, {
-	transform: translateY(1px);
+
+.botones1:active, .start:active, .botones2:active, .botones3:active, .botones4:active{
+transform: translateY(1px);
 }
+
 .start {
 	position: absolute;
+	padding-top: 4px 4px 4px 4px;
 	right: 455px;
 	font-family: "lucida console";
 	top: 120px;
 }
 
-.start:hover{
+.start:hover {
 	background: #818181;
 	cursor: pointer;
 	transform: translateY(0.5px);
 }
-.start:active{
-  transform: translateY(1px);
+
+.start:active {
+	transform: translateY(1px);
 }
-.lucesita{
+
+.lucesita {
 	position: absolute;
 	top: 40px;
 	left: 1347px;
-  }
- .botones1{
+}
+
+.botones1 {
 	margin-left: 50px;
 	background-color: rgb(54, 107, 143);
-	width:45px;
+	width: 45px;
 	height: 35px;
- }
- .botones2{
+}
+
+.botones1:hover {
+	background-color: rgb(31, 75, 104);
+}
+
+.botones2 {
 
 	background-color: rgb(165, 144, 51);
-	width:45px;
+	width: 45px;
 	height: 35px;
- }
- .botones3{
+}
+.botones2:hover {
+	background-color:rgb(112, 97, 29);
+}
+
+.botones3 {
 
 	background-color: rgb(59, 117, 57);
-	width:45px;
+	width: 45px;
 	height: 35px;
- }
- .botones4{
+}
+.botones3:hover {
+	background-color: rgb(31, 90, 29);
+}
+
+.botones4 {
 
 	background-color: rgb(153, 53, 53);
-	width:45px;
+	width: 45px;
 	height: 35px;
- }
+}
+.botones4:hover {
+	background-color: rgb(94, 24, 24);
+}

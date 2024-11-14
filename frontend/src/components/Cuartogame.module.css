@@ -49,8 +49,8 @@
 	border: 2px solid #3a3a3a;
 	border-radius: 4px;
 	position: absolute;
-	top:700px;
-	left:360px;
+	top:680px;
+	left:290px;
 }
   
 .raya{
@@ -69,8 +69,8 @@
 	border: 2px solid #3a3a3a;
 	border-radius: 4px;
 	position: absolute;
-	top:700px;
-	left:420px;
+	top:680px;
+	left:340px;
 }
 .punto:hover, .raya:hover, .codigo:hover{
   background: #818181;
@@ -101,7 +101,9 @@
 	font-family: "lucida console";
 	bottom: 120px;
 	color: #e9e9e9;
-	font-size: 60px;
+	font-size: 50px;
+	top:645px;
+	left:390px;
 }
 .lucesita{
 	position: absolute;
@@ -111,6 +113,6 @@
 
   .imagen{
 	position: absolute;
-	top:540px;
-	left:255px;
+	top:560px;
+	left:320px;
   }

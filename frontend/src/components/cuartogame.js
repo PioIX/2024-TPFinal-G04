@@ -181,7 +181,7 @@ export default function Morse(props) {
             <Button className={styles.codigo} text="START" onClick={codigo} id="codigo"></Button>
             <Button className={styles.punto} text="•" onClick={printPunto} id="botonPunto"></Button>
             <Button className={styles.raya} text="-" onClick={printRaya} id="botonRaya"></Button>
-            <div><Image className={styles.imagen} src={luz} alt="morse" width={240} height={100}></Image></div>
+            <div><Image className={styles.imagen} src={luz} alt="morse" width={220} height={100}></Image></div>
             <h1 className={styles.respuesta} >{renglon}</h1>
             </div>
         </div>
