@@ -13,20 +13,20 @@ export default function Perder() {
     // Añadir clase al <html> cuando se monte el componente
     document.documentElement.classList.add(styles.all);
 
-    
+
   }, []);
 
 
   return (
-    
+
     <main className={styles.main}>
-      
+
       <div className={styles.todo}>
-      <div className={styles.inicio}>
+
         <a href="../menu" className={styles.a}>Menu</a><br></br>
+        
       </div>
-    </div>
-      
+
 
     </main>
 

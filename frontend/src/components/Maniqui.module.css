@@ -52,7 +52,7 @@
 
 .izquierda{
     position: absolute;
-    top: 690px;
+    top: 694px;
     left: 715px; 
     border: 2px solid #3a3a3a;
     background-color: #bdbdbd;
@@ -61,7 +61,7 @@
 }
 .derecha{
     position: absolute;
-    top: 690px;
+    top: 694px;
     left: 760px; 
 
     border: 2px solid #3a3a3a;
