@@ -13,81 +13,88 @@ export default function Game() {
   let [usuario1, setUsuario1] = useState(false);
   let [usuario2, setUsuario2] = useState(false);
 
-  
-  
+
+
   useEffect(() => {
-    
-    if (localStorage.getItem("player2")=="true" && localStorage.getItem("player1")=="true") {
-        localStorage.setItem("reset",0)
-        router.push("/login/game")
-        
+
+    if (localStorage.getItem("player2") == "true" && localStorage.getItem("player1") == "true") {
+      localStorage.setItem("reset", 0)
+      router.push("/login/game")
+
     }
-  }, [usuario1,usuario2,localStorage.getItem("player2"),localStorage.getItem("player1")])
+  }, [usuario1, usuario2, localStorage.getItem("player2"), localStorage.getItem("player1")])
 
   useEffect(() => {
     if (!socket) return;
     socket.on('newResetFunction', (data) => {
-      if (data.message.player1!=undefined) {
-        localStorage.setItem("player1",data.message.player1)
+      if (data.message.player1 != undefined) {
+        localStorage.setItem("player1", data.message.player1)
         setUsuario1("true")
       }
-      if (data.message.player2!=undefined) {
-        localStorage.setItem("player2",data.message.player2)
+      if (data.message.player2 != undefined) {
+        localStorage.setItem("player2", data.message.player2)
         setUsuario2("true")
       }
-      
+
     });
-  
-    socket.on('newTraduccion', (data)=>{
-        if (data.message.user != localStorage.getItem("userId")) { 
-            
-        }
-      });
-    
-  if (!started) {
-    socket.emit("joinRoom", { room: "Kaboom" })
 
-    started = true
-  }
-}, [socket, isConnected])
+    socket.on('newTraduccion', (data) => {
+      if (data.message.user != localStorage.getItem("userId")) {
+
+      }
+    });
+
+    if (!started) {
+      socket.emit("joinRoom", { room: "Kaboom" })
+
+      started = true
+    }
+  }, [socket, isConnected])
 
 
-useEffect(() => {
-  // Añadir clase al <html> cuando se monte el componente
+  useEffect(() => {
+    // Añadir clase al <html> cuando se monte el componente
     document.documentElement.classList.add(styles.selectPlayer);
     if (!socket) return;
-    socket.emit("resetFunction",{player2: false})
-    socket.emit("resetFunction",{player1: false})
-}, []);
+    socket.emit("resetFunction", { player2: false })
+    socket.emit("resetFunction", { player1: false })
+  }, []);
 
 
-function user1() {
-  localStorage.setItem("userId", 1);
-  //Falta el otro id personal
-  if (localStorage.getItem("player1")!="true") {
+  function user1() {
+    localStorage.setItem("userId", 1);
+    //Falta el otro id personal
+    if (localStorage.getItem("player1") != "true") {
       document.getElementById("player2").disabled = true
+    }
+    if (!socket) return;
+    socket.emit("resetFunction", { player1: true })
+    setUsuario1(true)
   }
-  if (!socket) return;
-  socket.emit("resetFunction",{player1: true})
-  setUsuario1(true)
-}
-function user2() {
-  localStorage.setItem("userId", 2);
-  if (localStorage.getItem("player2")!="true") {
-    document.getElementById("player1").disabled = true
-}
-  if (!socket) return;
-  socket.emit("resetFunction",{player2: true})
-  setUsuario2(true)
-}
+  function user2() {
+    localStorage.setItem("userId", 2);
+    if (localStorage.getItem("player2") != "true") {
+      document.getElementById("player1").disabled = true
+    }
+    if (!socket) return;
+    socket.emit("resetFunction", { player2: true })
+    setUsuario2(true)
+  }
 
 
   return (
-    <main className={styles.selectPlayer}>
-      <Button text="Player 1" onClick={user1} id="player1" ></Button>
-      <Button text="Player 2" onClick={user2} id="player2" ></Button>
-      <a href="./menu" className={styles.a}>Menu</a><br></br>
-    </main>
+    <html className={styles.all}>
+      <body>
+        <div className={styles.todo}>
+          <div className={styles.inicio}>
+              <a href="./menu" className={styles.a}>Menu</a><br></br>
+              <Button text="PLAYER 1" onClick={user1} className={styles.b} id="player1" ></Button><br></br>
+              <Button text="PLAYER 2" onClick={user2} className={styles.c} id="player2" ></Button>
+            </div>
+          </div>
+      </body>
+    </html>
+
   )
 
 
