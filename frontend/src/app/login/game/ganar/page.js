@@ -22,9 +22,9 @@ export default function Ganar() {
     <main className={styles.main}>
       
       <div className={styles.todo}>
-      <div className={styles.inicio}>
+
         <a href="../menu" className={styles.a}>Menu</a><br></br>
-      </div>
+
     </div>
       
 
