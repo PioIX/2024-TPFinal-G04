@@ -2,7 +2,7 @@
 import Form from "@/components/form"
 import styles from "./page.module.css"
 import Button from "@/components/button"
-import { useState } from "react";
+import { useState, useEffect } from "react";
 export default function inicio() {
 
 
@@ -39,7 +39,12 @@ export default function inicio() {
           return true
       }
   }
-
+  
+  useEffect(() => {
+    // Añadir clase al <html> cuando se monte el componente
+    
+    document.documentElement.classList.add(styles.all);
+  }, []);
   function resetPlayer() {
     localStorage.setItem("userId", 0)
     localStorage.setItem("player2", false)
@@ -47,8 +52,7 @@ export default function inicio() {
     localStorage.setItem("refresh",0)
   }
   return (
-  <html className={styles.all}>
-  <body>
+  
   <div className={styles.todo}>
       <div className={styles.inicio}>
         <a href="./select" onClick={resetPlayer} className={styles.a}>Play</a><br></br>
@@ -56,8 +60,6 @@ export default function inicio() {
         <a href="../login" className={styles.c}>Cerrar sesion</a>
       </div>
   </div>
-  </body>
-  </html>
   )
 }
 

@@ -28,12 +28,26 @@ export default function Game() {
     if (!socket) return;
     socket.on('newResetFunction', (data) => {
       if (data.message.player1 != undefined) {
-        localStorage.setItem("player1", data.message.player1)
-        setUsuario1("true")
+        if (data.message.player1=="true") {
+          localStorage.setItem("player1", data.message.player1)
+          setUsuario1("true")
+          console.log("entre true 1")
+        }else{
+          localStorage.setItem("player1", data.message.player1)
+          setUsuario1("false")
+          console.log("entre false 1")
+        }
       }
       if (data.message.player2 != undefined) {
-        localStorage.setItem("player2", data.message.player2)
-        setUsuario2("true")
+        if (data.message.player2=="true") {
+          console.log("entre true 2")
+          localStorage.setItem("player2", data.message.player2)
+          setUsuario2("true")
+        }else{
+          console.log("entre false 2")
+          localStorage.setItem("player2", data.message.player2)
+          setUsuario2("false")
+        }
       }
 
     });
@@ -46,7 +60,8 @@ export default function Game() {
 
     if (!started) {
       socket.emit("joinRoom", { room: "Kaboom" })
-
+      socket.emit("resetFunction", { player2: "false" })
+      socket.emit("resetFunction", { player1: "false" })
       started = true
     }
   }, [socket, isConnected])
@@ -54,10 +69,9 @@ export default function Game() {
 
   useEffect(() => {
     // Añadir clase al <html> cuando se monte el componente
-    document.documentElement.classList.add(styles.selectPlayer);
-    if (!socket) return;
-    socket.emit("resetFunction", { player2: false })
-    socket.emit("resetFunction", { player1: false })
+    
+    document.documentElement.classList.add(styles.all);
+    
   }, []);
 
 
@@ -68,7 +82,7 @@ export default function Game() {
       document.getElementById("player2").disabled = true
     }
     if (!socket) return;
-    socket.emit("resetFunction", { player1: true })
+    socket.emit("resetFunction", { player1: "true" })
     setUsuario1(true)
   }
   function user2() {
@@ -77,14 +91,13 @@ export default function Game() {
       document.getElementById("player1").disabled = true
     }
     if (!socket) return;
-    socket.emit("resetFunction", { player2: true })
+    socket.emit("resetFunction", { player2: "true" })
     setUsuario2(true)
   }
 
 
   return (
-    <html className={styles.all}>
-      <body>
+    
         <div className={styles.todo}>
           <div className={styles.inicio}>
               <a href="./menu" className={styles.a}>Menu</a><br></br>
@@ -92,8 +105,6 @@ export default function Game() {
               <Button text="PLAYER 2" onClick={user2} className={styles.c} id="player2" ></Button>
             </div>
           </div>
-      </body>
-    </html>
 
   )
 

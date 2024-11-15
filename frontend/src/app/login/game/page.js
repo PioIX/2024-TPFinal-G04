@@ -29,7 +29,10 @@ export default function Game() {
   if (!socket) {return}
   socket.on('newRefrescar', (data)=>{
     if (data.message.user != localStorage.getItem("userId")) { 
+      localStorage.setItem("SuUsername",data.message.usuario)
+      setTimeout(() => {
         location.reload()
+      }, 500);
     }
   });
   if (!socket) return;
@@ -38,7 +41,7 @@ export default function Game() {
     socket.emit("refrescar",{user:localStorage.getItem("userId")})
     setTimeout(() => {
       location.reload()
-      socket.emit("refrescar",{user:localStorage.getItem("userId")})
+      socket.emit("refrescar",{user:localStorage.getItem("userId"),usuario:localStorage.getItem("Username")})
     }, 1000);
   }
     
@@ -53,11 +56,12 @@ export default function Game() {
 useEffect(() => {
   // Añadir clase al <html> cuando se monte el componente
   document.documentElement.classList.add(styles.all);
-  
-  
-  
-  
-  
+  if (localStorage.getItem("UsernameId")=="" || localStorage.getItem("UsernameId")==undefined) {
+    localStorage.setItem("UsernameId","Unknoww")
+  }
+  if (localStorage.getItem("Username")=="" || localStorage.getItem("Username")==undefined) {
+    localStorage.setItem("Username","Unknown")
+  }
   // Limpiar al desmontar el componente
  
   return () => {
