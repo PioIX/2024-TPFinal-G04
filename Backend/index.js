@@ -20,6 +20,7 @@ const server = app.listen(port, function(){
     console.log('   [GET] http://localhost:3001/');
     console.log('   [GET] http://localhost:3001/usuarios');
     console.log('   [GET] http://localhost:3001/insertarUsuario');
+    console.log('   [GET] http://localhost:3001/traerJugador');
     
 });
 
@@ -85,6 +86,11 @@ app.post('/usuarios', async function(req,res){
     res.send(respuesta) 
    
 })
+app.get('/traerJugador', async function(req,res){
+	const respuesta = await MySql.realizarQuery(`select * from Ranking`)
+    res.send(respuesta)
+
+})
 
 
 app.post('/insertarUsuario', async function(req,res) {
@@ -100,8 +106,8 @@ app.post('/insertarUsuario', async function(req,res) {
 })
 app.post('/insertarRanking', async function(req,res) {
     
-        await MySql.realizarQuery(`INSERT INTO Ranking (username1, username2,time) 
-        VALUES ('${req.body.username1}', '${req.body.username2}', '${req.body.time}')`);
+        await MySql.realizarQuery(`INSERT INTO Ranking (username1, username2,time,seconds) 
+        VALUES ('${req.body.username1}', '${req.body.username2}', '${req.body.time}'), ${req.body.second})`);
         res.send({status: "Ok"})
     
 })
@@ -237,6 +243,3 @@ io.on("connection", (socket) => {
 	})
 });
 
-function obtenerPosicionEnVector(vector) {
-
-}

@@ -59,7 +59,8 @@ export default function Timer(props) {
         const data = {
             username1: localStorage.getItem("Username"),
             username2: localStorage.getItem("SuUsername"),
-            time: reloj
+            time: reloj,
+            second: timer
         }
 
         const response = await fetch('http://localhost:3001/insertarRanking', {

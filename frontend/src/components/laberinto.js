@@ -194,6 +194,10 @@ export default function Laberinto(props) {
 		if (localStorage.getItem("userId") == 1) {
 			
 			laberinto()
+			setTimeout(() => {
+				laberinto()
+
+			}, 1000);
 		}
     }, [])
 	if (localStorage.getItem("userId") == 1) {
