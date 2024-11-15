@@ -98,6 +98,19 @@ app.post('/insertarUsuario', async function(req,res) {
         res.send({status: "Ya existe"});
     }
 })
+app.post('/insertarRanking', async function(req,res) {
+    
+        await MySql.realizarQuery(`INSERT INTO Ranking (username1, username2,time) 
+        VALUES ('${req.body.username1}', '${req.body.username2}', '${req.body.time}')`);
+        res.send({status: "Ok"})
+    
+})
+
+
+
+
+
+
 //Pongo el servidor a escuchar
 
 /*
