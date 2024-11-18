@@ -8,6 +8,7 @@ import Form from "@/components/form";
 
 export default function inicio() {
     const [users, setUsers] = useState("")
+    const [content, setContent] = useState("")
     useEffect(() => {
         // Añadir clase al <html> cuando se monte el componente
         traerJugador()
@@ -34,19 +35,22 @@ export default function inicio() {
         x = x.sort((a, b) => b.seconds - a.seconds)
         return x
     }
-
+    function getContent() {
+        setContent(document.getElementById("searchByContent").value)
+        return document.getElementById("searchByContent").value
+    }
     function searchName() {
         var topPosition = 0
         var innerhtml = ``
         let a = orderRanking(users)
         for (let i = 0; i < a.length; i++) {
-            if (a[i].user.toLowerCase().startsWith(getContent().toLowerCase())) {
+            if (a[i].username1.toLowerCase().startsWith(getContent().toLowerCase()) ||a[i].username2.toLowerCase().startsWith(getContent().toLowerCase())) {
                 topPosition++
 
                 innerhtml += `
-                        <h3 class="name">${topPosition} ${a[i].username1}</h3>
-                        <h3 class="name"> ${a[i].username2}</h3>
-                        <h3 class="point">${a[i].time}</h3>
+                        <h3 className={styles.name}>${topPosition} ${a[i].username1}</h3>
+                        <h3 className={styles.name}> ${a[i].username2}</h3>
+                        <h3 className={styles.point}>${a[i].time}</h3>
                         <br>`
 
             }
@@ -67,18 +71,18 @@ export default function inicio() {
     }
 
     function completeRanking(){
-      
+      var topPosition=0
         var innerhtml=``
         let a=orderRanking(users)
-        if (a.length>5) {
-            for (let i = 0; i < 5; i++) {
-                
+        if (a.length>7) {
+            for (let i = 0; i < 7; i++) {
+                topPosition++
                     innerhtml+=`
                     <br>
                     <div id="rankingwin"> 
-                    <h3 class="name">${topPosition} ${a[i].username1}</h3>
-                    <h3 class="name"> ${a[i].username2}</h3>
-                    <h3 class="point">${a[i].time}</h3>
+                    <h3 className={styles.name}>${topPosition} ${a[i].username1}</h3>
+                    <h3 className={styles.name}> ${a[i].username2}</h3>
+                    <h3 className={styles.point}>${a[i].time}</h3>
                         <br>
                     </div>
                     <br>`
@@ -90,9 +94,9 @@ export default function inicio() {
             for (let i = 0; i < a.length; i++) {
                
                     innerhtml+=`
-                    <h3 class="name">${i} ${a[i].username1}</h3>
-                        <h3 class="name"> ${a[i].username2}</h3>
-                        <h3 class="point">${a[i].time}</h3>
+                    <h3 className={styles.name}>${i+1} ${a[i].username1}</h3>
+                        <h3 className={styles.name}> ${a[i].username2}</h3>
+                        <h3 className={styles.point} >${a[i].time}</h3>
                         <br>`
                 
             }
@@ -106,11 +110,10 @@ export default function inicio() {
             <div className={styles.inicio}>
                 <div className={styles.ranking}>
                     <h1>Ranking</h1>
-                    <h2>Buscar usuario:</h2>
-                    <input placeholder="Nombre" className="form-control" type="text" id="searchByContent" onKeyUp={rankingComplete} ></input>
+                    <input placeholder="Buscar usuario" className={styles.searchByContent} type="text" id="searchByContent" onKeyUp={rankingComplete} ></input>
                     <a href="./menu" className={styles.a}>Menu</a><br></br>
-                    <div id="rank">
-
+                    <div id="rank" className={styles.rankingdiv}>
+                    
                     </div>
                 </div>
             </div>

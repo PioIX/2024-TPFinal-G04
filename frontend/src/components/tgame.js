@@ -194,21 +194,25 @@ export default function Simon(props) {
 
         }
         let idBoton = event.target.id[1]
+        console.log(idBoton)
+        console.log(secuence[stateActual])
         if (idBoton == secuence[stateActual]) {
             seguida.push(secuence[state])
             setStateActual(stateActual + 1)
+            if (stateActual == state) {
+                if (state == 5) {
+                    ganarComponente(setLuzComponente)
+                } else {
+                    setSeguida([])
+                    setState(state + 1)
+                    setStateActual(0)
+                }
+            }
         } else {
             perderComponente(setLuzComponente)
+            setStateActual(0)
         }
-        if (stateActual == state) {
-            if (state == 5) {
-                ganarComponente(setLuzComponente)
-            } else {
-                setSeguida([])
-                setState(state + 1)
-                setStateActual(0)
-            }
-        }
+        
     }
     useEffect(() => {
         if (!socket) return;
