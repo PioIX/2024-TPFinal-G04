@@ -2,13 +2,13 @@
 import Form from "@/components/form"
 import styles from "./page.module.css"
 import Button from "@/components/button"
-
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 export default function inicio() {
     const [inputNombre, setInputNombre] = useState("")
     const [inputPassword, setInputPassword] = useState("")
-
+    const router = useRouter();
     var id_usuario_logueado = 0;
 
     async function registrarNuevoUsuario() {
@@ -31,6 +31,7 @@ export default function inicio() {
 
             if (result.status == "Ok") {
                 alert("Se ha registrado")
+                router.push("/login")
             } else {
                 alert("Usuario ya existe")
             }

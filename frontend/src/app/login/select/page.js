@@ -36,6 +36,8 @@ export default function Game() {
           localStorage.setItem("player1", data.message.player1)
           setUsuario1("false")
           console.log("entre false 1")
+          document.getElementById("player1").disabled=false
+          document.getElementById("player2").disabled=false
         }
       }
       if (data.message.player2 != undefined) {
@@ -47,6 +49,8 @@ export default function Game() {
           console.log("entre false 2")
           localStorage.setItem("player2", data.message.player2)
           setUsuario2("false")
+          document.getElementById("player1").disabled=false
+          document.getElementById("player2").disabled=false
         }
       }
 
