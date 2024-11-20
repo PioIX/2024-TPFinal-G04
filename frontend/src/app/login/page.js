@@ -3,7 +3,7 @@ import Form from "@/components/form"
 import styles from "./page.module.css"
 import Button from "@/components/button"
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 
 export default function inicio() {
@@ -12,14 +12,21 @@ export default function inicio() {
     const [userID, setUserId] = useState(0)
 
     async function ingresarUsuario() {
-        if (await existeUsuario() == true) {
-            console.log("Haz ingresado")
-            location.href ="login/menu"
-        } else {
-            alert("el usuario no existe o la contraseña no es correcta");
+        
+        if (inputNombre!="" && inputPassword!="") {
+            
+            if (await existeUsuario() == true) {
+                console.log("Haz ingresado")
+                location.href ="login/menu"
+            } else {
+                alert("el usuario no existe o la contraseña no es correcta");
+            }
         }
     }
-
+    useEffect(() => {
+        localStorage.setItem("UsernameId","")
+        localStorage.setItem("Username","")
+      }, []);
     async function existeUsuario() {
         const data = {
             nombre_usuario: inputNombre,
@@ -41,7 +48,8 @@ export default function inicio() {
             return false
         } else {
             console.log("El usuario si existe")
-            setUserId(result[0].id_usuario)
+            localStorage.setItem("UsernameId",result[0].id)
+            localStorage.setItem("Username",result[0].user)
             return true
         }
     }

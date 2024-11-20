@@ -24,7 +24,7 @@ function getRandomInt(min, max) {
 
 export default function Traducir(props) {
     let [luzcomponente, setLuzComponente] = useState("/luzcomponente/apagado.png");
-    var [palabra,setPalabra]= useState(["Bomba","Morir","Clave","Llave","Cable","Boton","Luces","Genio","Juego","Tecla","Fuego","Grupo","Corte","Ruina","Habla","Letra","Reloj","Grito","Cobre","Plata","Metal","Hueso","Marca","Lento","Debil","Dudas","Preso","Dolor","Matar","Muera","Largo","Corto","Turno"])
+    var [palabra,setPalabra]= useState(["Bomba","Morir","Clave","Llave","Cable","Boton","Luces","Genio","Juego","Tecla","Fuego","Grupo","Corte","Ruina","Habla","Letra","Reloj","Grito","Cobre","Plata","Metal","Hueso","Marca","Lento","Debil","Dudas","Preso","Dolor","Matar","Muera","Largo","Corto","Turno","Tiros","Papel","Pista","Ayuda","Start","Rejas","Click","Razon","Miedo","Salir","Rayos","Nunca","Sacar","Morse","Ganar","Envia","Forma","Velas","Ciego","Cielo","Truco","Gasas","Corta","Jamas"])
     var [elegida,setElegida]= useState("")
     var [suelegida,setSuelegida]= useState("")
     var [numeroletra,setNumeroletra]= useState("A.S.")
@@ -45,6 +45,11 @@ export default function Traducir(props) {
 
         if (!started) {
             socket.emit("joinRoom",{room: "Kaboom"})
+            setTimeout(() => {
+				socket.emit("traduccion",{position: elegida
+                    ,user:localStorage.getItem("userId")})
+
+			}, 1000);
             socket.emit("traduccion",{position: elegida
                 ,user:localStorage.getItem("userId")})
             started=true
@@ -56,96 +61,6 @@ export default function Traducir(props) {
         //console.log(valor)
         setValor(document.getElementById("myInput").value)
     };
-
-
-    function letraANumero(){
-        setNumeroletra("") 
-        if(suelegida!=undefined){
-        for (let index = 0; index < suelegida.length; index++) {
-            if(suelegida[index]=="a"){
-                setNumeroletra(numeroletra+="1 ")
-            }
-            if(suelegida[index]=="b"){
-                setNumeroletra(numeroletra+="2 ")
-            }
-            if(suelegida[index]=="c"){
-                setNumeroletra(numeroletra+="3 ")
-            }
-            if(suelegida[index]=="d"){
-                setNumeroletra(numeroletra+="4 ")
-            }
-            if(suelegida[index]=="e"){
-                setNumeroletra(numeroletra+="5 ")
-            }
-            if(suelegida[index]=="f"){
-                setNumeroletra(numeroletra+="6 ")
-            }
-            if(suelegida[index]=="g"){
-                setNumeroletra(numeroletra+="7 ")
-            }
-            if(suelegida[index]=="h"){
-                setNumeroletra(numeroletra+="8 ")
-            }
-            if(suelegida[index]=="i"){
-                setNumeroletra(numeroletra+="9 ")
-            }
-            if(suelegida[index]=="j"){
-                setNumeroletra(numeroletra+="10 ")
-            }
-            if(suelegida[index]=="k"){
-                setNumeroletra(numeroletra+="11 ")
-            }
-            if(suelegida[index]=="l"){
-                setNumeroletra(numeroletra+="12 ")
-            }
-            if(suelegida[index]=="m"){
-                setNumeroletra(numeroletra+="13 ")
-            }
-            if(suelegida[index]=="n"){
-                setNumeroletra(numeroletra+="14 ")
-            }
-            if(suelegida[index]=="ñ"){
-                setNumeroletra(numeroletra+="15 ")
-            }
-            if(suelegida[index]=="o"){
-                setNumeroletra(numeroletra+="16 ")
-            }
-            if(suelegida[index]=="p"){
-                setNumeroletra(numeroletra+="17 ")
-            }
-            if(suelegida[index]=="q"){
-                setNumeroletra(numeroletra+="18 ")
-            }
-            if(suelegida[index]=="r"){
-                setNumeroletra(numeroletra+="19 ")
-            }
-            if(suelegida[index]=="s"){
-                setNumeroletra(numeroletra+="20 ")
-            }
-            if(suelegida[index]=="t"){
-                setNumeroletra(numeroletra+="21 ")
-            }
-            if(suelegida[index]=="u"){
-                setNumeroletra(numeroletra+="22 ")
-            }
-            if(suelegida[index]=="v"){
-                setNumeroletra(numeroletra+="23 ")
-            }
-            if(suelegida[index]=="w"){
-                setNumeroletra(numeroletra+="24 ")
-            }
-            if(suelegida[index]=="x"){
-                setNumeroletra(numeroletra+="25 ")
-            }
-            if(suelegida[index]=="y"){
-                setNumeroletra(numeroletra+="26 ")
-            }
-            if(suelegida[index]=="z"){
-                setNumeroletra(numeroletra+="27 ")
-            }
-        }
-        }
-    }
 
 
     useEffect(() => {

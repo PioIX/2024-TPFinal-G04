@@ -54,6 +54,20 @@
 .start:hover {
 	background-color: #818181;
 }
+.start:disabled {
+	display: inline;
+	background: rgb(158, 160, 163);
+	color: rgb(137, 137, 137);
+	font-size: 16px;
+	font-weight: 500;
+	cursor: pointer;
+	transition-duration: 0.2s;
+	margin-left: 4px;
+	margin-right: 1.5px;
+	border: 2px solid #292929;
+	font-family: "lucida console";
+	border-radius: 4px;
+}
 
 .botones1:active, .start:active, .botones2:active, .botones3:active, .botones4:active{
 transform: translateY(1px);

@@ -41,9 +41,17 @@ export default function Reloj(props) {
 
         if (!started) {
             socket.emit("joinRoom",{room: "Kaboom"})
+            setTimeout(() => {
+				socket.emit("reloj",{numero: randomReloj,
+                    user:localStorage.getItem("userId")
+                })
+
+			}, 1000);
             socket.emit("reloj",{numero: randomReloj,
                 user:localStorage.getItem("userId")
             })
+            
+            
             started=true
         }
     }, [socket, isConnected])
