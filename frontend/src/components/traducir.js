@@ -24,7 +24,7 @@ function getRandomInt(min, max) {
 
 export default function Traducir(props) {
     let [luzcomponente, setLuzComponente] = useState("/luzcomponente/apagado.png");
-    var [palabra,setPalabra]= useState(["Bomba","Morir","Clave","Llave","Cable","Boton","Luces","Genio","Juego","Tecla","Fuego","Grupo","Corte","Ruina","Habla","Letra","Reloj","Grito","Cobre","Plata","Metal","Hueso","Marca","Lento","Debil","Dudas","Preso","Dolor","Matar","Muera","Largo","Corto","Turno"])
+    var [palabra,setPalabra]= useState(["Bomba","Morir","Clave","Llave","Cable","Boton","Luces","Genio","Juego","Tecla","Fuego","Grupo","Corte","Ruina","Habla","Letra","Reloj","Grito","Cobre","Plata","Metal","Hueso","Marca","Lento","Debil","Dudas","Preso","Dolor","Matar","Muera","Largo","Corto","Turno","Tiros","Papel","Pista","Ayuda","Start","Rejas","Click","Razon","Miedo","Salir","Rayos","Nunca","Sacar","Morse","Ganar","Envia","Forma","Velas","Ciego","Cielo","Truco","Gasas","Corta","Jamas"])
     var [elegida,setElegida]= useState("")
     var [suelegida,setSuelegida]= useState("")
     var [numeroletra,setNumeroletra]= useState("A.S.")

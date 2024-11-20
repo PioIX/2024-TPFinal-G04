@@ -44,14 +44,15 @@ export default function inicio() {
         var innerhtml = ``
         let a = orderRanking(users)
         for (let i = 0; i < a.length; i++) {
-            if (a[i].username1.toLowerCase().startsWith(getContent().toLowerCase()) ||a[i].username2.toLowerCase().startsWith(getContent().toLowerCase())) {
+            if (a[i].username1.toLowerCase().startsWith(getContent().toLowerCase()) || a[i].username2.toLowerCase().startsWith(getContent().toLowerCase())) {
                 topPosition++
-
                 innerhtml += `
-                        <h3 className={styles.name}>${topPosition} ${a[i].username1}</h3>
-                        <h3 className={styles.name}> ${a[i].username2}</h3>
-                        <h3 className={styles.point}>${a[i].time}</h3>
-                        <br>`
+                
+                    <div id="rankingwin"> 
+                    <h3 className={styles.name}>${topPosition} ${a[i].username1} ${a[i].username2}</h3>
+                    <h3 className={styles.point}>${a[i].time}</h3>
+                    </div>
+                    `
 
             }
         }
@@ -70,51 +71,52 @@ export default function inicio() {
         return result
     }
 
-    function completeRanking(){
-      var topPosition=0
-        var innerhtml=``
-        let a=orderRanking(users)
-        if (a.length>7) {
-            for (let i = 0; i < 7; i++) {
+    function completeRanking() {
+        var topPosition = 0
+        var innerhtml = ``
+        let a = orderRanking(users)
+        if (a.length > 5) {
+            for (let i = 0; i < 5; i++) {
                 topPosition++
-                    innerhtml+=`
-                    <br>
+                innerhtml += `
+                    
                     <div id="rankingwin"> 
-                    <h3 className={styles.name}>${topPosition} ${a[i].username1}</h3>
-                    <h3 className={styles.name}> ${a[i].username2}</h3>
+                    <h3 className={styles.name}>${topPosition} ${a[i].username1} ${a[i].username2} </h3>
                     <h3 className={styles.point}>${a[i].time}</h3>
-                        <br>
+                    
                     </div>
-                    <br>`
-                
-                
-                
+                    `
+
+
+
             }
-        }else{
+        } else {
             for (let i = 0; i < a.length; i++) {
-               
-                    innerhtml+=`
-                    <h3 className={styles.name}>${i+1} ${a[i].username1}</h3>
-                        <h3 className={styles.name}> ${a[i].username2}</h3>
-                        <h3 className={styles.point} >${a[i].time}</h3>
-                        <br>`
-                
+
+                innerhtml += `
+                    
+                    <div id="rankingwin"> 
+                    <h3 className={styles.name}>${i + 1} ${a[i].username1} ${a[i].username2}</h3>
+                    <h3 className={styles.point} >${a[i].time}</h3>
+                    
+                    </div>
+                    `
+
             }
         }
-        
-        document.getElementById("rank").innerHTML =innerhtml
+
+        document.getElementById("rank").innerHTML = innerhtml
     }
     return (
 
         <div className={styles.todo}>
             <div className={styles.inicio}>
-                <div className={styles.ranking}>
-                    <h1>Ranking</h1>
-                    <input placeholder="Buscar usuario" className={styles.searchByContent} type="text" id="searchByContent" onKeyUp={rankingComplete} ></input>
-                    <a href="./menu" className={styles.a}>Menu</a><br></br>
-                    <div id="rank" className={styles.rankingdiv}>
-                    
-                    </div>
+
+
+                <input placeholder="Buscar usuario" className={styles.searchByContent} type="text" id="searchByContent" onKeyUp={rankingComplete} ></input>
+                <a href="./menu" className={styles.a}>Menu</a><br></br>
+                <div id="rank" className={styles.rankingdiv}>
+
                 </div>
             </div>
         </div>
