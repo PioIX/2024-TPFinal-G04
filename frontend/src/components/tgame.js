@@ -30,6 +30,7 @@ export default function Simon(props) {
     let [state, setState] = useState(0)
     let [stateActual, setStateActual] = useState(0)
     let [seguida, setSeguida] = useState([])
+    let [secuencita, setSecuencita] = useState()
     let [luzcomponente, setLuzComponente] = useState("/luzcomponente/apagado.png");
     const { socket, isConnected } = useSocket();
     let started = false;
@@ -184,6 +185,7 @@ export default function Simon(props) {
             document.getElementById("lasecuencia").disabled = true
         }
     }, [])
+
 
     function verifySequence(event) {
         var secuence = []

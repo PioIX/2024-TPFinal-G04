@@ -7,7 +7,6 @@ function Form(props) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    alert('Form submitted with input: ' + inputValue);
   };
 
   return (

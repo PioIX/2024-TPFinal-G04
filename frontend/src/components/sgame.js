@@ -50,6 +50,14 @@ export default function Naval(props) {
 	useEffect(() => {
 		setPosition(getRandoms());
 	}, [])
+
+
+	useEffect(() => {
+		if (!socket) return;
+		socket.emit("bombas",{position: position
+			,user:localStorage.getItem("userId")})
+		}, [position])
+	
 	JSON.stringify(position)
 	useEffect(() => {
 		localStorage.setItem("misBombas", JSON.stringify(position));

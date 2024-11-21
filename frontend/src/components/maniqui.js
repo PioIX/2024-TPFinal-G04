@@ -38,7 +38,7 @@ export default function Maniqui(props) {
                 localStorage.setItem("SuManiqui", data.message.numero);
             }
         });
-
+        
         if (!started) {
             socket.emit("joinRoom", { room: "Kaboom" })
             socket.emit("maniqui", {
@@ -48,12 +48,19 @@ export default function Maniqui(props) {
             started = true
         }
     }, [socket, isConnected])
-
+    
     useEffect(() => {
         setRandomManiqui(getRandomInt(0, 9))
         setManiqui(getRandomInt(0, 9))
     }, [])
-
+    useEffect(() => {
+        if (!socket) return;
+        socket.emit("maniqui", {
+            numero: randomManiqui,
+            user: localStorage.getItem("userId")
+        })
+    }, [randomManiqui])
+        
     function verifySequence() {
         if (maniqui == localStorage.getItem("SuManiqui")) {
             ganarComponente(setLuzComponente)

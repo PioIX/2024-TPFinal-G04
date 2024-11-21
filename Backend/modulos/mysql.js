@@ -38,5 +38,9 @@ exports.realizarQuery = async function (queryString)
 	{
 		if(connection && connection.end) connection.end();
 	}
-	return returnObject[0];
+	if (returnObject[0]!=undefined) {
+		
+		return returnObject[0];
+	}
+	return nothing
 }
