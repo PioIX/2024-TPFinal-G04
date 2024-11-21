@@ -1,6 +1,6 @@
 var express = require('express'); //Tipo de servidor: Express
 var bodyParser = require('body-parser'); //Convierte los JSON
-const cors = require('cors'); 
+const cors = require('cors');
 const session = require('express-session');				// Para el manejo de las variables de sesión
 const MySql = require('./modulos/mysql.js')
 
@@ -9,19 +9,19 @@ var app = express(); //Inicializo express
 var port = process.env.PORT || 3001; //Ejecuto el servidor en el puerto 3001
 
 // Convierte una petición recibida (POST-GET...) a objeto JSON
-app.use(bodyParser.urlencoded({extended:false}));
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cors());
 
 
-const server = app.listen(port, function(){
-    console.log(`Server running in http://localhost:${port}`);
-    console.log('Defined routes:');
-    console.log('   [GET] http://localhost:3001/');
-    console.log('   [GET] http://localhost:3001/usuarios');
-    console.log('   [GET] http://localhost:3001/insertarUsuario');
-    console.log('   [GET] http://localhost:3001/traerJugador');
-    
+const server = app.listen(port, function () {
+	console.log(`Server running in http://localhost:${port}`);
+	console.log('Defined routes:');
+	console.log('   [GET] http://localhost:3001/');
+	console.log('   [GET] http://localhost:3001/usuarios');
+	console.log('   [GET] http://localhost:3001/insertarUsuario');
+	console.log('   [GET] http://localhost:3001/traerJugador');
+
 });
 
 const io = require('socket.io')(server, {
@@ -50,20 +50,20 @@ io.use((socket, next) => {
 });
 
 
-app.put('/cambiarPuntaje', async function(req,res){
-    console.log(req.body)
-    const respuesta=await MySql.realizarQuery(`UPDATE Players 
+app.put('/cambiarPuntaje', async function (req, res) {
+	console.log(req.body)
+	const respuesta = await MySql.realizarQuery(`UPDATE Players 
     SET 
     point = ${req.body.point}
     WHERE id = ${req.body.id};`)
-    console.log({respuesta})
-    res.send("ok")
-}) 
+	console.log({ respuesta })
+	res.send("ok")
+})
 
-app.get('/', function(req, res){
-    res.status(200).send({
-        message: 'GET Home route working fine!'
-    });
+app.get('/', function (req, res) {
+	res.status(200).send({
+		message: 'GET Home route working fine!'
+	});
 });
 
 /**
@@ -73,43 +73,43 @@ app.get('/', function(req, res){
 
 
 
-app.post('/usuarios', async function(req,res){
-    console.log(req.body)
-    let respuesta = ""
-    if (req.body.nombre_usuario) {
-         respuesta = await MySql.realizarQuery(`SELECT * FROM Users WHERE 
+app.post('/usuarios', async function (req, res) {
+	console.log(req.body)
+	let respuesta = ""
+	if (req.body.nombre_usuario) {
+		respuesta = await MySql.realizarQuery(`SELECT * FROM Users WHERE 
         user = "${req.body.nombre_usuario}" and password = "${req.body.contraseña}";`)
-    }
-    else{
-        respuesta = ""
-    }
-    res.send(respuesta) 
-   
+	}
+	else {
+		respuesta = ""
+	}
+	res.send(respuesta)
+
 })
-app.get('/traerJugador', async function(req,res){
+app.get('/traerJugador', async function (req, res) {
 	const respuesta = await MySql.realizarQuery(`select * from Ranking`)
-    res.send(respuesta)
+	res.send(respuesta)
 
 })
 
 
-app.post('/insertarUsuario', async function(req,res) {
-    console.log(req.body)
-    var usuarioNuevo = await MySql.realizarQuery(`SELECT * FROM Users WHERE user = '${req.body.nombre_usuario}'`);
-    if (usuarioNuevo.length==0) {
-        await MySql.realizarQuery(`INSERT INTO Users (user, password) 
+app.post('/insertarUsuario', async function (req, res) {
+	console.log(req.body)
+	var usuarioNuevo = await MySql.realizarQuery(`SELECT * FROM Users WHERE user = '${req.body.nombre_usuario}'`);
+	if (usuarioNuevo.length == 0) {
+		await MySql.realizarQuery(`INSERT INTO Users (user, password) 
         VALUES ('${req.body.nombre_usuario}', '${req.body.contraseña}')`);
-        res.send({status: "Ok"})
-    } else {
-        res.send({status: "Ya existe"});
-    }
+		res.send({ status: "Ok" })
+	} else {
+		res.send({ status: "Ya existe" });
+	}
 })
-app.post('/insertarRanking', async function(req,res) {
-    
-        await MySql.realizarQuery(`INSERT INTO Ranking (username1, username2,time,seconds) 
-        VALUES ('${req.body.username1}', '${req.body.username2}', '${req.body.time}'), ${req.body.second})`);
-        res.send({status: "Ok"})
-    
+app.post('/insertarRanking', async function (req, res) {
+	console.log(req.body)
+	await MySql.realizarQuery(`INSERT INTO Ranking (username1, username2,time,seconds) 
+        VALUES ('${req.body.username1}', '${req.body.username2}', '${req.body.time}', ${req.body.second})`);
+	res.send({ status: "Ok" })
+
 })
 
 
@@ -121,16 +121,16 @@ app.post('/insertarRanking', async function(req,res) {
 
 /*
 app.put('/modificarUsuarioPartidasperdidas', async function(req,res){
-    console.log(req.body)
-    response = await MySql.realizarQuery(`SELECT partidas_perdidas FROM Usuarios WHERE id_usuario= ${req.body.id_usuario}`);
-    await MySql.realizarQuery(`UPDATE Usuarios SET partidas_perdidas = '${req.body.partidas_perdidas + response[0].partidas_perdidas}' WHERE id_usuario= ${req.body.id_usuario}`);
-    res.send({perdidas: req.body.partidas_perdidas + response[0].partidas_perdidas})
+	console.log(req.body)
+	response = await MySql.realizarQuery(`SELECT partidas_perdidas FROM Usuarios WHERE id_usuario= ${req.body.id_usuario}`);
+	await MySql.realizarQuery(`UPDATE Usuarios SET partidas_perdidas = '${req.body.partidas_perdidas + response[0].partidas_perdidas}' WHERE id_usuario= ${req.body.id_usuario}`);
+	res.send({perdidas: req.body.partidas_perdidas + response[0].partidas_perdidas})
 })
 
 app.delete('/eliminarUsuario', async function(req,res){
-    console.log(req.body)
-    await MySql.realizarQuery(`DELETE FROM Usuarios WHERE id_usuario = ${req.body.id_usuario}`);
-    res.send("ok")
+	console.log(req.body)
+	await MySql.realizarQuery(`DELETE FROM Usuarios WHERE id_usuario = ${req.body.id_usuario}`);
+	res.send("ok")
 })
 */
 
@@ -150,7 +150,7 @@ io.on("connection", (socket) => {
 
 	socket.on('pingAll', data => {
 		console.log("PING ALL: ", data);
-        console.log("Mensaje: ", data.message);
+		console.log("Mensaje: ", data.message);
 		io.emit('pingAll', { event: "Ping to all", message: data });
 	});
 
@@ -219,25 +219,25 @@ io.on("connection", (socket) => {
 	socket.on('ganasteBomba', data => {
 		io.to(req.session.room).emit('newGanasteBomba', { room: req.session.room, message: data });
 	});
-	let vector=[{
+	let vector = [{
 		codigo: "Kaboom",
 		user1: 0,
-		user2 : 0,
+		user2: 0,
 	}]
 
 	socket.on('resetFunction', data => {
 		io.to(req.session.room).emit('newResetFunction', { room: req.session.room, message: data });
 	});
 
-	
+
 	socket.on('refrescar', data => {
 		io.to(req.session.room).emit('newRefrescar', { room: req.session.room, message: data });
 	});
-	
-    /**
-     socket.on('newMessage', (data)=>{
-     console.log("Message: ", data)
-      }); */
+
+	/**
+	 socket.on('newMessage', (data)=>{
+	 console.log("Message: ", data)
+	  }); */
 	socket.on('disconnect', () => {
 		console.log("Disconnect");
 	})
