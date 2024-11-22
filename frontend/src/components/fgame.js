@@ -50,6 +50,12 @@ export default function Numbers(props) {
 
         if (!started) {
             socket.emit("joinRoom",{room: "Kaboom"})
+            setTimeout(function () {
+                socket.emit("numeros",{numero: auxtotal2,
+                    user:localStorage.getItem("userId")
+                })
+               
+                }, 1000);
             socket.emit("numeros",{numero: auxtotal2,
                 user:localStorage.getItem("userId")
             })

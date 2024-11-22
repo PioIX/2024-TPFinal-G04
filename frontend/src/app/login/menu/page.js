@@ -57,7 +57,6 @@ export default function inicio() {
       <div className={styles.inicio}>
         <a href="./select" onClick={resetPlayer} className={styles.a}>Play</a><br></br>
         <a href="./ranking" className={styles.b}>Ranking</a><br></br>
-        <a href="../login" className={styles.c}>Cerrar sesion</a>
       </div>
   </div>
   )
