@@ -22,6 +22,7 @@ Una bomba desactiva a la otra. Para conseguirlo tienen que comunicarse y describ
 - Maniquí: Hay un maniquí en una posición y el otro que se puede ir cambiando. Claramente, tienen que elegir correctamente la posición del otro.
 - Reloj: En una bomba va a haber un reloj con la aguja de la hora fija y la de los minutos "movible", en la otra, al revés. Tienen que poner la misma hora en ambos relojes, ayudándose.
 
+Estos son algunos componentes de nuestro proyecto:
 
-
+![Flecha](https://github.com/usuario/repositorio/raw/main/images/FLECHAS2.png)
 
