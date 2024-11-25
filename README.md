@@ -24,5 +24,5 @@ Una bomba desactiva a la otra. Para conseguirlo tienen que comunicarse y describ
 
 Estos son algunos componentes de nuestro proyecto:
 
-![Flecha](https://github.com/usuario/repositorio/raw/main/images/FLECHAS2.png)
+![Flecha](https://github.com/usuario/repositorio/raw/main/FLECHAS2.png)
 
